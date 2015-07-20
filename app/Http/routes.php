@@ -20,3 +20,5 @@ Route::get('signature', function () {
 });
 
 Route::get('signature/verify', 'SignatureController@verify');
+
+Route::get('command', 'CommandController@index');
