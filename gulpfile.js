@@ -14,5 +14,6 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+    mix.copy('public/bower_components/foundation/scss/foundation', 'resources/assets/sass/foundation');
     mix.sass('app.scss');
 });
