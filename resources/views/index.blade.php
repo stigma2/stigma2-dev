@@ -43,5 +43,37 @@
                 </section>
             </nav>
         </header>
+        <div class="row">
+            <div class="large-3 panel columns">
+                <h4>Header</h4>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+            </div>
+            <div class="large-9 panel columns">
+                <h1>Main Contents</h1>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+            </div>
+        </div>
+        <footer class="row">
+            <div class="large-12 columns">
+                <hr/>
+                <div class="large-6 columns">
+                    <p>© Copyright</p>
+                </div>
+                <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
