@@ -44,11 +44,22 @@
             </nav>
         </header>
         <div class="row">
-            <div class="large-3 panel columns">
-                <h4>Header</h4>
-                <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
+            <div class="large-3 columns">
+                <aside class="sidebar">
+                    <nav>
+                        <ul class="side-nav">
+                            <li class="heading">Menu 1</li>
+                            <li class="active"><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li class="divider"></li>
+                            <li class="heading">Menu 2</li>
+                            <li><a href="#">Link 3</a></li>
+                            <li><a href="#">Link 4</a></li>
+                        </ul>
+                    </nav>
+                </aside>
             </div>
-            <div class="large-9 panel columns">
+            <div class="large-9 columns">
                 <h1>Main Contents</h1>
                 <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
                 <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
