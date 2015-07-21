@@ -26,7 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     private function registerCommandRepository()
     {
-        $this->app->bind('App\Interfaces\RepositoryInterface', function()
+        $this->app->bind('App\Repositories\CommandRepository', function()
         {
             $command = new Command();
 
