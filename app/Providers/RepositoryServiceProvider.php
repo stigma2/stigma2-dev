@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Command;
+use App\Repositories\CommandRepository;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -23,13 +26,11 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     private function registerCommandRepository()
     {
-        // $repository = 'App\Repositories\CommandRepository';
- 
-        // $this->app->bind('App\Interfaces\RepositoryInterface', $repository);
+        $this->app->bind('App\Interfaces\RepositoryInterface', function()
+        {
+            $command = new Command();
 
-        // $this->app->bind('App\Interfaces\RepositoryInterface', function()
-        // {
-        //     return new CommandRepository();
-        // });
+            return new CommandRepository($command);
+        });
     }
 }

@@ -3,12 +3,29 @@
 namespace App\Repositories;
 
 use App\Interfaces\RepositoryInterface;
+use App\Command;
 
 /**
  * Command repository.
  */
 class CommandRepository implements RepositoryInterface
 {
+    /**
+     * @var Command $command
+     */
+    protected $command;
+
+    /**
+     * Set the dependencies.
+     *
+     * @param Command $command
+     * @return void
+     */
+    public function __construct(Command $command)
+    {
+        $this->command = $command;
+    }
+
     public function lists()
     {
         return array(
