@@ -2,18 +2,18 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\RepositoryInterface;
+use App\Interfaces\CommandInterface;
 use App\Command;
 
 /**
  * Command repository.
  */
-class CommandRepository implements RepositoryInterface
+class CommandRepository implements CommandInterface
 {
     /**
      * @var Command $command
      */
-    protected $command;
+    private $command;
 
     /**
      * Set the dependencies.

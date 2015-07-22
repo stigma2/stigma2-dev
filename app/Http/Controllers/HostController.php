@@ -7,22 +7,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Interfaces\CommandInterface;
+use App\Interfaces\HostInterface;
 
-class CommandController extends Controller
+class HostController extends Controller
 {
     /**
-     * @var CommandInterface $repository
+     * @var HostInterface $repository
      */
     private $repository;
 
     /**
      * Set the dependencies.
      *
-     * @param CommandInterface $repository
+     * @param HostInterface $repository
      * @return void
      */
-    public function __construct(CommandInterface $repository)
+    public function __construct(HostInterface $repository)
     {
         $this->repository = $repository;
     }
