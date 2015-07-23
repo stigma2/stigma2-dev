@@ -44,22 +44,43 @@
             </nav>
         </header>
         <div class="row">
-            <div class="large-3 columns">
+            <div class="large-2 columns">
                 <aside class="sidebar">
                     <nav>
                         <ul class="side-nav">
-                            <li class="heading">Menu 1</li>
-                            <li class="active"><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
+                            <li class="heading">Dashboard</li>
+                            <li><a href="#">Overview</a></li>
                             <li class="divider"></li>
-                            <li class="heading">Menu 2</li>
-                            <li><a href="#">Link 3</a></li>
-                            <li><a href="#">Link 4</a></li>
+                            <li class="heading">GlusterFS</li>
+                            <li><a href="#">gfs1</a></li>
+                            <li><a href="#">gfs2</a></li>
+                            <li class="divider"></li>
+                            <li class="heading">Servers</li>
+                            <li><a href="#">Host</a></li>
+                            <li><a href="#">Service</a></li>
+                            <li class="divider"></li>
+                            <li class="heading"></li>
+                            <li><a href="#">Problem</a></li>
+                            <li><a href="#">Report</a></li>
+                            <li><a href="#">Event</a></li>
+                            <li class="divider"></li>
+                            <li class="heading">Configuration</li>
+                            <li><a href="#">Command</a></li>
+                            <li><a href="#">Host</a></li>
+                            <li><a href="#">Service</a></li>
+                            <li class="divider"></li>
+                            <li class="heading">Setting</li>
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">User / Role</a></li>
+                            <li><a href="#">PreConfig</a></li>
+                            <li class="divider"></li>
+                            <li class="heading">System</li>
+                            <li><a href="#">Start / Stop</a></li>
                         </ul>
                     </nav>
                 </aside>
             </div>
-            <div class="large-9 columns">
+            <div class="large-10 columns">
                 <h1>Main Contents</h1>
                 <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>
                 <p>You may also wrap your top bar in div class="sticky" and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. Note: If you are using SCSS, you can control the default sticky class by adjusting the $topbar-sticky-class variable. Make sure the JS variable for sticky_class matches whatever class you use in the variable.</p>

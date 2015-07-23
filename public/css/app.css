@@ -1,6 +1,12 @@
+header {
+  padding-bottom: 30px; }
+
+a:-webkit-any-link {
+  color: #008CBA; }
+
 .sidebar {
-  background: #FAFAFA;
-  padding: 32px 20px; }
+  background: #222222;
+  padding: 5px 20px; }
 
 meta.foundation-version {
   font-family: "/5.4.7/"; }
@@ -41,8 +47,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #FFFFFF;
-  color: #222222;
+  background: #060606;
+  color: #EEEEEE;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -159,8 +165,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #FFFFFF;
-  color: #222222;
+  background: #060606;
+  color: #EEEEEE;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -254,8 +260,8 @@ select {
       list-style: none;
       border-top-color: white; }
     .side-nav li.heading {
-      color: #008CBA;
-      font-size: 0.875rem;
+      color: #f08a24;
+      font-size: 1.125rem;
       font-weight: bold;
       text-transform: uppercase; }
 
@@ -298,8 +304,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #FFFFFF;
-  color: #222222;
+  background: #060606;
+  color: #EEEEEE;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -401,8 +407,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #FFFFFF;
-  color: #222222;
+  background: #060606;
+  color: #EEEEEE;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -1281,8 +1287,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #FFFFFF;
-  color: #222222;
+  background: #060606;
+  color: #EEEEEE;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -1666,8 +1672,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #FFFFFF;
-  color: #222222;
+  background: #060606;
+  color: #EEEEEE;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -1769,8 +1775,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #FFFFFF;
-  color: #222222;
+  background: #060606;
+  color: #EEEEEE;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
