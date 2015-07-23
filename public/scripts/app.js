@@ -1,4 +1,4 @@
-define(['angular', 'ui.router', 'controllers/index'],
+define(['angular', 'ui.router', './controllers/index'],
     function(angular) {
         'use strict';
 

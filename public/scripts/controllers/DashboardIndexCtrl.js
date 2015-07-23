@@ -5,7 +5,7 @@ define(['./module'],
         app.controller('DashboardIndexCtrl', [
             '$scope', '$state',
             function($scope, $state) {
-                alert('test');
+                //
             }
         ]);
     }
