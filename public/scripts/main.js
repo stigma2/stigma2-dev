@@ -3,7 +3,8 @@ require.config({
     paths: {
         'angular': '/bower_components/angular/angular.min',
         'ui.router': '/bower_components/angular-ui-router/release/angular-ui-router.min',
-        'cryptojslib': '/bower_components/cryptojslib/rollups/hmac-sha256',
+        'CryptoJS': '/bower_components/cryptojslib/rollups/hmac-sha256',
+        'mm.foundation': '/bower_components/angular-foundation/mm-foundation-tpls.min',
     },
     shim: {
         'angular': {
@@ -12,8 +13,8 @@ require.config({
         'ui.router': {
             deps: ['angular']
         },
-        'cryptojslib': {
-            exports: 'CryptoJS'
+        'mm.foundation': {
+            deps: ['angular']
         },
     }
 });
