@@ -2,12 +2,15 @@
 @import "overrides/settings";
 
 @import "overrides/abcde";
+@import "overrides/buttons";
 @import "overrides/side-nav";
 @import "overrides/sidebar";
 @import "overrides/tables";
 @import "overrides/tabs";
 
+@import "foundation/components/buttons";
 @import "foundation/components/inline-lists";
+@import "foundation/components/offcanvas";
 @import "foundation/components/side-nav";
 @import "foundation/components/tables";
 @import "foundation/components/top-bar";
