@@ -9,7 +9,7 @@ $table-even-row-bg: $tuatara  ;
 
 // These control the table cell border style
 $table-border-style: solid;
-$table-border-size: 1px;
+$table-border-size: 0;
 $table-border-color: $gainsboro;
 
 // These control the table head styles
@@ -29,3 +29,7 @@ $table-line-height: rem-calc(18);
 $table-layout: auto;
 $table-display: table-cell;
 $table-margin-bottom: rem-calc(20);
+
+table {
+    width: 100%;
+}
