@@ -18,7 +18,7 @@ define(['app', 'config'],
                     });
                 }
 
-                $urlRouterProvider.otherwise(config.get().home);
+                $urlRouterProvider.otherwise(config.get().overview);
             }
         ]);
     }
