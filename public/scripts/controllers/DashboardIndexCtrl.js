@@ -9,16 +9,6 @@ define(['./module'],
                     { title: "General", route: "dashboard.overview", active: false },
                     { title: "GlusterFS", route: "dashboard.glusterfs", active: false }
                 ];
-
-                // $scope.active = function(route) {
-                //     return $state.is(route);
-                // };
-
-                // $scope.$on('$stateChangeSuccess', function() {
-                //     $scope.tabs.forEach(function(tab) {
-                //         tab.active = $scope.active(tab.route);
-                //     });
-                // });
             }
         ]);
     }
