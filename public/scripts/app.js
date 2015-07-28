@@ -1,4 +1,4 @@
-define(['angular', 'mm.foundation', 'ui.router', './controllers/index'],
+define(['angular', 'mm.foundation', 'ui.router', './controllers/index', 'modernizr'],
     function(angular) {
         'use strict';
 
