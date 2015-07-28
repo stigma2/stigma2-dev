@@ -44,47 +44,52 @@
             </div>
         </header>
         <div class="off-canvas-wrap" data-offcanvas>
-          <div class="inner-wrap">
-            <nav class="tab-bar">
-              <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-              </section>
+            <div class="inner-wrap">
+                <nav class="tab-bar">
+                    <section class="left-small">
+                        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+                    </section>
 
-              <section class="middle tab-bar-section">
-                <h1 class="title">Foundation</h1>
-              </section>
+                    <section class="middle tab-bar-section">
+                        <h1 class="title">Foundation</h1>
+                    </section>
+                </nav>
 
-              <section class="right-small">
-                <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-              </section>
-            </nav>
+                <aside class="left-off-canvas-menu">
+                    <ul class="off-canvas-list">
+                        <li><label>Dashboard</label></li>
+                        <li><a href="#">Overview</a></li>
+                        <li><label>GlusterFS</label></li>
+                        <li><a href="#">gfs1</a></li>
+                        <li><a href="#">gfs2</a></li>
+                        <li><label>Servers</label></li>
+                        <li><a href="#">Host</a></li>
+                        <li><a href="#">Service</a></li>
+                        <li><label></label></li>
+                        <li><a href="#">Problem</a></li>
+                        <li><a href="#">Report</a></li>
+                        <li><a href="#">Event</a></li>
+                        <li><label>Configuration</label></li>
+                        <li><a href="#">Command</a></li>
+                        <li><a href="#">Host</a></li>
+                        <li><a href="#">Service</a></li>
+                        <li><label>Setting</label></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">User / Role</a></li>
+                        <li><a href="#">PreConfig</a></li>
+                        <li><label>System</label></li>
+                        <li><a href="#">Start / Stop</a></li>
+                    </ul>
+                </aside>
 
-            <aside class="left-off-canvas-menu">
-              <ul class="off-canvas-list">
-                <li><label>Foundation</label></li>
-                <li><a href="#">The Psychohistorians</a></li>
-                <li><a href="#">...</a></li>
-              </ul>
-            </aside>
+                <section class="main-section">
+                    <article>
+                        <div ui-view></div>
+                    </article>
+                </section>
 
-            <aside class="right-off-canvas-menu">
-              <ul class="off-canvas-list">
-                <li><label>Users</label></li>
-                <li><a href="#">Hari Seldon</a></li>
-                <li><a href="#">...</a></li>
-              </ul>
-            </aside>
-
-            <section class="main-section">
-                <!-- content goes here -->
-                <article>
-                    <h1>Main Contents</h1>
-                    <div ui-view></div>
-                </article>
-            </section>
-          <a class="exit-off-canvas"></a>
-
-          </div>
+                <a class="exit-off-canvas"></a>
+            </div>
         </div>
         <!-- <div class="row">
             <div class="large-2 columns">

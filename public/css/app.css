@@ -14,6 +14,10 @@ a:-webkit-any-link {
 table {
   width: 100%; }
 
+.tabs {
+  background-color: lightslategrey;
+  line-height: 0.5; }
+
 .tabs dd, .tabs .tab-title {
   margin-left: 1px; }
 

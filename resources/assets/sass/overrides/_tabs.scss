@@ -17,6 +17,11 @@ $tabs-content-padding: $column-gutter/2;
 
 $tabs-vertical-navigation-margin-bottom: 1.25rem;
 
+.tabs {
+    background-color: lightslategrey;
+    line-height: 0.5;
+}
+
 .tabs dd, .tabs .tab-title {
     margin-left: 1px;
 }
