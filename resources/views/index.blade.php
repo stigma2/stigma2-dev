@@ -10,7 +10,7 @@
     </head>
     <body>
         <header>
-            <div  ng-controller="TopBarDemoCtrl">
+            <div  ng-controller="TopBarCtrl">
                 <top-bar>
                 <nav class="top-bar" data-topbar role="navigation">
                     <ul class="title-area">
@@ -21,7 +21,7 @@
                     <top-bar-section>
                     <section class="top-bar-section">
                         <ul class="left">
-                            <li><a href="#"><i class="fi-list"></i></a></li>
+                            <li><a ng-click="toggleIconBar()"><i class="fi-list"></i></a></li>
                             <li><a href="#">Left Nav Button</a></li>
                         </ul>
                         <ul class="right">

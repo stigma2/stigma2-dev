@@ -1,5 +1,5 @@
 define([
-    './TopBarDemoCtrl',
+    './TopBarCtrl',
     './DashboardIndexCtrl',
     './DashboardOverviewCtrl',
     './DashboardGlusterfsCtrl',
