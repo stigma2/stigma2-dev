@@ -2,11 +2,13 @@ define(['./module'],
     function(app) {
         'use strict';
 
-        app.controller('TopBarCtrl', [
+        app.controller('IndexCtrl', [
             '$scope', '$state',
             function($scope, $state) {
+                $scope.revealIconBar = true;
+
                 $scope.toggleIconBar = function() {
-                    alert('toggleIconBar');
+                    $scope.revealIconBar = !$scope.revealIconBar;
                 };
             }
         ]);
