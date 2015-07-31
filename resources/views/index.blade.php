@@ -20,7 +20,7 @@
                 <top-bar-section>
                 <section class="top-bar-section">
                     <ul class="left">
-                        <li><a ng-click="toggleIconBar()"><i class="fi-list"></i></a></li>
+                        <li><a ng-click=""><i class="fi-list"></i></a></li>
                         <li><a href="#">Left Nav Button</a></li>
                     </ul>
                     <ul class="right">
@@ -40,31 +40,30 @@
             </nav>
             </top-bar>
         </header>
-        <aside>
-            <div class="icon-bar vertical five-up" ng-show="revealIconBar">
-                <a class="item">
-                    <i class="fi-home"></i>
-                </a>
-                <a class="item">
-                    <i class="fi-bookmark"></i>
-                </a>
-                <a class="item">
-                    <i class="fi-info"></i>
-                </a>
-                <a class="item">
-                    <i class="fi-mail"></i>
-                </a>
-                <a class="item">
-                    <i class="fi-like"></i>
-                </a>
-            </div>
-        </aside>
-        <section>
-            <article>
-                <!-- <div ui-view></div> -->
-            </article>
-        </section>
+        <div class="row">
+            <aside class="large-2 columns">
+                <ul class="side-nav">
+                    <li class="heading">Header</li>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                    <li class="heading">Header</li>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                </ul>
+            </aside>
+            <section class="large-10 columns">
+                <article>
+                    <div ui-view></div>
+                </article>
+            </section>
+        </div>
         <footer>
+            <hr></hr>
+            <span>© Copyright 2015 All Rights Reserved.</span>
         </footer>
     </body>
 </html>

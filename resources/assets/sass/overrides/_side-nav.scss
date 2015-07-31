@@ -25,8 +25,8 @@ $side-nav-font-family: $body-font-family;
 $side-nav-font-family-active: $side-nav-font-family;
 
 // We use these to control heading styles.
-$side-nav-heading-color: $warning-color;
-$side-nav-heading-font-size: rem-calc(18);
+$side-nav-heading-color: $jumbo;
+$side-nav-heading-font-size: $side-nav-font-size;
 $side-nav-heading-font-weight: bold;
 $side-nav-heading-text-transform: uppercase;
 
@@ -34,3 +34,8 @@ $side-nav-heading-text-transform: uppercase;
 $side-nav-divider-size: 1px;
 $side-nav-divider-style: solid;
 $side-nav-divider-color: scale-color($white, $lightness: 10%);
+
+aside {
+    background: $snow;
+    padding-left: 7px;
+}
