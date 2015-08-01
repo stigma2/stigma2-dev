@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('signature', function () {
+    return view('signature');
+});
+
+Route::get('signature/verify', 'SignatureController@verify');
+
+Route::get('command', 'CommandController@index');
+Route::get('host', 'HostController@index');
