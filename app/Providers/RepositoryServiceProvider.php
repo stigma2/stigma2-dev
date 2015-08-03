@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-    private $repositories = ['Command', 'Host'];
+    private $repositories = ['ConfigurationCommand', 'Host'];
 
     /**
      * Register the application services.

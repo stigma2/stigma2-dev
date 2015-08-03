@@ -51,7 +51,7 @@
                     <li class="heading">Configuration</li>
                     <li><a ui-sref="">Host</a></li>
                     <li><a ui-sref="">Service</a></li>
-                    <li><a ui-sref="configurationCommand">Command</a></li>
+                    <li><a ui-sref="configurationCommandList">Command</a></li>
                     <li class="heading">History</li>
                     <li><a ui-sref="">Problem</a></li>
                     <li><a ui-sref="historyReport">Report</a></li>

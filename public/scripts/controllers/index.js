@@ -3,4 +3,5 @@ define([
     './DashboardIndexCtrl',
     './DashboardOverviewCtrl',
     './DashboardGlusterfsCtrl',
+    './ConfigurationCommandListCtrl',
 ], function() {});

@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\CommandInterface;
+use App\Interfaces\ConfigurationCommandInterface;
 use App\Command;
 
 /**
  * Command repository.
  */
-class CommandRepository implements CommandInterface
+class ConfigurationCommandRepository implements ConfigurationCommandInterface
 {
     /**
      * @var Command $command

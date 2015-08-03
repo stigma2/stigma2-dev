@@ -15,11 +15,16 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('signature', function () {
-    return view('signature');
+Route::group(array('prefix' => 'api'), function()
+{
+    Route::resource('configuration/commands', 'ConfigurationCommandsController');
 });
 
-Route::get('signature/verify', 'SignatureController@verify');
+// Route::get('signature', function () {
+//     return view('signature');
+// });
 
-Route::get('command', 'CommandController@index');
-Route::get('host', 'HostController@index');
+// Route::get('signature/verify', 'SignatureController@verify');
+
+// Route::get('command', 'CommandController@index');
+// Route::get('host', 'HostController@index');

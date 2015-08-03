@@ -1,4 +1,4 @@
-define(['angular', 'mm.foundation', 'ui.router', './controllers/index', 'modernizr'],
+define(['angular', 'mm.foundation', 'ui.router', './controllers/index', './services/index', 'modernizr'],
     function(angular) {
         'use strict';
 
@@ -6,6 +6,7 @@ define(['angular', 'mm.foundation', 'ui.router', './controllers/index', 'moderni
             'mm.foundation',
             'ui.router',
             'app.controllers',
+            'app.services',
         ]);
     }
 );
