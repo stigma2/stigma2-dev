@@ -9,7 +9,7 @@ interface RepositoryInterface
 {
     public function lists();
 
-    public function save();
+    public function save(array $array);
 
     public function find($uuid);
 

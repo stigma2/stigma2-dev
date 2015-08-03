@@ -38,7 +38,7 @@ class HostRepository implements HostInterface
             );
     }
 
-    public function save()
+    public function save(array $array)
     {
         //
     }

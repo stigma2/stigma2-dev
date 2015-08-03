@@ -3,44 +3,34 @@
 namespace App\Repositories;
 
 use App\Interfaces\ConfigurationCommandInterface;
-use App\Command;
+
+use DB;
 
 /**
  * Command repository.
  */
 class ConfigurationCommandRepository implements ConfigurationCommandInterface
 {
-    /**
-     * @var Command $command
-     */
-    private $command;
-
-    /**
-     * Set the dependencies.
-     *
-     * @param Command $command
-     * @return void
-     */
-    public function __construct(Command $command)
-    {
-        $this->command = $command;
-    }
-
     public function lists()
     {
-        return array(
-                array("command_name" => "command 1", "command_line" => "check_ping"),
-                array("command_name" => "command 2", "command_line" => "check_ping"),
-                array("command_name" => "command 3", "command_line" => "check_ping"),
-                array("command_name" => "command 4", "command_line" => "check_ping"),
-                array("command_name" => "command 5", "command_line" => "check_ping"),
-                array("command_name" => "command 6", "command_line" => "check_ping"),
-            );
+        return DB::table("commands")
+            ->join("objects", "commands.object_uuid", "=", "objects.uuid")
+            ->select("commands.id", "objects.first_name as command_name", "commands.command_line")
+            ->orderBy("commands.created_at", "desc")
+            ->get();
     }
 
-    public function save()
+    public function save(array $array)
     {
-        //
+        DB::table('commands')->insert([
+            'object_uuid' => $array['object_uuid'],
+            'command_line' => $array['command_line']
+        ]);
+
+        // $this->command->object_uuid = $array['object_uuid'];
+        // $this->command->command_line = $array['command_line'];
+        
+        // $this->command->save();
     }
 
     public function find($uuid)
