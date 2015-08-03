@@ -6,7 +6,10 @@ use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-    private $repositories = ['ConfigurationCommand', 'Host'];
+    private $repositories = array(
+        'App\Interfaces\ObjectsInterface' => 'App\Repositories\ObjectsRepository',
+        'App\Interfaces\CommandsInterface' => 'App\Repositories\CommandsRepository',
+    );
 
     /**
      * Register the application services.
@@ -15,8 +18,8 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach ($this->repositories as $repository) {
-            $this->registerRepository($repository);
+        foreach ($this->repositories as $interface => $repository) {
+            $this->registerRepository($interface, $repository);
         }
     }
 
@@ -25,8 +28,8 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function registerRepository($repository)
+    private function registerRepository($interface, $repository)
     {
-        $this->app->bind('App\Interfaces\\'.$repository.'Interface', 'App\Repositories\\'.$repository.'Repository');
+        $this->app->bind($interface, $repository);
     }
 }

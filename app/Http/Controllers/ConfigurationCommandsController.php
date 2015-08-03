@@ -7,22 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Interfaces\ConfigurationCommandInterface;
+use App\Interfaces\CommandsInterface;
 
 class ConfigurationCommandsController extends Controller
 {
-    /**
-     * @var ConfigurationCommandInterface $repository
-     */
     private $repository;
 
     /**
      * Set the dependencies.
      *
-     * @param ConfigurationCommandInterface $repository
+     * @param CommandsInterface $repository
      * @return void
      */
-    public function __construct(ConfigurationCommandInterface $repository)
+    public function __construct(CommandsInterface $repository)
     {
         $this->repository = $repository;
     }

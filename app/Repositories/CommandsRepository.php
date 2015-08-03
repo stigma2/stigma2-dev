@@ -2,14 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\ConfigurationCommandInterface;
+use App\Interfaces\CommandsInterface;
 
 use DB;
 
-/**
- * Command repository.
- */
-class ConfigurationCommandRepository implements ConfigurationCommandInterface
+class CommandsRepository implements CommandsInterface
 {
     public function lists()
     {
@@ -24,13 +21,8 @@ class ConfigurationCommandRepository implements ConfigurationCommandInterface
     {
         DB::table('commands')->insert([
             'object_uuid' => $array['object_uuid'],
-            'command_line' => $array['command_line']
+            'command_line' => $array['command_line'],
         ]);
-
-        // $this->command->object_uuid = $array['object_uuid'];
-        // $this->command->command_line = $array['command_line'];
-        
-        // $this->command->save();
     }
 
     public function find($uuid)
