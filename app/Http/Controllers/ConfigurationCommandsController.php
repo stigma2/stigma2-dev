@@ -2,26 +2,37 @@
 
 namespace App\Http\Controllers;
 
+// require 'vendor/autoload.php';
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Interfaces\CommandsInterface;
+use App\Interfaces\ObjectsInterface;
+
+use DB;
+
+use Rhumsaa\Uuid\Uuid;
+use Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException;
 
 class ConfigurationCommandsController extends Controller
 {
-    private $repository;
+    private $commandsRepository;
+    private $objectsRepository;
 
     /**
      * Set the dependencies.
      *
-     * @param CommandsInterface $repository
+     * @param CommandsInterface $commandsRepository
+     * @param ObjectsInterface $objectsRepository
      * @return void
      */
-    public function __construct(CommandsInterface $repository)
+    public function __construct(CommandsInterface $commandsRepository, ObjectsInterface $objectsRepository)
     {
-        $this->repository = $repository;
+        $this->commandsRepository = $commandsRepository;
+        $this->objectsRepository = $objectsRepository;
     }
 
     /**
@@ -31,7 +42,7 @@ class ConfigurationCommandsController extends Controller
      */
     public function index()
     {
-        $result = $this->repository->lists();
+        $result = $this->commandsRepository->lists();
 
         return response()->json($result);
     }
@@ -54,7 +65,30 @@ class ConfigurationCommandsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::transaction(function ($request) use ($request) {
+                $command_name = $request->input("command_name");
+                $command_line = $request->input("command_line");
+                $uuid4 = Uuid::uuid4();
+                $uuid = $uuid4->toString();
+                
+                $this->objectsRepository->save([
+                    'uuid' => $uuid,
+                    'object_type' => '12',
+                    'first_name' => $command_name,
+                    'second_name' => '',
+                    'is_active' => '1'
+                ]);
+                $this->commandsRepository->save([
+                    'object_uuid' => $uuid,
+                    'command_line' => $command_line
+                ]);
+            });
+        } catch (UnsatisfiedDependencyException $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
     }
 
     /**

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="medium-11 columns">
+    <div class="medium-12 columns">
         <p><a ng-click="createCommand()">create new command</a></p>
         <table>
             <thead>

@@ -8,6 +8,10 @@ define(['./implement', './module', '../config'],
                     var url = config.get().home + '/api/configuration/commands';
                     return implement.httpGetServiceImpl($http, url);
                 },
+                save: function(params) {
+                    var url = config.get().home + '/api/configuration/commands';
+                    return implement.httpServiceImpl($http, 'POST', params, url);
+                },
             }
         });
     }
