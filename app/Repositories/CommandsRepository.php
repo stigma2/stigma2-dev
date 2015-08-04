@@ -12,7 +12,7 @@ class CommandsRepository implements CommandsInterface
     {
         return DB::table("commands")
             ->join("objects", "commands.object_uuid", "=", "objects.uuid")
-            ->select("commands.id", "objects.first_name as command_name", "commands.command_line")
+            ->select("objects.uuid", "objects.first_name as command_name", "commands.command_line")
             ->orderBy("commands.created_at", "desc")
             ->get();
     }
@@ -37,6 +37,6 @@ class CommandsRepository implements CommandsInterface
 
     public function remove($uuid)
     {
-        //
+        DB::table("commands")->where("object_uuid", "=", $uuid)->delete();
     }
 }

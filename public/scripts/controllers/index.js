@@ -5,4 +5,5 @@ define([
     './DashboardGlusterfsCtrl',
     './ConfigurationCommandListCtrl',
     './ConfigurationCommandCreationCtrl',
+    './ConfigurationCommandEditCtrl',
 ], function() {});

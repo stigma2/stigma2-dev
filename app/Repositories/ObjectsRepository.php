@@ -36,6 +36,6 @@ class ObjectsRepository implements ObjectsInterface
 
     public function remove($uuid)
     {
-        //
+        DB::table("objects")->where("uuid", "=", $uuid)->delete();
     }
 }

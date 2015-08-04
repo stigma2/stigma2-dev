@@ -71,7 +71,7 @@ class ConfigurationCommandsController extends Controller
                 $command_line = $request->input("command_line");
                 $uuid4 = Uuid::uuid4();
                 $uuid = $uuid4->toString();
-                
+
                 $this->objectsRepository->save([
                     'uuid' => $uuid,
                     'object_type' => '12',
@@ -128,11 +128,20 @@ class ConfigurationCommandsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $uuid
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        //
+        try {
+            DB::transaction(function ($uuid) use ($uuid) {
+                $this->objectsRepository->remove($uuid);
+                $this->commandsRepository->remove($uuid);
+            });
+        } catch (UnsatisfiedDependencyException $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
     }
 }

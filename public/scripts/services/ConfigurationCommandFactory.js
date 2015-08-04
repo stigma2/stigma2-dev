@@ -12,6 +12,10 @@ define(['./implement', './module', '../config'],
                     var url = config.get().home + '/api/configuration/commands';
                     return implement.httpServiceImpl($http, 'POST', params, url);
                 },
+                remove: function(uuid) {
+                    var url = config.get().home + '/api/configuration/commands/' + uuid;
+                    return implement.httpDeleteServiceImpl($http, url);
+                },
             }
         });
     }
