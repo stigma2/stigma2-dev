@@ -4,10 +4,10 @@
         <table>
             <thead>
                 <tr>
-                    <th width="180">Command Name</th>
+                    <th width="200">Command Name</th>
                     <th>Command Line</th>
-                    <th width="55"> </th>
-                    <th width="75"> </th>
+                    <th width="80"> </th>
+                    <th width="90"> </th>
                 </tr>
             </thead>
             <tbody>

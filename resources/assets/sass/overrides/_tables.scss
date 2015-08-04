@@ -26,10 +26,14 @@ $table-row-font-color: $jet;
 $table-line-height: rem-calc(18);
 
 // These are for controlling the layout, display and margin of tables
-$table-layout: auto;
+$table-layout: fixed;
 $table-display: table-cell;
 $table-margin-bottom: rem-calc(20);
 
 table {
     width: 100%;
+}
+
+td {
+    overflow: auto;
 }

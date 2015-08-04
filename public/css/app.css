@@ -18,6 +18,9 @@ aside {
 table {
   width: 100%; }
 
+td {
+  overflow: auto; }
+
 meta.foundation-version {
   font-family: "/5.4.7/"; }
 
@@ -1905,7 +1908,7 @@ table {
   background: #FFFFFF;
   margin-bottom: 1.25rem;
   border: solid 1px #DDDDDD;
-  table-layout: auto; }
+  table-layout: fixed; }
   table caption {
     background: transparent;
     color: #222222;
