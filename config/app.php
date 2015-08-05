@@ -145,7 +145,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Shlee\Signature\SignatureServiceProvider::class,
+        Shlee\Utils\UtilsServiceProvider::class,
 
         /*
          * Package Service Provider

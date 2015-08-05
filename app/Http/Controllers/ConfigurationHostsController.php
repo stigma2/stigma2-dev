@@ -7,24 +7,33 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Interfaces\HostInterface;
+use App\Interfaces\HostsInterface;
+use App\Interfaces\ObjectsInterface;
 
-class HostController extends Controller
+use Shlee\Utils\NagiosConfiguration;
+
+class ConfigurationHostsController extends Controller
 {
-    /**
-     * @var HostInterface $repository
-     */
-    private $repository;
+    private $hostsRepository;
+    private $objectsRepository;
+    private $nagiosConfiguration;
 
     /**
      * Set the dependencies.
      *
-     * @param HostInterface $repository
+     * @param HostsInterface $hostsRepository
+     * @param ObjectsInterface $objectsRepository
+     * @param NagiosConfiguration $nagiosConfiguration
      * @return void
      */
-    public function __construct(HostInterface $repository)
+    public function __construct(
+        HostsInterface $hostsRepository, 
+        ObjectsInterface $objectsRepository,
+        NagiosConfiguration $nagiosConfiguration)
     {
-        $this->repository = $repository;
+        $this->hostsRepository = $hostsRepository;
+        $this->objectsRepository = $objectsRepository;
+        $this->nagiosConfiguration = $nagiosConfiguration;
     }
 
     /**
@@ -34,7 +43,7 @@ class HostController extends Controller
      */
     public function index()
     {
-        $result = $this->repository->lists();
+        $result = $this->hostsRepository->lists();
 
         return response()->json($result);
     }
@@ -46,7 +55,8 @@ class HostController extends Controller
      */
     public function create()
     {
-        //
+        $nagiosHost = $this->nagiosConfiguration->getHostConfig();
+        dd($nagiosHost);
     }
 
     /**

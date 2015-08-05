@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::group(array('prefix' => 'api'), function()
 {
     Route::resource('configuration/commands', 'ConfigurationCommandsController');
+    Route::resource('configuration/hosts', 'ConfigurationHostsController');
 });
 
 // Route::get('signature', function () {

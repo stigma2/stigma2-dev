@@ -49,7 +49,7 @@
                     <li><a ui-sref="">Host</a></li>
                     <li><a ui-sref="">Service</a></li>
                     <li class="heading">Configuration</li>
-                    <li><a ui-sref="">Host</a></li>
+                    <li><a ui-sref="configurationHostList">Host</a></li>
                     <li><a ui-sref="">Service</a></li>
                     <li><a ui-sref="configurationCommandList">Command</a></li>
                     <li class="heading">History</li>

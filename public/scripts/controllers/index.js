@@ -6,4 +6,6 @@ define([
     './ConfigurationCommandListCtrl',
     './ConfigurationCommandCreationCtrl',
     './ConfigurationCommandEditCtrl',
+    './ConfigurationHostListCtrl',
+    './ConfigurationHostCreationCtrl',
 ], function() {});

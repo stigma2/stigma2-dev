@@ -12,6 +12,8 @@ define([], function() {
             {'state': 'configurationCommandList', 'url': CONTEXT_ROOT + '/configuration/commands', 'templateUrl': PARTIALS_ROOT + 'configuration.command.index.php', 'controller': 'ConfigurationCommandListCtrl'},
             {'state': 'configurationCommandCreation', 'url': CONTEXT_ROOT + '/configuration/commands/create', 'templateUrl': PARTIALS_ROOT + 'configuration.command.create.php', 'controller': 'ConfigurationCommandCreationCtrl'},
             {'state': 'configurationCommandEdit', 'url': CONTEXT_ROOT + '/configuration/commands/:uuid/edit', 'templateUrl': PARTIALS_ROOT + 'configuration.command.edit.php', 'controller': 'ConfigurationCommandEditCtrl'},
+            {'state': 'configurationHostList', 'url': CONTEXT_ROOT + '/configuration/hosts', 'templateUrl': PARTIALS_ROOT + 'configuration.host.index.php', 'controller': 'ConfigurationHostListCtrl'},
+            {'state': 'configurationHostCreation', 'url': CONTEXT_ROOT + '/configuration/hosts/create', 'templateUrl': PARTIALS_ROOT + 'configuration.host.create.php', 'controller': 'ConfigurationHostCreationCtrl'},
         ],
     };
 

@@ -136,8 +136,6 @@ class ConfigurationCommandsController extends Controller
                     'command_line' => $command_line
                 ], $uuid);
             });
-        } catch (UnsatisfiedDependencyException $e) {
-            echo 'Caught exception: ' . $e->getMessage() . "\n";
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . "\n";
         }
@@ -156,8 +154,6 @@ class ConfigurationCommandsController extends Controller
                 $this->objectsRepository->remove($uuid);
                 $this->commandsRepository->remove($uuid);
             });
-        } catch (UnsatisfiedDependencyException $e) {
-            echo 'Caught exception: ' . $e->getMessage() . "\n";
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . "\n";
         }

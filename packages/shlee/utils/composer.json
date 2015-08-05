@@ -1,11 +1,11 @@
 {
-    "name": "shlee/signature",
+    "name": "shlee/utils",
     "description": ":package_description",
     "keywords": [
         "league",
         ":package_name"
     ],
-    "homepage": "https://github.com/thephpshlee/signature",
+    "homepage": "https://github.com/thephpshlee/utils",
     "license": "MIT",
     "authors": [
         {
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Shlee\\Signature\\": "src"
+            "Shlee\\Utils\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Shlee\\Signature\\Test\\": "tests"
+            "Shlee\\Utils\\Test\\": "tests"
         }
     },
     "scripts": {
