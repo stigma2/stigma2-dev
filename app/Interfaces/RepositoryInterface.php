@@ -13,7 +13,9 @@ interface RepositoryInterface
 
     public function find($uuid);
 
-    public function modify($uuid);
+    public function update(array $array, $uuid);
 
     public function remove($uuid);
+
+    public function removeAll();
 }

@@ -10,8 +10,8 @@ define(['./module'],
                         .then(function(data) {
                             scope.commands = data;
                         });
-                }
-                
+                };
+
                 $scope.createCommand = function() {
                     $state.go('configurationCommandCreation');
                 };

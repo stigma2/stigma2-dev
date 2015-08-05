@@ -66,7 +66,7 @@ class ConfigurationCommandsController extends Controller
     public function store(Request $request)
     {
         try {
-            DB::transaction(function ($request) use ($request) {
+            DB::transaction(function () use ($request) {
                 $command_name = $request->input("command_name");
                 $command_line = $request->input("command_line");
                 $uuid4 = Uuid::uuid4();
@@ -97,9 +97,11 @@ class ConfigurationCommandsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($uuid)
     {
-        //
+        $result = $this->commandsRepository->find($uuid);
+
+        return response()->json($result);
     }
 
     /**
@@ -108,9 +110,9 @@ class ConfigurationCommandsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($uuid)
     {
-        //
+        return $this->show($uuid);
     }
 
     /**
@@ -120,9 +122,25 @@ class ConfigurationCommandsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
-        //
+        try {
+            DB::transaction(function () use ($request, $uuid) {
+                $command_name = $request->input("command_name");
+                $command_line = $request->input("command_line");
+
+                $this->objectsRepository->update([
+                    'first_name' => $command_name
+                ], $uuid);
+                $this->commandsRepository->update([
+                    'command_line' => $command_line
+                ], $uuid);
+            });
+        } catch (UnsatisfiedDependencyException $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
     }
 
     /**
@@ -134,7 +152,7 @@ class ConfigurationCommandsController extends Controller
     public function destroy($uuid)
     {
         try {
-            DB::transaction(function ($uuid) use ($uuid) {
+            DB::transaction(function () use ($uuid) {
                 $this->objectsRepository->remove($uuid);
                 $this->commandsRepository->remove($uuid);
             });

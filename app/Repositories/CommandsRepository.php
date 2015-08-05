@@ -27,16 +27,29 @@ class CommandsRepository implements CommandsInterface
 
     public function find($uuid)
     {
-        //
+        $command = DB::table("commands")
+            ->join("objects", "commands.object_uuid", "=", "objects.uuid")
+            ->select("objects.uuid", "objects.first_name as command_name", "commands.command_line")
+            ->where("commands.object_uuid", "=", $uuid)
+            ->get();
+
+        return $command["0"];
     }
 
-    public function modify($uuid)
+    public function update(array $array, $uuid)
     {
-        //
+        DB::table("commands")
+            ->where("object_uuid", "=", $uuid)
+            ->update(array("command_line" => $array['command_line']));
     }
 
     public function remove($uuid)
     {
         DB::table("commands")->where("object_uuid", "=", $uuid)->delete();
+    }
+
+    public function removeAll()
+    {
+        DB::table('commands')->delete();
     }
 }

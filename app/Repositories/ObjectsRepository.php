@@ -29,13 +29,20 @@ class ObjectsRepository implements ObjectsInterface
         //
     }
 
-    public function modify($uuid)
+    public function update(array $array, $uuid)
     {
-        //
+        DB::table("objects")
+            ->where("uuid", "=", $uuid)
+            ->update(array("first_name" => $array['first_name']));
     }
 
     public function remove($uuid)
     {
         DB::table("objects")->where("uuid", "=", $uuid)->delete();
+    }
+
+    public function removeAll()
+    {
+        //
     }
 }

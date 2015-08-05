@@ -9,6 +9,8 @@ class RepositoryServiceProvider extends ServiceProvider
     private $repositories = array(
         'App\Interfaces\ObjectsInterface' => 'App\Repositories\ObjectsRepository',
         'App\Interfaces\CommandsInterface' => 'App\Repositories\CommandsRepository',
+        'App\Interfaces\HostsInterface' => 'App\Repositories\HostsRepository',
+        'App\Interfaces\HostDetailsInterface' => 'App\Repositories\HostDetailsRepository',
     );
 
     /**
