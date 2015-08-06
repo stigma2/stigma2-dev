@@ -1,4 +1,4 @@
-define(['angular', 'mm.foundation', 'ui.router', './controllers/index', './services/index', 'modernizr'],
+define(['angular', 'mm.foundation', 'ui.router', './controllers/index', './services/index', 'modernizr', 'ngDraggable'],
     function(angular) {
         'use strict';
 
@@ -7,6 +7,7 @@ define(['angular', 'mm.foundation', 'ui.router', './controllers/index', './servi
             'ui.router',
             'app.controllers',
             'app.services',
+            'ngDraggable',
         ]);
     }
 );

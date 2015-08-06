@@ -56,7 +56,20 @@ class ConfigurationHostsController extends Controller
     public function create()
     {
         $nagiosHost = $this->nagiosConfiguration->getHostConfig();
-        dd($nagiosHost);
+        $use = array();
+        $unused = array();
+
+        foreach ($nagiosHost as $nagiosProp) {
+            if ($nagiosProp["required"] == "Y") array_push($use, $nagiosProp);
+            else array_push($unused, $nagiosProp);
+        }
+
+        $result = array(
+            "use" => $use,
+            "unused" => $unused
+        );
+
+        return response()->json($result);
     }
 
     /**
