@@ -7,38 +7,31 @@ define(['./module'],
             function($scope, $state, ConfigurationHostFactory) {
                 $scope.hostData = {};
 
-                $scope.centerAnchor = true;
-                $scope.toggleCenterAnchor = function () {$scope.centerAnchor = !$scope.centerAnchor}
-                $scope.draggableObjects = [{name:'one'}, {name:'two'}, {name:'three'}];
-                $scope.droppedObjects1 = [];
-                $scope.droppedObjects2= [];
-                $scope.onDropComplete1=function(data,evt){
-                    var index = $scope.droppedObjects1.indexOf(data);
-                    if (index == -1)
-                    $scope.droppedObjects1.push(data);
-                }
-                $scope.onDragSuccess1=function(data,evt){
-                    console.log("133","$scope","onDragSuccess1", "", evt);
-                    var index = $scope.droppedObjects1.indexOf(data);
-                    if (index > -1) {
-                        $scope.droppedObjects1.splice(index, 1);
+                function setDraggable(scope) {
+                    scope.onDropComplete1=function(data,evt){
+                        var index = scope.use.indexOf(data);
+                        if (index == -1)
+                        scope.use.push(data);
                     }
-                }
-                $scope.onDragSuccess2=function(data,evt){
-                    var index = $scope.droppedObjects2.indexOf(data);
-                    if (index > -1) {
-                        $scope.droppedObjects2.splice(index, 1);
+                    scope.onDragSuccess1=function(data,evt){
+                        var index = scope.use.indexOf(data);
+                        if (index > -1) {
+                            scope.use.splice(index, 1);
+                        }
                     }
-                }
-                $scope.onDropComplete2=function(data,evt){
-                    var index = $scope.droppedObjects2.indexOf(data);
-                    if (index == -1) {
-                        $scope.droppedObjects2.push(data);
+                    scope.onDragSuccess2=function(data,evt){
+                        var index = scope.unused.indexOf(data);
+                        if (index > -1) {
+                            scope.unused.splice(index, 1);
+                        }
                     }
-                }
-                var inArray = function(array, obj) {
-                    var index = array.indexOf(obj);
-                }
+                    scope.onDropComplete2=function(data,evt){
+                        var index = scope.unused.indexOf(data);
+                        if (index == -1) {
+                            scope.unused.push(data);
+                        }
+                    }
+                };
 
                 $scope.saveCommand = function() {
                     ConfigurationHostFactory.save($scope.hostData)
@@ -53,6 +46,8 @@ define(['./module'],
                 $scope.cancel = function() {
                     $state.go('configurationHostList');
                 };
+
+                setDraggable($scope);
 
                 ConfigurationHostFactory.create()
                     .then(function(data) {

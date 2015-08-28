@@ -17,35 +17,22 @@
                     <input type="text" ng-model="hostData[rowContents.name]" placeholder="{{ rowContents.placeholder }}" />
                 </div>
             </div>
-
-
-            <ul class="draggable-objects">
-                <li  ng-repeat="obj in draggableObjects" >
-                    <div ng-drag="true" ng-drag-data="obj" data-allow-transform="true"> {{obj.name}} </div>
-                </li>
-            </ul>
-
             <hr/>
+            <div>
+                <div class="ng-drop-title"><span class="ng-drop-title">Use</span></div>
+                <div class="ng-drop-title"><span class="ng-drop-title">Unused</span></div>
+            </div>
             <div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)">
-                <span class="title">Drop area #1</span>
-
-                <div ng-repeat="obj in droppedObjects1" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess1($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                <div ng-repeat="obj in use" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess1($data,$event)" ng-center-anchor="{{centerAnchor}}">
                     {{obj.name}}
                 </div>
 
             </div>
-
             <div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)">
-                <span class="title">Drop area #2</span>
-
-                <div ng-repeat="obj in droppedObjects2" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                <div ng-repeat="obj in unused" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)" ng-center-anchor="{{centerAnchor}}">
                     {{obj.name}}
                 </div>
             </div>
-
-
-
-
             <div class="row">
                 <div class="medium-12 columns">
                     <button type="button" class="button secondary right" ng-click="cancel()">Cancel</button>
