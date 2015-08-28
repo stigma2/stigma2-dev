@@ -27,7 +27,13 @@ class HostsRepository implements HostsInterface
 
     public function find($uuid)
     {
-        //
+        $hostDetail = DB::table("hosts")
+                ->join("objects", "hosts.object_uuid", "=", "objects.uuid")
+                ->join("host_details", "hosts.object_uuid", "=", "host_details.host_fk")
+                ->select("host_details.key", "host_details.value")
+                ->where("hosts.id", "=", $id)
+                ->orderBy("host_details.id", "asc")
+                ->get();
     }
 
     public function update(array $array, $uuid)

@@ -10,14 +10,7 @@ class HostDetailsRepository implements HostDetailsInterface
 {
     public function lists()
     {
-        return array(
-                array("host_name" => "host 1"),
-                array("host_name" => "host 2"),
-                array("host_name" => "host 3"),
-                array("host_name" => "host 4"),
-                array("host_name" => "host 5"),
-                array("host_name" => "host 6"),
-            );
+        //
     }
 
     public function save(array $array)
