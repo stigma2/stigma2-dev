@@ -12,10 +12,10 @@ define(['./implement', './module', '../config'],
                     var url = config.get().home + '/api/configuration/hosts/create';
                     return implement.httpGetServiceImpl($http, url);
                 },
-                // save: function(params) {
-                //     var url = config.get().home + '/api/configuration/hosts';
-                //     return implement.httpServiceImpl($http, 'POST', params, url);
-                // },
+                save: function(params) {
+                    var url = config.get().home + '/api/configuration/hosts';
+                    return implement.httpServiceImpl($http, 'POST', params, url);
+                },
                 // edit: function(uuid) {
                 //     var url = config.get().home + '/api/configuration/hosts/' + uuid + '/edit';
                 //     return implement.httpGetServiceImpl($http, url);

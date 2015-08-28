@@ -33,7 +33,7 @@ define(['./module'],
                     }
                 };
 
-                $scope.saveCommand = function() {
+                $scope.saveHost = function() {
                     ConfigurationHostFactory.save($scope.hostData)
                         .success(function(data) {
                             $state.go('configurationHostList');

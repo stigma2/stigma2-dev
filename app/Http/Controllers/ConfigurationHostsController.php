@@ -8,13 +8,20 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Interfaces\HostsInterface;
+use App\Interfaces\HostDetailsInterface;
 use App\Interfaces\ObjectsInterface;
+
+use DB;
+
+use Rhumsaa\Uuid\Uuid;
+use Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException;
 
 use Shlee\Utils\NagiosConfiguration;
 
 class ConfigurationHostsController extends Controller
 {
     private $hostsRepository;
+    private $hostDetailsRepository;
     private $objectsRepository;
     private $nagiosConfiguration;
 
@@ -22,16 +29,19 @@ class ConfigurationHostsController extends Controller
      * Set the dependencies.
      *
      * @param HostsInterface $hostsRepository
+     * @param HostDetailsInterface $hostDetailsRepository
      * @param ObjectsInterface $objectsRepository
      * @param NagiosConfiguration $nagiosConfiguration
      * @return void
      */
     public function __construct(
-        HostsInterface $hostsRepository, 
+        HostsInterface $hostsRepository,
+        HostDetailsInterface $hostDetailsRepository,
         ObjectsInterface $objectsRepository,
         NagiosConfiguration $nagiosConfiguration)
     {
         $this->hostsRepository = $hostsRepository;
+        $this->hostDetailsRepository = $hostDetailsRepository;
         $this->objectsRepository = $objectsRepository;
         $this->nagiosConfiguration = $nagiosConfiguration;
     }
@@ -80,7 +90,36 @@ class ConfigurationHostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::transaction(function () use ($request) {
+                $uuid4 = Uuid::uuid4();
+                $uuid = $uuid4->toString();
+                $input = $request->all();
+
+                $this->objectsRepository->save([
+                    'uuid' => $uuid,
+                    'object_type' => '1',
+                    'first_name' => $request->input("host_name"),
+                    'second_name' => '',
+                    'is_active' => '1'
+                ]);
+                $this->hostsRepository->save([
+                    'object_uuid' => $uuid,
+                    'description' => $request->input("alias")
+                ]);
+                foreach ($input as $key => $value) {
+                    $this->hostDetailsRepository->save([
+                        'host_fk' => $uuid,
+                        'key' => $key,
+                        'value' => $value
+                    ]);
+                }
+            });
+        } catch (UnsatisfiedDependencyException $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
     }
 
     /**
