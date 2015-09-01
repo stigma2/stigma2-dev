@@ -16,16 +16,16 @@ define(['./module'],
                     $state.go('configurationHostCreation');
                 };
 
-                // $scope.editHost = function(uuid) {
-                //     $state.go('configurationHostEdit', {uuid: uuid});
-                // };
+                $scope.editHost = function(uuid) {
+                    $state.go('configurationHostEdit', {uuid: uuid});
+                };
 
-                // $scope.deleteHost = function(uuid) {
-                //     ConfigurationHostFactory.remove(uuid)
-                //         .success(function(data) {
-                //             getList($scope);
-                //         });
-                // };
+                $scope.deleteHost = function(uuid) {
+                    ConfigurationHostFactory.remove(uuid)
+                        .success(function(data) {
+                            getList($scope);
+                        });
+                };
 
                 getList($scope);
             }

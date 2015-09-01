@@ -130,7 +130,31 @@ class ConfigurationHostsController extends Controller
      */
     public function show($uuid)
     {
-        //
+        $hostDetail = $this->hostsRepository->find($uuid);
+
+        $nagiosHost = $this->nagiosConfiguration->getHostConfig();
+        $keys = array();
+        $hostData = array();
+        $use = array();
+        $unused = array();
+
+        foreach ($hostDetail as $prop) {
+            array_push($keys, $prop->key);
+            $hostData[$prop->key] = $prop->value;
+        }
+        foreach ($nagiosHost as $nagiosProp) {
+            if (in_array($nagiosProp["name"], $keys)) array_push($use, $nagiosProp);
+            else array_push($unused, $nagiosProp);
+        }
+
+        $result = array(
+            "hostData" => $hostData,
+            "hostDetail" => $hostDetail,
+            "use" => $use,
+            "unused" => $unused
+        );
+
+        return response()->json($result);
     }
 
     /**
@@ -148,21 +172,42 @@ class ConfigurationHostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  int  $id
+     * @param  int  $uuid
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
-        //
+        try {
+            DB::transaction(function () use ($request, $uuid) {
+                $this->hostDetailsRepository->remove($uuid);
+
+                $input = $request->all();
+
+                foreach ($input as $key => $value) {
+                    $this->hostDetailsRepository->save([
+                        'host_fk' => $uuid,
+                        'key' => $key,
+                        'value' => $value
+                    ]);
+
+                    if (strcmp($key, "host_name") === 0)
+                        Object::where("uuid", "=", $object_uuid)->update(array("first_name" => $value));
+                    if (strcmp($key, "alias") === 0)
+                        Host::where("object_uuid", "=", $object_uuid)->update(array("description" => $value));
+                }
+            });
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $uuid
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
         //
     }

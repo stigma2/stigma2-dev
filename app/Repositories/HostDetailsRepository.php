@@ -34,7 +34,7 @@ class HostDetailsRepository implements HostDetailsInterface
 
     public function remove($uuid)
     {
-        //
+        DB::table('host_details')->where('host_fk', '=', $uuid)->delete();
     }
 
     public function removeAll()

@@ -8,4 +8,5 @@ define([
     './ConfigurationCommandEditCtrl',
     './ConfigurationHostListCtrl',
     './ConfigurationHostCreationCtrl',
+    './ConfigurationHostEditCtrl',
 ], function() {});
