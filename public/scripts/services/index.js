@@ -1,4 +1,6 @@
 define([
-    './ConfigurationCommandFactory',
-    './ConfigurationHostFactory',
+    // './ConfigurationCommandFactory',
+    // './ConfigurationHostFactory',
+    './ServerHostFactory',
+    './ServerServiceFactory',
 ], function() {});

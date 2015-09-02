@@ -46,22 +46,8 @@
                     <li class="heading">Dashboard</li>
                     <li><a ui-sref="dashboard.overview">Overview</a></li>
                     <li class="heading">Server</li>
-                    <li><a ui-sref="">Host</a></li>
-                    <li><a ui-sref="">Service</a></li>
-                    <!-- <li class="heading">Configuration</li>
-                    <li><a ui-sref="configurationHostList">Host</a></li>
-                    <li><a ui-sref="">Service</a></li>
-                    <li><a ui-sref="configurationCommandList">Command</a></li>
-                    <li class="heading">History</li>
-                    <li><a ui-sref="">Problem</a></li>
-                    <li><a ui-sref="historyReport">Report</a></li>
-                    <li><a ui-sref="">Event</a></li>
-                    <li class="heading">Setting</li>
-                    <li><a ui-sref="">Dashboard</a></li>
-                    <li><a ui-sref="">User / Role</a></li>
-                    <li><a ui-sref="">PreConfig</a></li>
-                    <li class="heading">System</li>
-                    <li><a ui-sref="">Start / Stop</a></li> -->
+                    <li><a ui-sref="serverHostList">Host</a></li>
+                    <li><a ui-sref="serverServiceList">Service</a></li>
                 </ul>
             </aside>
             <section class="large-10 columns">
