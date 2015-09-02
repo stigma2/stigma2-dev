@@ -14,7 +14,7 @@
             <nav class="top-bar" data-topbar role="navigation">
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="#">My Site</a></h1>
+                        <h1><a ui-sref="dashboard.overview">STIGMA 2</a></h1>
                     </li>
                 </ul>
                 <top-bar-section>
@@ -48,7 +48,7 @@
                     <li class="heading">Server</li>
                     <li><a ui-sref="">Host</a></li>
                     <li><a ui-sref="">Service</a></li>
-                    <li class="heading">Configuration</li>
+                    <!-- <li class="heading">Configuration</li>
                     <li><a ui-sref="configurationHostList">Host</a></li>
                     <li><a ui-sref="">Service</a></li>
                     <li><a ui-sref="configurationCommandList">Command</a></li>
@@ -61,11 +61,11 @@
                     <li><a ui-sref="">User / Role</a></li>
                     <li><a ui-sref="">PreConfig</a></li>
                     <li class="heading">System</li>
-                    <li><a ui-sref="">Start / Stop</a></li>
+                    <li><a ui-sref="">Start / Stop</a></li> -->
                 </ul>
             </aside>
             <section class="large-10 columns">
-                <article>
+                <article class="mainContents">
                     <div ui-view></div>
                 </article>
             </section>
