@@ -140,6 +140,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\APIProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,

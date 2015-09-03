@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Interfaces\NagiosInterface;
 
-class ServerHostsController extends Controller
+class ServerServicesController extends Controller
 {
     private $nagiosAPI;
 
@@ -31,7 +31,7 @@ class ServerHostsController extends Controller
      */
     public function index()
     {
-        $result = $this->nagiosAPI->listHosts();
+        $result = $this->nagiosAPI->listServices();
 
         return response()->json($result);
     }

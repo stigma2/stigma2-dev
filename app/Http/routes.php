@@ -20,6 +20,7 @@ Route::group(array('prefix' => 'api'), function()
     // Route::resource('configuration/commands', 'ConfigurationCommandsController');
     // Route::resource('configuration/hosts', 'ConfigurationHostsController');
     Route::resource('server/hosts', 'ServerHostsController');
+    Route::resource('server/services', 'ServerServicesController');
 });
 
 // Route::get('signature', function () {
