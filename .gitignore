@@ -4,3 +4,4 @@
 /public/bower_components
 Homestead.yaml
 .env
+.DS_Store
