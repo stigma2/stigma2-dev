@@ -13,7 +13,7 @@
             <div class="large-4 columns right">
                 <div class="row collapse">
                     <div class="small-10 columns">
-                        <input type="text" placeholder="Search">
+                        <input type="text" placeholder="Search" ng-model="searchText">
                     </div>
                     <div class="small-2 columns">
                         <a href="#" class="button postfix"><i class="fi-magnifying-glass"></i></a>
@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="service in services" ng-show="services.length">
+                <tr ng-repeat="service in services | filter:searchText" ng-show="services.length">
                     <td><a ng-click="detailHost(service.host_id)">{{ service.host_name }}</a></td>
                     <td><a ng-click="detailService(service.id)">{{ service.service_name }}</a></td>
                     <td>{{ service.status }}</td>

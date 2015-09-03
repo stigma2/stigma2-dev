@@ -13,10 +13,10 @@
             <div class="large-4 columns right">
                 <div class="row collapse">
                     <div class="small-10 columns">
-                        <input type="text" placeholder="Search">
+                        <input type="text" placeholder="Search" ng-model="searchText">
                     </div>
                     <div class="small-2 columns">
-                        <a href="#" class="button postfix"><i class="fi-magnifying-glass"></i></a>
+                        <a class="button postfix"><i class="fi-magnifying-glass"></i></a>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="host in hosts" ng-show="hosts.length">
+                <tr ng-repeat="host in hosts | filter:searchText" ng-show="hosts.length">
                     <td><a ng-click="detailHost(host.id)">{{ host.host_name }}</a></td>
                     <td>{{ host.status }}</td>
                     <td>{{ host.last_check }}</td>
