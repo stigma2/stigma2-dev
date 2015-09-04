@@ -5,9 +5,11 @@
                 <dl class="sub-nav">
                     <dt>Filter:</dt>
                     <dd class="active"><a href="#">All</a></dd>
-                    <dd><a href="#">Active</a></dd>
-                    <dd><a href="#">Pending</a></dd>
-                    <dd class="hide-for-small-only"><a href="#">Suspended</a></dd>
+                    <dd><a href="#">OK</a></dd>
+                    <dd><a href="#">Warning</a></dd>
+                    <dd><a href="#">Unknown</a></dd>
+                    <dd><a href="#">Critical</a></dd>
+                    <dd class="hide-for-small-only"><a href="#">Pending</a></dd>
                 </dl>
             </div>
             <div class="large-4 columns right">

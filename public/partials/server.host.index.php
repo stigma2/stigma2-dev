@@ -4,10 +4,11 @@
             <div class="large-8 columns">
                 <dl class="sub-nav">
                     <dt>Filter:</dt>
-                    <dd class="active"><a href="#">All</a></dd>
-                    <dd><a href="#">Active</a></dd>
-                    <dd><a href="#">Pending</a></dd>
-                    <dd class="hide-for-small-only"><a href="#">Suspended</a></dd>
+                    <dd class="active"><a ng-click="hostsFilter('0')">All</a></dd>
+                    <dd><a ng-click="hostsFilter('1')">Up</a></dd>
+                    <dd><a ng-click="hostsFilter('2')">Down</a></dd>
+                    <dd><a ng-click="hostsFilter('3')">Unreachable</a></dd>
+                    <dd class="hide-for-small-only"><a ng-click="hostsFilter('9')">Pending</a></dd>
                 </dl>
             </div>
             <div class="large-4 columns right">
