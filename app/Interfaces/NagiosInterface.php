@@ -7,7 +7,7 @@ namespace App\Interfaces;
  */
 interface NagiosInterface
 {
-    public function listHosts();
+    public function listHosts($status);
     
     public function listServices();
 }
