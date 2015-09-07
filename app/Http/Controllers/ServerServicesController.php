@@ -29,9 +29,10 @@ class ServerServicesController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $result = $this->nagiosAPI->listServices();
+        $status = $request->input("status");
+        $result = $this->nagiosAPI->listServices($status);
 
         return response()->json($result);
     }

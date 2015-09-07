@@ -9,5 +9,5 @@ interface NagiosInterface
 {
     public function listHosts($status);
     
-    public function listServices();
+    public function listServices($status);
 }

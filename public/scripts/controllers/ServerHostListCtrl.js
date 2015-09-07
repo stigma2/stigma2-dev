@@ -24,7 +24,7 @@ define(['./module', 'angular'],
                     dd.addClass('active');
                 };
                 
-                hosts('0');
+                hosts('');
             }
         ]);
     }

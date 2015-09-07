@@ -4,8 +4,8 @@ define(['./implement', './module', '../config'],
 
         services.factory('ServerServiceFactory', function($http) {
             return {
-                list: function() {
-                    var url = config.get().home + '/api/server/services';
+                list: function(status) {
+                    var url = config.get().home + '/api/server/services?status=' + status;
                     return implement.httpGetServiceImpl($http, url);
                 },
                 create: function() {
