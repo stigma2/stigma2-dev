@@ -7,24 +7,21 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Interfaces\CommandInterface;
+use App\Interfaces\NagiosInterface;
 
-class CommandController extends Controller
+class ServerServicesController extends Controller
 {
-    /**
-     * @var CommandInterface $repository
-     */
-    private $repository;
+    private $nagiosAPI;
 
     /**
      * Set the dependencies.
      *
-     * @param CommandInterface $repository
+     * @param NagiosInterface $nagiosAPI
      * @return void
      */
-    public function __construct(CommandInterface $repository)
+    public function __construct(NagiosInterface $nagiosAPI)
     {
-        $this->repository = $repository;
+        $this->nagiosAPI = $nagiosAPI;
     }
 
     /**
@@ -32,9 +29,10 @@ class CommandController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $result = $this->repository->lists();
+        $status = $request->input("status");
+        $result = $this->nagiosAPI->listServices($status);
 
         return response()->json($result);
     }
@@ -63,12 +61,14 @@ class CommandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $service_name
      * @return Response
      */
-    public function show($id)
+    public function show($service_name)
     {
-        //
+        $result = $this->nagiosAPI->showService($service_name);
+
+        return response()->json($result);
     }
 
     /**

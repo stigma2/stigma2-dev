@@ -7,6 +7,7 @@ require.config({
         'ui.router': '/bower_components/angular-ui-router/release/angular-ui-router.min',
         'CryptoJS': '/bower_components/cryptojslib/rollups/hmac-sha256',
         'mm.foundation': '/bower_components/angular-foundation/mm-foundation-tpls.min',
+        'ngDraggable': '/bower_components/ngDraggable/ngDraggable',
     },
     shim: {
         'jquery': {
@@ -22,6 +23,9 @@ require.config({
             deps: ['angular']
         },
         'mm.foundation': {
+            deps: ['angular']
+        },
+        'ngDraggable': {
             deps: ['angular']
         },
     }

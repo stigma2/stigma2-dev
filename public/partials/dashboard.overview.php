@@ -10,19 +10,19 @@
     <tbody>
         <tr>
             <td>Content Goes Here</td>
-            <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+            <td>This is longer content</td>
             <td>Content Goes Here</td>
             <td>Content Goes Here</td>
         </tr>
         <tr>
             <td>Content Goes Here</td>
-            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+            <td>This is longer Content</td>
             <td>Content Goes Here</td>
             <td>Content Goes Here</td>
         </tr>
         <tr>
             <td>Content Goes Here</td>
-            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus. This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
             <td>Content Goes Here</td>
             <td>Content Goes Here</td>
         </tr>

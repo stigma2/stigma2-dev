@@ -1,11 +1,11 @@
 {
-    "name": "shlee/signature",
+    "name": "stigma/utils",
     "description": ":package_description",
     "keywords": [
         "league",
         ":package_name"
     ],
-    "homepage": "https://github.com/thephpshlee/signature",
+    "homepage": "",
     "license": "MIT",
     "authors": [
         {
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Shlee\\Signature\\": "src"
+            "Stigma\\Utils\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Shlee\\Signature\\Test\\": "tests"
+            "Stigma\\Utils\\Test\\": "tests"
         }
     },
     "scripts": {

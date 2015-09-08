@@ -1,12 +1,10 @@
 <?php
 
-namespace Shlee\Signature;
+namespace Stigma\Utils;
 
 use Illuminate\Support\ServiceProvider;
 
-use Shlee\Signature\Signature;
-
-class SignatureServiceProvider extends ServiceProvider
+class UtilsServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -25,8 +23,6 @@ class SignatureServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // $this->app->singleton('Shlee\Signature\Signature', function ($app) {
-        //     return new Signature();
-        // });
+        //
     }
 }

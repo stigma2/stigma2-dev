@@ -21,7 +21,7 @@
             "database"
         ],
         "psr-4": {
-            "Shlee\\Signature\\": "packages/shlee/signature/src",
+            "Stigma\\Utils\\": "packages/stigma/utils/src",
             "App\\": "app/"
         }
     },

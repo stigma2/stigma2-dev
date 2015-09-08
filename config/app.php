@@ -140,12 +140,13 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\APIProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Shlee\Signature\SignatureServiceProvider::class,
+        Stigma\Utils\UtilsServiceProvider::class,
 
         /*
          * Package Service Provider

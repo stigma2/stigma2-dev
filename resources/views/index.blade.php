@@ -14,7 +14,7 @@
             <nav class="top-bar" data-topbar role="navigation">
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="#">My Site</a></h1>
+                        <h1><a ui-sref="dashboard.overview">STIGMA 2</a></h1>
                     </li>
                 </ul>
                 <top-bar-section>
@@ -43,20 +43,15 @@
         <div class="row">
             <aside class="large-2 columns">
                 <ul class="side-nav">
-                    <li class="heading">Header</li>
-                    <li><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
-                    <li><a href="#">Link 4</a></li>
-                    <li class="heading">Header</li>
-                    <li><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
-                    <li><a href="#">Link 4</a></li>
+                    <li class="heading">Dashboard</li>
+                    <li><a ui-sref="dashboard.overview">Overview</a></li>
+                    <li class="heading">Server</li>
+                    <li><a ui-sref="serverHostList">Host</a></li>
+                    <li><a ui-sref="serverServiceList">Service</a></li>
                 </ul>
             </aside>
             <section class="large-10 columns">
-                <article>
+                <article class="mainContents">
                     <div ui-view></div>
                 </article>
             </section>

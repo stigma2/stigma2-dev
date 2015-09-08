@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+// namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+// use App\Http\Requests;
+// use App\Http\Controllers\Controller;
 
-use Shlee\Signature\Signature;
+// use Stigma\Signature\Signature;
 
-class SignatureController extends Controller
-{
-    private $signature;
+// class SignatureController extends Controller
+// {
+//     private $signature;
 
-    function __construct(Signature $signature)
-    {
-        $this->signature = $signature;
-    }
+//     function __construct(Signature $signature)
+//     {
+//         $this->signature = $signature;
+//     }
 
-    /**
-     * Description.
-     *
-     * @return Response
-     */
-    public function verify(Request $request)
-    {
-        $input = $request->all();
-        $result = $this->signature->execute($input);
-        dd($result);
-    }
-}
+//     /**
+//      * Description.
+//      *
+//      * @return Response
+//      */
+//     public function verify(Request $request)
+//     {
+//         $input = $request->all();
+//         $result = $this->signature->execute($input);
+//         dd($result);
+//     }
+// }

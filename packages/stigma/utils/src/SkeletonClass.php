@@ -1,6 +1,6 @@
 <?php
 
-namespace Shlee\Signature
+namespace Stigma\Utils
 
 class SkeletonClass
 {

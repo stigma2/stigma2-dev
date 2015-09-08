@@ -7,24 +7,21 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Interfaces\HostInterface;
+use App\Interfaces\NagiosInterface;
 
-class HostController extends Controller
+class ServerHostsController extends Controller
 {
-    /**
-     * @var HostInterface $repository
-     */
-    private $repository;
+    private $nagiosAPI;
 
     /**
      * Set the dependencies.
      *
-     * @param HostInterface $repository
+     * @param NagiosInterface $nagiosAPI
      * @return void
      */
-    public function __construct(HostInterface $repository)
+    public function __construct(NagiosInterface $nagiosAPI)
     {
-        $this->repository = $repository;
+        $this->nagiosAPI = $nagiosAPI;
     }
 
     /**
@@ -32,9 +29,10 @@ class HostController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $result = $this->repository->lists();
+        $status = $request->input("status");
+        $result = $this->nagiosAPI->listHosts($status);
 
         return response()->json($result);
     }
@@ -63,12 +61,14 @@ class HostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $host_name
      * @return Response
      */
-    public function show($id)
+    public function show($host_name)
     {
-        //
+        $result = $this->nagiosAPI->showHost($host_name);
+
+        return response()->json($result);
     }
 
     /**
