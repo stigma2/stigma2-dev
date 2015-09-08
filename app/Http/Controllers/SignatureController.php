@@ -7,7 +7,7 @@
 // use App\Http\Requests;
 // use App\Http\Controllers\Controller;
 
-// use Shlee\Signature\Signature;
+// use Stigma\Signature\Signature;
 
 // class SignatureController extends Controller
 // {

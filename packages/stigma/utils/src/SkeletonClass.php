@@ -1,6 +1,6 @@
 <?php
 
-namespace Shlee\Utils
+namespace Stigma\Utils
 
 class SkeletonClass
 {

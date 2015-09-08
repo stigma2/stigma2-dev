@@ -16,7 +16,7 @@ use DB;
 use Rhumsaa\Uuid\Uuid;
 use Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException;
 
-use Shlee\Utils\NagiosConfiguration;
+use Stigma\Utils\NagiosConfiguration;
 
 class ConfigurationHostsController extends Controller
 {

@@ -21,7 +21,7 @@
             "database"
         ],
         "psr-4": {
-            "Shlee\\Utils\\": "packages/shlee/utils/src",
+            "Stigma\\Utils\\": "packages/stigma/utils/src",
             "App\\": "app/"
         }
     },

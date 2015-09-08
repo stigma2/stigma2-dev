@@ -146,7 +146,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Shlee\Utils\UtilsServiceProvider::class,
+        Stigma\Utils\UtilsServiceProvider::class,
 
         /*
          * Package Service Provider

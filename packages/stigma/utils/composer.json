@@ -1,11 +1,11 @@
 {
-    "name": "shlee/utils",
+    "name": "stigma/utils",
     "description": ":package_description",
     "keywords": [
         "league",
         ":package_name"
     ],
-    "homepage": "https://github.com/thephpshlee/utils",
+    "homepage": "",
     "license": "MIT",
     "authors": [
         {
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Shlee\\Utils\\": "src"
+            "Stigma\\Utils\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Shlee\\Utils\\Test\\": "tests"
+            "Stigma\\Utils\\Test\\": "tests"
         }
     },
     "scripts": {

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// require 'vendor/autoload.php';
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
