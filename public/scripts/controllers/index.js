@@ -12,4 +12,5 @@ define([
     './ServerHostListCtrl',
     './ServerHostShowCtrl',
     './ServerServiceListCtrl',
+    './ServerServiceShowCtrl',
 ], function() {});

@@ -61,12 +61,14 @@ class ServerServicesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $service_name
      * @return Response
      */
-    public function show($id)
+    public function show($service_name)
     {
-        //
+        $result = $this->nagiosAPI->showService($service_name);
+
+        return response()->json($result);
     }
 
     /**

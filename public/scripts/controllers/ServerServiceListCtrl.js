@@ -23,6 +23,14 @@ define(['./module'],
                     var dd = target.parent();
                     dd.addClass('active');
                 };
+
+                $scope.detailHost = function(host_name) {
+                    $state.go('serverHostDetail', {host_name: host_name});
+                };
+
+                $scope.detailService = function(service_name) {
+                    $state.go('serverServiceDetail', {service_name: service_name});
+                };
                 
                 services('');
             }
