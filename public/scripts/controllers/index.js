@@ -10,5 +10,6 @@ define([
     // './ConfigurationHostCreationCtrl',
     // './ConfigurationHostEditCtrl',
     './ServerHostListCtrl',
+    './ServerHostShowCtrl',
     './ServerServiceListCtrl',
 ], function() {});

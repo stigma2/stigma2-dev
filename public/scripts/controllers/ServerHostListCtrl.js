@@ -23,6 +23,10 @@ define(['./module', 'angular'],
                     var dd = target.parent();
                     dd.addClass('active');
                 };
+
+                $scope.detailHost = function(host_name) {
+                    $state.go('serverHostDetail', {host_name: host_name});
+                };
                 
                 hosts('');
             }

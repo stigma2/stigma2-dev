@@ -34,7 +34,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="host in hosts | filter:searchText" ng-show="hosts.length">
-                    <td><a ng-click="detailHost(host.id)">{{ host.host_name }}</a></td>
+                    <td><a ng-click="detailHost(host.host_name)">{{ host.host_name }}</a></td>
                     <td>{{ host.status }}</td>
                     <td>{{ host.last_check }}</td>
                     <td>{{ host.duration }}</td>

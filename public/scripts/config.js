@@ -16,6 +16,7 @@ define([], function() {
             // {'state': 'configurationHostCreation', 'url': CONTEXT_ROOT + '/configuration/hosts/create', 'templateUrl': PARTIALS_ROOT + 'configuration.host.create.php', 'controller': 'ConfigurationHostCreationCtrl'},
             // {'state': 'configurationHostEdit', 'url': CONTEXT_ROOT + '/configuration/hosts/:uuid/edit', 'templateUrl': PARTIALS_ROOT + 'configuration.host.edit.php', 'controller': 'ConfigurationHostEditCtrl'},
             {'state': 'serverHostList', 'url': CONTEXT_ROOT + '/server/hosts', 'templateUrl': PARTIALS_ROOT + 'server.host.index.php', 'controller': 'ServerHostListCtrl'},
+            {'state': 'serverHostDetail', 'url': CONTEXT_ROOT + '/server/hosts/:host_name', 'templateUrl': PARTIALS_ROOT + 'server.host.show.php', 'controller': 'ServerHostShowCtrl'},
             {'state': 'serverServiceList', 'url': CONTEXT_ROOT + '/server/services', 'templateUrl': PARTIALS_ROOT + 'server.service.index.php', 'controller': 'ServerServiceListCtrl'},
         ],
     };

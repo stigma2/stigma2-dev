@@ -61,12 +61,14 @@ class ServerHostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $host_name
      * @return Response
      */
-    public function show($id)
+    public function show($host_name)
     {
-        //
+        $result = $this->nagiosAPI->showHost($host_name);
+
+        return response()->json($result);
     }
 
     /**
