@@ -14,6 +14,7 @@ class DatabaseValidation
     {
         $this->validatorFactory = $validatorFactory ;
     }
+
     public function validate(array $data)
     { 
         $this->validatorFactory->make($data,$this->rules);

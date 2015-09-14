@@ -1,5 +1,4 @@
 <?php
-
 namespace spec\Stigma\Installation\Validators;
 
 use PhpSpec\ObjectBehavior;
@@ -25,9 +24,9 @@ class DatabaseValidationSpec extends ObjectBehavior
             'password' => 'secret', 
             'database' => 'homestead',
             'port' => '3306'
-        ); 
+        );
 
-        $factory->make($data,['dbuser' => 'required'])->shouldBeCalled();
+        $factory->make($data,['dbuser' => 'required'])->shouldBeCalled()->willReturn(false);
 
         $this->validate($data)->shouldReturn(false); 
     }

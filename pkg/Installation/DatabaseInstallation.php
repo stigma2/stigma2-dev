@@ -13,7 +13,8 @@ class DatabaseInstallation
 
     public function validate(array $value)
     { 
-        $this->dbValidator->validate($value) ;
+        return $this->dbValidator->validate($value) ;
+
         if(!array_key_exists('host',$value) || $value['host'] === ''){
             return false;
         }else if(!array_key_exists('dbuser',$value) || $value['dbuser'] === ''){
@@ -22,7 +23,7 @@ class DatabaseInstallation
             return false;
         }else if(!array_key_exists('database',$value) || $value['database'] === ''){
             return false;
-        } 
+        }
 
         return true ;
     }

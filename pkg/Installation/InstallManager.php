@@ -2,12 +2,20 @@
 
 namespace Stigma\Installation;
 
-use Stigma\Installation\Validators\DatabaseValidation ;
+use Illuminate\Contracts\Foundation\Application;
 
 class InstallManager
 {
+
+    protected $app ; 
+
+    public function __construct(Application $app)
+    {
+        $this->app = $app ;
+    }
+
     public function getServiceForDatabase()
     {
-        return new DatabaseInstallation() ;
+        return $this->app->make('Stigma\Installation\DatabaseInstallation');
     }
 }
