@@ -22,6 +22,7 @@
         ],
         "psr-4": {
             "Shlee\\Signature\\": "packages/shlee/signature/src",
+            "Stigma\\" : "pkg",
             "App\\": "app/"
         }
     },
@@ -49,6 +50,9 @@
         ]
     },
     "config": {
-        "preferred-install": "dist"
-    }
+        "preferred-install": "dist",
+        "bin-dir": "bin"
+    },
+    "bin": ["bin/phpspec"]
+
 }

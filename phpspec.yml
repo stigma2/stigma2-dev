@@ -1,5 +1,5 @@
 suites:
-    main:
-        namespace: App
-        psr4_prefix: App
-        src_path: app
+    stigma:
+        namespace: Stigma
+        psr4_prefix: Stigma
+        src_path: pkg
