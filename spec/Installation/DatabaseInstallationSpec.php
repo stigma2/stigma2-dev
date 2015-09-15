@@ -32,35 +32,28 @@ class DatabaseInstallationSpec extends ObjectBehavior
         $this->validate($this->data)->shouldReturn(true);
     }
 
-    public function it_throw_exception_when_host_is_invalid(DatabaseValidation $databaseValidation)
+    public function it_throw_exception_when_parameters_are_invalid(DatabaseValidation $databaseValidation)
     {
         $data = $this->data ;
         unset($data['host']);
         $databaseValidation->validate($data)->shouldBeCalled()->willReturn(false); 
         $this->validate($data)->shouldReturn(false); 
-    }
 
-    public function it_throw_exception_when_dbuser_is_invalid(DatabaseValidation $databaseValidation)
-    { 
         $data = $this->data ;
         unset($data['dbuser']);
         $databaseValidation->validate($data)->shouldBeCalled()->willReturn(false); 
         $this->validate($data)->shouldReturn(false); 
-    }
 
-    public function it_throw_exception_when_password_is_invalid(DatabaseValidation $databaseValidation)
-    {
         $data = $this->data ;
         unset($data['password']);
         $databaseValidation->validate($data)->shouldBeCalled()->willReturn(false); 
         $this->validate($data)->shouldReturn(false); 
-    }
 
-    public function it_throw_exception_when_database_is_invalid(DatabaseValidation $databaseValidation)
-    {
         $data = $this->data ;
         unset($data['database']);
         $databaseValidation->validate($data)->shouldBeCalled()->willReturn(false); 
         $this->validate($data)->shouldReturn(false); 
+
+
     }
 }

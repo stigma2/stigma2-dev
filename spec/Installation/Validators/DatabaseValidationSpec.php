@@ -26,7 +26,7 @@ class DatabaseValidationSpec extends ObjectBehavior
             'port' => '3306'
         );
 
-        $factory->make($data,['dbuser' => 'required'])->shouldBeCalled()->willReturn(false);
+        $factory->make($data,['dbuser' => 'required'])->shouldBeCalled() ;
 
         $this->validate($data)->shouldReturn(false); 
     }
