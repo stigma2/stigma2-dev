@@ -1,5 +1,6 @@
 suites:
     stigma:
-        namespace: Stigma
-        psr4_prefix: Stigma
-        src_path: pkg
+        namespace: Stigma\Installation
+        src_path: pkg/Installation/src
+        psr4_prefix: Stigma\Installation
+        spec_path: pkg/Installation

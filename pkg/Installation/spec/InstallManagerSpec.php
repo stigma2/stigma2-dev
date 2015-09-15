@@ -25,4 +25,9 @@ class InstallManagerSpec extends ObjectBehavior
 
         $this->getServiceForDatabase()->shouldReturnAnInstanceOf('Stigma\Installation\DatabaseInstallation');
     }
+
+    public function it_hello()
+    {
+        $this->hello() ;
+    }
 }

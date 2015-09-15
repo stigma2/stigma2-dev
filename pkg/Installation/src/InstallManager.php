@@ -17,5 +17,5 @@ class InstallManager
     public function getServiceForDatabase()
     {
         return $this->app->make('Stigma\Installation\DatabaseInstallation');
-    }
+    } 
 }
