@@ -8,53 +8,79 @@ class Nagios implements NagiosInterface
 {
     public function listHosts($status)
     {
-        // request API call
-        $result;
+        $username = env("NAGIOS_USERNAME");
+        $password = env("NAGIOS_PASSWORD");
 
-        switch ($status) {
-            case '0':
-                $result = array(
-                    array("host_name" => "node00", "ip" => "127.0.0.1", "status" => "Up", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $domain = env("NAGIOS_DOMAIN");
+        $command = "/nagios/cgi-bin/objectjson.cgi?query=host";
+        $url = $domain.$command;
 
-            case '1':
-                $result = array(
-                    array("host_name" => "node01", "ip" => "127.0.0.1", "status" => "Down", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $port = "9090";
+        $timeout = "3";
 
-            case '2':
-                $result = array(
-                    array("host_name" => "node02", "ip" => "127.0.0.1", "status" => "Unreachable", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PORT, $port);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_COOKIE, "");
+        curl_setopt($ch, CURLOPT_USERPWD, $username.":".$password);
+        // curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750");
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        $data = curl_exec($ch);
 
-            case '9':
-                $result = array(
-                    array("host_name" => "node03", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $curl_errno = curl_errno($ch);
+        $curl_error = curl_error($ch);
+
+        return $data;
+
+
+
+        // $result;
+
+        // switch ($status) {
+        //     case '0':
+        //         $result = array(
+        //             array("host_name" => "node00", "ip" => "127.0.0.1", "status" => "Up", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+
+        //     case '1':
+        //         $result = array(
+        //             array("host_name" => "node01", "ip" => "127.0.0.1", "status" => "Down", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+
+        //     case '2':
+        //         $result = array(
+        //             array("host_name" => "node02", "ip" => "127.0.0.1", "status" => "Unreachable", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+
+        //     case '9':
+        //         $result = array(
+        //             array("host_name" => "node03", "ip" => "127.0.0.1", "status" => "Pending", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
             
-            default:
-                $result = array(
-                    array("host_name" => "node00", "ip" => "127.0.0.1", "status" => "Up", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node01", "ip" => "127.0.0.1", "status" => "Down", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node02", "ip" => "127.0.0.1", "status" => "Unreachable", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node03", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-        }
+        //     default:
+        //         $result = array(
+        //             array("host_name" => "node00", "ip" => "127.0.0.1", "status" => "Up", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //             array("host_name" => "node01", "ip" => "127.0.0.1", "status" => "Down", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //             array("host_name" => "node02", "ip" => "127.0.0.1", "status" => "Unreachable", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //             array("host_name" => "node03", "ip" => "127.0.0.1", "status" => "Pending", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+        // }
 
-        return $result;
+        // return $result;
     }
 
     public function showHost($host_name)
