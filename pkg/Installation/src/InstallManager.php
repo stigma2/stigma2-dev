@@ -6,7 +6,6 @@ use Illuminate\Contracts\Foundation\Application;
 
 class InstallManager
 {
-
     protected $app ; 
 
     public function __construct(Application $app)
@@ -17,5 +16,5 @@ class InstallManager
     public function getServiceForDatabase()
     {
         return $this->app->make('Stigma\Installation\DatabaseInstallation');
-    } 
+    }
 }

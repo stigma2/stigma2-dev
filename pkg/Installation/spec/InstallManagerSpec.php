@@ -24,10 +24,5 @@ class InstallManagerSpec extends ObjectBehavior
         $app->make('Stigma\Installation\DatabaseInstallation')->shouldBeCalled()->willReturn($databaseInstallation) ;
 
         $this->getServiceForDatabase()->shouldReturnAnInstanceOf('Stigma\Installation\DatabaseInstallation');
-    }
-
-    public function it_hello()
-    {
-        $this->hello() ;
-    }
+    } 
 }

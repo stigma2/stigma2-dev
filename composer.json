@@ -23,7 +23,7 @@
         ],
         "psr-4": {
             "Shlee\\Signature\\": "packages/shlee/signature/src",
-            "Stigma\\" : "pkg",
+            "Stigma\\Installation\\" : "pkg/Installation/src",
             "App\\": "app/"
         }
     },

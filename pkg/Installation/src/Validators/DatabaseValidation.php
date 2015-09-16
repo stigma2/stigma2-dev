@@ -7,17 +7,17 @@ class DatabaseValidation
 {
     protected $validatorFactory ;
     protected $rules = [
-            'dbuser' => 'required'
-       ] ;
+        'dbuser' => 'required'
+    ];
 
     public function __construct(Factory $validatorFactory)
     {
         $this->validatorFactory = $validatorFactory ;
     }
 
-    public function validate(array $data)
+    public function passes(array $data)
     { 
-        $this->validatorFactory->make($data,$this->rules);
-        return false ;
+        $validator = $this->validatorFactory->make($data,$this->rules);
+        return ! $validator->fails() ;
     }
 }

@@ -11,20 +11,8 @@ class DatabaseInstallation
         $this->dbValidator = $dbValidator ;
     }
 
-    public function validate(array $value)
+    public function passes(array $value)
     { 
-        return $this->dbValidator->validate($value) ;
-
-        if(!array_key_exists('host',$value) || $value['host'] === ''){
-            return false;
-        }else if(!array_key_exists('dbuser',$value) || $value['dbuser'] === ''){
-            return false;
-        }else if(!array_key_exists('password',$value) || $value['password'] === ''){
-            return false;
-        }else if(!array_key_exists('database',$value) || $value['database'] === ''){
-            return false;
-        }
-
-        return true ;
-    }
+        return $this->dbValidator->passes($value) ; 
+    } 
 }
