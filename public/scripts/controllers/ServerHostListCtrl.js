@@ -32,6 +32,10 @@ define(['./module', 'angular'],
                 $scope.convertDate = function(timestamp) {
                     return TimestampFormatFactory.convertDateToYYYYMMDDhhmmss(timestamp);
                 };
+
+                $scope.getDuration = function(timestamp) {
+                    return TimestampFormatFactory.getDurationToNow(timestamp);
+                };
                 
                 hosts('');
             }

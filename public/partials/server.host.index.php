@@ -38,8 +38,8 @@
                     <td><a ng-click="detailHost(host.host_name)">{{ host.name }}</a></td>
                     <td>{{ host.status }}</td>
                     <td>{{ convertDate(host.last_check) }}</td>
-                    <td>{{ host.duration }}</td>
-                    <td>{{ host.info }}</td>
+                    <td>{{ getDuration(host.last_state_change) }}</td>
+                    <td>{{ host.plugin_output }}</td>
                 </tr>
                 <tr ng-show="hosts == null">
                     <td colspan="5"><strong>No hosts.</strong></td>

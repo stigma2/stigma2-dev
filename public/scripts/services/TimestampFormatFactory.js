@@ -6,7 +6,6 @@ define(['./module'],
 			return {
 				convertDateToYYYYMMDDhhmmss: function(timestamp) {
 					var formatDate = new Date(timestamp);
-					// var formatDate = new Date(timestamp * 1000);
 					var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
 					var year = formatDate.getFullYear();
@@ -20,8 +19,8 @@ define(['./module'],
 					return time;
 				},
 				getDurationToNow: function(timestamp) {
-					var now = new Date().getTime() / 1000;
-					var duration = now - timestamp;
+					var now = parseInt(new Date().getTime() / 1000);
+					var duration = now - parseInt(timestamp / 1000);
 
 					var date = parseInt(duration / 86400);
 					var hour = parseInt(duration % 86400 / 3600);
@@ -29,6 +28,7 @@ define(['./module'],
 					var sec = parseInt(duration % 86400 % 3600 % 60);
 
 					var time = date + 'd ' + hour + 'h ' + min + 'm ' + sec + 's';
+
 					return time;
 				}
 			};
