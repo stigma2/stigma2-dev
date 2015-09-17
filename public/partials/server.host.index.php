@@ -11,7 +11,7 @@
                     <dd class="hide-for-small-only"><a ng-click="hostsFilter('9', $event)">Pending</a></dd>
                 </dl>
             </div>
-            <div class="large-4 columns right">
+            <!-- <div class="large-4 columns right">
                 <div class="row collapse">
                     <div class="small-10 columns">
                         <input type="text" placeholder="Search" ng-model="searchText">
@@ -20,7 +20,7 @@
                         <a class="button postfix"><i class="fi-magnifying-glass"></i></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <table>
             <thead>
@@ -33,14 +33,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="host in hosts | filter:searchText" ng-show="hosts.length">
-                    <td><a ng-click="detailHost(host.host_name)">{{ host.host_name }}</a></td>
+                <tr ng-repeat="(key, host) in hosts" ng-show="hosts != null">
+                <!-- <tr ng-repeat="(key, host) in hosts | filter:searchText" ng-show="hosts.length"> -->
+                    <td><a ng-click="detailHost(host.host_name)">{{ host.name }}</a></td>
                     <td>{{ host.status }}</td>
-                    <td>{{ host.last_check }}</td>
+                    <td>{{ convertDate(host.last_check) }}</td>
                     <td>{{ host.duration }}</td>
                     <td>{{ host.info }}</td>
                 </tr>
-                <tr ng-show="!hosts.length">
+                <tr ng-show="hosts == null">
                     <td colspan="5"><strong>No hosts.</strong></td>
                 </tr>
             </tbody>

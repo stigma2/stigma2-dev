@@ -3,4 +3,5 @@ define([
     // './ConfigurationHostFactory',
     './ServerHostFactory',
     './ServerServiceFactory',
+    './TimestampFormatFactory',
 ], function() {});

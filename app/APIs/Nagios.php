@@ -12,7 +12,7 @@ class Nagios implements NagiosInterface
         $password = env("NAGIOS_PASSWORD");
 
         $domain = env("NAGIOS_DOMAIN");
-        $command = "/nagios/cgi-bin/objectjson.cgi?query=host";
+        $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true";
         $url = $domain.$command;
 
         $port = "9090";
