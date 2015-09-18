@@ -47,7 +47,7 @@
                           <span class="label secondary" style="width: 100%;" ng-if="service.last_hard_state == '9'">PENDING</span>
                     </td>
                     <td>{{ convertDate(service.last_check) }}</td>
-                    <td>{{ convertDate(service.last_check) }}</td>
+                    <td>{{ getDuration(service.last_state_change) }}</td>
                     <td>{{ service.current_attempt }} / {{ service.max_attemps }}</td>
                     <td>{{ service.plugin_output }}</td>
                 </tr>
