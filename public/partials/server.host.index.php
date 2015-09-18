@@ -26,9 +26,9 @@
             <thead>
                 <tr>
                     <th>Host</th>
-                    <th>Status</th>
-                    <th>Last Check</th>
-                    <th>Duration</th>
+                    <th style="width:100px;">Status</th>
+                    <th style="width:200px;">Last Check</th>
+                    <th style="width:200px;">Duration</th>
                     <th>Status Information</th>
                 </tr>
             </thead>
@@ -36,7 +36,19 @@
                 <tr ng-repeat="(key, host) in hosts" ng-show="hosts != null">
                 <!-- <tr ng-repeat="(key, host) in hosts | filter:searchText" ng-show="hosts.length"> -->
                     <td><a ng-click="detailHost(host.host_name)">{{ host.name }}</a></td>
-                    <td>{{ host.status }}</td>
+                    <td>
+                          <span class="label success" style="width: 100%;" ng-if="host.last_hard_state == '0'">UP</span>
+                          <span class="label alert" style="width: 100%;" ng-if="host.last_hard_state == '1'">DOWN</span>
+                          <span class="label warning" style="width: 100%;" ng-if="host.last_hard_state == '2'">UNREACHABLE</span>
+                          <span class="label secondary" style="width: 100%;" ng-if="host.last_hard_state == '9'">PENDING</span>
+                    </td>
+                    <!-- <td style="vertical-align: middle;">
+                        <div class="progress" ng-if="host.status < 31">
+                            <span class="meter green" style="width:{{ host.status }}%">
+                                <p class="percent">{{ host.status }} %</p>
+                            </span>
+                        </div>
+                    </td> -->
                     <td>{{ convertDate(host.last_check) }}</td>
                     <td>{{ getDuration(host.last_state_change) }}</td>
                     <td>{{ host.plugin_output }}</td>
