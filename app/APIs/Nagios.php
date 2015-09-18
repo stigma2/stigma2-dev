@@ -35,7 +35,7 @@ class Nagios implements NagiosInterface
 
 
 
-        // $result;
+        // $result = array();
 
         // switch ($status) {
         //     case '0':
@@ -107,62 +107,88 @@ class Nagios implements NagiosInterface
 
     public function listServices($status)
     {
-        // request API call
-        $result = array();
+        $username = env("NAGIOS_USERNAME");
+        $password = env("NAGIOS_PASSWORD");
 
-        switch ($status) {
-            case '0':
-                $result = array(
-                    array("host_name" => "node00", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "OK", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $domain = env("NAGIOS_DOMAIN");
+        $command = "/nagios/cgi-bin/statusjson.cgi?query=servicelist&details=true";
+        $url = $domain.$command;
 
-            case '1':
-                $result = array(
-                    array("host_name" => "node01", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Warning", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $port = "9090";
+        $timeout = "3";
 
-            case '2':
-                $result = array(
-                    array("host_name" => "node02", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Unknown", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PORT, $port);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_COOKIE, "");
+        curl_setopt($ch, CURLOPT_USERPWD, $username.":".$password);
+        // curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750");
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        $data = curl_exec($ch);
 
-            case '3':
-                $result = array(
-                    array("host_name" => "node03", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Critical", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $curl_errno = curl_errno($ch);
+        $curl_error = curl_error($ch);
 
-            case '9':
-                $result = array(
-                    array("host_name" => "node04", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        return $data;
+
+
+
+        // $result = array();
+
+        // switch ($status) {
+        //     case '0':
+        //         $result = array(
+        //             array("host_name" => "node00", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "OK", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+
+        //     case '1':
+        //         $result = array(
+        //             array("host_name" => "node01", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Warning", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+
+        //     case '2':
+        //         $result = array(
+        //             array("host_name" => "node02", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Unknown", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+
+        //     case '3':
+        //         $result = array(
+        //             array("host_name" => "node03", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Critical", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+
+        //     case '9':
+        //         $result = array(
+        //             array("host_name" => "node04", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Pending", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
             
-            default:
-                $result = array(
-                    array("host_name" => "node00", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "OK", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node01", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Warning", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node02", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Unknown", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node03", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Critical", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node04", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-        }
+        //     default:
+        //         $result = array(
+        //             array("host_name" => "node00", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "OK", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //             array("host_name" => "node01", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Warning", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //             array("host_name" => "node02", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Unknown", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //             array("host_name" => "node03", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Critical", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //             array("host_name" => "node04", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Pending", 
+        //                 "cpu" => "1", "memory" => "20", "network" => "4"),
+        //         );
+        //         break;
+        // }
 
-        return $result;
+        // return $result;
     }
 
     public function showService($host_name)
