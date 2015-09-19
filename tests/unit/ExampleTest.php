@@ -16,8 +16,4 @@ class ExampleTest extends \Codeception\TestCase\Test
     }
 
     // tests
-    public function testMe()
-    {
-
-    }
 }

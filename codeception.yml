@@ -13,7 +13,7 @@ extensions:
     enabled:
         - Codeception\Extension\RunFailed
 include:
-    - pkg/*
+    - pkg/Installation
 modules: 
     enabled: [Laravel5]
     config:

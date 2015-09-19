@@ -2,9 +2,13 @@
 #
 # Suite for unit (internal) tests.
 
-class_name: UnitTester
+namespace: Stigma\Installation
+class_name: UnitTester 
 modules:
-    enabled: [Laravel5,Asserts,\Helper\Unit]
+    enabled:
+        - Asserts
+        - \Stigma\Installation\Helper\Unit
+        - Laravel5
     config:
         Laravel5:
             bootstrap: bootstrap/app.php

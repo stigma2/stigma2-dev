@@ -7,7 +7,11 @@ class DatabaseValidation
 {
     protected $validatorFactory ;
     protected $rules = [
-        'dbuser' => 'required'
+        'dbuser' => 'required',
+        'database' => 'required',
+        'host' => 'required',
+        'password' => 'required',
+        'port' => 'required'
     ];
 
     public function __construct(Factory $validatorFactory)

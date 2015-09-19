@@ -1,5 +1,5 @@
 <?php
-
+namespace Stigma\Installation;
 
 /**
  * Inherited Methods
