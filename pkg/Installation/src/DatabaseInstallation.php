@@ -10,8 +10,17 @@ class DatabaseInstallation
     {
         $this->dbValidator = $dbValidator ;
     }
+    
+    public function setup(array $value)
+    {
+        if(! $this->validate($value)){
+            return false ;
+        }
 
-    public function passes(array $value)
+        return true ;
+    }
+
+    public function validate(array $value)
     { 
         return $this->dbValidator->passes($value) ; 
     } 

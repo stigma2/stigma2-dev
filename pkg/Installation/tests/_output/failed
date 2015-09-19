@@ -1,0 +1,1 @@
+tests/unit/DatabaseInstallationTest.php:testValidation | when host field is invalid

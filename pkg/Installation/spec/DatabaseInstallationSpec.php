@@ -26,10 +26,17 @@ class DatabaseInstallationSpec extends ObjectBehavior
         $this->beConstructedWith($databaseValidation);
     }
 
+    public function it_setup_database(DatabaseValidation $databaseValidation)
+    { 
+        $data = $this->data ;
+        $databaseValidation->passes($this->data)->shouldBeCalled()->willReturn(true); 
+        $this->setup($data)->shouldReturn(true);
+    }
+
     public function it_validate_values(DatabaseValidation $databaseValidation)
     { 
         $databaseValidation->passes($this->data)->shouldBeCalled()->willReturn(true); 
-        $this->passes($this->data)->shouldReturn(true);
+        $this->validate($this->data)->shouldReturn(true);
     }
 
     public function it_throw_exception_when_parameters_are_invalid(DatabaseValidation $databaseValidation)
@@ -37,21 +44,21 @@ class DatabaseInstallationSpec extends ObjectBehavior
         $data = $this->data ;
         unset($data['host']);
         $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->passes($data)->shouldReturn(false); 
+        $this->validate($data)->shouldReturn(false); 
 
         $data = $this->data ;
         unset($data['dbuser']);
         $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->passes($data)->shouldReturn(false); 
+        $this->validate($data)->shouldReturn(false); 
 
         $data = $this->data ;
         unset($data['password']);
         $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->passes($data)->shouldReturn(false); 
+        $this->validate($data)->shouldReturn(false); 
 
         $data = $this->data ;
         unset($data['database']);
         $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->passes($data)->shouldReturn(false); 
+        $this->validate($data)->shouldReturn(false); 
     }
 }

@@ -19,10 +19,10 @@ class InstallManagerSpec extends ObjectBehavior
         $this->beConstructedWith($app) ;
     }
 
-    public function it_return_install_service_for_databse(Application $app,DatabaseInstallation $databaseInstallation)
+    public function it_return_databaseInstallation(Application $app,DatabaseInstallation $databaseInstallation)
     { 
         $app->make('Stigma\Installation\DatabaseInstallation')->shouldBeCalled()->willReturn($databaseInstallation) ;
 
-        $this->getServiceForDatabase()->shouldReturnAnInstanceOf('Stigma\Installation\DatabaseInstallation');
+        $this->getDatabaseInstallation()->shouldReturnAnInstanceOf('Stigma\Installation\DatabaseInstallation');
     } 
 }

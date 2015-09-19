@@ -12,10 +12,9 @@ settings:
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
-include:
-    - pkg/*
-modules: 
-    enabled: [Laravel5]
+modules:
+    enabled:
+        - Laravel5
     config:
         Db:
             dsn: ''
