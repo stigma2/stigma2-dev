@@ -152,6 +152,12 @@ return [
          */
         'JeroenG\Packager\PackagerServiceProvider',
 
+        /*
+         * Stigma Service Provider
+         */
+
+        Stigma\Installation\InstallationServiceProvider::class,
+
     ],
 
     /*

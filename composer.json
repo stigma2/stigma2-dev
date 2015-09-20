@@ -7,6 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
+        "mustache/mustache" : "*",
         "ramsey/uuid": "~2.8",
         "jeroen-g/laravel-packager": "^0.2.1"
     },

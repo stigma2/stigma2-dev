@@ -5,7 +5,8 @@ namespace spec\Stigma\Installation;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Illuminate\Contracts\Foundation\Application;
-use Stigma\Installation\DatabaseInstallation ;
+use Stigma\Installation\Services\DatabaseInstallation ;
+use Stigma\Installation\Services\NagiosInstallation ;
 
 class InstallManagerSpec extends ObjectBehavior
 {
@@ -21,8 +22,15 @@ class InstallManagerSpec extends ObjectBehavior
 
     public function it_return_databaseInstallation(Application $app,DatabaseInstallation $databaseInstallation)
     { 
-        $app->make('Stigma\Installation\DatabaseInstallation')->shouldBeCalled()->willReturn($databaseInstallation) ;
+        $app->make('Stigma\Installation\Services\DatabaseInstallation')->shouldBeCalled()->willReturn($databaseInstallation) ;
 
-        $this->getDatabaseInstallation()->shouldReturnAnInstanceOf('Stigma\Installation\DatabaseInstallation');
+        $this->getDatabaseInstallation()->shouldReturnAnInstanceOf('Stigma\Installation\Services\DatabaseInstallation');
     } 
+
+    public function it_return_nagiosInstallation(Application $app,NagiosInstallation $nagiosInstallation)
+    { 
+        $app->make('Stigma\Installation\Services\NagiosInstallation')->shouldBeCalled()->willReturn($nagiosInstallation) ;
+
+        $this->getNagiosInstallation()->shouldReturnAnInstanceOf('Stigma\Installation\Services\NagiosInstallation');
+    }
 }

@@ -4,11 +4,14 @@
 
 namespace: Stigma\Installation
 class_name: UnitTester 
+settings:
+    memory_limit: 4096M 
 modules:
     enabled:
         - Asserts
         - \Stigma\Installation\Helper\Unit
         - Laravel5
+        - Filesystem
     config:
         Laravel5:
             bootstrap: bootstrap/app.php

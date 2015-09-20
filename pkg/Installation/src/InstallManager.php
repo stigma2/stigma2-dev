@@ -15,6 +15,12 @@ class InstallManager
 
     public function getDatabaseInstallation()
     {
-        return $this->app->make('Stigma\Installation\DatabaseInstallation');
+        return $this->app->make('Stigma\Installation\Services\DatabaseInstallation');
     }
+
+    public function getNagiosInstallation()
+    {
+        return $this->app->make('Stigma\Installation\Services\NagiosInstallation');
+    }
+
 }
