@@ -3,5 +3,6 @@
 /public/bower_components
 Homestead.yaml
 .env
+.env.testing
 
 tests/_output/*
