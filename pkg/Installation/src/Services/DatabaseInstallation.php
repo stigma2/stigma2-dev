@@ -5,13 +5,13 @@ use Stigma\Installation\Contracts\ConfigFileGenerator ;
 
 class DatabaseInstallation
 {
-    protected $dbValidator ;
+    protected $validators  ;
     protected $fileGenerator ;
     protected $configurationTempFile ;
 
-    public function __construct(DatabaseValidation $dbValidator, ConfigFileGenerator $fileGenerator)
+    public function __construct($validators = array(), ConfigFileGenerator $fileGenerator)
     { 
-        $this->dbValidator = $dbValidator ;
+        $this->validators = $validators ;
         $this->fileGenerator = $fileGenerator ;
     }
     
@@ -26,6 +26,11 @@ class DatabaseInstallation
 
     public function validate(array $value)
     { 
-        return $this->dbValidator->passes($value) ; 
-    } 
+        foreach($this->validators as $validation) { 
+            if(!$validation->passes($value)) {
+                return false; // or throw exception
+            }
+        }
+        return true ;
+    }
 }

@@ -2,8 +2,10 @@
 namespace Stigma\Installation\Validators;
 
 use Illuminate\Contracts\Validation\Factory ; 
+use Stigma\Installation\Contracts\ValidationInterface ;
+use Stigma\Installation\Exceptions\InvalidParameterException ;
 
-class DatabaseValidation
+class DatabaseValidation implements ValidationInterface
 {
     protected $validatorFactory ;
     protected $rules = [
@@ -19,9 +21,13 @@ class DatabaseValidation
         $this->validatorFactory = $validatorFactory ;
     }
 
-    public function passes(array $data)
+    public function passes($data)
     { 
         $validator = $this->validatorFactory->make($data,$this->rules);
-        return ! $validator->fails() ;
+        if($validator->fails()) {
+            throw new InvalidParameterException;
+        }
+
+        return true;
     }
 }

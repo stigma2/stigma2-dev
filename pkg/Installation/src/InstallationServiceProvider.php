@@ -21,7 +21,10 @@ class InstallationServiceProvider extends ServiceProvider
 
         $this->app->bind('Stigma\Installation\Services\DatabaseInstallation',function(){
             return new \Stigma\Installation\Services\DatabaseInstallation(
-                \App::make('Stigma\Installation\Validators\DatabaseValidation'),
+                [
+                    \App::make('Stigma\Installation\Validators\DatabaseValidation'), 
+                    \App::make('Stigma\Installation\Validators\DatabaseConnectionValidation')
+                ],
                 \App::make('Stigma\Installation\Generators\DatabaseFileGenerator') 
             );
         });

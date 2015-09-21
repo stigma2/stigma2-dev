@@ -1,5 +1,6 @@
 <?php
 namespace Stigma\Installation;
+use Stigma\Installation\Exceptions\InvalidParameterException ;
 
 /**
  * Inherited Methods
@@ -23,4 +24,46 @@ class UnitTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
+
+    /*
+    public function expectedException($exception ,$fn)
+    {
+        try {
+            $fn() ;
+        } catch(\Exception $e) { 
+            if(get_class($e) == $exception or get_parent_class($e) == $exception){
+                $this->assertTrue(true);
+            }else{
+                $this->assertTrue(false,"Expected exception is ".get_class($exception)); 
+            }
+        }
+    }*/
+
+    public function expectedInvalidParameterException($exception ,$fn)
+    {
+        try {
+            $fn() ;
+            $this->fail("Expected exception is ".get_class($exception)); 
+        } catch(InvalidParameterException $e) { 
+            if(get_class($e) == get_class($exception)){
+                $this->assertTrue(true);
+            }else{
+                $this->fail("Expected exception is ".get_class($exception)); 
+            }
+        }
+    }
+
+    public function expectedPdoException($fn)
+    {
+        try {
+            $fn() ;
+            $this->fail("Expected exception is PDOException "); 
+        } catch(\PDOException $e) { 
+            $this->assertTrue(true);
+        } catch (\Exception $e){
+            $this->fail("Expected exception is PDOException "); 
+        }
+    }
+
+
 }

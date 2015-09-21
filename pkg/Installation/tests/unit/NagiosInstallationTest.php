@@ -12,6 +12,7 @@ class NagiosInstallationTest extends \Codeception\TestCase\Test
 
     protected function _before()
     {
+
     }
 
     protected function _after()

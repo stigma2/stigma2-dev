@@ -22,54 +22,8 @@ class DatabaseInstallationSpec extends ObjectBehavior
         $this->shouldHaveType('Stigma\Installation\Services\DatabaseInstallation');
     }
 
-    public function let(DatabaseValidation $databaseValidation, ConfigFileGenerator $fileGenerator)
+    public function let(ConfigFileGenerator $fileGenerator)
     {
-        $this->beConstructedWith($databaseValidation, $fileGenerator);
-    }
-
-    public function it_setup_database(DatabaseValidation $databaseValidation)
-    { 
-        $data = $this->data ;
-        $databaseValidation->passes($this->data)->shouldBeCalled()->willReturn(true); 
-        $this->setup($data)->shouldReturn(true);
-    }
-
-    public function it_validate_values(DatabaseValidation $databaseValidation)
-    { 
-        $databaseValidation->passes($this->data)->shouldBeCalled()->willReturn(true); 
-        $this->validate($this->data)->shouldReturn(true);
-    }
-
-    public function it_throw_exception_when_parameters_are_invalid(DatabaseValidation $databaseValidation)
-    {
-        $data = $this->data ;
-        unset($data['host']);
-        $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->validate($data)->shouldReturn(false); 
-
-        $data = $this->data ;
-        unset($data['dbuser']);
-        $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->validate($data)->shouldReturn(false); 
-
-        $data = $this->data ;
-        unset($data['password']);
-        $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->validate($data)->shouldReturn(false); 
-
-        $data = $this->data ;
-        unset($data['database']);
-        $databaseValidation->passes($data)->shouldBeCalled()->willReturn(false); 
-        $this->validate($data)->shouldReturn(false); 
-    }
-
-    public function it_setup(DatabaseValidation $databaseValidation , ConfigFileGenerator $fileGenerator)
-    { 
-        $data = $this->data ;
-
-        $databaseValidation->passes($data)->shouldBeCalled()->willReturn(true); 
-
-        $fileGenerator->make()->shouldBeCalled()->willReturn(true);
-        $this->setup($data)->shouldReturn(true) ;
-    }
+        $this->beConstructedWith([], $fileGenerator);
+    } 
 }

@@ -20,3 +20,4 @@ Stigma project use codecept to run tests.
 For running test,
 
 * Make a file  .env.testing (ref to .env.example) 
+* bin/codecept run
