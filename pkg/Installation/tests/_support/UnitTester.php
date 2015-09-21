@@ -25,31 +25,15 @@ class UnitTester extends \Codeception\Actor
     * Define custom actions here
     */
 
-    /*
-    public function expectedException($exception ,$fn)
+    public function expectedInvalidParameterException($fn)
     {
         try {
             $fn() ;
-        } catch(\Exception $e) { 
-            if(get_class($e) == $exception or get_parent_class($e) == $exception){
-                $this->assertTrue(true);
-            }else{
-                $this->assertTrue(false,"Expected exception is ".get_class($exception)); 
-            }
-        }
-    }*/
-
-    public function expectedInvalidParameterException($exception ,$fn)
-    {
-        try {
-            $fn() ;
-            $this->fail("Expected exception is ".get_class($exception)); 
+            $this->fail("Expected exception is InvalidParameterException "); 
         } catch(InvalidParameterException $e) { 
-            if(get_class($e) == get_class($exception)){
-                $this->assertTrue(true);
-            }else{
-                $this->fail("Expected exception is ".get_class($exception)); 
-            }
+            $this->assertTrue(true);
+        } catch( \Exception $e) {
+            $this->fail("Expected exception is ".get_class($exception)); 
         }
     }
 

@@ -1,5 +1,5 @@
 <?php
 return [
-    'host' => {{host}}, 
-    'port' => {{port}}
+    'host' => '{{host}}', 
+    'port' => '{{port}}'
     ];
