@@ -1,3 +1,4 @@
+/.idea
 /vendor
 /node_modules
 /public/bower_components
@@ -6,3 +7,4 @@ Homestead.yaml
 .env.testing
 
 tests/_output/*
+.DS_Store
