@@ -1,9 +1,12 @@
 <?php
 namespace Stigma\Installation\Services ;
+
 use Stigma\Installation\Validators\DatabaseValidation ;
 use Stigma\Installation\Contracts\ConfigFileGenerator ;
+use Stigma\Installation\Contracts\InstallationInterface ;
+use Stigma\Installation\Services\Installation ;
 
-class DatabaseInstallation
+class DatabaseInstallation extends Installation implements InstallationInterface
 {
     protected $validators  ;
     protected $fileGenerator ;
@@ -15,22 +18,12 @@ class DatabaseInstallation
         $this->fileGenerator = $fileGenerator ;
     }
     
-    public function setup(array $value)
+    public function setup($value)
     {
         if(! $this->validate($value)){
             return false ;
         } 
 
         return $this->fileGenerator->make($value) ; 
-    }
-
-    public function validate(array $value)
-    { 
-        foreach($this->validators as $validation) { 
-            if(!$validation->passes($value)) {
-                return false; // or throw exception
-            }
-        }
-        return true ;
-    }
+    } 
 }

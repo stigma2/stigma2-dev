@@ -5,6 +5,9 @@ STIGMA use a nagios , grafana , influxDB for monitoring resource.
 
 ### INSTALLATION 
 
+* composer install 
+* make .env in ROOT
+
 ### REQUIRE
 * php > 5.5
 * mysql > 5
