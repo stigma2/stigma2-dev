@@ -6,53 +6,18 @@ use App\Interfaces\NagiosInterface;
 
 class Nagios implements NagiosInterface
 {
+    private $_host_status = array("0" => "up", "1" => "down", "2" => "unreachable", "9" => "pending");
+    private $_service_status = array("0" => "ok", "1" => "warning", "2" => "critical", "3" => "unknown", "9" => "pending");
+
     public function listHosts($status)
     {
-        // request API call
-        $result;
-
-        switch ($status) {
-            case '0':
-                $result = array(
-                    array("host_name" => "node00", "ip" => "127.0.0.1", "status" => "Up", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-
-            case '1':
-                $result = array(
-                    array("host_name" => "node01", "ip" => "127.0.0.1", "status" => "Down", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-
-            case '2':
-                $result = array(
-                    array("host_name" => "node02", "ip" => "127.0.0.1", "status" => "Unreachable", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-
-            case '9':
-                $result = array(
-                    array("host_name" => "node03", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-            
-            default:
-                $result = array(
-                    array("host_name" => "node00", "ip" => "127.0.0.1", "status" => "Up", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node01", "ip" => "127.0.0.1", "status" => "Down", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node02", "ip" => "127.0.0.1", "status" => "Unreachable", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node03", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $command = "/nagios_dev/api/listHosts";
+        // $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true";
+        if (isset($this->_host_status[$status])) {
+            // $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true&hoststatus=".$this->_host_status[$status];
+            $command = "/nagios_dev/api/listHosts?hoststatus=".$this->_host_status[$status];
         }
+        $result = $this->call($command);
 
         return $result;
     }
@@ -81,60 +46,13 @@ class Nagios implements NagiosInterface
 
     public function listServices($status)
     {
-        // request API call
-        $result = array();
-
-        switch ($status) {
-            case '0':
-                $result = array(
-                    array("host_name" => "node00", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "OK", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-
-            case '1':
-                $result = array(
-                    array("host_name" => "node01", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Warning", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-
-            case '2':
-                $result = array(
-                    array("host_name" => "node02", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Unknown", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-
-            case '3':
-                $result = array(
-                    array("host_name" => "node03", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Critical", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-
-            case '9':
-                $result = array(
-                    array("host_name" => "node04", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
-            
-            default:
-                $result = array(
-                    array("host_name" => "node00", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "OK", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node01", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Warning", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node02", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Unknown", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node03", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Critical", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                    array("host_name" => "node04", "service_name" => "Ping", "ip" => "127.0.0.1", "status" => "Pending", 
-                        "cpu" => "1", "memory" => "20", "network" => "4"),
-                );
-                break;
+        $command = "/nagios/cgi-bin/statusjson.cgi?query=servicelist&details=true";
+        // $command = "/nagios_dev/api/listServices";
+        if (isset($this->_service_status[$status])) {
+            $command = "/nagios/cgi-bin/statusjson.cgi?query=servicelist&details=true&servicestatus=".$this->_service_status[$status];
+            // $command = "/nagios_dev/api/listServices?servicestatus=".$this->_service_status[$status];
         }
+        $result = $this->call($command);
 
         return $result;
     }
@@ -157,6 +75,35 @@ class Nagios implements NagiosInterface
             "In Scheduled Downtime?" => "NO",
             "Last Update" => "09-07-2015 16:29:59  ( 0d 0h 0m 4s ago)",
         );
+
+        return $result;
+    }
+
+    private function call($command)
+    {
+        $username = env("NAGIOS_USERNAME");
+        $password = env("NAGIOS_PASSWORD");
+
+        $domain = env("NAGIOS_DOMAIN");
+        $url = $domain.$command;
+
+        $port = env("NAGIOS_PORT");
+        $timeout = env("NAGIOS_TIMEOUT");
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PORT, $port);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_COOKIE, "");
+        curl_setopt($ch, CURLOPT_USERPWD, $username.":".$password);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        // curl_setopt($ch, CURLOPT_POST, 1);
+        // curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+
+        $curl_errno = curl_errno($ch);
+        $curl_error = curl_error($ch);
 
         return $result;
     }

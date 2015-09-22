@@ -3,12 +3,13 @@ define(['./module'],
         'use strict';
 
         app.controller('ServerServiceListCtrl', [
-            '$scope', '$state', 'ServerServiceFactory',
-            function($scope, $state, ServerServiceFactory) {
+            '$scope', '$state', 'ServerServiceFactory', 'TimestampFormatFactory',
+            function($scope, $state, ServerServiceFactory, TimestampFormatFactory) {
                 function services(status) {
                     ServerServiceFactory.list(status)
-                        .then(function(data) {
-                            $scope.services = data;
+                        .then(function(response) {
+                            var res = JSON.parse(response);
+                            $scope.services = res.data.servicelist;
                         });
                 };
 
@@ -30,6 +31,14 @@ define(['./module'],
 
                 $scope.detailService = function(service_name) {
                     $state.go('serverServiceDetail', {service_name: service_name});
+                };
+
+                $scope.convertDate = function(timestamp) {
+                    return TimestampFormatFactory.convertDateToYYYYMMDDhhmmss(timestamp);
+                };
+
+                $scope.getDuration = function(timestamp) {
+                    return TimestampFormatFactory.getDurationToNow(timestamp);
                 };
                 
                 services('');
