@@ -16,7 +16,7 @@ class DatabaseConnectionValidationCest
     // tests
     public function testValidate(UnitTester $I)
     {
-       $data = [
+        $data = [
             'host'=> 'localhost',
             'dbuser'=> 'homestead', 
             'password'=>'secret',

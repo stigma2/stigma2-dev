@@ -29,25 +29,25 @@ class DatabaseInstallationCest
 
         $I->assertTrue($databaseInstallation->setup($data)) ;
 
-        $I->expectedInvalidParameterException(new InvalidParameterException  , function() use($data,$databaseInstallation){ 
+        $I->expectedInvalidParameterException( function() use($data,$databaseInstallation){ 
             $tmpData = $data ;
             unset($tmpData['host']);
             $databaseInstallation->setup($tmpData);
         }) ; 
 
-        $I->expectedInvalidParameterException(new InvalidParameterException  , function() use($data,$databaseInstallation){ 
+        $I->expectedInvalidParameterException(function() use($data,$databaseInstallation){ 
             $tmpData = $data ;
             unset($tmpData['dbuser']);
             $databaseInstallation->setup($tmpData);
         }) ; 
 
-        $I->expectedInvalidParameterException(new InvalidParameterException  , function() use($data,$databaseInstallation){ 
+        $I->expectedInvalidParameterException( function() use($data,$databaseInstallation){ 
             $tmpData = $data ;
             unset($tmpData['password']);
             $databaseInstallation->setup($tmpData);
         }) ; 
 
-        $I->expectedInvalidParameterException(new InvalidParameterException  , function() use($data,$databaseInstallation){ 
+        $I->expectedInvalidParameterException(function() use($data,$databaseInstallation){ 
             $tmpData = $data ;
             unset($tmpData['port']);
             $databaseInstallation->setup($tmpData);
