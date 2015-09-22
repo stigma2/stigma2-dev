@@ -11,9 +11,11 @@ class Nagios implements NagiosInterface
 
     public function listHosts($status)
     {
-        $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true";
+        $command = "/nagios_dev/api/listHosts";
+        // $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true";
         if (isset($this->_host_status[$status])) {
-            $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true&hoststatus=".$this->_host_status[$status];
+            // $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true&hoststatus=".$this->_host_status[$status];
+            $command = "/nagios_dev/api/listHosts?hoststatus=".$this->_host_status[$status];
         }
         $result = $this->call($command);
 
@@ -45,8 +47,10 @@ class Nagios implements NagiosInterface
     public function listServices($status)
     {
         $command = "/nagios/cgi-bin/statusjson.cgi?query=servicelist&details=true";
+        // $command = "/nagios_dev/api/listServices";
         if (isset($this->_service_status[$status])) {
             $command = "/nagios/cgi-bin/statusjson.cgi?query=servicelist&details=true&servicestatus=".$this->_service_status[$status];
+            // $command = "/nagios_dev/api/listServices?servicestatus=".$this->_service_status[$status];
         }
         $result = $this->call($command);
 
@@ -83,8 +87,8 @@ class Nagios implements NagiosInterface
         $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
 
-        $port = "9090";
-        $timeout = "3";
+        $port = env("NAGIOS_PORT");
+        $timeout = env("NAGIOS_TIMEOUT");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
