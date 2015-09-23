@@ -15,6 +15,7 @@ class InstallationServiceProvider extends ServiceProvider
     {
         $this->registerDatabaseInstallation();
         $this->registerNagiosInstallation(); 
+        $this->registerGrafanaInstallation(); 
     }
 
     private function registerNagiosInstallation()
@@ -56,4 +57,23 @@ class InstallationServiceProvider extends ServiceProvider
         });
 
     }
+
+    private function registerGrafanaInstallation()
+    {
+        $this->app->bind('Stigma\Installation\Generators\GrafanaFileGenerator', function(){
+            return new \Stigma\Installation\Generators\DatabaseFileGenerator(
+                __DIR__.'/tmpl/grafana.php', 
+                config_path().'/grafana.php') ;
+        }) ;
+
+        $this->app->bind('Stigma\Installation\Services\GrafanaInstallation',function(){
+            return new \Stigma\Installation\Services\GrafanaInstallation(
+                [
+                ],
+                \App::make('Stigma\Installation\Generators\GrafanaFileGenerator') 
+            );
+        });
+
+    }
+
 }

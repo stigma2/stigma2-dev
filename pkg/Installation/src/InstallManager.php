@@ -23,4 +23,10 @@ class InstallManager
         return $this->app->make('Stigma\Installation\Services\NagiosInstallation');
     }
 
+    public function getGrafanaInstallation()
+    {
+        return $this->app->make('Stigma\Installation\Services\GrafanaInstallation');
+    }
+
+
 }

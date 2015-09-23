@@ -18,5 +18,11 @@ Route::get('/', function () {
 Route::group(array('prefix' => 'api'), function()
 {
     Route::resource('server/hosts', 'ServerHostsController');
-    Route::resource('server/services', 'ServerServicesController');
+    Route::resource('server/services','ServerServicesController');
+});
+
+Route::group(array('prefix' => 'admin'), function()
+{
+    Route::get('/',function(){
+    }) ;
 });
