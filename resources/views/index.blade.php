@@ -48,6 +48,8 @@
                     <li class="heading">Server</li>
                     <li><a ui-sref="serverHostList">Host</a></li>
                     <li><a ui-sref="serverServiceList">Service</a></li>
+                    <li class="heading">History</li>
+                    <li><a ui-sref="historyLive">Live</a></li>
                 </ul>
             </aside>
             <section class="large-10 columns">

@@ -3,12 +3,17 @@ define(['./module', 'angular'],
         'use strict';
 
         app.controller('ServerHostListCtrl', [
-            '$scope', '$state', 'ServerHostFactory',
-            function($scope, $state, ServerHostFactory) {
+            '$scope', '$state', 'ServerHostFactory', 'TimestampFormatFactory',
+            function($scope, $state, ServerHostFactory, TimestampFormatFactory) {
                 function hosts(status) {
                     ServerHostFactory.list(status)
-                        .then(function(data) {
-                            $scope.hosts = data;
+                        .then(function(response) {
+                            // console.log(response);
+                            // var res = JSON.parse(response);
+                            // console.log(res);
+                            // $scope.hosts = res.data.hostlist;
+                            // $scope.hosts = response.result.data.hostlist;
+                            $scope.hosts = response.data.hostlist;
                         });
                 };
 
@@ -26,6 +31,14 @@ define(['./module', 'angular'],
 
                 $scope.detailHost = function(host_name) {
                     $state.go('serverHostDetail', {host_name: host_name});
+                };
+
+                $scope.convertDate = function(timestamp) {
+                    return TimestampFormatFactory.convertDateToYYYYMMDDhhmmss(timestamp);
+                };
+
+                $scope.getDuration = function(timestamp) {
+                    return TimestampFormatFactory.getDurationToNow(timestamp);
                 };
                 
                 hosts('');

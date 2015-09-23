@@ -34,7 +34,8 @@ class ServerHostsController extends Controller
         $status = $request->input("status");
         $result = $this->nagiosAPI->listHosts($status);
 
-        return response()->json($result);
+        // return response()->json($result);
+        return $result;
     }
 
     /**
