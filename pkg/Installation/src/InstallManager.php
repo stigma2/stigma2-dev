@@ -2,15 +2,18 @@
 
 namespace Stigma\Installation;
 
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Foundation\Application ;
+use Stigma\Installation\Contracts\InstallCheckerInterface ;
 
 class InstallManager
 {
     protected $app ; 
+    protected $installChecker ; 
 
-    public function __construct(Application $app)
+    public function __construct(Application $app, InstallCheckerInterface $installChecker)
     {
         $this->app = $app ;
+        $this->installChecker = $installChecker ;
     }
 
     public function getDatabaseInstallation()
@@ -26,7 +29,11 @@ class InstallManager
     public function getGrafanaInstallation()
     {
         return $this->app->make('Stigma\Installation\Services\GrafanaInstallation');
+    } 
+
+    public function verifyToBeInstalled()
+    {
+        $ret = $this->installChecker->check() ;
+        return $ret ;
     }
-
-
 }

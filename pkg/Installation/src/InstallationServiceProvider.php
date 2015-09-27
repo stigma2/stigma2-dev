@@ -4,6 +4,8 @@ namespace Stigma\Installation ;
 use Illuminate\Support\ServiceProvider;
 use Stigma\Installation\Validators\DatabaseValidation ;
 use Stigma\Installation\Generators\DatabaseFileGenerator ;
+use Stigma\Installation\InstallManager ;
+use Stigma\Installation\Services\InstallChecker ;
 
 class InstallationServiceProvider extends ServiceProvider
 {
@@ -13,9 +15,17 @@ class InstallationServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->registerInstallManager() ;
         $this->registerDatabaseInstallation();
         $this->registerNagiosInstallation(); 
         $this->registerGrafanaInstallation(); 
+    }
+
+    private function registerInstallManager()
+    {
+        $this->app->bind('Stigma\Installation\InstallManager',function(){
+            return new InstallManager($this->app,new InstallChecker(config_path()));
+        });
     }
 
     private function registerNagiosInstallation()

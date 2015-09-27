@@ -36,8 +36,7 @@ class NagiosInstallationCest
     }
 
     public function testValidate(UnitTester $I)
-    { 
-
+    {
         $I->expectedInvalidParameterException(function(){ 
             $data = [
                 'host' => 'localhost'

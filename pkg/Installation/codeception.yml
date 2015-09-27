@@ -1,4 +1,4 @@
-namespace: Stigma\Installation\
+namespace: Stigma\Installation
 actor: Tester
 paths:
     tests: tests

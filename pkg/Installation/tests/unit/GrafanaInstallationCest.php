@@ -32,7 +32,6 @@ class GrafanaInstallationCest
         $generatedFile = file_get_contents(config_path().'/grafana.php') ;
         $comparedFile = file_get_contents(__DIR__.'/../_stubs/grafana.php') ;
 
-        $I->assertEquals($comparedFile,$generatedFile  ); 
-
+        $I->assertEquals($comparedFile,$generatedFile ); 
     }
 }

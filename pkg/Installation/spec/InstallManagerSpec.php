@@ -7,6 +7,8 @@ use Prophecy\Argument;
 use Illuminate\Contracts\Foundation\Application;
 use Stigma\Installation\Services\DatabaseInstallation ;
 use Stigma\Installation\Services\NagiosInstallation ;
+use Stigma\Installation\Contracts\InstallCheckerInterface;
+
 
 class InstallManagerSpec extends ObjectBehavior
 {
@@ -15,9 +17,9 @@ class InstallManagerSpec extends ObjectBehavior
         $this->shouldHaveType('Stigma\Installation\InstallManager');
     }
 
-    public function let(Application $app)
+    public function let(Application $app,InstallCheckerInterface $installChecker)
     {
-        $this->beConstructedWith($app) ;
+        $this->beConstructedWith($app, $installChecker) ;
     }
 
     public function it_return_databaseInstallation(Application $app,DatabaseInstallation $databaseInstallation)
@@ -32,5 +34,11 @@ class InstallManagerSpec extends ObjectBehavior
         $app->make('Stigma\Installation\Services\NagiosInstallation')->shouldBeCalled()->willReturn($nagiosInstallation) ;
 
         $this->getNagiosInstallation()->shouldReturnAnInstanceOf('Stigma\Installation\Services\NagiosInstallation');
+    }
+
+    public function it_checks_installed(InstallCheckerInterface $installChecker)
+    {
+        $installChecker->check()->shouldBeCalled()->willReturn(true);
+        $this->verifyToBeInstalled()->shouldReturn(true) ;
     }
 }
