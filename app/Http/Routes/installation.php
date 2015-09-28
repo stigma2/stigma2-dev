@@ -9,6 +9,6 @@ Route::group(array('as'=>'installation::'), function(){
 
     
     Route::post('install/database/setup', array('as'=>'database.install', 'uses' => 'InstallationController@installDatabase'));
-    //Route::post('install/nagios', array('as'=>'nagios', 'uses' => 'InstallationController@installNagios'));
+    Route::post('install/nagios/setup', array('as'=>'nagios.install', 'uses' => 'InstallationController@installNagios'));
     //Route::post('install/grafana', array('as'=>'grafana', 'uses' => 'InstallationController@installGrafana'));
 });

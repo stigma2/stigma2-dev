@@ -28,6 +28,12 @@ class InstallationController extends Controller
         return view('installation.nagios');
     }
 
+    public function installGrafanaView()
+    {
+        return view('installation.grafana');
+    }
+
+
 
     public function installDatabase(Request $req)
     {
@@ -47,4 +53,21 @@ class InstallationController extends Controller
             return back()->withInput() ;
         }
     } 
+
+    public function installNagios(Request $req)
+    {
+        $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
+
+        try { 
+
+            $data = $req->only('host','username','password','database') ; 
+            $data['port'] = $req->input('port','80') ;
+
+            $nagiosInstallation->setup($data)  ;
+
+            return redirect()->route('installation::grafana.view') ;
+        }catch (InvalidParameterException $e) { 
+            return back()->withInput() ;
+        } 
+    }
 }

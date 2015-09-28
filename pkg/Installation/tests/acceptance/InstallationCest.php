@@ -33,8 +33,8 @@ class InstallationCest
         $I->click('#next-btn') ; 
 
         $I->amOnPage('/install/database') ;
-    }
-
+    } 
+    
     public function testToInstallDatabase(AcceptanceTester $I)
     { 
         $I->wantTo('Install database') ; 
@@ -44,9 +44,7 @@ class InstallationCest
         $I->fillField('database','stigma') ;
         $I->fillField('dbuser','homestead') ;
         $I->fillField('password','secret') ;
-        $I->click('#next-btn') ;
-
-        $I->amOnPage('/install/nagios') ;
+        $I->click('#next-btn') ; 
 
         $I->seeFileFound('database.php', config_path()) ;
     }
@@ -54,7 +52,7 @@ class InstallationCest
 
     public function testToInstallDatabaseWhenParametersAreInvalid(AcceptanceTester $I)
     { 
-        $I->wantTo('Fail to Install database') ; 
+        $I->wantTo('Fail when parameters are invalid') ; 
         
         $I->amOnPage('/install/database') ; 
         $I->fillField('host','localhost') ;
@@ -66,7 +64,7 @@ class InstallationCest
 
     public function testToInstallDatabaseWhenDatabaseConnectionIsOff(AcceptanceTester $I)
     { 
-        $I->wantTo('Fail to Install database') ; 
+        $I->wantTo('Fail when database connection is off') ; 
         
         $I->amOnPage('/install/database') ; 
         $I->fillField('host','localhost') ;
@@ -75,8 +73,29 @@ class InstallationCest
         $I->fillField('password','secret') ;
         $I->click('#next-btn') ; 
         $I->see('Install Database') ; 
-    }
+    } 
 
+    public function testToInstallNagios(AcceptanceTester $I)
+    {
+        foreach(['nagios'] as $fileName) {
+            if(file_exists(config_path()."/$fileName.php" )){ 
+                $I->deleteFile(config_path().'/'.$fileName.'.php') ;
+            }
+        } 
+
+        $I->wantTo('visit Nagios Install Page') ;
+        $I->amOnPage('install/nagios') ;
+        $I->see('Install Nagios') ;
+
+        $I->fillField('host','localhost') ;
+        $I->fillField('port','80') ;
+        $I->fillField('username','nagios') ;
+        $I->fillField('password','secret') ;
+        $I->click('#next-btn') ;
+
+        $I->seeFileFound('nagios.php', config_path()) ;
+        $I->see('Install Grafana') ; 
+    }
 
     public function testToInstall(AcceptanceTester $I)
     { 
@@ -91,4 +110,5 @@ class InstallationCest
         $I->amOnPage('/') ;
         $I->see('installed') ;
     }
+
 }

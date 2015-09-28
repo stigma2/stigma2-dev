@@ -1,7 +1,8 @@
 @extends('layouts.installation')
 
 @section('contents') 
-{!!Form::open(array('route' => 'installation::database.install' ,'method' => 'post')) !!} 
+<h1>Install Nagios</h1>
+{!!Form::open(array('route' => 'installation::nagios.install' ,'method' => 'post')) !!} 
     <div class="form-group">
         <label>Host</label>
         {!!Form::text('host')!!}
