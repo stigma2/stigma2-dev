@@ -14,7 +14,7 @@ class InstallChecker implements InstallCheckerInterface
 
     public function check()
     {
-        foreach(['nagios','grafana']  as $fileName) { 
+        foreach(['nagios','grafana','influxdb']  as $fileName) { 
             if(! file_exists($this->configPath."/$fileName.php")) {
                 return false ;
             }

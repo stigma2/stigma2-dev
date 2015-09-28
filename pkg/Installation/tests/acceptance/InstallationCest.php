@@ -89,12 +89,54 @@ class InstallationCest
 
         $I->fillField('host','localhost') ;
         $I->fillField('port','80') ;
-        $I->fillField('username','nagios') ;
-        $I->fillField('password','secret') ;
         $I->click('#next-btn') ;
 
         $I->seeFileFound('nagios.php', config_path()) ;
         $I->see('Install Grafana') ; 
+    }
+
+    public function testToInstallGrafana(AcceptanceTester $I)
+    {
+        foreach(['grafana'] as $fileName) {
+            if(file_exists(config_path()."/$fileName.php" )){ 
+                $I->deleteFile(config_path().'/'.$fileName.'.php') ;
+            }
+        } 
+
+        $I->wantTo('visit Grafana Install Page') ;
+        $I->amOnPage('install/grafana') ;
+        $I->see('Install Grafana') ;
+
+        $I->fillField('host','localhost') ;
+        $I->fillField('port','80') ;
+        $I->fillField('username','nagios') ;
+        $I->fillField('password','secret') ;
+        $I->click('#next-btn') ;
+
+        $I->seeFileFound('grafana.php', config_path()) ;
+        $I->see('Install InfluxDB') ; 
+    }
+
+    public function testToInstallInfluxdb(AcceptanceTester $I)
+    {
+        foreach(['influxdb'] as $fileName) {
+            if(file_exists(config_path()."/$fileName.php" )){ 
+                $I->deleteFile(config_path().'/'.$fileName.'.php') ;
+            }
+        } 
+
+        $I->wantTo('visit Influxdb Install Page') ;
+        $I->amOnPage('install/influxdb') ;
+        $I->see('Install InfluxDB') ; 
+
+        $I->fillField('host','localhost') ;
+        $I->fillField('port','80') ;
+        $I->fillField('username','influxdb') ;
+        $I->fillField('password','secret') ;
+        $I->click('#next-btn') ;
+
+        $I->seeFileFound('influxdb.php', config_path()) ;
+        //$I->see('Install InfluxDB') ; 
     }
 
     public function testToInstall(AcceptanceTester $I)
@@ -105,10 +147,9 @@ class InstallationCest
             if(!file_exists(config_path()."/$fileName.php" )){ 
                 file_put_contents((config_path().'/'.$fileName.'.php'),'') ;
             }
-        } 
+        }
 
         $I->amOnPage('/') ;
         $I->see('installed') ;
     }
-
 }

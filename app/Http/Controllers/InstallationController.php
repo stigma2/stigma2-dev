@@ -33,7 +33,10 @@ class InstallationController extends Controller
         return view('installation.grafana');
     }
 
-
+    public function installInfluxdbView()
+    {
+        return view('installation.influxdb');
+    }
 
     public function installDatabase(Request $req)
     {
@@ -60,7 +63,7 @@ class InstallationController extends Controller
 
         try { 
 
-            $data = $req->only('host','username','password','database') ; 
+            $data = $req->only('host') ; 
             $data['port'] = $req->input('port','80') ;
 
             $nagiosInstallation->setup($data)  ;
@@ -70,4 +73,37 @@ class InstallationController extends Controller
             return back()->withInput() ;
         } 
     }
+
+    public function installGrafana(Request $req)
+    {
+        $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
+
+        try { 
+
+            $data = $req->only('host','port','username','password') ; 
+
+            $grafanaInstallation->setup($data)  ;
+
+            return redirect()->route('installation::influxdb.view') ;
+        }catch (InvalidParameterException $e) { 
+            return back()->withInput() ;
+        } 
+    }
+
+    public function installInfluxdb(Request $req)
+    {
+        $influxdbInstallation = $this->installManager->getInfluxdbInstallation() ;
+
+        try { 
+
+            $data = $req->only('host','port','username','password') ; 
+
+            $influxdbInstallation->setup($data)  ;
+
+            //return redirect()->route('installation::influxdb.view') ;
+        }catch (InvalidParameterException $e) { 
+            return back()->withInput() ;
+        } 
+    }
+
 }

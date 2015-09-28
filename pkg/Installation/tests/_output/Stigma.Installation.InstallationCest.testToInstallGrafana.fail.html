@@ -1,8 +1,8 @@
 @extends('layouts.installation')
 
 @section('contents') 
-<h1>Install Grafana</h1>
-{!!Form::open(array('route' => 'installation::grafana.install' ,'method' => 'post')) !!} 
+<h1>Install Influx DB</h1>
+{!!Form::open(array('route' => 'installation::influxdb.install' ,'method' => 'post')) !!} 
     <div class="form-group">
         <label>Host</label>
         {!!Form::text('host')!!}

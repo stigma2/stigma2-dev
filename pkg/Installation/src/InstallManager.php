@@ -31,6 +31,11 @@ class InstallManager
         return $this->app->make('Stigma\Installation\Services\GrafanaInstallation');
     } 
 
+    public function getInfluxdbInstallation()
+    {
+        return $this->app->make('Stigma\Installation\Services\InfluxdbInstallation');
+    }
+
     public function verifyToBeInstalled()
     {
         $ret = $this->installChecker->check() ;

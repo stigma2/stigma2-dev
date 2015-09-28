@@ -19,6 +19,7 @@ class InstallationServiceProvider extends ServiceProvider
         $this->registerDatabaseInstallation();
         $this->registerNagiosInstallation(); 
         $this->registerGrafanaInstallation(); 
+        $this->registerInfluxdbInstallation() ;
     }
 
     private function registerInstallManager()
@@ -78,12 +79,30 @@ class InstallationServiceProvider extends ServiceProvider
 
         $this->app->bind('Stigma\Installation\Services\GrafanaInstallation',function(){
             return new \Stigma\Installation\Services\GrafanaInstallation(
-                [
+                [ 
+                    \App::make('Stigma\Installation\Validators\GrafanaParameterValidation'), 
                 ],
                 \App::make('Stigma\Installation\Generators\GrafanaFileGenerator') 
             );
         });
-
     }
 
+    private function registerInfluxdbInstallation()
+    {
+        $this->app->bind('Stigma\Installation\Generators\InfluxdbFileGenerator', function(){
+            return new \Stigma\Installation\Generators\InfluxdbFileGenerator(
+                __DIR__.'/tmpl/influxdb.php', 
+                config_path().'/influxdb.php') ;
+        }) ;
+
+
+        $this->app->bind('Stigma\Installation\Services\InfluxdbInstallation',function(){
+            return new \Stigma\Installation\Services\InfluxdbInstallation(
+                [
+                    \App::make('Stigma\Installation\Validators\InfluxdbParameterValidation'), 
+                ],
+                \App::make('Stigma\Installation\Generators\InfluxdbFileGenerator') 
+            );
+        });
+    }
 }

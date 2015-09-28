@@ -34,4 +34,17 @@ class GrafanaInstallationCest
 
         $I->assertEquals($comparedFile,$generatedFile ); 
     }
+
+    public function testToFailWhenParametersAreInvalid(UnitTester $I)
+    {
+        $I->expectedInvalidParameterException(function(){ 
+            $data = [
+                'host' => 'localhost'
+                ] ;
+            $installManager = \App::make('Stigma\Installation\InstallManager');
+            $grafanaInstallation = $installManager->getGrafanaInstallation() ;
+            $grafanaInstallation->setup($data) ;
+        }); 
+    }
+
 }
