@@ -1,4 +1,5 @@
 define([
+    './DashboardFactory',
     './ServerHostFactory',
     './ServerServiceFactory',
     './TimestampFormatFactory',
