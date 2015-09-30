@@ -1,5 +1,6 @@
 <?php
 namespace Stigma\Installation;
+
 use Stigma\Installation\Exceptions\InvalidParameterException ;
 
 /**
@@ -33,7 +34,7 @@ class UnitTester extends \Codeception\Actor
         } catch(InvalidParameterException $e) { 
             $this->assertTrue(true);
         } catch( \Exception $e) {
-            $this->fail("Expected exception is ".get_class($exception)); 
+            $this->fail("Expected exception is InvalidParameterException,But actual exceptions is ".get_class($e) ); 
         }
     }
 
@@ -48,6 +49,4 @@ class UnitTester extends \Codeception\Actor
             $this->fail("Expected exception is PDOException "); 
         }
     }
-
-
 }

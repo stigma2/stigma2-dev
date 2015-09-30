@@ -1,0 +1,1 @@
+../vendor/jakubledl/dissect/bin/dissect.php

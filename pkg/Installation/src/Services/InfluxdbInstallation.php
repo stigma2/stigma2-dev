@@ -2,15 +2,16 @@
 namespace Stigma\Installation\Services ;
 
 use Stigma\Installation\Contracts\InstallationInterface ;
-use Stigma\Installation\Generators\NagiosFileGenerator ;
-use Stigma\Installation\Services\Installation ;
+use Stigma\Installation\Services\Installation ; 
+use Stigma\Installation\Contracts\ConfigFileGenerator ;
+use Stigma\Installation\Generators\InfluxdbFileGenerator ;
 
-class NagiosInstallation extends Installation implements InstallationInterface
+class InfluxdbInstallation extends Installation implements InstallationInterface 
 {
     protected $fileGenerator ;
     protected $validators ;
 
-    public function __construct(array $validators , NagiosFileGenerator $fileGenerator)
+    public function __construct(array $validators , InfluxdbFileGenerator $fileGenerator)
     {
         $this->fileGenerator = $fileGenerator ;
         $this->validators = $validators ;

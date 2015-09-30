@@ -5,7 +5,7 @@ use Illuminate\Contracts\Validation\Factory ;
 use Stigma\Installation\Contracts\ValidationInterface ;
 use Stigma\Installation\Validators\ParameterValidation ;
 
-class NagiosParameterValidation extends ParameterValidation implements ValidationInterface
+class GrafanaParameterValidation extends ParameterValidation implements ValidationInterface
 { 
     protected $validatorFactory ;
     protected $rules ;
@@ -15,7 +15,9 @@ class NagiosParameterValidation extends ParameterValidation implements Validatio
         $this->validatorFactory = $validatorFactory ;
         $this->rules = [
             'host' => 'required',
-            'port' => 'required'
+            'port' => 'required',
+            'username' => 'required',
+            'password' => 'required',
         ];
     } 
 }

@@ -18,5 +18,20 @@ Route::get('/', function () {
 Route::group(array('prefix' => 'api'), function()
 {
     Route::resource('server/hosts', 'ServerHostsController');
-    Route::resource('server/services', 'ServerServicesController');
+    Route::resource('server/services','ServerServicesController');
 });
+
+Route::group(array('prefix' => 'admin'), function()
+{
+    Route::get('/',function(){
+    }) ;
+});
+
+foreach(File::allFiles(__DIR__.'/Routes') as $partial)
+{
+    require_once $partial->getPathname();
+} 
+
+Route::get('/',['middleware' => 'install.checker', 'uses'=>function(){
+    echo "installed";
+}]);
