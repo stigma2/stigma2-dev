@@ -1,9 +1,7 @@
-/.idea
 /vendor
 /node_modules
-/public/bower_components
-Homestead.yaml
 .env
+<<<<<<< HEAD
 .env.testing
 composer.lock
 
@@ -13,3 +11,5 @@ tests/_output/*
 config/grafana.php
 config/influxdb.php
 config/nagios.php
+=======
+>>>>>>> 5f1753c90bbc431f567c5fe22d0f7c3fd3fb2e50

@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'WelcomeController@index');
 
+<<<<<<< HEAD
 Route::group(array('prefix' => 'api/v1'), function()
 {
     Route::resource('dashboard', 'DashboardController');
@@ -36,3 +35,11 @@ foreach(File::allFiles(__DIR__.'/Routes') as $partial)
 Route::get('/',['middleware' => 'install.checker', 'uses'=>function(){
     echo "installed";
 }]);
+=======
+Route::get('home', 'HomeController@index');
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
+>>>>>>> 5f1753c90bbc431f567c5fe22d0f7c3fd3fb2e50
