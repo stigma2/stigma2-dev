@@ -42,6 +42,9 @@
 			<div class="content">
 				<div class="title">Laravel 5</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
+				<div>
+					<label>Hello~ Openshift.</label>
+				</div>
 			</div>
 		</div>
 	</body>
