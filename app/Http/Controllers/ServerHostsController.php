@@ -27,13 +27,14 @@ class ServerHostsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  Request  $request
      * @return Response
      */
     public function index(Request $request)
     {
         $status = $request->input('status');
-        return response()->json(['name' => 'Abigail', 'state' => 'CA', 'status' => $status]);
         $result = $this->nagiosAPI->listHosts($status);
+        return response()->json(['name' => 'Abigail', 'state' => 'CA', 'result' => $result]);
 
         return $result;
     }
@@ -51,9 +52,10 @@ class ServerHostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  Request  $request
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //
     }
@@ -85,10 +87,11 @@ class ServerHostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         //
     }
