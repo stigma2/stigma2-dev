@@ -59,13 +59,13 @@ class Nagios implements NagiosInterface
         // $timeout = env("NAGIOS_TIMEOUT");
 
         $ch = curl_init();
-        return $url;
         curl_setopt($ch, CURLOPT_URL, $url);
         // curl_setopt($ch, CURLOPT_PORT, $port);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_COOKIE, "");
         curl_setopt($ch, CURLOPT_TIMEOUT, "3");
         $result = curl_exec($ch);
+        return $url;
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         
