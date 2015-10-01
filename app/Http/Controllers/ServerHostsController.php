@@ -29,9 +29,9 @@ class ServerHostsController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $status = Request::input('status');
+        $status = $request->input('status');
         return response()->json(['name' => 'Abigail', 'state' => 'CA', 'status' => $status]);
         $result = $this->nagiosAPI->listHosts($status);
 
