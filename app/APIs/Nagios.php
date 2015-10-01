@@ -54,7 +54,7 @@ class Nagios implements NagiosInterface
         $url = $domain.$command;
 
         // $port = "22180";
-        $timeout = "3";
+        // $timeout = "3";
         // $port = env("NAGIOS_PORT");
         // $timeout = env("NAGIOS_TIMEOUT");
 
@@ -63,9 +63,11 @@ class Nagios implements NagiosInterface
         // curl_setopt($ch, CURLOPT_PORT, $port);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_COOKIE, "");
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, "3");
         $result = curl_exec($ch);
-
-        return $result;
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        
+        return ($httpcode >= 200 && $httpcode < 300) ? $result : false;
     }
 }
