@@ -25,8 +25,8 @@ define(['./module', 'angular'],
                     dd.addClass('active');
                 };
 
-                $scope.detailHost = function(host_name) {
-                    $state.go('serverHostDetail', {host_name: host_name});
+                $scope.detailHost = function(name) {
+                    $state.go('serverHostDetail', {name: name});
                 };
 
                 $scope.convertDate = function(timestamp) {

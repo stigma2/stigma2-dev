@@ -8,8 +8,8 @@ define(['./implement', './module', '../config'],
                     var url = config.get().home + '/api/v1/server/hosts?status=' + status;
                     return implement.httpGetServiceImpl($http, url);
                 },
-                show: function(host_name) {
-                    var url = config.get().home + '/api/v1/server/hosts/' + host_name;
+                show: function(name) {
+                    var url = config.get().home + '/api/v1/server/hosts/' + name;
                     return implement.httpGetServiceImpl($http, url);
                 },
             }
