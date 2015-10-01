@@ -27,12 +27,11 @@ class ServerHostsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  Request  $request
+     * @param  string  $status
      * @return Response
      */
-    public function index(Request $request)
+    public function index($status = null)
     {
-        $status = $request->input("status");
         $result = $this->nagiosAPI->listHosts($status);
 
         return $result;

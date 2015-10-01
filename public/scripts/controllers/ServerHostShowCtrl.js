@@ -11,8 +11,7 @@ define(['./module'],
 
                 ServerHostFactory.show($state.params.name)
                     .then(function(response) {
-                        console.log(response);
-                        $scope.host = response;
+                        $scope.host = response.data.host;
                     });
             }
         ]);

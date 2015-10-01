@@ -5,11 +5,11 @@ define(['./implement', './module', '../config'],
         services.factory('ServerHostFactory', function($http) {
             return {
                 list: function(status) {
-                    var url = config.get().home + '/api/v1/server/hosts?status=' + status;
+                    var url = config.get().home + '/api/v1/server/hosts/status/' + status;
                     return implement.httpGetServiceImpl($http, url);
                 },
                 show: function(name) {
-                    var url = config.get().home + '/api/v1/server/hosts/' + name;
+                    var url = config.get().home + '/api/v1/server/hosts/name/' + name;
                     return implement.httpGetServiceImpl($http, url);
                 },
             }

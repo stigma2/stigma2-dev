@@ -27,6 +27,7 @@ class ServerServicesController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  string  $status
      * @return Response
      */
     public function index($status = null)

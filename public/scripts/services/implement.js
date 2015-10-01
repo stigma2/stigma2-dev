@@ -31,7 +31,7 @@ define(['angular'], function(angular) {
     };
 
     function replaceBlank(string) {
-        return string.replace(/\s/g, '_');
+        return string.replace(/\s/g, '%2B');
     };
 
     return {
