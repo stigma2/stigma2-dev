@@ -156,7 +156,7 @@ return [
          */
 
         Stigma\Installation\InstallationServiceProvider::class,
-
+        Stigma\Database\Repository\RepositoryServiceProvider::class,
     ],
 
     /*
