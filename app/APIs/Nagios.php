@@ -16,7 +16,6 @@ class Nagios implements NagiosInterface
             $command = "api/v1/hosts?hoststatus=".$this->_host_status[$status];
         }
         $result = $this->call($command);
-        dd($result);
 
         return $result;
     }
