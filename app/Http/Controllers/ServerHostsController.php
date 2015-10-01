@@ -31,12 +31,12 @@ class ServerHostsController extends Controller
      */
     public function index()
     {
-        return "Hello~~~";
-        $status = Request::input('status');
-        $result = $this->nagiosAPI->listHosts($status);
-        dd($result);
+        return response()->json(['name' => 'Abigail', 'state' => 'CA']);
+        // $status = Request::input('status');
+        // $result = $this->nagiosAPI->listHosts($status);
+        // dd($result);
 
-        return $result;
+        // return $result;
     }
 
     /**
