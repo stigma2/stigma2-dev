@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::group(array('prefix' => 'api/v1'), function()
+Route::group(['prefix' => 'api/v1'], function()
+// Route::group(array('prefix' => 'api/v1'), function()
 {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('server/hosts', 'ServerHostsController');
