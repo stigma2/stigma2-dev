@@ -19,10 +19,10 @@ class ServerHostsController extends Controller
      * @param NagiosInterface $nagiosAPI
      * @return void
      */
-    // public function __construct(NagiosInterface $nagiosAPI)
-    // {
-    //     $this->nagiosAPI = $nagiosAPI;
-    // }
+    public function __construct(NagiosInterface $nagiosAPI)
+    {
+        $this->nagiosAPI = $nagiosAPI;
+    }
 
     /**
      * Display a listing of the resource.
