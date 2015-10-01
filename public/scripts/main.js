@@ -2,7 +2,7 @@ require.config({
     baseUrl: 'scripts',
     paths: {
         'jquery': '/bower_components/jquery/dist/jquery.min',
-        'modernizr': '/bower_components/modernizr/src/Modernizr',
+        'modernizr': '/bower_components/modernizr/modernizr',
         'angular': '/bower_components/angular/angular.min',
         'ui.router': '/bower_components/angular-ui-router/release/angular-ui-router.min',
         'CryptoJS': '/bower_components/cryptojslib/rollups/hmac-sha256',
