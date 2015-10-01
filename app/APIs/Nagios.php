@@ -49,11 +49,14 @@ class Nagios implements NagiosInterface
 
     private function call($command)
     {
-        $domain = env("NAGIOS_DOMAIN");
+        $domain = "http://106.243.134.121:22180/nagios_dev/";
+        // $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
 
-        $port = env("NAGIOS_PORT");
-        $timeout = env("NAGIOS_TIMEOUT");
+        $port = "22180";
+        $timeout = "3";
+        // $port = env("NAGIOS_PORT");
+        // $timeout = env("NAGIOS_TIMEOUT");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
