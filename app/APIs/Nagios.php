@@ -52,7 +52,6 @@ class Nagios implements NagiosInterface
         $domain = "http://106.243.134.121:22180/nagios_dev/";
         // $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
-        return $url;
 
         // $port = "22180";
         // $timeout = "3";
@@ -60,6 +59,7 @@ class Nagios implements NagiosInterface
         // $timeout = env("NAGIOS_TIMEOUT");
 
         $ch = curl_init();
+        return $url;
         curl_setopt($ch, CURLOPT_URL, $url);
         // curl_setopt($ch, CURLOPT_PORT, $port);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
