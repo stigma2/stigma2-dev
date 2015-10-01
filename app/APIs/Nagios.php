@@ -15,7 +15,6 @@ class Nagios implements NagiosInterface
         if (isset($this->_host_status[$status])) {
             $command = "api/v1/hosts?hoststatus=".$this->_host_status[$status];
         }
-        return $command;
         $result = $this->call($command);
 
         return $result;
@@ -54,14 +53,14 @@ class Nagios implements NagiosInterface
         // $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
 
-        $port = "22180";
+        // $port = "22180";
         $timeout = "3";
         // $port = env("NAGIOS_PORT");
         // $timeout = env("NAGIOS_TIMEOUT");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PORT, $port);
+        // curl_setopt($ch, CURLOPT_PORT, $port);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_COOKIE, "");
         curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
