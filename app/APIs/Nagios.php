@@ -52,6 +52,7 @@ class Nagios implements NagiosInterface
         $domain = "http://106.243.134.121:22180/nagios_dev/";
         // $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
+        return $url;
 
         // $port = "22180";
         // $timeout = "3";
