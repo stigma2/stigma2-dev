@@ -10,8 +10,9 @@ define(['./module'],
                 };
 
                 ServerServiceFactory.show($state.params.service_name)
-                    .then(function(data) {
-                        $scope.service = data;
+                    .then(function(response) {
+                        console.log(response);
+                        $scope.service = response;
                     });
             }
         ]);

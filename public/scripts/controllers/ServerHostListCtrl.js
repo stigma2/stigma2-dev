@@ -8,7 +8,6 @@ define(['./module', 'angular'],
                 function hosts(status) {
                     ServerHostFactory.list(status)
                         .then(function(response) {
-                            console.log(response);
                             $scope.hosts = response.data.hostlist;
                         });
                 };
