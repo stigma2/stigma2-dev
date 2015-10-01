@@ -15,6 +15,7 @@ class Nagios implements NagiosInterface
         if (isset($this->_host_status[$status])) {
             $command = "api/v1/hosts?hoststatus=".$this->_host_status[$status];
         }
+        return $command;
         $result = $this->call($command);
 
         return $result;
