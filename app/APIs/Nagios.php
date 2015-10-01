@@ -65,7 +65,7 @@ class Nagios implements NagiosInterface
         curl_setopt($ch, CURLOPT_COOKIE, "");
         curl_setopt($ch, CURLOPT_TIMEOUT, "3");
         $result = curl_exec($ch);
-        return $url;
+        return $result;
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         
