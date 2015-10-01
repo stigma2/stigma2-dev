@@ -13,5 +13,5 @@ interface NagiosInterface
     
     public function listServices($status);
 
-    //
+    public function showService($name, $servicedescription);
 }

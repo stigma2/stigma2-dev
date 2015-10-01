@@ -24,12 +24,12 @@ define(['./module'],
                     dd.addClass('active');
                 };
 
-                $scope.detailHost = function(host_name) {
-                    $state.go('serverHostDetail', {host_name: host_name});
+                $scope.detailHost = function(name) {
+                    $state.go('serverHostDetail', {name: name});
                 };
 
-                $scope.detailService = function(service_name) {
-                    $state.go('serverServiceDetail', {service_name: service_name});
+                $scope.detailService = function(name, servicedescription) {
+                    $state.go('serverServiceDetail', {name: name, servicedescription: servicedescription});
                 };
 
                 $scope.convertDate = function(timestamp) {

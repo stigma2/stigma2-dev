@@ -39,9 +39,9 @@ class Nagios implements NagiosInterface
         return $result;
     }
 
-    public function showService($name)
+    public function showService($name, $servicedescription)
     {
-        $command = "api/v1/services/".$name;
+        $command = "api/v1/services/".$name."?servicedescription=".$servicedescription;
         $result = $this->call($command);
 
         return $result;

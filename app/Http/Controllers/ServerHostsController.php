@@ -69,7 +69,7 @@ class ServerHostsController extends Controller
     {
         $result = $this->nagiosAPI->showHost($name);
 
-        return response()->json($result);
+        return $result;
     }
 
     /**

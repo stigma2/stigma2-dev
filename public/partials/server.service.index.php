@@ -12,16 +12,6 @@
                     <dd class="hide-for-small-only"><a ng-click="servicesFilter('9', $event)">Pending</a></dd>
                 </dl>
             </div>
-            <!-- <div class="large-4 columns right">
-                <div class="row collapse">
-                    <div class="small-10 columns">
-                        <input type="text" placeholder="Search" ng-model="searchText">
-                    </div>
-                    <div class="small-2 columns">
-                        <a href="#" class="button postfix"><i class="fi-magnifying-glass"></i></a>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <table>
             <thead>
@@ -38,7 +28,7 @@
             <tbody ng-repeat="(key, host) in services" ng-show="services != null">
                 <tr ng-repeat="(key, service) in host">
                     <td><a ng-click="detailHost(service.host_name)">{{ service.host_name }}</a></td>
-                    <td><a ng-click="detailService(service.description)">{{ service.description }}</a></td>
+                    <td><a ng-click="detailService(service.host_name, service.description)">{{ service.description }}</a></td>
                     <td>
                           <span class="label success" style="width: 100%;" ng-if="service.last_hard_state == '0'">OK</span>
                           <span class="label warning" style="width: 100%;" ng-if="service.last_hard_state == '1'">WARNING</span>
