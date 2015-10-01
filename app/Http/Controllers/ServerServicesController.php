@@ -27,12 +27,11 @@ class ServerServicesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  Request  $request
      * @return Response
      */
-    public function index(Request $request)
+    public function index($status)
     {
-        $status = $request->input("status");
+        // $status = $request->input("status");
         $result = $this->nagiosAPI->listServices($status);
 
         return $result;
@@ -62,12 +61,12 @@ class ServerServicesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $name
+     * @param  string  $name
+     * @param  string  $servicedescription
      * @return Response
      */
-    public function show($name)
+    public function show($name, $servicedescription)
     {
-        $servicedescription = $request->input("servicedescription");
         $result = $this->nagiosAPI->showService($name, $servicedescription);
 
         return $result;

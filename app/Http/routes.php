@@ -20,5 +20,6 @@ Route::group(['prefix' => 'api/v1'], function()
 {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('server/hosts', 'ServerHostsController');
-    Route::resource('server/services', 'ServerServicesController');
+    Route::get('server/services/status/{status}', 'ServerServicesController@index');
+    Route::get('server/services/name.servicedescription', 'ServerServicesController@show');
 });

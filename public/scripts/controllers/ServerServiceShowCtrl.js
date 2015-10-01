@@ -11,7 +11,6 @@ define(['./module'],
 
                 ServerServiceFactory.show($state.params.name, $state.params.servicedescription)
                     .then(function(response) {
-                        console.log(response);
                         $scope.service = response;
                     });
             }
