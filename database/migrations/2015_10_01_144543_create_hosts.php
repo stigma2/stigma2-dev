@@ -15,12 +15,13 @@ class CreateHosts extends Migration
         Schema::create('hosts', function (Blueprint $table) {
             $table->string('host_name')->index()->unique();
             $table->string('description') ;
+            $table->string('template_name')->unique() ; //name for using as template 
             $table->string('alias')->index()->unique() ;
+            $table->string('is_template') ;
             $table->string('address') ;
             $table->text('data');
             $table->timestamps();
-        });
-
+        }); 
     }
 
     /**

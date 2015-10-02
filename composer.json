@@ -29,8 +29,7 @@
             "Stigma\\Installation\\" : "pkg/Installation/src",
             "Stigma\\Database\\" : "pkg/Database/src",
             "Stigma\\TemplateBuilder\\" : "pkg/TemplateBuilder/src",
-            "Stigma\\HostManager\\" : "pkg/HostManager/src",
-            "Stigma\\ServiceManager\\" : "pkg/ServiceManager/src",
+            "Stigma\\ObjectManager\\" : "pkg/ObjectManager/src",
             "Stigma\\CommandBuilder\\" : "pkg/CommandBuilder/src",
             "App\\": "app/"
         }

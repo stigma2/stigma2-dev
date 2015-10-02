@@ -9,4 +9,4 @@ modules:
     enabled:
         - PhpBrowser:
             url: http://localhost/myapp
-        - \Stigma\HostManager\Helper\Acceptance
+        - \Stigma\ObjectManager\Helper\Acceptance

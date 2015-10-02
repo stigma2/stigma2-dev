@@ -1,5 +1,5 @@
 <?php
-namespace Stigma\HostManager;
+namespace Stigma\ObjectManager;
 
 /**
  * Inherited Methods

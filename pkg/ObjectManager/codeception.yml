@@ -1,4 +1,4 @@
-namespace: Stigma\HostManager
+namespace: Stigma\ObjectManager
 actor: Tester
 paths:
     tests: tests

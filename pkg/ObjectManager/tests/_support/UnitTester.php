@@ -1,5 +1,5 @@
 <?php
-namespace Stigma\HostManager;
+namespace Stigma\ObjectManager;
 
 /**
  * Inherited Methods
@@ -16,9 +16,9 @@ namespace Stigma\HostManager;
  *
  * @SuppressWarnings(PHPMD)
 */
-class AcceptanceTester extends \Codeception\Actor
+class UnitTester extends \Codeception\Actor
 {
-    use _generated\AcceptanceTesterActions;
+    use _generated\UnitTesterActions;
 
    /**
     * Define custom actions here

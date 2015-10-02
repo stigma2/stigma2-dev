@@ -8,4 +8,4 @@ class_name: FunctionalTester
 modules:
     enabled:
         # add framework module here
-        - \Stigma\HostManager\Helper\Functional
+        - \Stigma\ObjectManager\Helper\Functional
