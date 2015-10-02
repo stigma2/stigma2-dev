@@ -1,6 +1,8 @@
+/*
 article.mainContents {
-  padding-top: 20px; }
-
+    padding-top: 20px;
+}
+*/
 /* for ngDraggable */
 * {
   box-sizing: border-box; }
