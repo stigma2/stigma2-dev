@@ -5,9 +5,9 @@ require.config({
         'modernizr': '/bower_components/modernizr/modernizr',
         'angular': '/bower_components/angular/angular.min',
         'ui.router': '/bower_components/angular-ui-router/release/angular-ui-router.min',
-        'CryptoJS': '/bower_components/cryptojslib/rollups/hmac-sha256',
+        // 'CryptoJS': '/bower_components/cryptojslib/rollups/hmac-sha256',
         'mm.foundation': '/bower_components/angular-foundation/mm-foundation-tpls.min',
-        'ngDraggable': '/bower_components/ngDraggable/ngDraggable',
+        // 'ngDraggable': '/bower_components/ngDraggable/ngDraggable',
     },
     shim: {
         'jquery': {
@@ -25,9 +25,9 @@ require.config({
         'mm.foundation': {
             deps: ['angular']
         },
-        'ngDraggable': {
-            deps: ['angular']
-        },
+        // 'ngDraggable': {
+        //     deps: ['angular']
+        // },
     }
 });
 

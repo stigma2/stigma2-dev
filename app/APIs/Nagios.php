@@ -30,8 +30,10 @@ class Nagios implements NagiosInterface
 
     public function listServices($status)
     {
+        // $command = "statusjson.cgi?query=servicelist&details=true";
         $command = "api/v1/services";
         if (isset($this->_service_status[$status])) {
+            // $command = "statusjson.cgi?query=servicelist&details=true&servicestatus=".$this->_service_status[$status];
             $command = "api/v1/services?servicestatus=".$this->_service_status[$status];
         }
         $result = $this->call($command);
@@ -49,6 +51,7 @@ class Nagios implements NagiosInterface
 
     private function call($command)
     {
+        // $domain = "http://106.243.134.121:9090/nagios/cgi-bin/";
         $domain = "http://106.243.134.121:22180/nagios_dev/";
         // $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
@@ -64,6 +67,9 @@ class Nagios implements NagiosInterface
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_COOKIE, "");
         curl_setopt($ch, CURLOPT_TIMEOUT, "3");
+
+        // curl_setopt($ch, CURLOPT_USERPWD, "nagiosadmin:qwe123");
+
         $result = curl_exec($ch);
         curl_close($ch);
         

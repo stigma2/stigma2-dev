@@ -30,6 +30,12 @@ define(['./module'],
 					var time = date + 'd ' + hour + 'h ' + min + 'm ' + sec + 's';
 
 					return time;
+				},
+				isValidTimeStamp: function(string) {
+					if (isNaN(string)) return false;
+					if (string.length != 13) return false;
+
+					return (new Date(string)).getTime() > 0;
 				}
 			};
 		});

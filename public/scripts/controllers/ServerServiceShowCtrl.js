@@ -3,8 +3,8 @@ define(['./module'],
         'use strict';
 
         app.controller('ServerServiceShowCtrl', [
-            '$scope', '$state', 'ServerServiceFactory',
-            function($scope, $state, ServerServiceFactory) {
+            '$scope', '$state', 'ServerServiceFactory', 'TimestampFormatFactory',
+            function($scope, $state, ServerServiceFactory, TimestampFormatFactory) {
                 $scope.cancel = function() {
                     $state.go('serverServiceList');
                 };
