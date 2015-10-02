@@ -1,1 +1,0 @@
-# Stigma2 LICENSE

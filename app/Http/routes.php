@@ -15,14 +15,20 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::group(array('prefix' => 'api'), function()
-{
-    Route::resource('server/hosts', 'ServerHostsController');
-    Route::resource('server/services','ServerServicesController');
+Route::group(array('prefix' => 'api/v1'), function() {
+    Route::resource('dashboard', 'DashboardController');
+    Route::get('server/hosts/status/{status?}', 'ServerHostsController@index');
+    Route::get('server/hosts/name/{name}', 'ServerHostsController@show');
+    Route::get('server/services/status/{status?}', 'ServerServicesController@index');
+    Route::get('server/services/name/{name}/servicedescription/{servicedescription}', 'ServerServicesController@show');
 });
 
-Route::group(array('prefix' => 'admin'), function()
-{
+Route::get('/', function () {
+    return view('index');
+});
+
+
+Route::group(array('prefix' => 'admin'), function() {
     Route::get('/',function(){
     }) ;
 });

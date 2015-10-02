@@ -1,15 +1,8 @@
-/.idea
 /vendor
 /node_modules
-/public/bower_components
-Homestead.yaml
 .env
-.env.testing
-composer.lock
-
-tests/_output/*
 .DS_Store
-
 config/grafana.php
-config/influxdb.php
 config/nagios.php
+config/influxdb.php
+.env.testing

@@ -3,13 +3,16 @@ define(['./module'],
         'use strict';
 
         app.controller('HistoryLiveCtrl', [
-            '$scope', '$state', '$sce', 'ServerHostFactory',
-            function($scope, $state, $sce, ServerHostFactory) {
-            	// ServerHostFactory.live()
-            	// 	.then(function(response) {
-             //            console.log(response);
-             //        });
-                $scope.grafanaUrl = $sce.trustAsResourceUrl("http://106.243.134.121:3000");
+            '$scope', '$state', '$sce', 'DashboardFactory',
+            function($scope, $state, $sce, DashboardFactory) {
+                function getDashboard(dashboard) {
+                    DashboardFactory.getDashboard(dashboard)
+                        .then(function(response) {
+                            $scope.grafanaUrl = $sce.trustAsResourceUrl(response);
+                        });
+                };
+
+                getDashboard('HISTORY_LIVE');
             }
         ]);
     }

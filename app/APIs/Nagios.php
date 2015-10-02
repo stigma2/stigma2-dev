@@ -11,100 +11,62 @@ class Nagios implements NagiosInterface
 
     public function listHosts($status)
     {
-        $command = "/nagios_dev/api/listHosts";
-        // $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true";
+        $command = "api/v1/hosts";
         if (isset($this->_host_status[$status])) {
-            // $command = "/nagios/cgi-bin/statusjson.cgi?query=hostlist&details=true&hoststatus=".$this->_host_status[$status];
-            $command = "/nagios_dev/api/listHosts?hoststatus=".$this->_host_status[$status];
+            $command = "api/v1/hosts?hoststatus=".$this->_host_status[$status];
         }
         $result = $this->call($command);
 
         return $result;
     }
 
-    public function showHost($host_name)
+    public function showHost($name)
     {
-        $result = array(
-            "Host Name" => $host_name,
-            "Host Status" => "UP (for 69d 14h 26m 21s)",
-            "Status Information" => "PING OK - Packet loss = 0%, RTA = 0.35 ms",
-            "Performance Data" => "rta=0.355000ms;3000.000000;5000.000000;0.000000 pl=0%;80;100;0",
-            "Current Attempt" => "1/10  (HARD state)",
-            "Last Check Time" => "09-07-2015 16:27:04",
-            "Check Type" => "ACTIVE",
-            "Check Latency / Duration" => "0.000 / 4.004 seconds",
-            "Next Scheduled Active Check" => "09-07-2015 16:32:08",
-            "Last State Change" => "06-30-2015 02:03:42",
-            "Last Notification" => "N/A (notification 0)",
-            "Is This Host Flapping?" => "NO (0.00% state change)",
-            "In Scheduled Downtime?" => "NO",
-            "Last Update" => "09-07-2015 16:29:59  ( 0d 0h 0m 4s ago)",
-        );
+        $command = "api/v1/hosts/".$name;
+        $result = $this->call($command);
 
         return $result;
     }
 
     public function listServices($status)
     {
-        $command = "/nagios/cgi-bin/statusjson.cgi?query=servicelist&details=true";
-        // $command = "/nagios_dev/api/listServices";
+        $command = "api/v1/services";
         if (isset($this->_service_status[$status])) {
-            $command = "/nagios/cgi-bin/statusjson.cgi?query=servicelist&details=true&servicestatus=".$this->_service_status[$status];
-            // $command = "/nagios_dev/api/listServices?servicestatus=".$this->_service_status[$status];
+            $command = "api/v1/services?servicestatus=".$this->_service_status[$status];
         }
         $result = $this->call($command);
 
         return $result;
     }
 
-    public function showService($host_name)
+    public function showService($name, $servicedescription)
     {
-        $result = array(
-            "Host Name" => $host_name,
-            "Current Status" => "OK (for 70d 12h 0m 21s)",
-            "Status Information" => "PING OK - Packet loss = 0%, RTA = 0.35 ms",
-            "Performance Data" => "rta=0.355000ms;3000.000000;5000.000000;0.000000 pl=0%;80;100;0",
-            "Current Attempt" => "1/3  (HARD state)",
-            "Last Check Time" => "09-08-2015 16:27:04",
-            "Check Type" => "ACTIVE",
-            "Check Latency / Duration" => "0.000 / 4.004 seconds",
-            "Next Scheduled Check" => "09-07-2015 16:32:08",
-            "Last State Change" => "06-30-2015 02:03:42",
-            "Last Notification" => "N/A (notification 0)",
-            "Is This Service Flapping?" => "NO (0.00% state change)",
-            "In Scheduled Downtime?" => "NO",
-            "Last Update" => "09-07-2015 16:29:59  ( 0d 0h 0m 4s ago)",
-        );
+        $command = "api/v1/services/".$name."?servicedescription=".$servicedescription;
+        $result = $this->call($command);
 
         return $result;
     }
 
     private function call($command)
     {
-        $username = env("NAGIOS_USERNAME");
-        $password = env("NAGIOS_PASSWORD");
-
-        $domain = env("NAGIOS_DOMAIN");
+        $domain = "http://106.243.134.121:22180/nagios_dev/";
+        // $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
 
-        $port = env("NAGIOS_PORT");
-        $timeout = env("NAGIOS_TIMEOUT");
+        // $port = "22180";
+        // $timeout = "3";
+        // $port = env("NAGIOS_PORT");
+        // $timeout = env("NAGIOS_TIMEOUT");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PORT, $port);
+        // curl_setopt($ch, CURLOPT_PORT, $port);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_COOKIE, "");
-        curl_setopt($ch, CURLOPT_USERPWD, $username.":".$password);
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-        // curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_TIMEOUT, "3");
         $result = curl_exec($ch);
-
-        $curl_errno = curl_errno($ch);
-        $curl_error = curl_error($ch);
-
+        curl_close($ch);
+        
         return $result;
     }
 }

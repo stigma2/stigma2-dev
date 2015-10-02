@@ -8,4 +8,4 @@ suites:
         namespace: Stigma\Database
         src_path: pkg/Database/src
         psr4_prefix: Stigma\Database
-        spec_path: pkg/Database
+        spec_path: pkg/Database 

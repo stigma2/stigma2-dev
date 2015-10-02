@@ -1,28 +1,27 @@
-<?php
-
-namespace App\Providers;
+<?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class APIProvider extends ServiceProvider
-{
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
+class APIProvider extends ServiceProvider {
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->app->bind('App\Interfaces\NagiosInterface', 'App\APIs\Nagios');
-    }
+	/**
+	 * Bootstrap the application services.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		//
+	}
+
+	/**
+	 * Register the application services.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		$this->app->bind('App\Interfaces\NagiosInterface', 'App\APIs\Nagios');
+	}
+
 }

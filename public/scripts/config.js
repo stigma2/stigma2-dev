@@ -10,9 +10,9 @@ define([], function() {
             {'state': 'dashboard.overview', 'url': '/overview', 'templateUrl': PARTIALS_ROOT + 'dashboard.overview.php', 'controller': 'DashboardOverviewCtrl'},
             {'state': 'dashboard.glusterfs', 'url': '/glusterfs', 'templateUrl': PARTIALS_ROOT + 'dashboard.glusterfs.php', 'controller': 'DashboardGlusterfsCtrl'},
             {'state': 'serverHostList', 'url': CONTEXT_ROOT + '/server/hosts', 'templateUrl': PARTIALS_ROOT + 'server.host.index.php', 'controller': 'ServerHostListCtrl'},
-            {'state': 'serverHostDetail', 'url': CONTEXT_ROOT + '/server/hosts/:host_name', 'templateUrl': PARTIALS_ROOT + 'server.host.show.php', 'controller': 'ServerHostShowCtrl'},
+            {'state': 'serverHostDetail', 'url': CONTEXT_ROOT + '/server/hosts/:name', 'templateUrl': PARTIALS_ROOT + 'server.host.show.php', 'controller': 'ServerHostShowCtrl'},
             {'state': 'serverServiceList', 'url': CONTEXT_ROOT + '/server/services', 'templateUrl': PARTIALS_ROOT + 'server.service.index.php', 'controller': 'ServerServiceListCtrl'},
-            {'state': 'serverServiceDetail', 'url': CONTEXT_ROOT + '/server/services/:service_name', 'templateUrl': PARTIALS_ROOT + 'server.service.show.php', 'controller': 'ServerServiceShowCtrl'},
+            {'state': 'serverServiceDetail', 'url': CONTEXT_ROOT + '/server/services/:name/:servicedescription', 'templateUrl': PARTIALS_ROOT + 'server.service.show.php', 'controller': 'ServerServiceShowCtrl'},
             {'state': 'historyLive', 'url': CONTEXT_ROOT + '/history/live', 'templateUrl': PARTIALS_ROOT + 'history.live.php', 'controller': 'HistoryLiveCtrl'},
         ],
     };

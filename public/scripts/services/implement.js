@@ -30,10 +30,15 @@ define(['angular'], function(angular) {
         return url;
     };
 
+    function replaceBlank(string) {
+        return string.replace(/\s/g, '%2B');
+    };
+
     return {
         httpServiceImpl: httpServiceImpl,
         httpDeleteServiceImpl: httpDeleteServiceImpl,
         httpGetServiceImpl: httpGetServiceImpl,
-        addParamsToURL: addParamsToURL
+        addParamsToURL: addParamsToURL,
+        replaceBlank: replaceBlank
     };
 });

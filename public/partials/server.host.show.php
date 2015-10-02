@@ -1,13 +1,19 @@
 <div class="row">
     <div class="medium-12 columns">
-        <div class="row" ng-repeat="(key, value) in host">
-            <div class="medium-3 columns">
-                <span class="right">{{ key }}</span>
-            </div>
-            <div class="medium-9 columns">
-                <span ng-if="value">{{ value }}</span>
-                <span ng-if="!value">NONE</span>
-            </div>
+        <div class="row">
+            <table>
+                <tbody>
+                    <tr ng-repeat="(key, value) in host">
+                        <td width="30%">
+                            <span class="right">{{ key }}</span>
+                        </td>
+                        <td>
+                            <span ng-if="value">{{ value }}</span>
+                            <span ng-if="!value">NONE</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="row">
             <div class="medium-12 columns">
