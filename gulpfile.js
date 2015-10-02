@@ -12,5 +12,9 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
-});
+    mix.copy('public/bower_components/foundation/scss', 'resources/assets/sass');
+    mix.sass(['app.scss']);
+    mix.version('public/css/app.css') ; 
+    //mix.task('webpack-dev-server');
+}); 
+

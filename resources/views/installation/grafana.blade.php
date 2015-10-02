@@ -1,6 +1,7 @@
 @extends('layouts.installation')
 
 @section('contents') 
+<div class="mini-paper">
 <h1>Install Grafana</h1>
 {!!Form::open(array('route' => 'installation::grafana.install' ,'method' => 'post')) !!} 
     <div class="form-group">
@@ -27,4 +28,5 @@
     {!!Form::submit('SAVE', array('class' =>'button', 'id' => 'next-btn' ))!!}
 {!!Form::close() !!}
 
+</div>
 @stop

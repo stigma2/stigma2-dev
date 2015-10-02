@@ -1,0 +1,63 @@
+$sidebar-width:280px;
+
+body.admin-theme {
+    background:$white;
+    color:$black;
+
+    .sidebar-wrapper {
+
+        width: $sidebar-width ;
+        position:absolute;
+        top:0px;
+        left:0px;
+
+
+        .brand {
+            color:$black;
+            display:block; 
+            padding:15px;
+            text-align:center;
+            border-bottom:1px solid $silver;
+        }
+
+        a {
+            color:$black;
+        }
+
+        ul {
+            list-style:none;
+            padding:0px;
+            margin:0px;
+        }
+
+    }
+
+    .sidebar {
+        a {
+            display:block; 
+            font-size:0.9rem;
+            padding:15px 25px;
+        }
+        .parent {
+            border-bottom:1px solid $silver;
+        }
+
+        .submenu {
+            margin-left:20px;
+        }
+    }
+}
+
+.content-wrapper {
+    background:$snow;
+    margin-left:$sidebar-width;
+    border-left:1px solid $silver;
+
+    .top-bar {
+        background:$white;
+    }
+
+    .content {
+        padding:20px 40px;
+    }
+}
