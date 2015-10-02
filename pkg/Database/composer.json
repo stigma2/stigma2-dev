@@ -1,0 +1,36 @@
+{
+    "name": "saegeul/database",
+    "description": "Saegeul Database Package.",
+    "homepage": "http://bitbucket.com/saegeul/database",
+    "support": {
+        "issues": "https://bitbucket.com/saegeul/database/issues",
+        "source": "https://bitbucket.com/saegeul/database"
+    },
+    "authors": [
+        {
+        "name": "Jaehee",
+        "email": "jaehee@artgrafii.com"
+    }], 
+    "repositories": [
+        {
+        "type": "composer",
+        "url": "https://packages.cartalyst.com"
+    }],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/database": "5.1.*"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "config": {
+        "bin-dir": "vendor/bin"
+    }, 
+    "autoload": {
+        "psr-4": {
+            "Saegeul\\Database\\": "src/"
+        }
+    }, 
+    "minimum-stability": "dev",
+    "prefer-stable":true
+}
