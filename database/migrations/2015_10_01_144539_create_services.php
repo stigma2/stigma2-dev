@@ -13,11 +13,10 @@ class CreateServices extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->string('service_name')->index()->unique();
+            $table->string('service_name')->index()->unique(); // is linked to description in services.cfg
             $table->string('service_description') ;
-            $table->integer('template_id') ;
-            $table->integer('host_id') ;
-            $table->integer('command_id') ;
+            $table->string('template_ids') ;
+            $table->string('is_template') ;
             $table->text('data');
             $table->timestamps();
         }); 

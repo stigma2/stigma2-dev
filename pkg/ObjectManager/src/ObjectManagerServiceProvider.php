@@ -22,4 +22,14 @@ class ObjectManagerServiceProvider extends ServiceProvider
             ) ;
         });
     }
+
+    private function registerServiceManager()
+    {
+        $this->app->bind('Stigma\ObjectManager\ServiceManager',function(){
+            return new ServiceManager(
+                \App::make('Stigma\ObjectManager\Repositories\ServiceRepository')
+            ) ;
+        });
+    }
+
 }
