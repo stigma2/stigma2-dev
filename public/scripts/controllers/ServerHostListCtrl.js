@@ -1,5 +1,5 @@
-define(['./module', 'angular'],
-    function(app, angular) {
+define(['./module'],
+    function(app) {
         'use strict';
 
         app.controller('ServerHostListCtrl', [
