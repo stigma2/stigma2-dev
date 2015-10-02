@@ -42,7 +42,7 @@
                     <td>{{ service.plugin_output }}</td>
                 </tr>
             </tbody>
-            <tbody ng-show="services == null">
+            <tbody ng-show="!services.lenght">
                 <tr>
                     <td colspan="7"><strong>No services.</strong></td>
                 </tr>
