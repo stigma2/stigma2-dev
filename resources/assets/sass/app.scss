@@ -16,6 +16,13 @@
 @import "foundation/components/tables";
 @import "foundation/components/top-bar";
 @import "foundation/components/tabs";
+@import "foundation/components/breadcrumbs";
+@import "foundation/components/reveal";
 
 @import "overrides/foundation-icons";
 @import "public/bower_components/foundation-icon-fonts/foundation-icons";
+
+@import "admin-theme/default"; 
+@import "admin-theme/form"; 
+@import "admin-theme/modal"; 
+@import "install-theme/default"; 

@@ -1,0 +1,2 @@
+var SystemChecker = function(oConfig){
+}; 

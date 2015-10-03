@@ -31,13 +31,6 @@
                           <span class="label warning" style="width: 100%;" ng-if="host.last_hard_state == '2'">UNREACHABLE</span>
                           <span class="label secondary" style="width: 100%;" ng-if="host.last_hard_state == '9'">PENDING</span>
                     </td>
-                    <!-- <td style="vertical-align: middle;">
-                        <div class="progress" ng-if="host.status < 31">
-                            <span class="meter green" style="width:{{ host.status }}%">
-                                <p class="percent">{{ host.status }} %</p>
-                            </span>
-                        </div>
-                    </td> -->
                     <td>{{ convertDate(host.last_check) }}</td>
                     <td>{{ getDuration(host.last_state_change) }}</td>
                     <td>{{ host.plugin_output }}</td>

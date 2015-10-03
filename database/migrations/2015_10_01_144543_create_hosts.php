@@ -13,6 +13,7 @@ class CreateHosts extends Migration
     public function up()
     {
         Schema::create('hosts', function (Blueprint $table) {
+			$table->increments('id');
             $table->string('host_name')->index()->unique();
             $table->string('description') ;
             $table->string('template_name')->unique() ; //name for using as template 

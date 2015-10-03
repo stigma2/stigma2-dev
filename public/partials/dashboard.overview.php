@@ -1,4 +1,25 @@
-<table>
+<div class="row">
+    <div class="medium-12 columns">
+        <div class="row">
+            <div class="medium-9 columns">
+                <button type="button" class="btn btn-default right" ng-click="cancel()">List</button>
+            </div>
+            <div class="medium-3 columns">
+                <button type="button" class="btn btn-default right" ng-click="cancel()">List</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-12 columns">
+                <button type="button" class="btn btn-default right" ng-click="cancel()">List</button>
+            </div>
+            <div class="medium-12 columns">
+                <button type="button" class="btn btn-default right" ng-click="cancel()">List</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <table>
     <thead>
         <tr>
             <th width="200">Table Header</th>
@@ -27,4 +48,4 @@
             <td>Content Goes Here</td>
         </tr>
     </tbody>
-</table>
+</table> -->
