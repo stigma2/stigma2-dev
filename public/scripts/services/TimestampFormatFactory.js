@@ -30,6 +30,11 @@ define(['./module'],
 					var time = date + 'd ' + hour + 'h ' + min + 'm ' + sec + 's';
 
 					return time;
+				},
+				isValidTimeStamp: function(value) {
+					var timestamp = parseInt(value);
+
+					return Number.isInteger(timestamp / 1000);
 				}
 			};
 		});

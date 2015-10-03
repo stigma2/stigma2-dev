@@ -17,4 +17,3 @@ elixir(function(mix) {
     mix.version('public/css/app.css') ; 
     //mix.task('webpack-dev-server');
 }); 
-
