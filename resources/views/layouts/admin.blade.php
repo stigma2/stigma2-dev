@@ -80,7 +80,7 @@
         </ul>
     </div> 
     <div class="modal-footer"> 
-        <a class="button right small save-btn">NAGIOS RESTART</a> 
+        <a class="button right small alert save-btn">NAGIOS RESTART</a> 
     </div>
 </div>
 <script src="/bower_components/foundation/js/vendor/jquery.js"></script>
