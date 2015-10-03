@@ -40,6 +40,7 @@ foreach(File::allFiles(__DIR__.'/Routes') as $partial)
 
 /*
 Route::get('/',['middleware' => 'install.checker', 'uses'=>function(){
-    echo "installed";
+    // echo "installed";
+    return view('index');
 }]);
  */

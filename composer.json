@@ -5,12 +5,10 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-        "php": ">=5.5.9",
         "laravel/framework": "5.0.*",
         "illuminate/html": "5.*",
         "mustache/mustache" : "*",
-        "ramsey/uuid": "~2.8",
-        "jeroen-g/laravel-packager": "^0.2.1"
+        "ramsey/uuid": "~2.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

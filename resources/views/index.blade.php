@@ -44,7 +44,7 @@
             <aside class="large-2 columns">
                 <ul class="side-nav">
                     <li class="heading">Dashboard</li>
-                    <li><a ui-sref="dashboard.overview">Overview</a></li>
+                    <li><a ui-sref="dashboardOverview">Overview</a></li>
                     <li class="heading">Server</li>
                     <li><a ui-sref="serverHostList">Host</a></li>
                     <li><a ui-sref="serverServiceList">Service</a></li>
@@ -60,7 +60,7 @@
         </div>
         <footer>
             <hr></hr>
-            <span>© Copyright 2015 All Rights Reserved.</span>
+            <span class="right">© Copyright 2015 All Rights Reserved.</span>
         </footer>
     </body>
 </html>

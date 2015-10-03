@@ -41,7 +41,7 @@ class Nagios implements NagiosInterface
 
     public function showService($name, $servicedescription)
     {
-        $command = "api/v1/services/".$name."?servicedescription=".$servicedescription;
+        $command = "api/v1/services/".$name."?servicedescription=".urlencode($servicedescription);
         $result = $this->call($command);
 
         return $result;
@@ -49,21 +49,15 @@ class Nagios implements NagiosInterface
 
     private function call($command)
     {
-        $domain = "http://106.243.134.121:22180/nagios_dev/";
-        // $domain = env("NAGIOS_DOMAIN");
+        $domain = env("NAGIOS_DOMAIN");
         $url = $domain.$command;
-
-        // $port = "22180";
-        // $timeout = "3";
-        // $port = env("NAGIOS_PORT");
-        // $timeout = env("NAGIOS_TIMEOUT");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_PORT, $port);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_COOKIE, "");
         curl_setopt($ch, CURLOPT_TIMEOUT, "3");
+
         $result = curl_exec($ch);
         curl_close($ch);
         

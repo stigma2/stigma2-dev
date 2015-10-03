@@ -1,5 +1,5 @@
-define(['./module', 'angular'],
-    function(app, angular) {
+define(['./module'],
+    function(app) {
         'use strict';
 
         app.controller('ServerHostListCtrl', [
@@ -10,6 +10,11 @@ define(['./module', 'angular'],
                         .then(function(response) {
                             $scope.hosts = response.data.hostlist;
                         });
+                };
+
+                $scope.isEmptyObject = function(obj) {
+                    if ( (obj == null) || (typeof(obj) == 'undefined') ) return true;
+                    return Object.keys(obj).length;
                 };
 
                 $scope.hostsFilter = function(filter, event) {
