@@ -47,95 +47,55 @@
                 </table>
             </div>
             <div class="medium-3 columns">
-                
-
-
-
-                <div class="large-12 columns">
-
-                        <div class="box">
-                            <div class="box-header bg-transparent">
-                                <!-- tools box -->
-                                <div class="pull-right box-tools">
-
-                                    <span class="box-btn" data-widget="collapse"><i class="icon-minus"></i>
-                                    </span>
-                                    <span class="box-btn" data-widget="remove"><i class="icon-cross"></i>
-                                    </span>
+                <div class="medium-12 columns">
+                    <div class="box">
+                        <div class="box-body " style="display: block;">
+                            <div style="margin:0" class="row summary-border-top">
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest">
+                                        <h2 class="text-black"><span class="counter-up">132</span><small>K</small></h2>
+                                        <p class="counter-up">Up</p>
+                                    </div>
                                 </div>
-                                <h3 class="box-title"><i class="icon-graph-pie"></i>
-                                    <span>SUMMARY</span>
-                                </h3>
+                                <div class="medium-6 columns summary-border-left">
+                                    <div class="summary-nest">
+                                        <h2 class="text-black"><span class="counter-up">160</span><small>K</small></h2>
+                                        <p>Down</p>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- /.box-header -->
-                            <div class="box-body " style="display: block;">
-
-
-                                <div style="margin:0" class="row summary-border-top">
-                                    <div class="large-6 columns">
-                                        <div class="summary-nest">
-                                            <h2 class="text-black"><span class="counter-up">132</span><small>K</small></h2>
-                                            <p>Women</p>
-                                        </div>
-
+                            <div style="margin:0" class="row">
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h2 class="text-black"><span class="text-center"><i class="fi-heart"></i></span></h2>
                                     </div>
-                                    <div class="large-6 columns summary-border-left">
-                                        <div class="summary-nest">
-                                            <h2 class="text-black"><span class="counter-up">160</span><small>K</small></h2>
-                                            <p>Man</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div style="margin:0" class="row">
-                                    <div class="large-6 columns">
-                                        <div class="summary-nest summary-pad-nest">
-                                            <span class="text-center"><canvas height="70" width="70" id="partly-cloudy-day"></canvas></span>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="large-6 columns">
-                                        <div class="summary-nest summary-pad-nest">
-                                            <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
-                                            <p class="text-left">Today</p>
-                                        </div>
-
-                                    </div>
-
 
                                 </div>
 
-                                <div style="margin:0" class="row summary-border-bottom">
-                                    <div class="large-6 columns">
-                                        <div class="summary-nest summary-pad-nest">
-                                            <h2 class="text-black "><span class="counter-up">82</span><small>%</small></h2>
-                                            <p>Graduate</p>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="large-6 columns summary-border-left">
-                                        <div class="summary-nest summary-pad-nest">
-                                            <h2 class="text-black"><span class="counter-up">24</span><small>th</small></h2>
-                                            <p>Avarage</p>
-                                        </div>
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
+                                        <p class="text-left">Today</p>
                                     </div>
                                 </div>
-
                             </div>
-                            <!-- end .timeline -->
-
-
+                            <div style="margin:0" class="row summary-border-bottom">
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h2 class="text-black "><span class="counter-up">82</span><small>%</small></h2>
+                                        <p>All Problems</p>
+                                    </div>
+                                </div>
+                                <div class="medium-6 columns summary-border-left">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h2 class="text-black"><span class="counter-up">24</span><small>th</small></h2>
+                                        <p>All Types</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-
-
-
-
-
-
+                </div>
             </div>
         </div>
         <p></p>
@@ -186,7 +146,55 @@
                 </table>
             </div>
             <div class="medium-3 columns">
-                <!-- <button type="button" class="btn btn-default right" ng-click="cancel()">List</button> -->
+                <div class="medium-12 columns">
+                    <div class="box">
+                        <div class="box-body " style="display: block;">
+                            <div style="margin:0" class="row summary-border-top">
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest">
+                                        <h2 class="text-black"><span class="counter-up">132</span><small>K</small></h2>
+                                        <p>OK</p>
+                                    </div>
+                                </div>
+                                <div class="medium-6 columns summary-border-left">
+                                    <div class="summary-nest">
+                                        <h2 class="text-black"><span class="counter-up">160</span><small>K</small></h2>
+                                        <p>Warning</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin:0" class="row">
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h2 class="text-black"><span class="text-center"><i class="fi-alert"></i></span></h2>
+                                    </div>
+
+                                </div>
+
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
+                                        <p class="text-left">Today</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin:0" class="row summary-border-bottom">
+                                <div class="medium-6 columns">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h2 class="text-black "><span class="counter-up">82</span><small>%</small></h2>
+                                        <p>All Problems</p>
+                                    </div>
+                                </div>
+                                <div class="medium-6 columns summary-border-left">
+                                    <div class="summary-nest summary-pad-nest">
+                                        <h2 class="text-black"><span class="counter-up">24</span><small>th</small></h2>
+                                        <p>All Types</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
