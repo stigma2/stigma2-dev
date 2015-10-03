@@ -46,6 +46,12 @@ class IlluminateRepository implements RepositoryInterface
         return $item ;
     }
 
+    public function getAll()
+    {
+        $model = $this->modelFactory->create($this->model) ;
+        return $model->all() ;
+    }
+
     public function findBy($column, $value , $operator = '=')
     {
         $model = $this->modelFactory->create($this->model) ;

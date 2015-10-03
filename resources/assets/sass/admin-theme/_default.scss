@@ -50,6 +50,7 @@ body.admin-theme {
 
 .content-wrapper {
     background:$snow;
+    min-height:1000px;
     margin-left:$sidebar-width;
     border-left:1px solid $silver;
 
@@ -59,5 +60,27 @@ body.admin-theme {
 
     .content {
         padding:20px 40px;
+
+        .inner-content {
+            background:$white;
+            padding:20px;
+        }
     }
+}
+
+.table {
+    border:0px;
+    thead { 
+        background:$white;
+        th {
+            font-weight:100;
+            border-bottom:1px solid $silver;
+        }
+
+        border-bottom:1px solid $silver;
+    }
+}
+
+a.alert {
+    color:$alert-color;
 }

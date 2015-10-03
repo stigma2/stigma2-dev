@@ -13,6 +13,7 @@ class CreateHostServiceTable extends Migration
     public function up()
     {
         Schema::create('host_services', function (Blueprint $table) {
+			$table->increments('id');
             $table->integer('host_id') ;
             $table->integer('service_id') ;
             $table->text('overided_value') ;
