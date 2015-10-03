@@ -12,6 +12,10 @@ define(['./module'],
                         });
                 };
 
+                $scope.isEmptyObject = function(obj) {
+                    return Object.keys(obj).length;
+                };
+
                 $scope.hostsFilter = function(filter, event) {
                     hosts(filter);
 

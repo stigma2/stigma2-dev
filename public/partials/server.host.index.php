@@ -42,7 +42,7 @@
                     <td>{{ getDuration(host.last_state_change) }}</td>
                     <td>{{ host.plugin_output }}</td>
                 </tr>
-                <tr ng-show="!hosts.lenght">
+                <tr ng-show="!isEmptyObject(hosts)">
                     <td colspan="5"><strong>No hosts.</strong></td>
                 </tr>
             </tbody>

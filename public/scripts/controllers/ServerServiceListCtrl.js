@@ -12,6 +12,10 @@ define(['./module'],
                         });
                 };
 
+                $scope.isEmptyObject = function(obj) {
+                    return Object.keys(obj).length;
+                };
+
                 $scope.servicesFilter = function(filter, event) {
                     services(filter);
 
