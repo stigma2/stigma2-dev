@@ -31,11 +31,10 @@ define(['./module'],
 
 					return time;
 				},
-				isValidTimeStamp: function(string) {
-					if (isNaN(string)) return false;
-					if (string.length != 13) return false;
+				isValidTimeStamp: function(value) {
+					var timestamp = parseInt(value);
 
-					return (new Date(string)).getTime() > 0;
+					return Number.isInteger(timestamp / 1000);
 				}
 			};
 		});

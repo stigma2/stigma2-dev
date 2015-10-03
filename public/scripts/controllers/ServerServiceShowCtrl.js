@@ -9,6 +9,15 @@ define(['./module'],
                     $state.go('serverServiceList');
                 };
 
+                $scope.checkTimestamp = function(value) {
+                    var check = TimestampFormatFactory.isValidTimeStamp(value);
+
+                    if (check) {
+                        return TimestampFormatFactory.convertDateToYYYYMMDDhhmmss(value);
+                    }
+                    return value;
+                };
+
                 ServerServiceFactory.show($state.params.name, $state.params.servicedescription)
                     .then(function(response) {
                         console.log(response);
