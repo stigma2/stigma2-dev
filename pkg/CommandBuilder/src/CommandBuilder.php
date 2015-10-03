@@ -16,4 +16,25 @@ class CommandBuilder
     { 
         return $this->repository->store($data) ;
     } 
+
+    public function update($id,$data)
+    { 
+        return $this->repository->update($id,$data) ;
+    } 
+
+
+    public function delete($id)
+    { 
+        return $this->repository->delete($id) ;
+    } 
+
+    public function find($id)
+    { 
+        return $this->repository->find($id) ;
+    } 
+
+    public function getRepository()
+    {
+        return $this->repository ;
+    }
 }

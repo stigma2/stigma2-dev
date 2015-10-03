@@ -32,7 +32,7 @@
                     </li>
                     <li class="parent" style="border-left:5px solid #00BCD4;"><a><i class="fi-book"></i>&nbsp;COMMAND MANAGER</a> 
                     <ul class="submenu">
-                        <li><a>List</a></li>
+                        <li><a href="{{route('admin.commands.index')}}">List</a></li>
                     </ul>
                     </li>
                     <li class="parent" style="border-left:5px solid #C51162;">
@@ -54,7 +54,7 @@
                 <section class="top-bar-section">
                     <!-- Right Nav Section -->
                     <ul class="right">
-                        <li class="active"><a href="#">Nagios Restart</a></li> 
+                        <li class="active"><a href="#" data-reveal-id="system-modal"><i class="fi-power"></i>&nbsp;Nagios Restart</a></li> 
                     </ul>
 
                 </section>
@@ -65,5 +65,33 @@
         </div>
     </div>
 </div>
+
+
+<div id="system-modal" class="reveal-modal small modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <div class="modal-header">
+        <h5 class="title">Serivce Restart</h5>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <div class="modal-body"> 
+        <ul>
+            <li>1.Generating Host Configuration</li>
+            <li>2.Generating Service Configuration</li>
+            <li>3.Generating Command Configuration</li>
+        </ul>
+    </div> 
+    <div class="modal-footer"> 
+        <a class="button right small save-btn">NAGIOS RESTART</a> 
+    </div>
+</div>
+<script src="/bower_components/foundation/js/vendor/jquery.js"></script>
+<script src="/bower_components/foundation/js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+<script src="/assets/js/system.js">
+jQuery(function(){
+});
+</script>
+@yield('scripts')
 </body>
 </html>
