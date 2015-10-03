@@ -5,7 +5,7 @@ define(['./module'],
         app.controller('DashboardOverviewCtrl', [
             '$scope', '$state',
             function($scope, $state) {
-                $scope.tabs[0].active = true;
+                // $scope.tabs[0].active = true;
             }
         ]);
     }

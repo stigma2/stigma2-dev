@@ -8,7 +8,7 @@
                             <span class="right">{{ key }}</span>
                         </td>
                         <td>
-                            <span ng-if="value">{{ value }}</span>
+                            <span ng-if="value">{{ checkTimestamp(value) }}</span>
                             <span ng-if="!value">NONE</span>
                         </td>
                     </tr>

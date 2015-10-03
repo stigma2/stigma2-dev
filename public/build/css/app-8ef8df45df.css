@@ -8743,6 +8743,9 @@ a.alert {
 body.install-theme {
   background-color: #EFEFEF; }
 
+body {
+  background: #000000; }
+
 .mini-paper {
   max-width: 600px;
   margin: auto;
