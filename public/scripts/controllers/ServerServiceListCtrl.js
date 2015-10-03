@@ -13,6 +13,7 @@ define(['./module'],
                 };
 
                 $scope.isEmptyObject = function(obj) {
+                    if ( (obj == null) || (typeof(obj) == 'undefined') ) return true;
                     return Object.keys(obj).length;
                 };
 
