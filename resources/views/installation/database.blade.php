@@ -1,6 +1,7 @@
 @extends('layouts.installation')
 
 @section('contents') 
+<div class="mini-paper">
 <h1>Install Database</h1>
 {!!Form::open(array('route' => 'installation::database.install' ,'method' => 'post')) !!} 
     <div class="form-group">
@@ -24,4 +25,5 @@
     </div>
     {!!Form::submit('SAVE', array('class' =>'button', 'id' => 'next-btn' ))!!}
 {!!Form::close() !!}
+</div>
 @stop
