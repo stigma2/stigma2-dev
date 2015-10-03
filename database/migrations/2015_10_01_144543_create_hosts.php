@@ -16,6 +16,8 @@ class CreateHosts extends Migration
 			$table->increments('id');
             $table->string('host_name')->index()->unique();
             $table->string('description') ;
+            $table->string('template_ids') ;
+            $table->string('service_ids') ;
             $table->string('template_name')->unique() ; //name for using as template 
             $table->string('alias')->index()->unique() ;
             $table->string('is_template') ;

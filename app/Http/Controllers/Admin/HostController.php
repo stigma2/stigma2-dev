@@ -4,9 +4,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Stigma\ObjectManager\HostManager ;
 
 class HostController extends Controller {
 
+    protected $hostManager ;
+
+    public function __construct(HostManager $hostManager)
+    {
+        $this->hostManager = $hostManager ;
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -14,7 +21,8 @@ class HostController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $items = $this->hostManager->getAllItems() ;
+	    return view('admin.host.index',compact('items')) ;	
 	}
 
 	/**
@@ -25,7 +33,21 @@ class HostController extends Controller {
 	public function create()
 	{
         $hostTmpl = config('host_tmpl') ;
-	    return view('host.edit',compact('hostTmpl')) ;	
+        $hostTmpl = collect($hostTmpl) ;
+        $hostTmpl->sortBy(function($field){ 
+            if($field['required'] && $field['display_name'] == 'HOST NAME' ){
+                return 0 ;
+            }else if($field['required'] ) { 
+                return 1 ;
+            }
+
+            return 10;
+        });
+
+        $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
+
+
+	    return view('admin.host.create',compact('hostTmpl','hostTemplateCollection')) ;	
 	}
 
 	/**
@@ -33,9 +55,13 @@ class HostController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store(Request $request)
+	{ 
+        $param = $this->processFormData($request) ; 
+
+        $this->hostManager->register($param) ;
+
+        return redirect()->route('admin.hosts.index') ;
 	}
 
 	/**
@@ -45,8 +71,7 @@ class HostController extends Controller {
 	 * @return Response
 	 */
 	public function show($id)
-	{
-		//
+	{ 
 	}
 
 	/**
@@ -57,7 +82,28 @@ class HostController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $host = $this->hostManager->find($id) ;
+
+		$hostTmpl = config('host_tmpl') ;
+        $hostTmpl = collect($hostTmpl) ;
+        $hostTmpl->sortBy(function($field){ 
+            if($field['required'] && $field['display_name'] == 'HOST NAME' ){
+                return 0 ;
+            }else if($field['required'] ) { 
+                return 1 ;
+            }
+
+            return 10;
+        });
+
+        $hostJsonData = json_decode($host->data) ;
+
+        $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
+
+
+	    return view('admin.host.edit',compact('hostTmpl','host','hostJsonData','hostTemplateCollection')) ;	
+
+
 	}
 
 	/**
@@ -66,9 +112,14 @@ class HostController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request , $id)
 	{
-		//
+        $param = $this->processFormData($request) ;
+		
+
+        $this->hostManager->update($id,$param) ;
+
+        return redirect()->route('admin.hosts.index') ; 
 	}
 
 	/**
@@ -79,7 +130,29 @@ class HostController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
 	}
 
+    private function processFormData(Request $request)
+    {
+        $hostTmpl = config('host_tmpl') ;
+        $param = [] ;
+
+        $templateIds = $request->get('host_template') ;
+
+
+        foreach($request->all() as $key => $value)
+        {
+            if(array_key_exists($key,$hostTmpl) && ($value != '' )) { 
+                $param[$key] = $value ;
+            }
+        } 
+
+        $param['is_template'] = $request->get('is_template') ;
+
+        if(count($templateIds) > 0){
+            $param['template_ids'] = implode(',',$templateIds) ;
+        }
+
+        return $param ;
+    } 
 }

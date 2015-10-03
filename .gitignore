@@ -6,3 +6,5 @@ config/grafana.php
 config/nagios.php
 config/influxdb.php
 .env.testing
+*.map
+public/build/*

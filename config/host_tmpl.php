@@ -55,6 +55,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "O" => 'o',
                 "D" => 'd',
                 "U" => 'u'
@@ -88,6 +89,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ]
@@ -100,6 +102,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -118,6 +121,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -129,6 +133,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -154,6 +159,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -179,6 +185,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -190,6 +197,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "O" => 'o',
                 "D" => 'd',
                 "U" => 'u'
@@ -202,6 +210,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -213,6 +222,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -224,6 +234,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -270,6 +281,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "D" => 'd',
                 "U" => 'u',
                 "R" => 'r',
@@ -284,6 +296,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "disable" => 0,
                 "enable" => 1
             ] 
@@ -295,6 +308,7 @@ return [
         "required" => false,
         "data_type" => "enum" ,
         "values" => [
+                "None" => "",
                 "O" => 'o',
                 "D" => 'd',
                 "U" => 'u'
@@ -362,6 +376,12 @@ return [
         "description" => '',
         "required" => false,
         "data_type" => "string"
-   ] 
+   ] ,
 
+    "_graphiteprefix" => [
+        "display_name" => 'GRAPHITE PREFIX' , 
+        "description" => '',
+        "required" => false,
+        "data_type" => "string"
+   ] 
 ];
