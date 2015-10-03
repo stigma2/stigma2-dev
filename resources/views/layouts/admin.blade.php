@@ -19,14 +19,14 @@
                     <li class="parent" style="border-left:5px solid #304FFE;">
                     <a><i class="fi-monitor"></i>&nbsp;HOST MANAGER</a>
                     <ul class="submenu">
-                        <li><a>List</a></li>
+                        <li><a href="{{route('admin.hosts.index')}}">List</a></li>
                         <li><a>Template</a></li>
                     </ul>
                     </li>
                     <li class="parent" style="border-left:5px solid #6200EA;">
                     <a><i class="fi-cloud"></i>&nbsp;SERVICE MANAGER</a>
                     <ul class="submenu">
-                        <li><a>List</a></li>
+                        <li><a href="{{route('admin.services.index')}}">List</a></li>
                         <li><a>Template</a></li>
                     </ul> 
                     </li>
