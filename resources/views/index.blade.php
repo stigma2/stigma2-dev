@@ -60,7 +60,7 @@
         </div>
         <footer>
             <hr></hr>
-            <span>© Copyright 2015 All Rights Reserved.</span>
+            <span class="right">© Copyright 2015 All Rights Reserved.</span>
         </footer>
     </body>
 </html>
