@@ -198,6 +198,7 @@ class ServicesTableSeeder extends Seeder {
 			'description' => 'PING',
 			'command_fk' => ''
 		]);
+
 		ServiceDetail::create([
 			'service_fk' => $uuid,
 			'key' => 'use',

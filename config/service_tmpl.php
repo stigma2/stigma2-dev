@@ -361,7 +361,14 @@ return [
         "description" => '',
         "required" => false,
         "data_type" => "string"
-    ]
+    ], 
+
+     "_graphiteprefix" => [
+        "display_name" => 'GRAPHITE PREFIX' , 
+        "description" => '',
+        "required" => false,
+        "data_type" => "string"
+   ] 
 
 ];
 
