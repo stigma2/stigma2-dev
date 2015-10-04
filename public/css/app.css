@@ -9053,6 +9053,16 @@ body.admin-theme {
 a.alert {
   color: #f04124; }
 
+.step-by-step {
+  list-style: none; }
+  .step-by-step li {
+    border-bottom: 1px solid #008CBA;
+    padding-top: 15px;
+    padding-bottom: 15px; }
+  .step-by-step li.green {
+    color: #008CBA;
+    font-weight: bold; }
+
 .form-v1 {
   padding: 20px;
   margin-top: 20px;
