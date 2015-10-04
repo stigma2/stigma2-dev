@@ -32,8 +32,6 @@ class DashboardController extends Controller
      */
     public function show($dashboard)
     {
-        // $str = "GRAFANA_DASHBOARD_".$dashboard;
-        // $result = config("grafana.host").env($str);
         $result = config("grafana.host")."/dashboard/db/load1?from=now-1h&to=now&theme=light";
 
         return response()->json($result);
