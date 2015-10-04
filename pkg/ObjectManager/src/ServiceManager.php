@@ -20,7 +20,9 @@ class ServiceManager implements ObjectManager
         $storedData['service_name'] = $data['service_name']   ;
         $storedData['service_description'] =  $data['service_name']     ;
         $storedData['is_template'] = $data['is_template']   ;
-        $storedData['template_ids'] = $data['template_ids']   ;
+        $storedData['template_ids'] = array_key_exists('template_ids', $data) ? $data['template_ids'] : ''  ;
+        $storedData['command_id'] = array_key_exists('command_id', $data) ? $data['command_id'] : ''  ;
+        $storedData['command_argument'] = array_key_exists('command_argument', $data) ? $data['command_argument'] : ''  ; 
         $storedData['data'] = json_encode($data) ; 
 
         $ret = $this->repo->store($storedData) ; 
@@ -35,7 +37,9 @@ class ServiceManager implements ObjectManager
         $storedData['service_name'] = $data['service_name']   ;
         $storedData['service_description'] =  $data['service_name']     ;
         $storedData['is_template'] = $data['is_template']   ;
-        $storedData['template_ids'] = $data['template_ids']   ;
+        $storedData['template_ids'] = array_key_exists('template_ids', $data) ? $data['template_ids'] : ''  ;
+        $storedData['command_id'] = array_key_exists('command_id', $data) ? $data['command_id'] : ''  ;
+        $storedData['command_argument'] = array_key_exists('command_argument', $data) ? $data['command_argument'] : ''  ; 
         $storedData['data'] = json_encode($data) ; 
 
         $ret = $this->repo->update($id,$storedData) ;

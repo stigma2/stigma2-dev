@@ -13,18 +13,28 @@ class HostManager implements ObjectManager
         $this->repo = $repo ;
     }
 
-    public function register($data)
-    { 
+    private function filterData($data)
+    {
         $storedData = [] ;
 
         $storedData['host_name'] = $data['host_name']   ;
         $storedData['template_name'] = $data['host_name']   ;
         $storedData['is_template'] = $data['is_template']   ;
         $storedData['template_ids'] = $data['template_ids']   ;
-        $storedData['service_ids'] = $data['service_ids']   ;
+        $storedData['service_ids'] = $data['service_ids']   ; 
+        $storedData['command_id'] = array_key_exists('command_id', $data) ? $data['command_id'] : ''  ;
+        $storedData['command_argument'] = array_key_exists('command_argument', $data) ? $data['command_argument'] : ''  ; 
+        $storedData['address'] = array_key_exists('address', $data) ? $data['address'] : ''   ;
         $storedData['alias'] = $data['host_name']   ; 
         $storedData['data'] = json_encode($data) ; 
 
+
+        return $storedData ;
+    }
+
+    public function register($data)
+    { 
+        $storedData = $this->filterData($data) ;
         $ret = $this->repo->store($storedData) ; 
 
         return $ret ;
@@ -32,16 +42,8 @@ class HostManager implements ObjectManager
 
     public function update($id,$data)
     {
-        $storedData = [] ;
 
-        $storedData['host_name'] = $data['host_name']   ;
-        $storedData['template_name'] = $data['host_name']   ;
-        $storedData['is_template'] = $data['is_template']   ; 
-        $storedData['template_ids'] = $data['template_ids']   ;
-        $storedData['service_ids'] = $data['service_ids']   ;
-        $storedData['alias'] = $data['host_name']   ; 
-        $storedData['data'] = json_encode($data) ; 
-
+        $storedData = $this->filterData($data) ;
         $ret = $this->repo->update($id,$storedData) ; 
 
         return $ret ; 

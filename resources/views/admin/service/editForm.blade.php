@@ -19,6 +19,7 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="small-12 columns">
                 <div class="row">
@@ -37,6 +38,13 @@
                 </div>
             </div>
         </div>
+
+        @if(isset($service))
+        @include('admin.partials.check_command_field',array('commandList' => $commandList, 'model'=>$service)) 
+        @else
+        @include('admin.partials.check_command_field',array('commandList' => $commandList)) 
+        @endif
+
 
         @foreach($serviceTmpl as $key => $formGroup) 
         <div class="row">

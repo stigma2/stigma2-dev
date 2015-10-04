@@ -42,12 +42,14 @@ return [
         "data_type" => "string" 
     ], 
 
+    /*
     "check_command" => [
         "display_name" => 'CHECK COMMAND' , 
         "description" => '',
         "required" => false,
         "data_type" => "string" 
     ], 
+     */
 
     "initial_state" => [
         "display_name" => 'INITIAL STATE' , 

@@ -37,4 +37,23 @@ class CommandBuilder
     {
         return $this->repository ;
     }
+
+    public function getAll()
+    {
+        return $this->repository->getAll() ;
+    }
+
+    public function pluck($key,$valueKey)
+    {
+        $commandList = $this->getAll() ;
+
+        $arr = [] ;
+
+        foreach($commandList as $command)
+        { 
+            $arr[$command->{$key}] = $command->{$valueKey} ;
+        } 
+
+        return $arr ;
+    }
 }
