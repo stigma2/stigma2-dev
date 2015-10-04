@@ -21,7 +21,7 @@ class HostManager implements ObjectManager
         $storedData['template_name'] = $data['host_name']   ;
         $storedData['is_template'] = $data['is_template']   ;
         $storedData['template_ids'] = $data['template_ids']   ;
-        //$storedData['service_ids'] = $data['service_ids']   ;
+        $storedData['service_ids'] = $data['service_ids']   ;
         $storedData['alias'] = $data['host_name']   ; 
         $storedData['data'] = json_encode($data) ; 
 
@@ -38,7 +38,7 @@ class HostManager implements ObjectManager
         $storedData['template_name'] = $data['host_name']   ;
         $storedData['is_template'] = $data['is_template']   ; 
         $storedData['template_ids'] = $data['template_ids']   ;
-        //$storedData['service_ids'] = $data['service_ids']   ;
+        $storedData['service_ids'] = $data['service_ids']   ;
         $storedData['alias'] = $data['host_name']   ; 
         $storedData['data'] = json_encode($data) ; 
 

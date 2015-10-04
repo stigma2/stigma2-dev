@@ -1,0 +1,10 @@
+.white-panel {
+    @include panel(
+        $bg:white
+    );
+
+    h5 {
+        padding-bottom:15px;
+        border-bottom:1px solid $primary-color;
+    }
+}

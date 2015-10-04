@@ -5,14 +5,17 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Stigma\ObjectManager\HostManager ;
+use Stigma\ObjectManager\ServiceManager ;
 
 class HostController extends Controller {
 
     protected $hostManager ;
+    protected $serviceManager ;
 
-    public function __construct(HostManager $hostManager)
+    public function __construct(HostManager $hostManager, ServiceManager $serviceManager)
     {
         $this->hostManager = $hostManager ;
+        $this->serviceManager = $serviceManager ;
     }
 	/**
 	 * Display a listing of the resource.
@@ -45,9 +48,10 @@ class HostController extends Controller {
         });
 
         $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
+        $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
 
 
-	    return view('admin.host.create',compact('hostTmpl','hostTemplateCollection')) ;	
+	    return view('admin.host.create',compact('hostTmpl','hostTemplateCollection','serviceTemplateCollection')) ;	
 	}
 
 	/**
@@ -83,6 +87,7 @@ class HostController extends Controller {
 	public function edit($id)
 	{
         $host = $this->hostManager->find($id) ;
+        $hostJsonData = json_decode($host->data) ;
 
 		$hostTmpl = config('host_tmpl') ;
         $hostTmpl = collect($hostTmpl) ;
@@ -96,12 +101,11 @@ class HostController extends Controller {
             return 10;
         });
 
-        $hostJsonData = json_decode($host->data) ;
 
         $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
+        $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
 
-
-	    return view('admin.host.edit',compact('hostTmpl','host','hostJsonData','hostTemplateCollection')) ;	
+	    return view('admin.host.edit',compact('hostTmpl','host','hostJsonData','hostTemplateCollection','serviceTemplateCollection')) ;	
 
 
 	}
@@ -138,6 +142,7 @@ class HostController extends Controller {
         $param = [] ;
 
         $templateIds = $request->get('host_template') ;
+        $serviceIds = $request->get('service_ids') ;
 
 
         foreach($request->all() as $key => $value)
@@ -151,7 +156,16 @@ class HostController extends Controller {
 
         if(count($templateIds) > 0){
             $param['template_ids'] = implode(',',$templateIds) ;
+        }else {
+            $param['template_ids'] = '' ; 
         }
+
+        if(count($serviceIds) > 0){
+            $param['service_ids'] = implode(',',$serviceIds) ;
+        }else {
+            $param['service_ids'] = '' ; 
+        }
+
 
         return $param ;
     } 

@@ -18,8 +18,9 @@ class ServiceManager implements ObjectManager
         $storedData = [] ;
 
         $storedData['service_name'] = $data['service_name']   ;
-        $storedData['service_description'] = $data['service_description']   ;
+        $storedData['service_description'] =  $data['service_name']     ;
         $storedData['is_template'] = $data['is_template']   ;
+        $storedData['template_ids'] = $data['template_ids']   ;
         $storedData['data'] = json_encode($data) ; 
 
         $ret = $this->repo->store($storedData) ; 
@@ -31,15 +32,13 @@ class ServiceManager implements ObjectManager
     {
         $storedData = [] ;
 
-        $storedData['host_name'] = $data['host_name']   ;
-        $storedData['template_name'] = $data['host_name']   ;
-        $storedData['is_template'] = $data['is_template']   ; 
+        $storedData['service_name'] = $data['service_name']   ;
+        $storedData['service_description'] =  $data['service_name']     ;
+        $storedData['is_template'] = $data['is_template']   ;
         $storedData['template_ids'] = $data['template_ids']   ;
-        //$storedData['service_ids'] = $data['service_ids']   ;
-        $storedData['alias'] = $data['host_name']   ; 
         $storedData['data'] = json_encode($data) ; 
 
-        $ret = $this->repo->update($id,$storedData) ; 
+        $ret = $this->repo->update($id,$storedData) ;
 
         return $ret ; 
     }
