@@ -2,7 +2,7 @@ define(['./module'],
     function(app) {
         'use strict';
 
-        app.controller('HistoryLiveCtrl', [
+        app.controller('ReportGraphCtrl', [
             '$scope', '$state', '$sce', 'DashboardFactory',
             function($scope, $state, $sce, DashboardFactory) {
                 function getDashboard(dashboard) {
@@ -12,7 +12,7 @@ define(['./module'],
                         });
                 };
 
-                getDashboard('HISTORY_LIVE');
+                getDashboard('REPORT_GRAPH');
             }
         ]);
     }
