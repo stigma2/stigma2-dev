@@ -17,21 +17,21 @@ class ClientCest
     // tests
     public function testToGenerateCommand(UnitTester $I)
     {
-        $client = new Client ; 
+        /*
+        $client = \App::make('Stigma\Nagios\Client'); 
         
         $data = [] ;
         $response = $client->generateCommand($data) ; 
 
         $I->assertEquals('200',$response) ;
+         */
         
     }
 
     public function testToRestart(UnitTester $I)
     {
-        //'http://106.243.134.121:20280/nagios_dev/api/v1/nagios?command=restart' ;
+        $client = \App::make('Stigma\Nagios\Client'); 
 
-        $client = new Client ; 
-        
         $ret = $client->requestToRestart() ;
 
         $I->assertTrue(true,$ret) ;
