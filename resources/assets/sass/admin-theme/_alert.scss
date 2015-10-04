@@ -1,0 +1,10 @@
+.stigma-alert-box {
+    @include alert(); 
+
+    &.alert {
+        background-color:transparent ;
+        font-size:1.3em;
+        border:0px;
+        color:$alert-color;
+    }
+}

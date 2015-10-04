@@ -67,4 +67,10 @@ class HostManager implements ObjectManager
     {
         return $this->repo->find($id) ;
     }
+
+    public function delete($id)
+    {
+        return $this->repo->delete($id) ;
+    }
+
 }

@@ -17,14 +17,13 @@ class ClientCest
     // tests
     public function testToGenerateCommand(UnitTester $I)
     {
-        /*
+        
         $client = \App::make('Stigma\Nagios\Client'); 
         
         $data = [] ;
         $response = $client->generateCommand($data) ; 
 
-        $I->assertEquals('200',$response) ;
-         */
+        $I->assertEquals('200',$response) ; 
         
     }
 

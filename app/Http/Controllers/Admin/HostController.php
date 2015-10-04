@@ -107,7 +107,6 @@ class HostController extends Controller {
 
 	    return view('admin.host.edit',compact('hostTmpl','host','hostJsonData','hostTemplateCollection','serviceTemplateCollection')) ;	
 
-
 	}
 
 	/**
@@ -134,6 +133,7 @@ class HostController extends Controller {
 	 */
 	public function destroy($id)
 	{
+        $this->hostManager->delete($id) ;
 	}
 
     private function processFormData(Request $request)

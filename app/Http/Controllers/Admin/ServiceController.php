@@ -128,7 +128,7 @@ class ServiceController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $this->serviceManager->delete($id) ;
 	}
 
     private function processFormData(Request $request)
