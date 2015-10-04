@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="small-4 columns">
                         <label for="right-label" class="right inline">
-                        Only Template
+                        For Template
                         </label>
                     </div>
                     <div class="small-8 columns">
@@ -48,17 +48,18 @@
         @endforeach
     </div>
     <div class="small-5 columns">
-        <div class="panel callout radius">
+        <div class="panel white-panel  radius">
             <h5>Used Host Template</h5>
             <table class="table">
                 <thead>
                     <tr>
                         <th width="50"></th>
-                        <th>Template Name</th>
+                        <th>Host Template</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($hostTemplateCollection as $hostItem)
+                    @if(isset($host) == null || (isset($host) && $host->getKey() != $hostItem->getKey()) )
                     <tr>
                         <?php
                             $check = false ;
@@ -67,28 +68,63 @@
                             if(isset($host)) {
                                 $templateIds = $host->template_ids ; 
                                 $templateIds = explode(',',$templateIds) ;
-                            } 
 
-                            foreach($templateIds as $templateId)
-                            {
-                                if($hostItem->getKey() == $templateId){
-                                    $check = true ;
+                                foreach($templateIds as $templateId)
+                                {
+                                    if($hostItem->getKey() == $templateId){
+                                        $check = true ;
+                                    }
                                 }
-                            }
+                            } 
                         ?>
                         <td>{!! Form::checkbox('host_template[]', $hostItem->getKey() ,$check) !!}</td>
                         <td>
-                            {{$hostItem->host_name}}
+                            <a href="{{ route('admin.hosts.edit',array($hostItem->getKey())) }}">{{$hostItem->host_name}}</a>
                         </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>
         </div>
         <hr/> 
-        <div class="panel callout radius">
+        <div class="panel white-panel  radius">
             <h5>Service</h5>
-            <p>It's a little ostentatious, but useful for important content.</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="50"></th>
+                        <th>Service Template</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($serviceTemplateCollection as $serviceItem)
+                    <tr>
+                        <?php
+                            $check = false ;
+                            $templateIds = [] ;
+
+                            if(isset($host)) {
+                                $serviceIds = $host->service_ids ; 
+                                $serviceIds = explode(',',$serviceIds) ;
+
+                                foreach($serviceIds as $serviceId)
+                                {
+                                    if($serviceItem->getKey() == $serviceId){
+                                        $check = true ;
+                                    }
+                                }
+                            } 
+                        ?>
+                        <td>{!! Form::checkbox('service_ids[]', $serviceItem->getKey() ,$check) !!}</td>
+                        <td>
+                            <a href="{{ route('admin.services.edit', array($serviceItem->getKey()))}}">{{$serviceItem->service_name}}</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
         </div>
     </div>
 </div>

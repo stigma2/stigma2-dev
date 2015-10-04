@@ -20,14 +20,14 @@
                     <a><i class="fi-monitor"></i>&nbsp;HOST MANAGER</a>
                     <ul class="submenu">
                         <li><a href="{{route('admin.hosts.index')}}">List</a></li>
-                        <li><a>Template</a></li>
+                        <li><a href="{{route('admin.hosts.create')}}"><span class="fi-plus"></span>&nbsp;New Host</a></li>
                     </ul>
                     </li>
                     <li class="parent" style="border-left:5px solid #6200EA;">
                     <a><i class="fi-cloud"></i>&nbsp;SERVICE MANAGER</a>
                     <ul class="submenu">
                         <li><a href="{{route('admin.services.index')}}">List</a></li>
-                        <li><a>Template</a></li>
+                        <li><a href="{{route('admin.services.create')}}"><span class="fi-plus"></span>&nbsp;New Service</a></li>
                     </ul> 
                     </li>
                     <li class="parent" style="border-left:5px solid #00BCD4;"><a><i class="fi-book"></i>&nbsp;COMMAND MANAGER</a> 

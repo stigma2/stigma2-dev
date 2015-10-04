@@ -21,8 +21,9 @@ class ServiceController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-	    return view('admin.service.index') ;	
+	{ 
+        $items = $this->serviceManager->getAllItems() ;
+	    return view('admin.service.index',compact('items')) ;	
 	}
 
 	/**
@@ -44,7 +45,9 @@ class ServiceController extends Controller {
             return 10;
         });
 
-	    return view('admin.service.create',compact('serviceTmpl')) ;	
+        $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
+
+	    return view('admin.service.create',compact('serviceTmpl','serviceTemplateCollection')) ;	
 	}
 
 	/**
@@ -52,7 +55,7 @@ class ServiceController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
 		$param = $this->processFormData($request) ; 
 
@@ -80,8 +83,26 @@ class ServiceController extends Controller {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-		//
+	{ 
+        $service = $this->serviceManager->find($id) ;
+        $serviceJsonData = json_decode($service->data) ;
+
+		$serviceTmpl = config('service_tmpl') ;
+        $serviceTmpl = collect($serviceTmpl) ;
+        $serviceTmpl->sortBy(function($field){ 
+            if($field['required'] && $field['display_name'] == 'SERVICE NAME' ){
+                return 0 ;
+            }else if($field['required'] ) { 
+                return 1 ;
+            }
+
+            return 10;
+        });
+
+        $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
+
+	    return view('admin.service.edit',compact('serviceTmpl','service','serviceJsonData','serviceTemplateCollection')) ;	
+
 	}
 
 	/**
@@ -89,10 +110,14 @@ class ServiceController extends Controller {
 	 *
 	 * @param  int  $id
 	 * @return Response
-	 */
-	public function update($id)
+	 */ 
+	public function update(Request $request , $id)
 	{
-		//
+		$param = $this->processFormData($request) ; 
+
+        $this->serviceManager->update($id,$param) ;
+
+        return redirect()->route('admin.services.index') ; 
 	}
 
 	/**
@@ -111,8 +136,7 @@ class ServiceController extends Controller {
         $serviceTmpl = config('service_tmpl') ;
         $param = [] ;
 
-        $templateIds = $request->get('service_template') ;
-
+        $templateIds = $request->get('service_template') ; 
 
         foreach($request->all() as $key => $value)
         {
@@ -122,13 +146,12 @@ class ServiceController extends Controller {
         } 
 
         $param['is_template'] = $request->get('is_template') ;
+        $param['service_name'] = $request->get('service_name') ;
 
         if(count($templateIds) > 0){
             $param['template_ids'] = implode(',',$templateIds) ;
         }
 
         return $param ;
-    } 
-
-
+    }
 }

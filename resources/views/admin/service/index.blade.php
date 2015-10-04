@@ -16,12 +16,22 @@
             <tr>
                 <th width="50">#</th>
                 <th width="200">Service Name</th>
-                <th>Host Addr</th>
-                <th>Used Template</th>
-                <th></th>
+                <th>For Template</th>
+                <th width="50"></th>
+                <th width="50"></th>
             </tr>
         </thead>
         <tbody>
+            @foreach($items as $item)
+            <tr>
+                <td>{{$item->getKey()}}</td>
+                <td>{{$item->service_name}}</td>
+                <td>{{$item->is_template}}</td>
+                <td style="text-align:center;"><a class="update-btn" href="{{route('admin.services.edit',array($item->getKey()))}}"><i class="fi-widget"></i></a></td>
+                <td style="text-align:center;"><a class="delete-btn alert"><i class="fi-trash"></i></a></td>
+
+            </tr>
+            @endforeach
         </tbody>
     </table>
 </div> 
