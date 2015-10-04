@@ -1,0 +1,10 @@
+/vendor
+/node_modules
+.env
+.DS_Store
+config/grafana.php
+config/nagios.php
+config/influxdb.php
+.env.testing
+*.map
+public/build/*

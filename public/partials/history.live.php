@@ -1,0 +1,1 @@
+<iframe ng-src="{{ grafanaUrl }}" id="grafana" frameborder="0" width="100%" height="860px"><p>Your browser does not support iframes.</p></iframe>

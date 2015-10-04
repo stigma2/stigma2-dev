@@ -1,0 +1,4 @@
+suites:
+    support_suite:
+        namespace: Stigma\Database
+        psr4_prefix: Stigma\Database

@@ -1,0 +1,11 @@
+suites:
+    stigma-installation:
+        namespace: Stigma\Installation
+        src_path: pkg/Installation/src
+        psr4_prefix: Stigma\Installation
+        spec_path: pkg/Installation
+    stigma-database:
+        namespace: Stigma\Database
+        src_path: pkg/Database/src
+        psr4_prefix: Stigma\Database
+        spec_path: pkg/Database 
