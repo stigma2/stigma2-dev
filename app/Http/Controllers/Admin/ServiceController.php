@@ -4,17 +4,23 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Stigma\ObjectManager\HostManager ;
 use Stigma\ObjectManager\ServiceManager ;
+use Stigma\CommandBuilder\CommandBuilder ;
 
 class ServiceController extends Controller {
 
+    protected $hostManager ;
     protected $serviceManager ;
+    protected $commandBuilder ;
+ 
 
-    public function __construct(ServiceManager $serviceManager)
+    public function __construct(HostManager $hostManager, ServiceManager $serviceManager,CommandBuilder $commandBuilder)
     {
+        $this->hostManager = $hostManager ;
         $this->serviceManager = $serviceManager ;
+        $this->commandBuilder = $commandBuilder ;
     }
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -47,7 +53,9 @@ class ServiceController extends Controller {
 
         $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
 
-	    return view('admin.service.create',compact('serviceTmpl','serviceTemplateCollection')) ;	
+        $commandList = $this->commandBuilder->pluck('id','command_name')  ;
+
+	    return view('admin.service.create',compact('serviceTmpl','serviceTemplateCollection','commandList')) ;	
 	}
 
 	/**
@@ -100,8 +108,9 @@ class ServiceController extends Controller {
         });
 
         $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
+        $commandList = $this->commandBuilder->pluck('id','command_name')  ;
 
-	    return view('admin.service.edit',compact('serviceTmpl','service','serviceJsonData','serviceTemplateCollection')) ;	
+	    return view('admin.service.edit',compact('serviceTmpl','service','serviceJsonData','serviceTemplateCollection','commandList')) ;	
 
 	}
 
@@ -128,7 +137,7 @@ class ServiceController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $this->serviceManager->delete($id) ;
 	}
 
     private function processFormData(Request $request)
@@ -151,6 +160,11 @@ class ServiceController extends Controller {
         if(count($templateIds) > 0){
             $param['template_ids'] = implode(',',$templateIds) ;
         }
+
+        if($request->get('command_id') > 0){
+            $param['command_id'] = $request->get('command_id') ;
+            $param['command_argument'] = $request->get('command_argument') ;
+        } 
 
         return $param ;
     }

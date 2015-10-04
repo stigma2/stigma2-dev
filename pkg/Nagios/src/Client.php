@@ -19,8 +19,72 @@ class Client
         //$this->httpClient->setPort($port) ;
     }
 
-    public function generateCommand($data)
+    public function generateHost($data)
+    { 
+        $builder = \App::make('Stigma\ObjectManager\Builder') ;
+
+        $payload = $builder->buildForHost() ;
+        //dd(json_encode($payload)) ;
+
+        $uri = 'api/v1/hosts' ;
+
+        try{
+
+            $response = $this->httpClient->post($uri, [ 
+                'form_params'=> [
+                    'payload'=>json_encode($payload)  
+                    ]
+                ]  
+            ); 
+            return $response->getStatusCode();
+        }catch(\Exception $e){
+            dd((string)$e->getResponse()->getBody()) ;
+        } 
+    }
+
+    public function generateService($data)
     {
+        $builder = \App::make('Stigma\ObjectManager\Builder') ;
+
+        $payload = $builder->buildForService() ; 
+
+        $uri = 'api/v1/services' ;
+
+        try{
+
+            $response = $this->httpClient->post($uri, [ 
+                'form_params'=> [
+                    'payload'=>json_encode($payload)  
+                    ]
+                ]  
+            ); 
+            return $response->getStatusCode();
+        }catch(\Exception $e){
+            echo((string)$e->getResponse()->getBody()) ;
+        } 
+    }
+
+
+    public function generateCommand($collection)
+    {
+        $commandBuilder = \App::make('Stigma\CommandBuilder\CommandBuilder') ;
+        $collection = $commandBuilder->getAll() ; 
+
+        $payload = array() ;
+
+        foreach($collection as $item)
+        {
+            $data = new \stdClass ;
+            $data->command_name = $item->command_name ;
+            $data->details = [
+                'command_name' => $item->command_name ,
+                'command_line' => $item->command_line
+                ] ; 
+
+            $payload[] = $data ;
+        }
+
+        /*
         $data1 = new \stdClass ;
         $data1->command_name = 'ping' ;
         $data1->details = array(
@@ -37,15 +101,18 @@ class Client
 
         $arr = [$data1, $data2] ;
 
-        $uri = 'api/v1/commands' ;
 
         (json_encode($arr)) ; 
+         */
 
+        //dd(json_encode($payload)) ;
+
+        $uri = 'api/v1/commands' ;
         try{
 
             $response = $this->httpClient->post($uri, [ 
                 'form_params'=> [
-                    'payload'=>json_encode($arr)  
+                    'payload'=>json_encode($payload)  
                     ]
                 ]  
             ); 

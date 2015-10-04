@@ -6,17 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Stigma\ObjectManager\HostManager ;
 use Stigma\ObjectManager\ServiceManager ;
+use Stigma\CommandBuilder\CommandBuilder ;
 
 class HostController extends Controller {
 
     protected $hostManager ;
     protected $serviceManager ;
+    protected $commandBuilder ;
 
-    public function __construct(HostManager $hostManager, ServiceManager $serviceManager)
+    public function __construct(HostManager $hostManager, ServiceManager $serviceManager,CommandBuilder $commandBuilder)
     {
         $this->hostManager = $hostManager ;
         $this->serviceManager = $serviceManager ;
+        $this->commandBuilder = $commandBuilder ;
     }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -34,24 +38,8 @@ class HostController extends Controller {
 	 * @return Response
 	 */
 	public function create()
-	{
-        $hostTmpl = config('host_tmpl') ;
-        $hostTmpl = collect($hostTmpl) ;
-        $hostTmpl->sortBy(function($field){ 
-            if($field['required'] && $field['display_name'] == 'HOST NAME' ){
-                return 0 ;
-            }else if($field['required'] ) { 
-                return 1 ;
-            }
-
-            return 10;
-        });
-
-        $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
-        $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
-
-
-	    return view('admin.host.create',compact('hostTmpl','hostTemplateCollection','serviceTemplateCollection')) ;	
+	{ 
+        return $this->showForm() ;
 	}
 
 	/**
@@ -76,6 +64,7 @@ class HostController extends Controller {
 	 */
 	public function show($id)
 	{ 
+        return $this->showForm($id) ;
 	}
 
 	/**
@@ -85,29 +74,8 @@ class HostController extends Controller {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-        $host = $this->hostManager->find($id) ;
-        $hostJsonData = json_decode($host->data) ;
-
-		$hostTmpl = config('host_tmpl') ;
-        $hostTmpl = collect($hostTmpl) ;
-        $hostTmpl->sortBy(function($field){ 
-            if($field['required'] && $field['display_name'] == 'HOST NAME' ){
-                return 0 ;
-            }else if($field['required'] ) { 
-                return 1 ;
-            }
-
-            return 10;
-        });
-
-
-        $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
-        $serviceTemplateCollection = $this->serviceManager->getAllTemplates() ;
-
-	    return view('admin.host.edit',compact('hostTmpl','host','hostJsonData','hostTemplateCollection','serviceTemplateCollection')) ;	
-
-
+	{ 
+        return $this->showForm($id) ;
 	}
 
 	/**
@@ -134,6 +102,7 @@ class HostController extends Controller {
 	 */
 	public function destroy($id)
 	{
+        $this->hostManager->delete($id) ;
 	}
 
     private function processFormData(Request $request)
@@ -166,7 +135,55 @@ class HostController extends Controller {
             $param['service_ids'] = '' ; 
         }
 
+        if($request->get('command_id') > 0){
+            $param['command_id'] = $request->get('command_id') ;
+            $param['command_argument'] = $request->get('command_argument') ;
+        }
+
+        if($request->get('address') != ''){
+            $param['address'] = $request->get('address') ;
+        }
 
         return $param ;
     } 
+
+    private function showForm($id=null)
+    {
+        if($id > 0){ 
+            $host = $this->hostManager->find($id) ;
+            $hostJsonData = json_decode($host->data) ;
+        } 
+
+        $hostTmpl = config('host_tmpl') ;
+        $hostTmpl = collect($hostTmpl) ;
+        $hostTmpl->sortBy(function($field){ 
+            if($field['required'] && $field['display_name'] == 'HOST NAME' ){
+                return 0 ;
+            }else if($field['required'] ) { 
+                return 1 ;
+            }
+
+            return 10;
+        });
+
+        $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
+        $serviceTemplateCollection = $this->serviceManager->getAllItems() ; 
+
+        $serviceTemplateCollection = $serviceTemplateCollection->filter(function($item){ 
+            if($item->is_template == 'N'){
+                return $item ;
+            } 
+        });
+
+
+
+        $commandList = $this->commandBuilder->pluck('id','command_name')  ;
+
+
+        if(isset($host)){
+            return view('admin.host.edit',compact('hostTmpl','host','hostJsonData','hostTemplateCollection','serviceTemplateCollection','commandList')) ;	
+        }else {
+            return view('admin.host.create',compact('hostTmpl','hostTemplateCollection','serviceTemplateCollection','commandList')) ;	
+        } 
+    }
 }

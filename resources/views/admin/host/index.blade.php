@@ -28,12 +28,59 @@
                 <td>{{$item->host_name}}</td>
                 <td>{{$item->is_template}}</td>
                 <td style="text-align:center;"><a class="update-btn" href="{{route('admin.hosts.edit',array($item->getKey()))}}"><i class="fi-widget"></i></a></td>
-                <td style="text-align:center;"><a class="delete-btn alert"><i class="fi-trash"></i></a></td>
-
+                <td style="text-align:center;"><a class="alert delete-btn" data-reveal-id="delete-modal" data-host-id="{{$item->getKey()}}"><i class="fi-trash"></i></a></td> 
             </tr>
             @endforeach
         </tbody>
     </table>
 </div> 
 
+<div id="delete-modal" class="reveal-modal small modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <div class="modal-header">
+        <h5 class="title">Delete Host</h5>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <div class="modal-body"> 
+        {!! Form::open(array('route'=> 'admin.hosts.index' ,'id'=> 'delete-form')) !!} 
+        <input type="hidden" name="_token" value="{{csrf_token()}}" />
+        <div data-alert class="stigma-alert-box alert"> 
+            <span class="fi-info"></span>&nbsp; Do you want to delete a host
+        </div>
+        {!! Form::close() !!}
+    </div> 
+    <div class="modal-footer"> 
+        <a class="button right small alert request-to-delete"><span class="fi-trash"></span>&nbsp;Delete</a> 
+    </div>
+</div>
+
+
+@stop
+
+@section('scripts')
+<script> 
+jQuery(function($){
+    var hostId ; 
+
+    $('.delete-btn').click(function(){
+        hostId = $(this).data('host-id') ;
+    });
+
+    $('.request-to-delete').click(function(){
+        var $form = $('#delete-form') ;
+        var data = $form.serialize() ;
+        var url = $form.attr('action') ;
+
+        $.ajax({ 
+            'type': 'delete', 
+            'url' : url+'/'+hostId, 
+            'data' : {
+                '_token' : $form.find('[name=_token]').val()
+            },
+            'success':function(){ 
+                location.href = location.href ;
+            }
+        }) ;
+    }); 
+});
+</script>
 @stop

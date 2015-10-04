@@ -4,12 +4,14 @@
  */
 return [
 
+    /*
     "host_name" => [
         "display_name" => 'HOST NAME' ,
         "description" => '',
         "required" => true,
         "data_type" => "string"
     ],
+    */
 
     "hostgroup_name" => [
         "display_name" => 'HOSTGROUP NAME' ,

@@ -9,6 +9,8 @@ class Host extends \Eloquent
         'description',
         'template_name',
         'template_ids',
+        'command_id',
+        'command_argument',
         'service_ids',
         'alias',
         'is_template',

@@ -462,5 +462,4 @@ class HostsTableSeeder extends Seeder {
 			'value' => 'monitoring.nagios'
 		]);
 	}
-
 }
