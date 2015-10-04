@@ -44,12 +44,12 @@
             <aside class="large-2 columns">
                 <ul class="side-nav">
                     <li class="heading">Dashboard</li>
-                    <li><a ui-sref="dashboardOverview">Overview</a></li>
+                    <li><a ui-sref="dashboardOverview"><i class="fi-home"></i> Overview</a></li>
                     <li class="heading">Server</li>
-                    <li><a ui-sref="serverHostList">Host</a></li>
-                    <li><a ui-sref="serverServiceList">Service</a></li>
+                    <li><a ui-sref="serverHostList"><i class="fi-page"></i> Host</a></li>
+                    <li><a ui-sref="serverServiceList"><i class="fi-page"></i> Service</a></li>
                     <li class="heading">Report</li>
-                    <li><a ui-sref="reportGraph">Graph</a></li>
+                    <li><a ui-sref="reportGraph"><i class="fi-graph-bar"></i> Graph</a></li>
                 </ul>
             </aside>
             <section class="large-10 columns">

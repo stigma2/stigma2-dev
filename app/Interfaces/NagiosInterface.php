@@ -14,4 +14,10 @@ interface NagiosInterface
     public function listServices($status);
 
     public function showService($name, $servicedescription);
+
+    public function getSystemStatus();
+
+    public function getHostStatus();
+
+    public function getServiceStatus();
 }

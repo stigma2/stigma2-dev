@@ -4,10 +4,10 @@
             <div class="medium-6 columns">
                 <h1>SYSTEM Status</h1>
                 <div class="" style="background: #4caf50;" ng-show="system_status == 200">
-                    <h1 class=""><span class="">Running</span></h1>
+                    <h1 class="" style="text-align: center;"><span class="" style="color: #eaeaea;">Running</span></h1>
                 </div>
-                <div class="" style="background: #ff1744;" ng-show="system_status == 400">
-                    <h1 class=""><span class="">Critical</span></h1>
+                <div class="" style="background: #ff1744;" ng-show="system_status != 200">
+                    <h1 class="" style="text-align: center;"><span class="" style="color: #eaeaea;">Critical</span></h1>
                 </div>
             </div>
         </div>
@@ -66,20 +66,23 @@
                                 <div class="medium-6 columns">
                                     <div class="">
                                         <p class="">Up</p>
-                                        <h2 class=""><span class="">132</span></h2>
+                                        <h2 class=""><span class="">{{ host_status.up }}</span></h2>
                                     </div>
                                 </div>
                                 <div class="medium-6 columns summary-border-left">
                                     <div class="">
                                         <p>Down</p>
-                                        <h2 class=""><span class="">160</span></h2>
+                                        <h2 class=""><span class="">{{ host_status.down }}</span></h2>
                                     </div>
                                 </div>
                             </div>
                             <div style="" class="row summary-border-top">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h1 class=""><span class="text-center"><i class="fi-heart"></i></span></h1>
+                                        <h1 class="">
+                                            <span class="text-center" ng-show="host_status.problems == 0"><i class="fi-heart"></i></span>
+                                            <span class="text-center" ng-show="host_status.problems != 0"><i class="fi-alert"></i></span>
+                                        </h1>
                                     </div>
 
                                 </div>
@@ -95,13 +98,13 @@
                                 <div class="medium-6 columns">
                                     <div class="">
                                         <p>All Problems</p>
-                                        <h2 class=" "><span class="">82</span></h2>
+                                        <h2 class=" "><span class="">{{ host_status.problems }}</span></h2>
                                     </div>
                                 </div>
                                 <div class="medium-6 columns summary-border-left">
                                     <div class="">
                                         <p>All Types</p>
-                                        <h2 class=""><span class="">24</span></h2>
+                                        <h2 class=""><span class="">{{ host_status.types }}</span></h2>
                                     </div>
                                 </div>
                             </div>
@@ -164,8 +167,8 @@
                             <div style="" class="row">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <p class="">Up</p>
-                                        <h2 class=""><span class="">132</span></h2>
+                                        <p class="">OK</p>
+                                        <h2 class=""><span class="">{{ service_status.ok }}</span></h2>
                                     </div>
                                 </div>
                                 <div class="medium-6 columns summary-border-left">
@@ -178,7 +181,10 @@
                             <div style="" class="row summary-border-top">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h1 class=""><span class="text-center"><i class="fi-alert"></i></span></h1>
+                                        <h1 class="">
+                                            <span class="text-center" ng-show="host_status.problems == 0"><i class="fi-heart"></i></span>
+                                            <span class="text-center" ng-show="host_status.problems != 0"><i class="fi-alert"></i></span>
+                                        </h1>
                                     </div>
 
                                 </div>
