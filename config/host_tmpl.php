@@ -14,6 +14,13 @@ return [
         "data_type" => "string" 
     ],
 
+    "address" => [
+        "display_name" => 'ADDRESS' , 
+        "description" => 'It is used to define a short name used to identify the host',
+        "required" => true,
+        "data_type" => "string" 
+    ],
+
     "display_name" => [
         "display_name" => 'DISPLAY NAME' , 
         "description" => 'It is used to define a short name used to identify the host',
