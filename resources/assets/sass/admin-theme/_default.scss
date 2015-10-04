@@ -84,3 +84,17 @@ body.admin-theme {
 a.alert {
     color:$alert-color;
 }
+
+.step-by-step {
+    list-style:none;
+    li {
+        border-bottom:1px solid $primary-color ;
+        padding-top:15px;
+        padding-bottom:15px;
+    }
+
+    li.green { 
+        color:$primary-color ;
+        font-weight:bold;
+    }
+}
