@@ -47,9 +47,41 @@ class Nagios implements NagiosInterface
         return $result;
     }
 
-    private function call($command)
+    public function getSystemStatus()
     {
-        $domain = env("NAGIOS_DOMAIN");
+        $command = "api/v1/nagios?command=status";
+        $result = $this->call($command, TRUE);
+
+        return $result;
+    }
+
+    public function getHostStatus()
+    {
+        $command = "api/v1/statistic/host";
+        $result = $this->call($command);
+
+        return $result;
+    }
+
+    public function getServiceStatus()
+    {
+        $command = "api/v1/statistic/service";
+        $result = $this->call($command);
+
+        return $result;
+    }
+
+    public function getEventLog($num = 7)
+    {
+        $command = "api/v1/statistic/log?n=".$num;
+        $result = $this->call($command);
+
+        return $result;
+    }
+
+    private function call($command, $code = null)
+    {
+        $domain = config('nagios.host') ;
         $url = $domain.$command;
 
         $ch = curl_init();
@@ -59,6 +91,10 @@ class Nagios implements NagiosInterface
         curl_setopt($ch, CURLOPT_TIMEOUT, "3");
 
         $result = curl_exec($ch);
+
+        if ($code) {
+            return curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        }
         curl_close($ch);
         
         return $result;

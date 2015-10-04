@@ -1,96 +1,69 @@
 <div class="row">
     <div class="medium-12 columns">
         <div class="row">
-            <div class="medium-9 columns">
-                <h1>Host Event</h1>
+            <div class="medium-8 columns">
+                <h3>Host Event</h3>
                 <table>
-                    <thead>
-                        <tr>
-                            <th width="200">Table Header</th>
-                            <th>Table Header</th>
-                            <th width="150">Table Header</th>
-                            <th width="150">Table Header</th>
-                        </tr>
-                    </thead>
                     <tbody>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer Content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus. This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer Content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
+                        <tr ng-repeat="log in event_log">
+                            <td>{{ log }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="medium-3 columns">
+            <div class="medium-4 columns">
                 <div class="medium-12 columns">
-                    <div class="box">
-                        <div class="box-body " style="display: block;">
-                            <div style="margin:0" class="row summary-border-top">
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest">
-                                        <h2 class="text-black"><span class="counter-up">132</span><small>K</small></h2>
-                                        <p class="counter-up">Up</p>
-                                    </div>
-                                </div>
-                                <div class="medium-6 columns summary-border-left">
-                                    <div class="summary-nest">
-                                        <h2 class="text-black"><span class="counter-up">160</span><small>K</small></h2>
-                                        <p>Down</p>
-                                    </div>
+                    <div class="summary-body">
+                        <div style="" class="row">
+                            <div class="medium-4 columns">
+                                <div class="">
+                                    <p class="summary-status-green">Up</p>
+                                    <h3 class=""><span class="">{{ host_status.up }}</span></h3>
                                 </div>
                             </div>
-                            <div style="margin:0" class="row">
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h2 class="text-black"><span class="text-center"><i class="fi-heart"></i></span></h2>
-                                    </div>
-
-                                </div>
-
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
-                                        <p class="text-left">Today</p>
-                                    </div>
+                            <div class="medium-4 columns summary-border-left">
+                                <div class="">
+                                    <p class="summary-status-red">Down</p>
+                                    <h3 class=""><span class="">{{ host_status.down }}</span></h3>
                                 </div>
                             </div>
-                            <div style="margin:0" class="row summary-border-bottom">
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h2 class="text-black "><span class="counter-up">82</span><small>%</small></h2>
-                                        <p>All Problems</p>
-                                    </div>
+                            <div class="medium-4 columns summary-border-left">
+                                <div class="">
+                                    <p class="summary-status-pink">Unreachable</p>
+                                    <h3 class=""><span class="">{{ host_status.unreachable }}</span></h3>
                                 </div>
-                                <div class="medium-6 columns summary-border-left">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h2 class="text-black"><span class="counter-up">24</span><small>th</small></h2>
-                                        <p>All Types</p>
-                                    </div>
+                            </div>
+                        </div>
+                        <div style="" class="row summary-border-top">
+                            <div class="medium-6 columns">
+                                <div class="">
+                                    <p>Health</p>
+                                    <h1 class="">
+                                        <span class="text-center summary-status-red" ng-show="host_status.problems == 0"><i class="fi-heart"></i></span>
+                                        <span class="text-center summary-status-pink" ng-show="host_status.problems != 0"><i class="fi-alert"></i></span>
+                                    </h1>
+                                </div>
+
+                            </div>
+
+                            <div class="medium-6 columns">
+                                <div class="">
+                                    <p class="text-left">Last Update</p>
+                                    <h4 class="text-left"><span class="">{{ convertDate(host_last_data_update) }}</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="" class="row summary-border-top">
+                            <div class="medium-6 columns">
+                                <div class="">
+                                    <p>All Problems</p>
+                                    <h3 class=" "><span class="">{{ host_status.problems }}</span></h3>
+                                </div>
+                            </div>
+                            <div class="medium-6 columns summary-border-left">
+                                <div class="">
+                                    <p>All Types</p>
+                                    <h3 class=""><span class="">{{ host_status.types }}</span></h3>
                                 </div>
                             </div>
                         </div>
@@ -98,102 +71,96 @@
                 </div>
             </div>
         </div>
+
         <p></p>
         <div class="row">
-            <div class="medium-9 columns">
-                <h1>Service Event</h1>
+            <div class="medium-8 columns">
+                <h3>Service Event</h3>
                 <table>
-                    <thead>
-                        <tr>
-                            <th width="200">Table Header</th>
-                            <th>Table Header</th>
-                            <th width="150">Table Header</th>
-                            <th width="150">Table Header</th>
-                        </tr>
-                    </thead>
                     <tbody>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer Content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus. This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
-                        </tr>
-                        <tr>
-                            <td>Content Goes Here</td>
-                            <td>This is longer Content</td>
-                            <td>Content Goes Here</td>
-                            <td>Content Goes Here</td>
+                        <tr ng-repeat="log in event_log">
+                            <td>{{ log }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="medium-3 columns">
+            <div class="medium-4 columns">
                 <div class="medium-12 columns">
-                    <div class="box">
-                        <div class="box-body " style="display: block;">
-                            <div style="margin:0" class="row summary-border-top">
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest">
-                                        <h2 class="text-black"><span class="counter-up">132</span><small>K</small></h2>
-                                        <p>OK</p>
-                                    </div>
-                                </div>
-                                <div class="medium-6 columns summary-border-left">
-                                    <div class="summary-nest">
-                                        <h2 class="text-black"><span class="counter-up">160</span><small>K</small></h2>
-                                        <p>Warning</p>
-                                    </div>
+                    <div class="summary-body">
+                        <div style="" class="row">
+                            <div class="medium-3 columns">
+                                <div class="">
+                                    <p class="summary-status-green">OK</p>
+                                    <h3 class=""><span class="">{{ service_status.ok }}</span></h3>
                                 </div>
                             </div>
-                            <div style="margin:0" class="row">
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h2 class="text-black"><span class="text-center"><i class="fi-alert"></i></span></h2>
-                                    </div>
-
-                                </div>
-
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
-                                        <p class="text-left">Today</p>
-                                    </div>
+                            <div class="medium-3 columns summary-border-left">
+                                <div class="">
+                                    <p class="summary-status-yellow">Warning</p>
+                                    <h3 class=""><span class="">{{ service_status.warning }}</span></h3>
                                 </div>
                             </div>
-                            <div style="margin:0" class="row summary-border-bottom">
-                                <div class="medium-6 columns">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h2 class="text-black "><span class="counter-up">82</span><small>%</small></h2>
-                                        <p>All Problems</p>
-                                    </div>
+                            <div class="medium-3 columns summary-border-left">
+                                <div class="">
+                                    <p class="summary-status-pink">Unknown</p>
+                                    <h3 class=""><span class="">{{ service_status.unknown }}</span></h3>
                                 </div>
-                                <div class="medium-6 columns summary-border-left">
-                                    <div class="summary-nest summary-pad-nest">
-                                        <h2 class="text-black"><span class="counter-up">24</span><small>th</small></h2>
-                                        <p>All Types</p>
-                                    </div>
+                            </div>
+                            <div class="medium-3 columns summary-border-left">
+                                <div class="">
+                                    <p class="summary-status-red">Critical</p>
+                                    <h3 class=""><span class="">{{ service_status.critical }}</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="" class="row summary-border-top">
+                            <div class="medium-6 columns">
+                                <div class="">
+                                    <p>Health</p>
+                                    <h1 class="">
+                                        <span class="text-center summary-status-red" ng-show="service_status.problems == 0"><i class="fi-heart"></i></span>
+                                        <span class="text-center summary-status-pink" ng-show="service_status.problems != 0"><i class="fi-alert"></i></span>
+                                    </h1>
+                                </div>
+
+                            </div>
+
+                            <div class="medium-6 columns">
+                                <div class="">
+                                    <p class="text-left">Last Update</p>
+                                    <h4 class="text-left"><span class="">{{ convertDate(service_last_data_update) }}</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="" class="row summary-border-top">
+                            <div class="medium-6 columns">
+                                <div class="">
+                                    <p>All Problems</p>
+                                    <h3 class=" "><span class="">{{ service_status.problems }}</span></h3>
+                                </div>
+                            </div>
+                            <div class="medium-6 columns summary-border-left">
+                                <div class="">
+                                    <p>All Types</p>
+                                    <h3 class=""><span class="">{{ service_status.types }}</span></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+        <div class="row">
+            <div class="medium-8 columns">
+            </div>
+            <div class="medium-4 columns">
+                <div class="" style="background: #4caf50;" ng-show="system_status == 200">
+                    <h3 class="" style="text-align: center;"><span class="" style="color: #eaeaea;">SYSTEM: Running</span></h3>
+                </div>
+                <div class="" style="background: #ff1744;" ng-show="system_status != 200">
+                    <h3 class="" style="text-align: center;"><span class="" style="color: #eaeaea;">SYSTEM: Critical</span></h3>
                 </div>
             </div>
         </div>

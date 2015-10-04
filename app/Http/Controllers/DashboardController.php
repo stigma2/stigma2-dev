@@ -3,40 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Interfaces\NagiosInterface;
+
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    private $nagiosAPI;
 
     /**
-     * Show the form for creating a new resource.
+     * Set the dependencies.
      *
-     * @return \Illuminate\Http\Response
+     * @param NagiosInterface $nagiosAPI
+     * @return void
      */
-    public function create()
+    public function __construct(NagiosInterface $nagiosAPI)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $this->nagiosAPI = $nagiosAPI;
     }
 
     /**
@@ -54,36 +39,50 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display a nagios system status.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function systemstatus()
     {
-        //
+        $result = $this->nagiosAPI->getSystemStatus();
+
+        return $result;
     }
 
     /**
-     * Update the specified resource in storage.
+     * Display a host status.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function hoststatus()
     {
-        //
+        $result = $this->nagiosAPI->getHostStatus();
+
+        return $result;
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display a service status.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function servicestatus()
     {
-        //
+        $result = $this->nagiosAPI->getServiceStatus();
+
+        return $result;
+    }
+
+    /**
+     * Display a event log.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function eventlog()
+    {
+        $result = $this->nagiosAPI->getEventLog();
+
+        return $result;
     }
 }

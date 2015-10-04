@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Stigma2</title>
+        <title>Stigma</title>
 
         <link rel="stylesheet" href="css/app.css" />
 
@@ -14,24 +14,12 @@
             <nav class="top-bar" data-topbar role="navigation">
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a ui-sref="dashboard.overview">STIGMA 2</a></h1>
+                        <h1><a ui-sref="dashboard.overview">STIGMA</a></h1>
                     </li>
                 </ul>
                 <top-bar-section>
                 <section class="top-bar-section">
-                    <ul class="left">
-                        <li><a ng-click=""><i class="fi-list"></i></a></li>
-                        <li><a href="#">Left Nav Button</a></li>
-                    </ul>
                     <ul class="right">
-                        <li class="active"><a href="#">Right Button Active</a></li>
-                        <li has-dropdown>
-                            <a href="#">Right Button Dropdown</a>
-                            <ul class="dropdown">
-                                <li><a href="#">First link in dropdown</a></li>
-                                <li class="active"><a href="#">Active link in dropdown</a></li>
-                            </ul>
-                        </li>
                         <li><a href="#"><i class="fi-widget"></i></a></li>
                         <li><a href="#"><i class="fi-lock"></i></a></li>
                     </ul>
@@ -44,12 +32,12 @@
             <aside class="large-2 columns">
                 <ul class="side-nav">
                     <li class="heading">Dashboard</li>
-                    <li><a ui-sref="dashboardOverview">Overview</a></li>
+                    <li><a ui-sref="dashboardOverview"><i class="fi-home"></i> Overview</a></li>
                     <li class="heading">Server</li>
-                    <li><a ui-sref="serverHostList">Host</a></li>
-                    <li><a ui-sref="serverServiceList">Service</a></li>
-                    <li class="heading">History</li>
-                    <li><a ui-sref="historyLive">Live</a></li>
+                    <li><a ui-sref="serverHostList"><i class="fi-page"></i> Host</a></li>
+                    <li><a ui-sref="serverServiceList"><i class="fi-page"></i> Service</a></li>
+                    <li class="heading">Report</li>
+                    <li><a ui-sref="reportGraph"><i class="fi-graph-bar"></i> Graph</a></li>
                 </ul>
             </aside>
             <section class="large-10 columns">
