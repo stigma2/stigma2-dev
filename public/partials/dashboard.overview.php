@@ -53,43 +53,43 @@
                             <div style="margin:0" class="row">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h2 class="text-black"><span class="counter-up">132</span><small>K</small></h2>
                                         <p class="counter-up">Up</p>
+                                        <h2 class="text-black"><span class="counter-up">132</span></h2>
                                     </div>
                                 </div>
                                 <div class="medium-6 columns summary-border-left">
                                     <div class="">
-                                        <h2 class="text-black"><span class="counter-up">160</span><small>K</small></h2>
                                         <p>Down</p>
+                                        <h2 class="text-black"><span class="counter-up">160</span></h2>
                                     </div>
                                 </div>
                             </div>
                             <div style="margin:0" class="row summary-border-top">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h2 class="text-black"><span class="text-center"><i class="fi-heart"></i></span></h2>
+                                        <h1 class="text-black"><span class="text-center"><i class="fi-heart"></i></span></h1>
                                     </div>
 
                                 </div>
 
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
                                         <p class="text-left">Today</p>
+                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
                                     </div>
                                 </div>
                             </div>
                             <div style="margin:0" class="row summary-border-top">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h2 class="text-black "><span class="counter-up">82</span><small>%</small></h2>
                                         <p>All Problems</p>
+                                        <h2 class="text-black "><span class="counter-up">82</span></h2>
                                     </div>
                                 </div>
                                 <div class="medium-6 columns summary-border-left">
                                     <div class="">
-                                        <h2 class="text-black"><span class="counter-up">24</span><small>th</small></h2>
                                         <p>All Types</p>
+                                        <h2 class="text-black"><span class="counter-up">24</span></h2>
                                     </div>
                                 </div>
                             </div>
@@ -152,43 +152,43 @@
                             <div style="margin:0" class="row">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h2 class="text-black"><span class="counter-up">132</span><small>K</small></h2>
-                                        <p>OK</p>
+                                        <p class="counter-up">Up</p>
+                                        <h2 class="text-black"><span class="counter-up">132</span></h2>
                                     </div>
                                 </div>
                                 <div class="medium-6 columns summary-border-left">
                                     <div class="">
-                                        <h2 class="text-black"><span class="counter-up">160</span><small>K</small></h2>
-                                        <p>Warning</p>
+                                        <p>Down</p>
+                                        <h2 class="text-black"><span class="counter-up">160</span></h2>
                                     </div>
                                 </div>
                             </div>
                             <div style="margin:0" class="row summary-border-top">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h2 class="text-black"><span class="text-center"><i class="fi-alert"></i></span></h2>
+                                        <h1 class="text-black"><span class="text-center"><i class="fi-alert"></i></span></h1>
                                     </div>
 
                                 </div>
 
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
                                         <p class="text-left">Today</p>
+                                        <h4 class="text-left"><span class="counter-up">5</span>/<span class="counter-up">12</span>/<span class="counter-up">2013</span></h4>
                                     </div>
                                 </div>
                             </div>
                             <div style="margin:0" class="row summary-border-top">
                                 <div class="medium-6 columns">
                                     <div class="">
-                                        <h2 class="text-black "><span class="counter-up">82</span><small>%</small></h2>
                                         <p>All Problems</p>
+                                        <h2 class="text-black "><span class="counter-up">82</span></h2>
                                     </div>
                                 </div>
                                 <div class="medium-6 columns summary-border-left">
                                     <div class="">
-                                        <h2 class="text-black"><span class="counter-up">24</span><small>th</small></h2>
                                         <p>All Types</p>
+                                        <h2 class="text-black"><span class="counter-up">24</span></h2>
                                     </div>
                                 </div>
                             </div>
