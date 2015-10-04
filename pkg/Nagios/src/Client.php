@@ -5,13 +5,18 @@ use GuzzleHttp\Client as HttpClient;
 class Client
 {
     protected $httpClient ;
+    protected $baseUri ;
+    protected $port ;
 
-    public function __construct()
-    {
-
+    public function __construct($baseUri)
+    { 
+        //'http://106.243.134.121:20280/nagios_dev/'
+        
+        $this->baseUri = $baseUri ;
         $this->httpClient = new HttpClient([
-            'base_uri' => 'http://106.243.134.121:20280/nagios_dev/'
+            'base_uri' => $this->baseUri
         ]);
+        //$this->httpClient->setPort($port) ;
     }
 
     public function generateCommand($data)
@@ -46,7 +51,7 @@ class Client
             ); 
             return $response->getStatusCode();
         }catch(\Exception $e){
-            dd((string)$e->getResponse()->getBody()) ;
+            echo((string)$e->getResponse()->getBody()) ;
         } 
 
     }

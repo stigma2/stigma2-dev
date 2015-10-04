@@ -152,6 +152,7 @@ return [
         'Stigma\Installation\InstallationServiceProvider',
         'Stigma\Database\Repository\RepositoryServiceProvider',
         'Stigma\ObjectManager\ObjectManagerServiceProvider', 
+        'Stigma\Nagios\NagiosServiceProvider', 
 	],
 
 	/*
