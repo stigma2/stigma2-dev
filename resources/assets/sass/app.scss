@@ -19,6 +19,7 @@
 @import "foundation/components/breadcrumbs";
 @import "foundation/components/reveal";
 @import "foundation/components/panels";
+@import "foundation/components/alert-boxes";
 
 @import "overrides/foundation-icons";
 @import "public/bower_components/foundation-icon-fonts/foundation-icons";
@@ -28,4 +29,5 @@
 @import "admin-theme/form"; 
 @import "admin-theme/modal"; 
 @import "admin-theme/panel"; 
+@import "admin-theme/alert"; 
 @import "install-theme/default"; 

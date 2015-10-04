@@ -10,11 +10,11 @@ class DatabaseFileGenerator extends FileGenerator implements ConfigFileGenerator
     protected $outputPath ; 
 
     public function __construct(
-        $tmplPath = __DIR__.'/../tmpl/database.php', 
+        $tmplPath , 
         $outputPath )
     {
+        $tmplPath = './../tmpl/database.php'; 
         $this->tmplPath = $tmplPath ;
         $this->outputPath = $outputPath ; 
-    }
-
+    } 
 }

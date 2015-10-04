@@ -9,11 +9,21 @@
                         </label>
                     </div>
                     <div class="small-8 columns">
+                        @if(isset($host))
+                        {!! Form::select('is_template', array( 'N' => 'N','Y' =>'Y'),$host->is_template)  !!}
+                        @else
                         {!! Form::select('is_template', array( 'N' => 'N','Y' =>'Y'))  !!}
+                        @endif 
                     </div>
                 </div>
             </div>
         </div>
+
+        @if(isset($host))
+        @include('admin.partials.check_command_field',array('commandList' => $commandList, 'model'=>$host)) 
+        @else
+        @include('admin.partials.check_command_field',array('commandList' => $commandList)) 
+        @endif
 
         @foreach($hostTmpl as $key => $formGroup) 
         <div class="row">
