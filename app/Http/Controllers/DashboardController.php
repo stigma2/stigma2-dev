@@ -73,4 +73,16 @@ class DashboardController extends Controller
 
         return $result;
     }
+
+    /**
+     * Display a event log.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function eventlog()
+    {
+        $result = $this->nagiosAPI->getEventLog();
+
+        return $result;
+    }
 }

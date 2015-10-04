@@ -1,11 +1,23 @@
 .summary-body {
-  padding-top: 75px; }
+  padding-top: 45px; }
 
 .summary-border-top {
   border-top: 2px solid #eaeaea; }
 
 .summary-border-left {
   border-left: 2px solid #eaeaea; }
+
+.summary-status-green {
+  color: #4caf50; }
+
+.summary-status-yellow {
+  color: #fbc02d; }
+
+.summary-status-pink {
+  color: #e91e63; }
+
+.summary-status-red {
+  color: #e53935; }
 
 /* for ngDraggable */
 * {
@@ -91,7 +103,8 @@ span.ng-drop-title {
 /* for ngDraggable */
 aside {
   background: #F9F9F9;
-  padding-left: 7px; }
+  padding-left: 7px;
+  height: 100vh; }
 
 table {
   width: 100%; }

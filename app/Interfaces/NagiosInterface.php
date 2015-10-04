@@ -20,4 +20,6 @@ interface NagiosInterface
     public function getHostStatus();
 
     public function getServiceStatus();
+
+    public function getEventLog($num);
 }

@@ -20,6 +20,10 @@ define(['./implement', './module', '../config'],
                     var url = config.get().home + '/api/v1/dashboard/servicestatus';
                     return implement.httpGetServiceImpl($http, url);
                 },
+                getEventLog: function() {
+                    var url = config.get().home + '/api/v1/dashboard/eventlog';
+                    return implement.httpGetServiceImpl($http, url);
+                },
             }
         });
     }

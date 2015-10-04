@@ -71,9 +71,17 @@ class Nagios implements NagiosInterface
         return $result;
     }
 
+    public function getEventLog($num = 7)
+    {
+        $command = "api/v1/statistic/log?n=".$num;
+        $result = $this->call($command);
+
+        return $result;
+    }
+
     private function call($command, $code = null)
     {
-        $domain = env("NAGIOS_DOMAIN");
+        $domain = config('nagios.host') ;
         $url = $domain.$command;
 
         $ch = curl_init();

@@ -15,6 +15,7 @@ Route::group(array('prefix' => 'api/v1'), function() {
     Route::get('dashboard/systemstatus', 'DashboardController@systemstatus');
     Route::get('dashboard/hoststatus', 'DashboardController@hoststatus');
     Route::get('dashboard/servicestatus', 'DashboardController@servicestatus');
+    Route::get('dashboard/eventlog', 'DashboardController@eventlog');
     Route::get('dashboard/graph/{dashboard}', 'DashboardController@show');
     Route::get('server/hosts/status/{status?}', 'ServerHostsController@index');
     Route::get('server/hosts/name/{name}', 'ServerHostsController@show');
