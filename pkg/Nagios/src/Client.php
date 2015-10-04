@@ -47,6 +47,7 @@ class Client
         $builder = \App::make('Stigma\ObjectManager\Builder') ;
 
         $payload = $builder->buildForService() ; 
+        //dd($payload) ;
 
         $uri = 'api/v1/services' ;
 
@@ -60,7 +61,7 @@ class Client
             ); 
             return $response->getStatusCode();
         }catch(\Exception $e){
-            echo((string)$e->getResponse()->getBody()) ;
+            dd((string)$e->getResponse()->getBody()) ;
         } 
     }
 

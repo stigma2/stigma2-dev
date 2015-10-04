@@ -1,3 +1,1 @@
-tests/unit/ClientCest.php:testToGenerateHost
-tests/unit/ClientCest.php:testToGenerateService
 tests/unit/ClientCest.php:testToRestart
