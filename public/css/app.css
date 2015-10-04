@@ -1,3 +1,12 @@
+.summary-body {
+  padding-top: 55px; }
+
+.summary-border-top {
+  border-top: 2px solid #eaeaea; }
+
+.summary-border-left {
+  border-left: 2px solid #eaeaea; }
+
 /* for ngDraggable */
 * {
   box-sizing: border-box; }
