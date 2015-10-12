@@ -4,9 +4,18 @@
             <div class="medium-8 columns">
                 <h3>Host Event</h3>
                 <table>
+                    <thead>
+                        <th>Host</th>
+                        <th>Type</th>
+                        <th>Time</th>
+                        <th>Information</th>
+                    </thead>
                     <tbody>
-                        <tr ng-repeat="log in event_log">
-                            <td>{{ log }}</td>
+                        <tr ng-repeat="log in host_event">
+                            <td>{{ log.name }}</td>
+                            <td>{{ log.state }}</td>
+                            <td>{{ convertDate(log.timestamp) }}</td>
+                            <td>{{ log.plugin_output }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -77,9 +86,20 @@
             <div class="medium-8 columns">
                 <h3>Service Event</h3>
                 <table>
+                    <thead>
+                        <th>Host</th>
+                        <th>Service</th>
+                        <th>Type</th>
+                        <th>Time</th>
+                        <th>Information</th>
+                    </thead>
                     <tbody>
-                        <tr ng-repeat="log in event_log">
-                            <td>{{ log }}</td>
+                        <tr ng-repeat="log in service_event">
+                            <td>{{ log.host_name }}</td>
+                            <td>{{ log.description }}</td>
+                            <td>{{ log.state }}</td>
+                            <td>{{ convertDate(log.timestamp) }}</td>
+                            <td>{{ log.plugin_output }}</td>
                         </tr>
                     </tbody>
                 </table>
