@@ -29,8 +29,8 @@ define(['./module'],
             	};
 
             	function renderHostEvent() {
-                    var starttime = '1424289217';
-                    var endtime = '1444289217';
+                    var endtime = parseInt(new Date().getTime() / 1000);
+                    var starttime = endtime - (86400 * 7);
 
             		DashboardFactory.getEvent('host', starttime, endtime)
             			.then(function(response) {
@@ -39,8 +39,8 @@ define(['./module'],
             	};
 
                 function renderServiceEvent() {
-                    var starttime = '1424289217';
-                    var endtime = '1444289217';
+                    var endtime = parseInt(new Date().getTime() / 1000);
+                    var starttime = endtime - (86400 * 7);
 
                     DashboardFactory.getEvent('service', starttime, endtime)
                         .then(function(response) {

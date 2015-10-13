@@ -2,6 +2,20 @@
     <div class="medium-12 columns">
         <div class="row">
             <div class="medium-8 columns">
+                <div class="" style="background: #4caf50;" ng-show="system_status == 200">
+                    <h3 class="" style="text-align: center; padding: 20px 0;"><span class="" style="color: #eaeaea;">SYSTEM: Running</span></h3>
+                </div>
+                <div class="" style="background: #ff1744;" ng-show="system_status != 200">
+                    <h3 class="" style="text-align: center; padding: 20px 0;"><span class="" style="color: #eaeaea;">SYSTEM: Critical</span></h3>
+                </div>
+            </div>
+            <div class="medium-4 columns">
+            </div>
+        </div>
+
+        <p></p>
+        <div class="row">
+            <div class="medium-8 columns">
                 <h3>Host Event</h3>
                 <table>
                     <thead>
@@ -167,20 +181,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <p></p>
-        <div class="row">
-            <div class="medium-8 columns">
-            </div>
-            <div class="medium-4 columns">
-                <div class="" style="background: #4caf50;" ng-show="system_status == 200">
-                    <h3 class="" style="text-align: center;"><span class="" style="color: #eaeaea;">SYSTEM: Running</span></h3>
-                </div>
-                <div class="" style="background: #ff1744;" ng-show="system_status != 200">
-                    <h3 class="" style="text-align: center;"><span class="" style="color: #eaeaea;">SYSTEM: Critical</span></h3>
                 </div>
             </div>
         </div>
