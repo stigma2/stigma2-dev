@@ -27,7 +27,11 @@
                     <tbody>
                         <tr ng-repeat="log in host_event">
                             <td>{{ log.name }}</td>
-                            <td>{{ log.state }}</td>
+                            <td>
+                                <span class="label success" style="width: 100%;" ng-if="log.state == '0'">OK</span>
+                                <span class="label warning" style="width: 100%;" ng-if="log.state == '1'">WARNING</span>
+                                <span class="label alert" style="width: 100%;" ng-if="log.state == '2'">CRITICAL</span>
+                            </td>
                             <td>{{ convertDate(log.timestamp) }}</td>
                             <td>{{ log.plugin_output }}</td>
                         </tr>
@@ -111,7 +115,11 @@
                         <tr ng-repeat="log in service_event">
                             <td>{{ log.host_name }}</td>
                             <td>{{ log.description }}</td>
-                            <td>{{ log.state }}</td>
+                            <td>
+                                <span class="label success" style="width: 100%;" ng-if="log.state == '8'">OK</span>
+                                <span class="label warning" style="width: 100%;" ng-if="log.state == '16'">WARNING</span>
+                                <span class="label alert" style="width: 100%;" ng-if="log.state == '32'">CRITICAL</span>
+                            </td>
                             <td>{{ convertDate(log.timestamp) }}</td>
                             <td>{{ log.plugin_output }}</td>
                         </tr>
@@ -136,14 +144,14 @@
                             </div>
                             <div class="medium-3 columns summary-border-left">
                                 <div class="">
-                                    <p class="summary-status-pink">Unknown</p>
-                                    <h3 class=""><span class="">{{ service_status.unknown }}</span></h3>
+                                    <p class="summary-status-red">Critical</p>
+                                    <h3 class=""><span class="">{{ service_status.critical }}</span></h3>
                                 </div>
                             </div>
                             <div class="medium-3 columns summary-border-left">
                                 <div class="">
-                                    <p class="summary-status-red">Critical</p>
-                                    <h3 class=""><span class="">{{ service_status.critical }}</span></h3>
+                                    <p class="summary-status-pink">Unknown</p>
+                                    <h3 class=""><span class="">{{ service_status.unknown }}</span></h3>
                                 </div>
                             </div>
                         </div>
