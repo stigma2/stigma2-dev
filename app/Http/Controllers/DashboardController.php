@@ -32,8 +32,8 @@ class DashboardController extends Controller
      */
     public function show($dashboard)
     {
-        $result = config("grafana.host")."/dashboard/db/default?from=1441379103419&to=1443971103420&theme=light";
-        // $result = config("grafana.host")."/dashboard/db/load1?from=now-1h&to=now&theme=light";
+        // $result = config("grafana.host")."/dashboard/db/default?from=1441379103419&to=1443971103420&theme=light";
+        $result = config("grafana.host")."/dashboard/db/default?from=now-1h&to=now&theme=light";
 
         return response()->json($result);
     }
@@ -77,11 +77,14 @@ class DashboardController extends Controller
     /**
      * Display a event log.
      *
+     * @param  string  $type
+     * @param  string  $startdate
+     * @param  string  $enddate
      * @return \Illuminate\Http\Response
      */
-    public function eventlog()
+    public function event($type, $starttime, $endtime)
     {
-        $result = $this->nagiosAPI->getEventLog();
+        $result = $this->nagiosAPI->getEvent($type, $starttime, $endtime);
 
         return $result;
     }

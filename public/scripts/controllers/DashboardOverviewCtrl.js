@@ -28,19 +28,32 @@ define(['./module'],
                         });
             	};
 
-            	function renderEventLog() {
-            		DashboardFactory.getEventLog()
+            	function renderHostEvent() {
+                    var endtime = parseInt(new Date().getTime() / 1000);
+                    var starttime = endtime - (86400 * 7);
+
+            		DashboardFactory.getEvent('host', starttime, endtime)
             			.then(function(response) {
-            				console.log(response);
-            				$scope.event_log = response;
+            				$scope.host_event = response.data.alertlist;
                         });
             	};
 
-            	function refresh() {
+                function renderServiceEvent() {
+                    var endtime = parseInt(new Date().getTime() / 1000);
+                    var starttime = endtime - (86400 * 7);
+
+                    DashboardFactory.getEvent('service', starttime, endtime)
+                        .then(function(response) {
+                            $scope.service_event = response.data.alertlist;
+                        });
+                };
+
+            	function init() {
             		renderSystemStatus();
 	            	renderHostStatus();
 	            	renderServiceStatus();
-	            	renderEventLog();
+                    renderHostEvent();
+	            	renderServiceEvent();
 
 	            	// if(!angular.isDefined($scope)) {
             		// 	$interval.cancel(timer);
@@ -52,9 +65,9 @@ define(['./module'],
                     return TimestampFormatFactory.convertDateToYYYYMMDDhhmmss(timestamp);
                 };
 
-            	refresh();
+            	init();
 
-    //         	var timer = $interval(function(){
+            	// var timer = $interval(function(){
 				// 	refresh();
 				// },10000);
             }

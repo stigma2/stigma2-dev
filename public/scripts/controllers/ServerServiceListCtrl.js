@@ -8,6 +8,7 @@ define(['./module'],
                 function services(status) {
                     ServerServiceFactory.list(status)
                         .then(function(response) {
+                            console.log(response);
                             $scope.services = response.data.servicelist;
                         });
                 };
