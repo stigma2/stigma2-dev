@@ -25,7 +25,7 @@
                         <th>Information</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="log in host_event">
+                        <tr ng-repeat="log in host_event | orderBy:'-timestamp'">
                             <td>{{ log.name }}</td>
                             <td>
                                 <span class="label success" style="width: 100%;" ng-if="log.state == '0'">OK</span>
@@ -112,7 +112,7 @@
                         <th>Information</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="log in service_event">
+                        <tr ng-repeat="log in service_event | orderBy:'-timestamp'">
                             <td>{{ log.host_name }}</td>
                             <td>{{ log.description }}</td>
                             <td>
