@@ -3,10 +3,13 @@ define(['./module'],
         'use strict';
 
         app.controller('ServerHostListCtrl', [
-            '$scope', '$state', 'ServerHostFactory', 'TimestampFormatFactory',
-            function($scope, $state, ServerHostFactory, TimestampFormatFactory) {
-                function hosts(status) {
-                    ServerHostFactory.list(status)
+            '$scope', '$state', '$interval', 'ServerHostFactory', 'TimerFactory', 'TimestampFormatFactory',
+            function($scope, $state, $interval, ServerHostFactory, TimerFactory, TimestampFormatFactory) {
+                $scope.filter = '';
+                $scope.intervalTime = 10000;
+
+                $scope.init = function() {
+                    ServerHostFactory.list($scope.filter)
                         .then(function(response) {
                             $scope.hosts = response.data.hostlist;
                         });
@@ -18,7 +21,8 @@ define(['./module'],
                 };
 
                 $scope.hostsFilter = function(filter, event) {
-                    hosts(filter);
+                    $scope.filter = filter;
+                    $scope.init();
 
                     var dl = document.getElementsByClassName('sub-nav');
                     var wrappedDl = angular.element(dl);
@@ -41,7 +45,9 @@ define(['./module'],
                     return TimestampFormatFactory.getDurationToNow(timestamp);
                 };
                 
-                hosts('');
+                $scope.init();
+
+                TimerFactory.interval($scope, $interval);
             }
         ]);
     }
