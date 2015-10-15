@@ -25,7 +25,7 @@
                         <th>Information</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="log in host_event | orderBy:'-timestamp'">
+                        <tr ng-repeat="log in host_event | orderBy:'-timestamp'"  ng-show="host_event.length > 0">
                             <td>{{ log.name }}</td>
                             <td>
                                 <span class="label success" style="width: 100%;" ng-if="log.state == '0'">OK</span>
@@ -34,6 +34,9 @@
                             </td>
                             <td>{{ convertDate(log.timestamp) }}</td>
                             <td>{{ log.plugin_output }}</td>
+                        </tr>
+                        <tr ng-show="host_event.length == 0">
+                            <td colspan="4"><strong>No host events.</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -112,7 +115,7 @@
                         <th>Information</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="log in service_event | orderBy:'-timestamp'">
+                        <tr ng-repeat="log in service_event | orderBy:'-timestamp'" ng-show="service_event.length > 0">
                             <td>{{ log.host_name }}</td>
                             <td>{{ log.description }}</td>
                             <td>
@@ -122,6 +125,9 @@
                             </td>
                             <td>{{ convertDate(log.timestamp) }}</td>
                             <td>{{ log.plugin_output }}</td>
+                        </tr>
+                        <tr ng-show="service_event.length == 0">
+                            <td colspan="5"><strong>No service events.</strong></td>
                         </tr>
                     </tbody>
                 </table>
