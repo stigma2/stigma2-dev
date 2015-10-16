@@ -20,7 +20,7 @@
                 <top-bar-section>
                 <section class="top-bar-section">
                     <ul class="right">
-                        <li><a href="#"><i class="fi-widget"></i></a></li>
+                        <li><a href="#" data-reveal-id="indexConfigArea" ng-click="openIndexConfigArea();"><i class="fi-widget"></i></a></li>
                         <li><a href="#"><i class="fi-lock"></i></a></li>
                     </ul>
                 </section>
@@ -50,5 +50,11 @@
             <hr></hr>
             <span class="right">© Copyright 2015 All Rights Reserved.</span>
         </footer>
+        <div id="indexConfigArea" class="reveal-modal" data-reveal aria-labelledby="Edit Configration" aria-hidden="true" role="dialog">
+            <h2 id="modalTitle">Awesome. I have it.</h2>
+            <p class="lead">Your couch.  It is mine.</p>
+            <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
     </body>
 </html>

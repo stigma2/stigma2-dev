@@ -1,9 +1,8 @@
-define(['angular', 'mm.foundation', 'ui.router', './controllers/index', './services/index', 'modernizr'],
+define(['angular', 'jquery', 'modernizr', 'ui.router', './controllers/index', './services/index'],
     function(angular) {
         'use strict';
 
         return angular.module('app', [
-            'mm.foundation',
             'ui.router',
             'app.controllers',
             'app.services',

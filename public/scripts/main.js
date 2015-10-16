@@ -5,7 +5,8 @@ require.config({
         'modernizr': '/bower_components/modernizr/modernizr',
         'angular': '/bower_components/angular/angular.min',
         'ui.router': '/bower_components/angular-ui-router/release/angular-ui-router.min',
-        'mm.foundation': '/bower_components/angular-foundation/mm-foundation-tpls.min',
+        'foundation': '/bower_components/foundation/js/foundation.min',
+        'foundation.reveal': '/bower_components/foundation/js/foundation/foundation.reveal',
     },
     shim: {
         'jquery': {
@@ -20,8 +21,11 @@ require.config({
         'ui.router': {
             deps: ['angular']
         },
-        'mm.foundation': {
-            deps: ['angular']
+        'foundation': {
+            deps: ['jquery']
+        },
+        'foundation.reveal': {
+            deps: ['foundation']
         },
     }
 });
