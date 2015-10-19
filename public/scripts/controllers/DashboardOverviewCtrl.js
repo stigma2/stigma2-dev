@@ -3,11 +3,8 @@ define(['./module'],
         'use strict';
 
         app.controller('DashboardOverviewCtrl', [
-            '$scope', '$state', '$interval', 'DashboardFactory', 'TimerFactory', 'TimestampFormatFactory',
-            function($scope, $state, $interval, DashboardFactory, TimerFactory, TimestampFormatFactory) {
-                $scope.intervalTime = 10000;
-                $scope.eventDurationDate = 7;
-
+            '$rootScope', '$scope', '$state', '$interval', 'DashboardFactory', 'TimerFactory', 'TimestampFormatFactory',
+            function($rootScope, $scope, $state, $interval, DashboardFactory, TimerFactory, TimestampFormatFactory) {
                 $scope.init = function() {
                     renderSystemStatus();
                     renderHostStatus();
@@ -41,7 +38,7 @@ define(['./module'],
 
                 function renderHostEvent() {
                     var endtime = parseInt(new Date().getTime() / 1000);
-                    var starttime = endtime - (86400 * $scope.eventDurationDate);
+                    var starttime = endtime - (86400 * parseInt($rootScope.overviewEventDurationDate));
 
                     DashboardFactory.getEvent('host', starttime, endtime)
                         .then(function(response) {
@@ -51,7 +48,7 @@ define(['./module'],
 
                 function renderServiceEvent() {
                     var endtime = parseInt(new Date().getTime() / 1000);
-                    var starttime = endtime - (86400 * $scope.eventDurationDate);
+                    var starttime = endtime - (86400 * parseInt($rootScope.overviewEventDurationDate));
 
                     DashboardFactory.getEvent('service', starttime, endtime)
                         .then(function(response) {

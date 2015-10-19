@@ -2,7 +2,7 @@ define(['./module'],
     function(services) {
         'use strict';
 
-        services.factory('TimerFactory', function() {
+        services.factory('TimerFactory', function($rootScope) {
             return {
                 interval: function($scope, $interval) {
                     var timer;
@@ -10,7 +10,7 @@ define(['./module'],
 
                     timer = $interval(function() {
                         $scope.init();
-                    }, $scope.intervalTime);
+                    }, parseInt($rootScope.refreshInterval));
 
                     function stop() {
                         if (angular.isDefined(timer)) {
