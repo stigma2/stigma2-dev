@@ -6,7 +6,6 @@ define(['./module'],
             '$scope', '$state', '$interval', 'ServerServiceFactory', 'TimerFactory', 'TimestampFormatFactory',
             function($scope, $state, $interval, ServerServiceFactory, TimerFactory, TimestampFormatFactory) {
                 $scope.filter = '';
-                $scope.intervalTime = 10000;
 
                 $scope.init = function() {
                     ServerServiceFactory.list($scope.filter)
