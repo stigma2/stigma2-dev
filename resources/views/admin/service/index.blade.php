@@ -28,7 +28,11 @@
                 <td>{{$item->service_name}}</td>
                 <td>{{$item->is_template}}</td>
                 <td style="text-align:center;"><a class="update-btn" href="{{route('admin.services.edit',array($item->getKey()))}}"><i class="fi-widget"></i></a></td>
-                <td style="text-align:center;"><a class="delete-btn alert" data-reveal-id="delete-modal"  data-service-id="{{$item->getKey()}}"><i class="fi-trash"></i></a></td>
+                <td style="text-align:center;">
+                    @if($item->is_immutable == 'N')
+                    <a class="delete-btn alert" data-reveal-id="delete-modal"  data-service-id="{{$item->getKey()}}"><i class="fi-trash"></i></a>
+                    @endif
+                </td>
 
             </tr>
             @endforeach

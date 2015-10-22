@@ -38,7 +38,7 @@ class Client
         } 
     }
 
-    public function generateService($data)
+    public function generateService()
     {
         $builder = \App::make('Stigma\ObjectManager\Builder') ;
 
@@ -49,8 +49,8 @@ class Client
 
         try{
 
-            $response = $this->httpClient->post($uri, [ 
-                'form_params'=> [
+            $response = $this->httpClient->post($this->baseUri.$uri, [ 
+                'body'=> [
                     'payload'=>json_encode($payload)  
                     ]
                 ]  

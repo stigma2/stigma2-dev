@@ -44,7 +44,6 @@ class ClientCest
         $I->assertEquals('200',$response) ; 
     }
 
-    /*
 
     public function testToGenerateService(UnitTester $I)
     {
@@ -55,6 +54,4 @@ class ClientCest
 
         $I->assertEquals('200',$response) ; 
     }
-     */
-
 }
