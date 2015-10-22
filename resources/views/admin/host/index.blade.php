@@ -28,7 +28,11 @@
                 <td>{{$item->host_name}}</td>
                 <td>{{$item->is_template}}</td>
                 <td style="text-align:center;"><a class="update-btn" href="{{route('admin.hosts.edit',array($item->getKey()))}}"><i class="fi-widget"></i></a></td>
-                <td style="text-align:center;"><a class="alert delete-btn" data-reveal-id="delete-modal" data-host-id="{{$item->getKey()}}"><i class="fi-trash"></i></a></td> 
+                <td style="text-align:center;">
+                    @if($item->is_immutable == 'N')
+                    <a class="alert delete-btn" data-reveal-id="delete-modal" data-host-id="{{$item->getKey()}}"><i class="fi-trash"></i></a>
+                    @endif
+                </td> 
             </tr>
             @endforeach
         </tbody>

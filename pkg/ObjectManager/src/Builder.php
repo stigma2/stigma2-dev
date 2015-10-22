@@ -22,10 +22,12 @@ class Builder
     {
         $hostCollection = $this->hostManager->getAllItems() ;
 
+
         $payload = [] ;
 
         foreach($hostCollection as $host)
         {
+            if($host->is_immutable == 'N'){
             $data = new \stdClass ;
             $data = json_decode($host->data) ;
             $details  = (array) $data ; 
@@ -39,7 +41,7 @@ class Builder
                 }
             }
 
-            if($host->command_id > 0){ // 커맨가 존재할 경우
+            if($host->command_id > 0){ // 커맨드가 존재할 경우
                 $command = $this->commandBuilder->find($host->command_id)  ;
                 $newDetails['check_command'] = $command->command_name.$host->command_argument ;
             } 
@@ -69,6 +71,7 @@ class Builder
             $data->is_template = $host->is_template ;
 
             $payload[] = $data ; 
+            }
         }
 
         return $payload ;
@@ -83,29 +86,31 @@ class Builder
         $payload = [] ; 
 
         foreach($hostCollection as $host){
-            if($host->service_ids != ''){
-                $serviceIds = explode(',',$host->service_ids) ; 
-                foreach($serviceIds  as $serviceId){
-                    $service = $this->serviceManager->find($serviceId)  ;
-                    $jsonData = json_decode($service->data) ;
-                    $arrayData = (array)$jsonData ;
-                    $newDetails = array() ;
+            if($host->is_immutable == 'N'){
+                if($host->service_ids != ''){
+                    $serviceIds = explode(',',$host->service_ids) ; 
+                    foreach($serviceIds  as $serviceId){
+                        $service = $this->serviceManager->find($serviceId)  ;
+                        $jsonData = json_decode($service->data) ;
+                        $arrayData = (array)$jsonData ;
+                        $newDetails = array() ;
 
-                    foreach($fields as $key => $field) {
-                        if(array_key_exists($key,$arrayData)){ 
-                            $newDetails[$key] = $arrayData[$key] ;
-                        }
-                    } 
+                        foreach($fields as $key => $field) {
+                            if(array_key_exists($key,$arrayData)){ 
+                                $newDetails[$key] = $arrayData[$key] ;
+                            }
+                        } 
 
-                    $newDetails['service_description'] = $service->service_name ;
-                    $newDetails['host_name'] = $host->host_name ;
+                        $newDetails['service_description'] = $service->service_name ;
+                        $newDetails['host_name'] = $host->host_name ;
 
-                    $serviceObj = new \stdClass ;
-                    $serviceObj->service_name = $service->service_name ;
-                    $serviceObj->is_template = $service->is_template ;
-                    $serviceObj->details = $newDetails ;
+                        $serviceObj = new \stdClass ;
+                        $serviceObj->service_name = $service->service_name ;
+                        $serviceObj->is_template = $service->is_template ;
+                        $serviceObj->details = $newDetails ;
 
-                    $payload[] = $serviceObj ;
+                        $payload[] = $serviceObj ;
+                    }
                 }
             }
         }

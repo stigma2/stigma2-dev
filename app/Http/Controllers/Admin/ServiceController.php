@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Stigma\ObjectManager\HostManager ;
 use Stigma\ObjectManager\ServiceManager ;
-use Stigma\CommandBuilder\CommandBuilder ;
+use Stigma\CommandBuilder\CommandBuilder ; 
+use Stigma\Nagios\Client as NagiosClient ;
+use Illuminate\Http\Response;
 
 class ServiceController extends Controller {
 
@@ -15,11 +17,12 @@ class ServiceController extends Controller {
     protected $commandBuilder ;
  
 
-    public function __construct(HostManager $hostManager, ServiceManager $serviceManager,CommandBuilder $commandBuilder)
+    public function __construct(HostManager $hostManager, ServiceManager $serviceManager,CommandBuilder $commandBuilder, NagiosClient $nagiosClient)
     {
         $this->hostManager = $hostManager ;
         $this->serviceManager = $serviceManager ;
         $this->commandBuilder = $commandBuilder ;
+        $this->nagiosClient = $nagiosClient ;
     }
 	/**
 	 * Display a listing of the resource.
@@ -31,6 +34,18 @@ class ServiceController extends Controller {
         $items = $this->serviceManager->getAllItems() ;
 	    return view('admin.service.index',compact('items')) ;	
 	}
+
+
+    public function generate()
+    {
+        $response = $this->nagiosClient->generateService() ;
+
+        if($response == 200){
+            return new Response('success', 200);
+        }else{
+            return new Response('error', 400);
+        }
+    }
 
 	/**
 	 * Show the form for creating a new resource.

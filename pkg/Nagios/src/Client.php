@@ -16,19 +16,18 @@ class Client
         $this->httpClient = $client ; 
     }
 
-    public function generateHost($data)
+    public function generateHost()
     { 
         $builder = \App::make('Stigma\ObjectManager\Builder') ;
 
         $payload = $builder->buildForHost() ;
-        //dd(json_encode($payload)) ;
 
         $uri = 'api/v1/hosts' ;
 
         try{
 
-            $response = $this->httpClient->post($uri, [ 
-                'form_params'=> [
+            $response = $this->httpClient->post($this->baseUri.$uri, [ 
+                'body'=> [
                     'payload'=>json_encode($payload)  
                     ]
                 ]  
@@ -63,7 +62,7 @@ class Client
     }
 
 
-    public function generateCommand($collection)
+    public function generateCommand()
     {
         $commandBuilder = \App::make('Stigma\CommandBuilder\CommandBuilder') ;
         $collection = $commandBuilder->getAll() ; 
@@ -96,7 +95,7 @@ class Client
             if ($e->hasResponse()) {
                 dd($e->getResponse()) ;
                 echo $e->getResponse()->getStatusCode() . "\n";
-            }
+            } 
         }
     }
 

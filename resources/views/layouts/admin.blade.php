@@ -73,6 +73,10 @@
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     <div class="modal-body"> 
+        <div data-alert class="alert-box radius" id="notification-box"> 
+            
+        </div>
+
         <ul class="step-by-step clearfix">
             <li>1.Generating Host Configuration <span calss="right"><a class="" id="generate-host-file" >Generate Config</a> </span></li>
             <li>2.Generating Service Configuration<span calss="right"><a class="" id="generate-service-file">Generate Config</a> </span></li>
@@ -90,37 +94,70 @@
 </script>
 <script>
 jQuery(function(){
+    var hideAlertBox = function(){ 
+        $('#notification-box').hide() ;
+    }
+
+    hideAlertBox() ;
+
     $('a.restart-btn').click(function(){ 
+        showAlertBox('warning','nagios restarting...') ;
+        $.ajax({
+            url : '/admin/dashboard/nagios_restart' , 
+            type: 'get',
+            success: function(response){
+                showAlertBox('success','Success  ') ;
+            },
+            error : function(response){
+                showAlertBox('alert','Error') ;
+            }
+        }); 
+
     });
 
     $('#generate-host-file').click(function(){
-        alert('host-file') ;
+        showAlertBox('warning','host file are generationg...') ;
         $.ajax({
-            url : '/' , 
+            url : '/admin/hosts/generate' , 
+            type: 'get',
             success: function(response){
+                showAlertBox('success','Done : Host File are generated') ;
             },
             error : function(response){
+                showAlertBox('alert','Error') ;
             }
-        });
+        }); 
     });
 
     $('#generate-service-file').click(function(){
-        alert('service-file') ;
     });
 
-    $('#generate-command-file').click(function(){
-        alert('command-file') ;
-
+    $('#generate-command-file').click(function(){ 
+        showAlertBox('warning','command file are generationg...') ;
         $.ajax({
             url : '/admin/commands/generate' , 
             type: 'get',
             success: function(response){
-                console.log(response) ;
+                showAlertBox('success','Done : Command File are generated') ;
             },
             error : function(response){
+                showAlertBox('alert','Error') ;
             }
         }); 
     }); 
+
+    
+    var showAlertBox = function(cls , text){ 
+        $('#notification-box').removeClass('warning') ;
+        $('#notification-box').removeClass('alert') ;
+        $('#notification-box').removeClass('success') ;
+
+        $('#notification-box').addClass(cls) ;
+        $('#notification-box').show() ;
+        $('#notification-box').text(text) ;
+    }
+
+
 });
 </script>
 @yield('scripts')
