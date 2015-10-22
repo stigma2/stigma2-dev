@@ -8,6 +8,7 @@
         "laravel/framework": "5.0.*",
         "illuminate/html": "5.*",
         "mustache/mustache" : "*",
+        "aws/aws-sdk-php" : "2.8.22",
         "ramsey/uuid": "~2.8"
     },
     "require-dev": {
@@ -29,6 +30,7 @@
             "Stigma\\TemplateBuilder\\" : "pkg/TemplateBuilder/src",
             "Stigma\\ObjectManager\\" : "pkg/ObjectManager/src",
             "Stigma\\CommandBuilder\\" : "pkg/CommandBuilder/src",
+            "Stigma\\Provision\\" : "pkg/Provision/src",
             "Stigma\\Nagios\\" : "pkg/Nagios/src",
             "App\\": "app/"
         }
