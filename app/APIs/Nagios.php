@@ -4,6 +4,8 @@ namespace App\APIs;
 
 use App\Interfaces\NagiosInterface;
 
+use GuzzleHttp\Client;
+
 class Nagios implements NagiosInterface
 {
     private $_host_status = array("0" => "up", "1" => "down", "2" => "unreachable", "9" => "pending");
@@ -84,19 +86,13 @@ class Nagios implements NagiosInterface
         $domain = config('nagios.host');
         $url = $domain.$command;
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_COOKIE, "");
-        curl_setopt($ch, CURLOPT_TIMEOUT, "3");
-
-        $result = curl_exec($ch);
+        $client = new Client();
+        $response = $client->get($url);
 
         if ($code) {
-            return curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            return $response->getStatusCode();
         }
-        curl_close($ch);
-        
-        return $result;
+
+        return $response->getBody();
     }
 }
