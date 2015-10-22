@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="small-4 columns">
                         <label for="right-label" class="right inline">
-                        For Template
+                            For Template
                         </label>
                     </div>
                     <div class="small-8 columns">
@@ -18,6 +18,27 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="small-12 columns">
+                <div class="row">
+                    <div class="small-4 columns">
+                        <label for="right-label" class="right inline">
+                            Immutable 
+                        </label>
+                    </div>
+                    <div class="small-8 columns">
+                        @if(isset($host))
+                        {!! Form::select('is_immutable', array( 'N' => 'N','Y' =>'Y'),$host->is_immutable)  !!}
+                        @else
+                        {!! Form::select('is_immutable', array( 'N' => 'N','Y' =>'Y'))  !!}
+                        @endif 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         @if(isset($host))
         @include('admin.partials.check_command_field',array('commandList' => $commandList, 'model'=>$host)) 
@@ -38,11 +59,11 @@
                     <div class="small-8 columns">
                         @if(isset($hostJsonData) && isset($hostJsonData->{$key})) 
                         <?php 
-                            $data = $hostJsonData->{$key}  ;
+                        $data = $hostJsonData->{$key}  ;
                         ?>
                         @else
                         <?php 
-                            $data = null ;
+                        $data = null ;
                         ?>
                         @endif
                         @if($formGroup['data_type'] == 'enum')
@@ -68,32 +89,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($hostTemplateCollection as $hostItem)
-                    @if(isset($host) == null || (isset($host) && $host->getKey() != $hostItem->getKey()) )
-                    <tr>
-                        <?php
-                            $check = false ;
-                            $templateIds = [] ;
+                @foreach($hostTemplateCollection as $hostItem)
+                @if(isset($host) == null || (isset($host) && $host->getKey() != $hostItem->getKey()) )
+                <tr>
+                    <?php
+                    $check = false ;
+                    $templateIds = [] ;
 
-                            if(isset($host)) {
-                                $templateIds = $host->template_ids ; 
-                                $templateIds = explode(',',$templateIds) ;
+                    if(isset($host)) {
+                    $templateIds = $host->template_ids ; 
+                    $templateIds = explode(',',$templateIds) ;
 
-                                foreach($templateIds as $templateId)
-                                {
-                                    if($hostItem->getKey() == $templateId){
-                                        $check = true ;
-                                    }
-                                }
-                            } 
-                        ?>
-                        <td>{!! Form::checkbox('host_template[]', $hostItem->getKey() ,$check) !!}</td>
-                        <td>
-                            <a href="{{ route('admin.hosts.edit',array($hostItem->getKey())) }}">{{$hostItem->host_name}}</a>
-                        </td>
-                    </tr>
-                    @endif
-                    @endforeach
+                    foreach($templateIds as $templateId)
+                    {
+                    if($hostItem->getKey() == $templateId){
+                    $check = true ;
+                    }
+                    }
+                    } 
+                    ?>
+                    <td>{!! Form::checkbox('host_template[]', $hostItem->getKey() ,$check) !!}</td>
+                    <td>
+                        <a href="{{ route('admin.hosts.edit',array($hostItem->getKey())) }}">{{$hostItem->host_name}}</a>
+                    </td>
+                </tr>
+                @endif
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -108,30 +129,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($serviceTemplateCollection as $serviceItem)
-                    <tr>
-                        <?php
-                            $check = false ;
-                            $templateIds = [] ;
+                @foreach($serviceTemplateCollection as $serviceItem)
+                <tr>
+                    <?php
+                    $check = false ;
+                    $templateIds = [] ;
 
-                            if(isset($host)) {
-                                $serviceIds = $host->service_ids ; 
-                                $serviceIds = explode(',',$serviceIds) ;
+                    if(isset($host)) {
+                    $serviceIds = $host->service_ids ; 
+                    $serviceIds = explode(',',$serviceIds) ;
 
-                                foreach($serviceIds as $serviceId)
-                                {
-                                    if($serviceItem->getKey() == $serviceId){
-                                        $check = true ;
-                                    }
-                                }
-                            } 
-                        ?>
-                        <td>{!! Form::checkbox('service_ids[]', $serviceItem->getKey() ,$check) !!}</td>
-                        <td>
-                            <a href="{{ route('admin.services.edit', array($serviceItem->getKey()))}}">{{$serviceItem->service_name}}</a>
-                        </td>
-                    </tr>
-                    @endforeach
+                    foreach($serviceIds as $serviceId)
+                    {
+                    if($serviceItem->getKey() == $serviceId){
+                    $check = true ;
+                    }
+                    }
+                    } 
+                    ?>
+                    <td>{!! Form::checkbox('service_ids[]', $serviceItem->getKey() ,$check) !!}</td>
+                    <td>
+                        <a href="{{ route('admin.services.edit', array($serviceItem->getKey()))}}">{{$serviceItem->service_name}}</a>
+                    </td>
+                </tr>
+                @endforeach
                 </tbody>
 
             </table>
