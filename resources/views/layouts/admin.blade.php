@@ -73,10 +73,10 @@
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     <div class="modal-body"> 
-        <ul class="step-by-step">
-            <li>1.Generating Host Configuration</li>
-            <li>2.Generating Service Configuration</li>
-            <li>3.Generating Command Configuration</li>
+        <ul class="step-by-step clearfix">
+            <li>1.Generating Host Configuration <span calss="right"><a class="" id="generate-host-file" >Generate Config</a> </span></li>
+            <li>2.Generating Service Configuration<span calss="right"><a class="" id="generate-service-file">Generate Config</a> </span></li>
+            <li>3.Generating Command Configuration<span calss="right"><a class="" id="generate-command-file">Generate Config</a> </span></li>
         </ul>
     </div> 
     <div class="modal-footer"> 
@@ -90,8 +90,37 @@
 </script>
 <script>
 jQuery(function(){
-    $('a.restart-btn').click(function(){
+    $('a.restart-btn').click(function(){ 
     });
+
+    $('#generate-host-file').click(function(){
+        alert('host-file') ;
+        $.ajax({
+            url : '/' , 
+            success: function(response){
+            },
+            error : function(response){
+            }
+        });
+    });
+
+    $('#generate-service-file').click(function(){
+        alert('service-file') ;
+    });
+
+    $('#generate-command-file').click(function(){
+        alert('command-file') ;
+
+        $.ajax({
+            url : '/admin/commands/generate' , 
+            type: 'get',
+            success: function(response){
+                console.log(response) ;
+            },
+            error : function(response){
+            }
+        }); 
+    }); 
 });
 </script>
 @yield('scripts')
