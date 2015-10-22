@@ -11,9 +11,16 @@ class CommandController extends Controller {
 
     protected $commandBuilder ;
 
+
     public function __construct(CommandBuilder $commandBuilder)
     {
         $this->commandBuilder = $commandBuilder ;
+    }
+
+
+    public function generate()
+    {
+        return "sdf" ;
     }
 
 	/**
