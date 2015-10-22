@@ -5,34 +5,35 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-        "laravel/framework": "5.0.*",
-        "illuminate/html": "5.*",
-        "mustache/mustache" : "*",
-        "ramsey/uuid": "~2.8"
-    },
-    "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "codeception/codeception" : "*",
-        "codeception/specify" : "*",
-        "codeception/aspect-mock": "*",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
-    },
-    "autoload": {
-        "classmap": [
-            "database"
-        ],
-        "psr-4": {
-            "Stigma\\Installation\\" : "pkg/Installation/src",
-            "Stigma\\Database\\" : "pkg/Database/src",
-            "Stigma\\TemplateBuilder\\" : "pkg/TemplateBuilder/src",
-            "Stigma\\ObjectManager\\" : "pkg/ObjectManager/src",
-            "Stigma\\CommandBuilder\\" : "pkg/CommandBuilder/src",
-            "Stigma\\Nagios\\" : "pkg/Nagios/src",
-            "App\\": "app/"
-        }
-    },
+		"laravel/framework": "5.0.*",
+		"illuminate/html": "5.*",
+		"mustache/mustache" : "*",
+		"ramsey/uuid": "~2.8",
+		"guzzlehttp/guzzle": "5.3.0"
+	},
+	"require-dev": {
+		"fzaninotto/faker": "~1.4",
+		"codeception/codeception" : "*",
+		"codeception/specify" : "*",
+		"codeception/aspect-mock": "*",
+		"mockery/mockery": "0.9.*",
+		"phpunit/phpunit": "~4.0",
+		"phpspec/phpspec": "~2.1"
+	},
+	"autoload": {
+		"classmap": [
+		    "database"
+		],
+		"psr-4": {
+		    "Stigma\\Installation\\" : "pkg/Installation/src",
+		    "Stigma\\Database\\" : "pkg/Database/src",
+		    "Stigma\\TemplateBuilder\\" : "pkg/TemplateBuilder/src",
+		    "Stigma\\ObjectManager\\" : "pkg/ObjectManager/src",
+		    "Stigma\\CommandBuilder\\" : "pkg/CommandBuilder/src",
+		    "Stigma\\Nagios\\" : "pkg/Nagios/src",
+		    "App\\": "app/"
+		}
+	},
 	"autoload-dev": {
 		"classmap": [
 			"tests/TestCase.php"
@@ -51,11 +52,11 @@
 			"php -r \"copy('.env.example', '.env');\"",
 			"php artisan key:generate"
 		]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "bin-dir": "bin"
-    },
+	},
+	"config": {
+		"preferred-install": "dist",
+		"bin-dir": "bin"
+	},
 
-    "bin": ["bin/phpspec"]
+	"bin": ["bin/phpspec"]
 }

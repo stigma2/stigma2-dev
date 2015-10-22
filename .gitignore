@@ -1,6 +1,5 @@
 /vendor
 /node_modules
-.env
 .DS_Store
 config/grafana.php
 config/nagios.php
