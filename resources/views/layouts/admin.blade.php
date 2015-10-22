@@ -94,47 +94,70 @@
 </script>
 <script>
 jQuery(function(){
+    var hideAlertBox = function(){ 
+        $('#notification-box').hide() ;
+    }
+
+    hideAlertBox() ;
+
     $('a.restart-btn').click(function(){ 
+        showAlertBox('warning','nagios restarting...') ;
+        $.ajax({
+            url : '/admin/dashboard/nagios_restart' , 
+            type: 'get',
+            success: function(response){
+                showAlertBox('success','Success  ') ;
+            },
+            error : function(response){
+                showAlertBox('alert','Error') ;
+            }
+        }); 
+
     });
 
     $('#generate-host-file').click(function(){
-        alert('host-file') ;
+        showAlertBox('warning','host file are generationg...') ;
         $.ajax({
-            url : '/' , 
+            url : '/admin/hosts/generate' , 
+            type: 'get',
             success: function(response){
+                showAlertBox('success','Done : Host File are generated') ;
             },
             error : function(response){
+                showAlertBox('alert','Error') ;
             }
-        });
+        }); 
     });
 
     $('#generate-service-file').click(function(){
-        alert('service-file') ;
     });
 
     $('#generate-command-file').click(function(){ 
-        $('#notification-box').hide() ;
-        $('#notification-box').removeClass('alert') ;
-        $('#notification-box').removeClass('success') ;
-        $('#notification-box').addClass('warning') ;
-        $('#notification-box').text('command file are generationg...') ;
-        $('#notification-box').show() ;
-
+        showAlertBox('warning','command file are generationg...') ;
         $.ajax({
             url : '/admin/commands/generate' , 
             type: 'get',
             success: function(response){
-                $('#notification-box').removeClass('warning') ;
-                $('#notification-box').removeClass('alert') ;
-                $('#notification-box').addClass('success') ;
-                $('#notification-box').text('Done : Command File are generated') ;
+                showAlertBox('success','Done : Command File are generated') ;
             },
             error : function(response){
-                $('#notification-box').addClass('alert') ;
-                $('#notification-box').text('Error!') ;
+                showAlertBox('alert','Error') ;
             }
         }); 
     }); 
+
+    
+    var showAlertBox = function(cls , text){ 
+        $('#notification-box').removeClass('warning') ;
+        $('#notification-box').removeClass('alert') ;
+        $('#notification-box').removeClass('success') ;
+
+        $('#notification-box').addClass(cls) ;
+        $('#notification-box').show() ;
+        $('#notification-box').text(text) ;
+    }
+
+
 });
 </script>
 @yield('scripts')

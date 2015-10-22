@@ -16,7 +16,7 @@ class Client
         $this->httpClient = $client ; 
     }
 
-    public function generateHost($data)
+    public function generateHost()
     { 
         $builder = \App::make('Stigma\ObjectManager\Builder') ;
 
