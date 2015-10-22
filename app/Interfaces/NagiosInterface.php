@@ -21,5 +21,5 @@ interface NagiosInterface
 
     public function getServiceStatus();
 
-    public function getEventLog($num);
+    public function getEvent($type, $starttime, $endtime);
 }

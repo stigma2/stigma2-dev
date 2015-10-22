@@ -13,8 +13,8 @@ class NagiosServiceProvider extends ServiceProvider
     {
         $this->app->bind('Stigma\Nagios\Client' ,function(){
             $baseUri = config('nagios.host') ;
-            //dd($baseUri) ;
-            //$port = config('nagios.port') ;
+            $baseUri = rtrim($baseUri, '/');
+            $baseUri = $baseUri.'/'; 
             return new \Stigma\Nagios\Client($baseUri) ;
         });
     }

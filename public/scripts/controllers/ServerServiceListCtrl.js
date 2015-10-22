@@ -3,10 +3,12 @@ define(['./module'],
         'use strict';
 
         app.controller('ServerServiceListCtrl', [
-            '$scope', '$state', 'ServerServiceFactory', 'TimestampFormatFactory',
-            function($scope, $state, ServerServiceFactory, TimestampFormatFactory) {
-                function services(status) {
-                    ServerServiceFactory.list(status)
+            '$scope', '$state', '$interval', 'ServerServiceFactory', 'TimerFactory', 'TimestampFormatFactory',
+            function($scope, $state, $interval, ServerServiceFactory, TimerFactory, TimestampFormatFactory) {
+                $scope.filter = '';
+
+                $scope.init = function() {
+                    ServerServiceFactory.list($scope.filter)
                         .then(function(response) {
                             $scope.services = response.data.servicelist;
                         });
@@ -18,7 +20,8 @@ define(['./module'],
                 };
 
                 $scope.servicesFilter = function(filter, event) {
-                    services(filter);
+                    $scope.filter = filter;
+                    $scope.init();
 
                     var dl = document.getElementsByClassName('sub-nav');
                     var wrappedDl = angular.element(dl);
@@ -45,7 +48,9 @@ define(['./module'],
                     return TimestampFormatFactory.getDurationToNow(timestamp);
                 };
                 
-                services('');
+                $scope.init();
+
+                TimerFactory.interval($scope, $interval);
             }
         ]);
     }

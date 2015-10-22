@@ -8,6 +8,7 @@
         "laravel/framework": "5.0.*",
         "illuminate/html": "5.*",
         "mustache/mustache" : "*",
+		"guzzlehttp/guzzle": "5.3.0",
         "aws/aws-sdk-php" : "2.8.22",
         "ramsey/uuid": "~2.8"
     },
@@ -19,7 +20,8 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1"
-    },
+    }, 
+
     "autoload": {
         "classmap": [
             "database"
@@ -35,6 +37,8 @@
             "App\\": "app/"
         }
     },
+
+
 	"autoload-dev": {
 		"classmap": [
 			"tests/TestCase.php"
@@ -53,11 +57,11 @@
 			"php -r \"copy('.env.example', '.env');\"",
 			"php artisan key:generate"
 		]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "bin-dir": "bin"
-    },
+	},
+	"config": {
+		"preferred-install": "dist",
+		"bin-dir": "bin"
+	},
 
-    "bin": ["bin/phpspec"]
+	"bin": ["bin/phpspec"]
 }

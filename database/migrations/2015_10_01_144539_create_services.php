@@ -17,6 +17,7 @@ class CreateServices extends Migration
             $table->string('service_name')->index()->unique(); // is linked to description in services.cfg
 
             $table->integer('command_id')->nullable() ;
+            $table->integer('is_immutable')->default(0)->nullable() ;
             $table->string('command_argument')->nullable() ;
 
             $table->string('service_description') ;

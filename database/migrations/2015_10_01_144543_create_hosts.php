@@ -15,6 +15,7 @@ class CreateHosts extends Migration
         Schema::create('hosts', function (Blueprint $table) {
 			$table->increments('id');
             $table->string('host_name')->index()->unique();
+            $table->integer('is_immutable')->default(0)->nullable() ;
             $table->string('description') ;
             $table->integer('command_id')->nullable() ;
             $table->string('command_argument')->nullable() ;

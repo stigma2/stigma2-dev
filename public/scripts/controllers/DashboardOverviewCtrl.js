@@ -3,60 +3,66 @@ define(['./module'],
         'use strict';
 
         app.controller('DashboardOverviewCtrl', [
-            '$scope', '$state', '$interval', 'DashboardFactory', 'TimestampFormatFactory',
-            function($scope, $state, $interval, DashboardFactory, TimestampFormatFactory) {
-            	function renderSystemStatus() {
-            		DashboardFactory.getSystemStatus()
-            			.then(function(response) {
+            '$rootScope', '$scope', '$state', '$interval', 'DashboardFactory', 'TimerFactory', 'TimestampFormatFactory',
+            function($rootScope, $scope, $state, $interval, DashboardFactory, TimerFactory, TimestampFormatFactory) {
+                $scope.init = function() {
+                    renderSystemStatus();
+                    renderHostStatus();
+                    renderServiceStatus();
+                    renderHostEvent();
+                    renderServiceEvent();
+                };
+
+                function renderSystemStatus() {
+                    DashboardFactory.getSystemStatus()
+                        .then(function(response) {
                             $scope.system_status = response;
                         });
-            	};
+                };
 
-            	function renderHostStatus() {
-            		DashboardFactory.getHostStatus()
-            			.then(function(response) {
-            				$scope.host_last_data_update = response.result.last_data_update;
+                function renderHostStatus() {
+                    DashboardFactory.getHostStatus()
+                        .then(function(response) {
+                            $scope.host_last_data_update = response.result.last_data_update;
                             $scope.host_status = response.data.count;
                         });
-            	};
+                };
 
-            	function renderServiceStatus() {
-            		DashboardFactory.getServiceStatus()
-            			.then(function(response) {
-            				$scope.service_last_data_update = response.result.last_data_update;
+                function renderServiceStatus() {
+                    DashboardFactory.getServiceStatus()
+                        .then(function(response) {
+                            $scope.service_last_data_update = response.result.last_data_update;
                             $scope.service_status = response.data.count;
                         });
-            	};
+                };
 
-            	function renderEventLog() {
-            		DashboardFactory.getEventLog()
-            			.then(function(response) {
-            				console.log(response);
-            				$scope.event_log = response;
+                function renderHostEvent() {
+                    var endtime = parseInt(new Date().getTime() / 1000);
+                    var starttime = endtime - (86400 * parseInt($rootScope.overviewEventDurationDate));
+
+                    DashboardFactory.getEvent('host', starttime, endtime)
+                        .then(function(response) {
+                            $scope.host_event = response.data.alertlist;
                         });
-            	};
+                };
 
-            	function refresh() {
-            		renderSystemStatus();
-	            	renderHostStatus();
-	            	renderServiceStatus();
-	            	renderEventLog();
+                function renderServiceEvent() {
+                    var endtime = parseInt(new Date().getTime() / 1000);
+                    var starttime = endtime - (86400 * parseInt($rootScope.overviewEventDurationDate));
 
-	            	// if(!angular.isDefined($scope)) {
-            		// 	$interval.cancel(timer);
-            		// 	timer = undefined;
-            		// }
-            	};
+                    DashboardFactory.getEvent('service', starttime, endtime)
+                        .then(function(response) {
+                            $scope.service_event = response.data.alertlist;
+                        });
+                };
 
-            	$scope.convertDate = function(timestamp) {
+                $scope.convertDate = function(timestamp) {
                     return TimestampFormatFactory.convertDateToYYYYMMDDhhmmss(timestamp);
                 };
 
-            	refresh();
+                $scope.init();
 
-    //         	var timer = $interval(function(){
-				// 	refresh();
-				// },10000);
+                TimerFactory.interval($scope, $interval);
             }
         ]);
     }

@@ -7,8 +7,8 @@
                     <dd class="active"><a ng-click="servicesFilter('', $event)">All</a></dd>
                     <dd><a ng-click="servicesFilter('0', $event)">OK</a></dd>
                     <dd><a ng-click="servicesFilter('1', $event)">Warning</a></dd>
-                    <dd><a ng-click="servicesFilter('2', $event)">Unknown</a></dd>
-                    <dd><a ng-click="servicesFilter('3', $event)">Critical</a></dd>
+                    <dd><a ng-click="servicesFilter('2', $event)">Critical</a></dd>
+                    <dd><a ng-click="servicesFilter('3', $event)">Unknown</a></dd>
                     <dd class="hide-for-small-only"><a ng-click="servicesFilter('9', $event)">Pending</a></dd>
                 </dl>
             </div>

@@ -20,8 +20,8 @@ define(['./implement', './module', '../config'],
                     var url = config.get().home + '/api/v1/dashboard/servicestatus';
                     return implement.httpGetServiceImpl($http, url);
                 },
-                getEventLog: function() {
-                    var url = config.get().home + '/api/v1/dashboard/eventlog';
+                getEvent: function(type, starttime, endtime) {
+                    var url = config.get().home + '/api/v1/dashboard/event/type/' + type + '/starttime/' + starttime + '/endtime/' + endtime;
                     return implement.httpGetServiceImpl($http, url);
                 },
             }
