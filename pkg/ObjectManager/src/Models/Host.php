@@ -7,6 +7,7 @@ class Host extends \Eloquent
     protected $fillable = [
         'host_name',
         'description',
+        'is_immutable',
         'template_name',
         'template_ids',
         'command_id',

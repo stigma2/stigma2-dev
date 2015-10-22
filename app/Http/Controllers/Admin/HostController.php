@@ -122,6 +122,7 @@ class HostController extends Controller {
         } 
 
         $param['is_template'] = $request->get('is_template') ;
+        $param['is_immutable'] = $request->get('is_immutable') ;
 
         if(count($templateIds) > 0){
             $param['template_ids'] = implode(',',$templateIds) ;

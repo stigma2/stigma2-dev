@@ -155,6 +155,7 @@ class ServiceController extends Controller {
         } 
 
         $param['is_template'] = $request->get('is_template') ;
+        $param['is_immutable'] = $request->get('is_immutable') ;
         $param['service_name'] = $request->get('service_name') ;
 
         if(count($templateIds) > 0){

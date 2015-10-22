@@ -20,6 +20,7 @@ class ServiceManager implements ObjectManager
         $storedData['service_name'] = $data['service_name']   ;
         $storedData['service_description'] =  $data['service_name']     ;
         $storedData['is_template'] = $data['is_template']   ;
+        $storedData['is_immutable'] = $data['is_immutable']   ;
         $storedData['template_ids'] = array_key_exists('template_ids', $data) ? $data['template_ids'] : ''  ;
         $storedData['command_id'] = array_key_exists('command_id', $data) ? $data['command_id'] : ''  ;
         $storedData['command_argument'] = array_key_exists('command_argument', $data) ? $data['command_argument'] : ''  ; 
@@ -37,6 +38,7 @@ class ServiceManager implements ObjectManager
         $storedData['service_name'] = $data['service_name']   ;
         $storedData['service_description'] =  $data['service_name']     ;
         $storedData['is_template'] = $data['is_template']   ;
+        $storedData['is_immutable'] = $data['is_immutable']   ;
         $storedData['template_ids'] = array_key_exists('template_ids', $data) ? $data['template_ids'] : ''  ;
         $storedData['command_id'] = array_key_exists('command_id', $data) ? $data['command_id'] : ''  ;
         $storedData['command_argument'] = array_key_exists('command_argument', $data) ? $data['command_argument'] : ''  ; 

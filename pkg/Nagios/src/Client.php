@@ -1,6 +1,7 @@
 <?php
 namespace Stigma\Nagios ; 
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\RequestException ;
 
 class Client
 {
@@ -10,13 +11,9 @@ class Client
 
     public function __construct($baseUri)
     { 
-        //'http://106.243.134.121:20280/nagios_dev/'
-        
         $this->baseUri = $baseUri ;
-        $this->httpClient = new HttpClient([
-            'base_uri' => $this->baseUri
-        ]);
-        //$this->httpClient->setPort($port) ;
+        $client = new HttpClient ;
+        $this->httpClient = $client ; 
     }
 
     public function generateHost($data)
@@ -85,50 +82,29 @@ class Client
             $payload[] = $data ;
         }
 
-        /*
-        $data1 = new \stdClass ;
-        $data1->command_name = 'ping' ;
-        $data1->details = array(
-            'command_name' => 'ping',
-            'command_line' => '!$host'
-        ) ;
-
-        $data2 = new \stdClass ;
-        $data2->command_name = 'ping2' ;
-        $data2->details = array(
-            'command_name' => 'ping2',
-            'command_line' => '!$host'
-        ) ; 
-
-        $arr = [$data1, $data2] ;
-
-
-        (json_encode($arr)) ; 
-         */
-
-        //dd(json_encode($payload)) ;
-
-        $uri = 'api/v1/commands' ;
         try{
 
-            $response = $this->httpClient->post($uri, [ 
-                'form_params'=> [
-                    'payload'=>json_encode($payload)  
-                    ]
-                ]  
-            ); 
-            return $response->getStatusCode();
-        }catch(\Exception $e){
-            echo((string)$e->getResponse()->getBody()) ;
-        } 
+            $response = $this->httpClient->post($this->baseUri.'api/v1/commands', [ 
+                'body'=> ['payload'=> json_encode($payload)  ]
+            ]); 
 
+            return $response->getStatusCode();
+
+        }catch (RequestException $e) {
+
+            echo $e->getRequest() . "\n";
+            if ($e->hasResponse()) {
+                dd($e->getResponse()) ;
+                echo $e->getResponse()->getStatusCode() . "\n";
+            }
+        }
     }
 
     public function requestToRestart()
     {
         $uri = 'api/v1/nagios' ;
 
-        $response = $this->httpClient->get($uri, [
+        $response = $this->httpClient->get($this->baseUri.$uri, [
             'query' => [ 'command'=> 'restart']
         ]); 
 
