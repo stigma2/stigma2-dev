@@ -5,89 +5,105 @@ namespace App\APIs;
 use App\Interfaces\NagiosInterface;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class Nagios implements NagiosInterface
 {
     private $_host_status = array("0" => "up", "1" => "down", "2" => "unreachable", "9" => "pending");
     private $_service_status = array("0" => "ok", "1" => "warning", "2" => "critical", "3" => "unknown", "9" => "pending");
 
+    protected $client;
+    protected $command;
+    protected $domain;
+
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+        $this->domain = config('nagios.host');
+    }
+
     public function listHosts($status)
     {
-        $command = "api/v1/hosts";
+        $this->command = "api/v1/hosts";
         if (isset($this->_host_status[$status])) {
-            $command = "api/v1/hosts?hoststatus=".$this->_host_status[$status];
+            $this->command = "api/v1/hosts?hoststatus=".$this->_host_status[$status];
         }
-        $result = $this->call($command);
+        $result = $this->call();
 
         return $result;
     }
 
     public function showHost($name)
     {
-        $command = "api/v1/hosts/".$name;
-        $result = $this->call($command);
+        $this->command = "api/v1/hosts/".$name;
+        $result = $this->call();
 
         return $result;
     }
 
     public function listServices($status)
     {
-        $command = "api/v1/services";
+        $this->command = "api/v1/services";
         if (isset($this->_service_status[$status])) {
-            $command = "api/v1/services?servicestatus=".$this->_service_status[$status];
+            $this->command = "api/v1/services?servicestatus=".$this->_service_status[$status];
         }
-        $result = $this->call($command);
+        $result = $this->call();
 
         return $result;
     }
 
     public function showService($name, $servicedescription)
     {
-        $command = "api/v1/services/".$name."?servicedescription=".urlencode($servicedescription);
-        $result = $this->call($command);
+        $this->command = "api/v1/services/".$name."?servicedescription=".urlencode($servicedescription);
+        $result = $this->call();
 
         return $result;
     }
 
     public function getSystemStatus()
     {
-        $command = "api/v1/nagios?command=status";
-        $result = $this->call($command, TRUE);
+        $this->command = "api/v1/nagios?command=status";
+        $result = $this->call(TRUE);
 
         return $result;
     }
 
     public function getHostStatus()
     {
-        $command = "api/v1/statistic/host";
-        $result = $this->call($command);
+        $this->command = "api/v1/statistic/host";
+        $result = $this->call();
 
         return $result;
     }
 
     public function getServiceStatus()
     {
-        $command = "api/v1/statistic/service";
-        $result = $this->call($command);
+        $this->command = "api/v1/statistic/service";
+        $result = $this->call();
 
         return $result;
     }
 
     public function getEvent($type, $starttime, $endtime)
     {
-        $command = "api/v1/statistic/log?type=".$type."&starttime=".$starttime."&endtime=".$endtime;
-        $result = $this->call($command);
+        $this->command = "api/v1/statistic/log?type=".$type."&starttime=".$starttime."&endtime=".$endtime;
+        $result = $this->call();
 
         return $result;
     }
 
-    private function call($command, $code = null)
+    private function call($code = null)
     {
-        $domain = config('nagios.host');
-        $url = $domain.$command;
+        $url = $this->domain.$this->command;
 
-        $client = new Client();
-        $response = $client->get($url);
+        try {
+            $response = $this->client->get($url);
+        } catch (RequestException $e) {
+            echo $e->getRequest();
+            if ($e->hasResponse()) {
+                echo $e->getResponse();
+            }
+        }
 
         if ($code) {
             return $response->getStatusCode();
