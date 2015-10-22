@@ -9,4 +9,7 @@ Route::group(array('prefix'=>'admin'),function(){
     Route::resource('services','\App\Http\Controllers\Admin\ServiceController');
     Route::resource('commands','\App\Http\Controllers\Admin\CommandController');
     Route::resource('dashboard','\App\Http\Controllers\Admin\DashboardController'); 
+
+    Route::get('configuration/nagios',array('as' => 'admin.configuration.nagios','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@nagios')) ;
+    Route::put('configuration/nagios',array('as' => 'admin.configuration.nagios.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@nagiosUpdate')) ;
 });

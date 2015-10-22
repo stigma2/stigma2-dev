@@ -38,7 +38,7 @@ class Client
         } 
     }
 
-    public function generateService($data)
+    public function generateService()
     {
         $builder = \App::make('Stigma\ObjectManager\Builder') ;
 

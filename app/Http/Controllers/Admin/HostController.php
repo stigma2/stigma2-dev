@@ -186,13 +186,13 @@ class HostController extends Controller {
         $hostTemplateCollection = $this->hostManager->getAllTemplates() ;
         $serviceTemplateCollection = $this->serviceManager->getAllItems() ; 
 
+        /*
         $serviceTemplateCollection = $serviceTemplateCollection->filter(function($item){ 
             if($item->is_template == 'N'){
                 return $item ;
             } 
         });
-
-
+         */ 
 
         $commandList = $this->commandBuilder->pluck('id','command_name')  ;
 
