@@ -6,21 +6,31 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Stigma\CommandBuilder\CommandBuilder ;
+use Stigma\Nagios\Client as NagiosClient ;
+use Illuminate\Http\Response;
 
 class CommandController extends Controller {
 
     protected $commandBuilder ;
+    protected $nagiosClient ;
 
 
-    public function __construct(CommandBuilder $commandBuilder)
+    public function __construct(CommandBuilder $commandBuilder , NagiosClient $nagiosClient)
     {
         $this->commandBuilder = $commandBuilder ;
+        $this->nagiosClient = $nagiosClient ;
     }
 
 
     public function generate()
     {
-        return "sdf" ;
+        $response = $this->nagiosClient->generateCommand() ;
+
+        if($response == 200){
+            return new Response('success', 200);
+        }else{
+            return new Response('error', 400);
+        }
     }
 
 	/**

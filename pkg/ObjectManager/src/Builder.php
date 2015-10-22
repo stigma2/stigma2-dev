@@ -39,7 +39,7 @@ class Builder
                 }
             }
 
-            if($host->command_id > 0){ // 커맨가 존재할 경우
+            if($host->command_id > 0){ // 커맨드가 존재할 경우
                 $command = $this->commandBuilder->find($host->command_id)  ;
                 $newDetails['check_command'] = $command->command_name.$host->command_argument ;
             } 

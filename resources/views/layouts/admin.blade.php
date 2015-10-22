@@ -73,6 +73,10 @@
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     <div class="modal-body"> 
+        <div data-alert class="alert-box radius" id="notification-box"> 
+            
+        </div>
+
         <ul class="step-by-step clearfix">
             <li>1.Generating Host Configuration <span calss="right"><a class="" id="generate-host-file" >Generate Config</a> </span></li>
             <li>2.Generating Service Configuration<span calss="right"><a class="" id="generate-service-file">Generate Config</a> </span></li>
@@ -108,16 +112,26 @@ jQuery(function(){
         alert('service-file') ;
     });
 
-    $('#generate-command-file').click(function(){
-        alert('command-file') ;
+    $('#generate-command-file').click(function(){ 
+        $('#notification-box').hide() ;
+        $('#notification-box').removeClass('alert') ;
+        $('#notification-box').removeClass('success') ;
+        $('#notification-box').addClass('warning') ;
+        $('#notification-box').text('command file are generationg...') ;
+        $('#notification-box').show() ;
 
         $.ajax({
             url : '/admin/commands/generate' , 
             type: 'get',
             success: function(response){
-                console.log(response) ;
+                $('#notification-box').removeClass('warning') ;
+                $('#notification-box').removeClass('alert') ;
+                $('#notification-box').addClass('success') ;
+                $('#notification-box').text('Done : Command File are generated') ;
             },
             error : function(response){
+                $('#notification-box').addClass('alert') ;
+                $('#notification-box').text('Error!') ;
             }
         }); 
     }); 
