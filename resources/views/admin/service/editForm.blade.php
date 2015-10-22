@@ -19,6 +19,25 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="small-12 columns">
+                <div class="row">
+                    <div class="small-4 columns">
+                        <label for="right-label" class="right inline">
+                            Immutable 
+                        </label>
+                    </div>
+                    <div class="small-8 columns">
+                        @if(isset($service))
+                        {!! Form::select('is_immutable', array( 'N' => 'N','Y' =>'Y'),$service->is_immutable)  !!}
+                        @else
+                        {!! Form::select('is_immutable', array( 'N' => 'N','Y' =>'Y'))  !!}
+                        @endif 
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="small-12 columns">

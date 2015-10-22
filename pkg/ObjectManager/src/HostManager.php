@@ -20,6 +20,7 @@ class HostManager implements ObjectManager
         $storedData['host_name'] = $data['host_name']   ;
         $storedData['template_name'] = $data['host_name']   ;
         $storedData['is_template'] = $data['is_template']   ;
+        $storedData['is_immutable'] = $data['is_immutable']   ;
         $storedData['template_ids'] = $data['template_ids']   ;
         $storedData['service_ids'] = $data['service_ids']   ; 
         $storedData['command_id'] = array_key_exists('command_id', $data) ? $data['command_id'] : ''  ;
