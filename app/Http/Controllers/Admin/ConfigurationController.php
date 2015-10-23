@@ -21,7 +21,8 @@ class ConfigurationController extends Controller {
 
     public function nagios()
     {
-        return view('admin.configuration.nagios') ;
+        $nagios = (config('nagios')) ;
+        return view('admin.configuration.nagios',compact('nagios')) ;
     }
 
     public function nagiosUpdate(Request $req)
@@ -30,9 +31,10 @@ class ConfigurationController extends Controller {
 
             $data = $req->only('host') ; 
 
+            $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
             $nagiosInstallation->setup($data)  ;
 
-            //return redirect()->route('installation::grafana.view') ;
+            return redirect()->route('admin.configuration.nagios') ;
         }catch (InvalidParameterException $e) { 
             //return back()->withInput() ;
         } 

@@ -130,6 +130,18 @@ jQuery(function(){
     });
 
     $('#generate-service-file').click(function(){
+        showAlertBox('warning','service file are generationg...') ;
+        $.ajax({
+            url : '/admin/services/generate' , 
+            type: 'get',
+            success: function(response){
+                showAlertBox('success','Done : Service File are generated') ;
+            },
+            error : function(response){
+                showAlertBox('alert','Error') ;
+            }
+        }); 
+
     });
 
     $('#generate-command-file').click(function(){ 

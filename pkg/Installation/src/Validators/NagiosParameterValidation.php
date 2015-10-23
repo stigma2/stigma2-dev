@@ -14,8 +14,7 @@ class NagiosParameterValidation extends ParameterValidation implements Validatio
     {
         $this->validatorFactory = $validatorFactory ;
         $this->rules = [
-            'host' => 'required',
-            'port' => 'required'
+            'host' => 'required'
         ];
     } 
 }
