@@ -38,7 +38,7 @@ class ServiceController extends Controller {
 
     public function generate()
     {
-        $response = $this->nagiosClient->generateService() ;
+        $response = $this->nagiosClient->generateService() ; 
 
         if($response == 200){
             return new Response('success', 200);

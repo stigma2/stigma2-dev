@@ -26,7 +26,7 @@
                 <label>Host or IP</label>
             </div>
             <div class="small-8 columns"> 
-                {!! Form::text('host' ) !!}
+                {!! Form::text('host', $nagios['host'] ) !!}
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
 
 <div class="row">
     <div class="small-8 columns">
-        <h6>Influxdb Configuration</h6>
+        <h6>Grafana Configuration</h6>
     </div>
     <div class="small-4 columns">
         <button  type ="submit" class="button small right" >Save</button>
