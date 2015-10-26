@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a7cedb2bf103d86ae07f16ab42aabf9e",
+    "hash": "a01691f4a5375e3c37813b65c5247b15",
     "content-hash": "49d441968da4f416ffdf95e612c500d2",
     "packages": [
         {
@@ -2916,7 +2916,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubledl/dissect.git",
-                "reference": "fd779d60d058fc4d5bbe1e5a16a8a90421bf91d2"
+                "reference": "d3a391de31e45a247e95cef6cf58a91c05af67c4"
             },
             "dist": {
                 "type": "zip",
@@ -3534,16 +3534,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.14",
+            "version": "4.8.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b4900675926860bef091644849305399b986efa2"
+                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b4900675926860bef091644849305399b986efa2",
-                "reference": "b4900675926860bef091644849305399b986efa2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/625f8c345606ed0f3a141dfb88f4116f0e22978e",
+                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e",
                 "shasum": ""
             },
             "require": {
@@ -3602,7 +3602,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-17 15:03:30"
+            "time": "2015-10-23 06:48:33"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
