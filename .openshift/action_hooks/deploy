@@ -89,5 +89,4 @@ echo "Running 'php artisan migrate --force'..." 1>&2
 echo 1>&2
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 php artisan migrate --force
-php artisan db:seed
 popd > /dev/null
