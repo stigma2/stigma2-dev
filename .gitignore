@@ -4,6 +4,9 @@
 config/grafana.php
 config/nagios.php
 config/influxdb.php
+.env
 .env.testing
 *.map
 public/build/*
+composer.phar
+composer.lock
