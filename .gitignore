@@ -1,12 +1,12 @@
 /vendor
 /node_modules
-.DS_Store
 config/grafana.php
 config/nagios.php
 config/influxdb.php
-.env
-.env.testing
-*.map
 public/build/*
+*.map
 composer.phar
 composer.lock
+.env
+.env.testing
+.DS_Store
