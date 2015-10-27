@@ -6,7 +6,9 @@
                     <dt>Filter:</dt>
                     <dd class="active"><a ng-click="hostsFilter('', $event)">All</a></dd>
                     <dd><a ng-click="hostsFilter('0', $event)">Up</a></dd>
-                    <dd class="hide-for-small-only"><a ng-click="hostsFilter('1', $event)">Down</a></dd>
+                    <dd><a ng-click="hostsFilter('1', $event)">Down</a></dd>
+                    <dd><a ng-click="hostsFilter('2', $event)">Unreachable</a></dd>
+                    <dd class="hide-for-small-only"><a ng-click="servicesFilter('9', $event)">Pending</a></dd>
                 </dl>
             </div>
         </div>
