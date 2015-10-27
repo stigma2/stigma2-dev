@@ -7,8 +7,8 @@
                     <dd class="active"><a ng-click="servicesFilter('', $event)">All</a></dd>
                     <dd><a ng-click="servicesFilter('0', $event)">OK</a></dd>
                     <dd><a ng-click="servicesFilter('1', $event)">Warning</a></dd>
-                    <dd><a ng-click="servicesFilter('2', $event)">Critical</a></dd>
-                    <dd><a ng-click="servicesFilter('3', $event)">Unknown</a></dd>
+                    <dd><a ng-click="servicesFilter('2', $event)">Unknown</a></dd>
+                    <dd><a ng-click="servicesFilter('3', $event)">Critical</a></dd>
                     <dd class="hide-for-small-only"><a ng-click="servicesFilter('9', $event)">Pending</a></dd>
                 </dl>
             </div>
@@ -30,11 +30,11 @@
                     <td><a ng-click="detailHost(service.host_name)">{{ service.host_name }}</a></td>
                     <td><a ng-click="detailService(service.host_name, service.description)">{{ service.description }}</a></td>
                     <td>
-                          <span class="label success" style="width: 100%;" ng-if="service.last_hard_state == '0'">OK</span>
-                          <span class="label warning" style="width: 100%;" ng-if="service.last_hard_state == '1'">WARNING</span>
-                          <span class="label alert" style="width: 100%;" ng-if="service.last_hard_state == '2'">CRITICAL</span>
-                          <span class="label info" style="width: 100%;" ng-if="service.last_hard_state == '3'">UNKOWN</span>
-                          <span class="label secondary" style="width: 100%;" ng-if="service.last_hard_state == '9'">PENDING</span>
+                          <span class="label success" style="width: 100%;" ng-if="service.status == '2'">OK</span>
+                          <span class="label warning" style="width: 100%;" ng-if="service.status == '4'">WARNING</span>
+                          <span class="label info" style="width: 100%;" ng-if="service.status == '8'">UNKOWN</span>
+                          <span class="label alert" style="width: 100%;" ng-if="service.status == '16'">CRITICAL</span>
+                          <span class="label secondary" style="width: 100%;" ng-if="service.status == '1'">PENDING</span>
                     </td>
                     <td>{{ convertDate(service.last_check) }}</td>
                     <td>{{ getDuration(service.last_state_change) }}</td>
