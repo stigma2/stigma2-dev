@@ -6,9 +6,7 @@
                     <dt>Filter:</dt>
                     <dd class="active"><a ng-click="hostsFilter('', $event)">All</a></dd>
                     <dd><a ng-click="hostsFilter('0', $event)">Up</a></dd>
-                    <dd><a ng-click="hostsFilter('1', $event)">Down</a></dd>
-                    <dd><a ng-click="hostsFilter('2', $event)">Unreachable</a></dd>
-                    <dd class="hide-for-small-only"><a ng-click="hostsFilter('9', $event)">Pending</a></dd>
+                    <dd class="hide-for-small-only"><a ng-click="hostsFilter('1', $event)">Down</a></dd>
                 </dl>
             </div>
         </div>
@@ -26,10 +24,9 @@
                 <tr ng-repeat="(key, host) in hosts" ng-show="hosts != null">
                     <td><a ng-click="detailHost(host.name)">{{ host.name }}</a></td>
                     <td>
-                          <span class="label success" style="width: 100%;" ng-if="host.last_hard_state == '0'">UP</span>
-                          <span class="label alert" style="width: 100%;" ng-if="host.last_hard_state == '1'">DOWN</span>
-                          <span class="label warning" style="width: 100%;" ng-if="host.last_hard_state == '2'">UNREACHABLE</span>
-                          <span class="label secondary" style="width: 100%;" ng-if="host.last_hard_state == '9'">PENDING</span>
+                          <span class="label success" style="width: 100%;" ng-if="host.status == '2'">UP</span>
+                          <span class="label alert" style="width: 100%;" ng-if="host.status == '4' && host.last_hard_state_change != '0'">DOWN</span>
+                          <span class="label secondary" style="width: 100%;" ng-if="host.status == '4' && host.last_hard_state_change == '0'">PENDING</span>
                     </td>
                     <td>{{ convertDate(host.last_check) }}</td>
                     <td>{{ getDuration(host.last_state_change) }}</td>
