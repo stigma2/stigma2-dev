@@ -15,8 +15,8 @@ class InfluxdbParameterValidation extends ParameterValidation implements Validat
         $this->validatorFactory = $validatorFactory ;
         $this->rules = [
             'host' => 'required',
-            'port' => 'required',
             'username' => 'required',
+            'database' => 'required',
             'password' => 'required',
         ];
     } 
