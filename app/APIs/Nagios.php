@@ -10,7 +10,7 @@ use GuzzleHttp\Exception\RequestException;
 class Nagios implements NagiosInterface
 {
     private $_host_status = array("0" => "up", "1" => "down", "2" => "unreachable", "9" => "pending");
-    private $_service_status = array("0" => "ok", "1" => "warning", "2" => "critical", "3" => "unknown", "9" => "pending");
+    private $_service_status = array("0" => "ok", "1" => "warning", "2" => "unknown", "3" => "critical", "9" => "pending");
 
     protected $client;
     protected $command;
