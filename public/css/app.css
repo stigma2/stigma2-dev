@@ -1,3 +1,6 @@
+#modalTitle {
+  padding: 0px 10%; }
+
 .summary-body {
   padding-top: 45px; }
 
@@ -101,6 +104,9 @@ span.ng-drop-title {
   z-index: 2; }
 
 /* for ngDraggable */
+.button.right {
+  margin-left: 10px; }
+
 aside {
   background: #F9F9F9;
   padding-left: 7px;

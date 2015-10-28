@@ -12,17 +12,19 @@ define(['./module', 'foundation'],
 
                 $scope.openIndexConfigArea = function() {
                     $('div#indexConfigArea').foundation('reveal', 'open');
+                    $scope.overviewEventDurationDate = $rootScope.overviewEventDurationDate;
                     $scope.refreshInterval = $rootScope.refreshInterval;
                 };
 
-                $scope.setOverviewEventDurationDate = function() {
+                $scope.save = function() {
                     $rootScope.overviewEventDurationDate = $scope.overviewEventDurationDate;
-                    $state.reload();
-                };
-
-                $scope.setRefreshInterval = function() {
                     $rootScope.refreshInterval = $scope.refreshInterval;
                     $state.reload();
+                    $('div#indexConfigArea').foundation('reveal', 'close');
+                };
+
+                $scope.cancel = function() {
+                    $('div#indexConfigArea').foundation('reveal', 'close');
                 };
 
                 initConfigration();

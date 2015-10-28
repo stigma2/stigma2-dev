@@ -47,3 +47,7 @@ $button-round: $global-rounded;
 // We use this to set default opacity and cursor for disabled buttons.
 $button-disabled-opacity: 0.7;
 $button-disabled-cursor: $cursor-default-value;
+
+.button.right{
+	margin-left: 10px;
+}
