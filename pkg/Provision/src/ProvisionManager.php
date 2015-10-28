@@ -1,16 +1,26 @@
 <?php
 namespace Stigma\Provision ;
 use Aws\Ec2\Ec2Client;
+use Stigma\Installation\Generators\ProvisioningFileGenerator ;
+use Stigma\Provision\Repositories\ProvisionedServerRepository ;
 
 class ProvisionManager
 {
+    protected $fileGenerator ;
+    protected $provisionedServerRepo ;
+
+    public function __construct(ProvisioningFileGenerator $fileGenerator, ProvisionedServerRepository $provisionedServerRepo)
+    {
+        $this->fileGenerator = $fileGenerator ;
+        $this->provisionedServerRepo = $provisionedServerRepo ;
+    }
+
     public function provisionNagiosEnv(array $data)
     { 
-        
         $ec2Client = Ec2Client::factory(array(
-            'key'    => $data['key'] ,
+            'key'    => $data['apikey'] ,
             'secret' => $data['secret'] ,
-            'region' => $data['region'] // (e.g., us-east-1)
+            'region' => 'ap-northeast-1' // (e.g., us-east-1)
         )); 
  
 
@@ -25,16 +35,11 @@ class ProvisionManager
 
         chmod($saveKeyLocation ,0600) ;
 
-        $securityGroupName = 'my-security-group20';
+        $securityGroupName = 'my-security-group'.rand();
         $result = $ec2Client->createSecurityGroup(array(
             'GroupName'   => $securityGroupName,
             'Description' => 'Basic web server security'
         ));
-
-        // Get the security group ID (optional)
-        // $securityGroupId = $result->get('GroupId');
-        //
-        //
 
         $ec2Client->authorizeSecurityGroupIngress(array(
             'GroupName'     => $securityGroupName,
@@ -77,6 +82,17 @@ class ProvisionManager
             'InstanceIds' => $instanceIds,
         ));
 
-        (current($result->getPath('Reservations/*/Instances/*/PublicDnsName')));
+        $publicDns = (current($result->getPath('Reservations/*/Instances/*/PublicDnsName')));
+        //$securityGroupName = ''; 
+        $data = array(
+            'public_dns' => $publicDns ,
+            'security_group' => $securityGroupName
+        );
+        $this->provisionedServerRepo->store($data) ;
+    }
+
+    public function setup($data)
+    {
+        $this->fileGenerator->make($data) ;
     }
 }
