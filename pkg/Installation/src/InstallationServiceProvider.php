@@ -72,7 +72,7 @@ class InstallationServiceProvider extends ServiceProvider
     private function registerGrafanaInstallation()
     {
         $this->app->bind('Stigma\Installation\Generators\GrafanaFileGenerator', function(){
-            return new \Stigma\Installation\Generators\DatabaseFileGenerator(
+            return new \Stigma\Installation\Generators\GrafanaFileGenerator(
                 __DIR__.'/tmpl/grafana.php', 
                 config_path().'/grafana.php') ;
         }) ;

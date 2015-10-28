@@ -38,10 +38,9 @@
                     <li class="parent" style="border-left:5px solid #C51162;">
                     <a><i class="fi-cloud"></i>&nbsp;Configuration</a>
                     <ul class="submenu">
-                        <li><a href="{{route('admin.configuration.nagios')}}">Nagios</a></li>
-                        <li><a href="{{route('admin.commands.index')}}">Grafana</a></li>
-                        <li><a href="{{route('admin.commands.index')}}">Database</a></li>
-                        <li><a href="{{route('admin.commands.index')}}">InfluxDB</a></li>
+                        <li><a href="{{route('admin.configuration.system')}}">System</a></li>
+                        <li><a href="{{route('admin.commands.index')}}">Account</a></li>
+                        <li><a href="{{route('admin.configuration.provisioning')}}">Provisioning</a></li>
                     </ul> 
                     </li>
 
