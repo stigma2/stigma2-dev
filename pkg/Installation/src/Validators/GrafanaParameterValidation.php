@@ -15,7 +15,6 @@ class GrafanaParameterValidation extends ParameterValidation implements Validati
         $this->validatorFactory = $validatorFactory ;
         $this->rules = [
             'host' => 'required',
-            'port' => 'required',
             'username' => 'required',
             'password' => 'required',
         ];
