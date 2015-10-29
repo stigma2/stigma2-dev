@@ -6,6 +6,7 @@ define([], function() {
         home: CONTEXT_ROOT,
         overview: CONTEXT_ROOT + '/overview',
         routes: [
+            {'state': 'login', 'url': '/auth/login', 'templateUrl': '', 'controller': 'IndexCtrl'},
             {'state': 'dashboardOverview', 'url': '/overview', 'templateUrl': PARTIALS_ROOT + 'dashboard.overview.php', 'controller': 'DashboardOverviewCtrl'},
             {'state': 'serverHostList', 'url': CONTEXT_ROOT + '/hosts', 'templateUrl': PARTIALS_ROOT + 'server.host.index.php', 'controller': 'ServerHostListCtrl'},
             {'state': 'serverHostDetail', 'url': CONTEXT_ROOT + '/hosts/:name', 'templateUrl': PARTIALS_ROOT + 'server.host.show.php', 'controller': 'ServerHostShowCtrl'},
