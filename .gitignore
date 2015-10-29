@@ -1,6 +1,7 @@
 /vendor
 /node_modules
 config/grafana.php
+config/provisioning.php
 config/nagios.php
 config/influxdb.php
 public/build/*
