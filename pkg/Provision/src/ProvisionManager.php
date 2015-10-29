@@ -121,7 +121,7 @@ class ProvisionManager
         $this->provisionedServerRepo->store($data) ;
 
         $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
-        $nagiosInstallation->setup(array('host'=>'http://'.$publicDns.'/nagios-dev'))  ;
+        $nagiosInstallation->setup(array('host'=>'http://'.$publicDns.'/nagios-dev/'))  ;
 
         $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
         $grafanaInstallation->setup(array(
