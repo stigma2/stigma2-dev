@@ -53,17 +53,32 @@ return [
         ],
 
         'mysql' => [
+                'driver'    => 'mysql',
+                'host'      => env('DB_HOST', env('OPENSHIFT_MYSQL_DB_HOST', '{{host}}')),
+                'port'      => env('DB_PORT', env('OPENSHIFT_MYSQL_DB_PORT', 3306)),
+                'database'  => env('DB_DATABASE', env('OPENSHIFT_APP_NAME', '{{database}}')),
+                'username'  => env('DB_USERNAME', env('OPENSHIFT_MYSQL_DB_USERNAME', '{{dbuser}}')),
+                'password'  => env('DB_PASSWORD', env('OPENSHIFT_MYSQL_DB_PASSWORD', '{{password}}')),
+                'charset'   => 'utf8',
+                'collation' => 'utf8_unicode_ci',
+                'prefix'    => '',
+                'strict'    => false,
+        ],
+
+        /*
+        'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', '{{host}}'),
-            'database'  => env('DB_DATABASE', '{{database}}'),
-            'username'  => env('DB_USERNAME', '{{dbuser}}'),
-            'password'  => env('DB_PASSWORD', '{{password}}'),
-            'port'      => env('DB_PORT', '{{port}}'),
+            'host'      => env('DB_HOST', 'localhost'),
+            'database'  => env('DB_DATABASE', 'stigma2'),
+            'username'  => env('DB_USERNAME', 'homestead'),
+            'password'  => env('DB_PASSWORD', 'secret'),
+            'port'      => env('DB_PORT', '3306'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
             'strict'    => false,
         ],
+        */
 
         'pgsql' => [
             'driver'   => 'pgsql',
@@ -124,4 +139,4 @@ return [
 
     ],
 
-];
+]; 
