@@ -3,8 +3,8 @@ define(['./module', 'foundation'],
         'use strict';
 
         app.controller('IndexCtrl', [
-            '$rootScope', '$scope', '$state',
-            function($rootScope, $scope, $state) {
+            '$rootScope', '$scope', '$state', '$window', 'IndexFactory',
+            function($rootScope, $scope, $state, $window, IndexFactory) {
                 function initConfigration() {
                     $rootScope.refreshInterval = "15000";
                     $rootScope.overviewEventDurationDate = "7";
@@ -25,6 +25,11 @@ define(['./module', 'foundation'],
 
                 $scope.cancel = function() {
                     $('div#indexConfigArea').foundation('reveal', 'close');
+                };
+
+                $scope.logout = function() {
+                    IndexFactory.logout();
+                    $window.location.href = '/auth/login';
                 };
 
                 initConfigration();

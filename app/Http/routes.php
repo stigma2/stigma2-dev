@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(array('prefix' => 'api/v1'), function() {
+Route::group(array('prefix' => 'api/v1', 'middleware' => 'auth'), function() {
     Route::get('dashboard/systemstatus', 'DashboardController@systemstatus');
     Route::get('dashboard/hoststatus', 'DashboardController@hoststatus');
     Route::get('dashboard/servicestatus', 'DashboardController@servicestatus');
@@ -23,9 +23,9 @@ Route::group(array('prefix' => 'api/v1'), function() {
     Route::get('server/services/name/{name}/servicedescription/{servicedescription}', 'ServerServicesController@show');
 });
 
-Route::get('/', function () {
+Route::get('/', ['middleware' => 'auth', function () {
     return view('index');
-});
+}]);
 
 
 Route::group(array('prefix' => 'admin'), function() {

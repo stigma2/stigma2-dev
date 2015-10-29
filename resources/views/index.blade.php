@@ -20,8 +20,8 @@
                     <top-bar-section>
                         <section class="top-bar-section">
                             <ul class="right">
-                                <li><a href="#" data-reveal-id="indexConfigArea" ng-click="openIndexConfigArea();"><i class="fi-widget"></i></a></li>
-                                <li><a href="#"><i class="fi-lock"></i></a></li>
+                                <li><a data-reveal-id="indexConfigArea" ng-click="openIndexConfigArea();"><i class="fi-widget"></i></a></li>
+                                <li><a ng-click="logout();"><i class="fi-lock"></i></a></li>
                             </ul>
                         </section>
                     </top-bar-section>
