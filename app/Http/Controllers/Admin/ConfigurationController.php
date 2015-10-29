@@ -65,6 +65,7 @@ class ConfigurationController extends Controller {
     {
         if(! $this->installManager->verifyToBeInstalled()){
 
+            /*
             $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
             $nagiosInstallation->setup(array('host'=>'localhost'))  ;
 
@@ -81,7 +82,7 @@ class ConfigurationController extends Controller {
                 'database'=> 'stigma' , 
                 'username'=> 'stigma' , 
                 'password'=> 'stigma' , 
-            )); 
+            )); */
         }
 
 

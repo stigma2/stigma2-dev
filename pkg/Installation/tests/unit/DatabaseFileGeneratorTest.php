@@ -19,6 +19,7 @@ class DatabaseFileGeneratorTest extends \Codeception\TestCase\Test
     {
     }
 
+    /*
     // tests
     public function testGenerateFile()
     { 
@@ -39,4 +40,5 @@ class DatabaseFileGeneratorTest extends \Codeception\TestCase\Test
         $this->assertFileExists((config_path().'/database.php')) ; 
         $this->assertEquals($stubFile, $createdDbFile) ; 
     }
+     */
 }

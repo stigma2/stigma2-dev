@@ -17,6 +17,7 @@ class InstallationCest
     {
     }
 
+    /*
     public function testToInstallWhenNotInstalled(AcceptanceTester $I)
     { 
         $I->wantTo('Try to Install If stigma was not installed') ;
@@ -151,5 +152,5 @@ class InstallationCest
 
         $I->amOnPage('/') ;
         $I->see('installed') ;
-    }
+    }*/
 }

@@ -2,7 +2,7 @@
 
 return [
     'host' => 'localhost' ,
-    'port' => '80' ,
+    'database' => 'stigma' ,
     'username' => 'username' ,
     'password' => 'password' ,
 ];

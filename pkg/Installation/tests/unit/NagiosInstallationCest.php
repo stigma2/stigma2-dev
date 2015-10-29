@@ -39,7 +39,6 @@ class NagiosInstallationCest
     {
         $I->expectedInvalidParameterException(function(){ 
             $data = [
-                'host' => 'localhost'
                 ] ;
             $installManager = \App::make('Stigma\Installation\InstallManager');
             $nagiosInstallation = $installManager->getNagiosInstallation() ;
