@@ -1,5 +1,5 @@
 <?php
-namespace Stigma\Installation ;
+namespace Stigma\Provision ;
 
 use Illuminate\Support\ServiceProvider;
 use Stigma\Installation\Validators\DatabaseValidation ;
@@ -7,7 +7,7 @@ use Stigma\Installation\Generators\DatabaseFileGenerator ;
 use Stigma\Installation\InstallManager ;
 use Stigma\Installation\Services\InstallChecker ;
 
-class InstallationServiceProvider extends ServiceProvider
+class ProvisionServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -15,12 +15,7 @@ class InstallationServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->registerInstallManager() ;
-        $this->registerDatabaseInstallation();
-        $this->registerNagiosInstallation(); 
-        $this->registerGrafanaInstallation(); 
-        $this->registerInfluxdbInstallation() ;
-        $this->registerProvisioning() ;
+
     }
 
     private function registerInstallManager()
@@ -29,16 +24,6 @@ class InstallationServiceProvider extends ServiceProvider
             return new InstallManager($this->app,new InstallChecker(config_path()));
         });
     }
-
-    private function registerProvisioning()
-    {
-        $this->app->bind('Stigma\Installation\Generators\ProvisioningFileGenerator', function(){
-            return new \Stigma\Installation\Generators\ProvisioningFileGenerator(
-                __DIR__.'/tmpl/provisioning.php', 
-                config_path().'/provisioning.php') ;
-        }) ; 
-    }
-
 
     private function registerNagiosInstallation()
     {

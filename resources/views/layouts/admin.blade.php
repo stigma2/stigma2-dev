@@ -72,7 +72,7 @@
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     <div class="modal-body"> 
-        <div data-alert class="alert-box radius" id="notification-box"> 
+        <div data-alert class="alert-box radius notification-box" id="notification-box"> 
             
         </div>
 
@@ -94,10 +94,25 @@
 <script>
 jQuery(function(){
     var hideAlertBox = function(){ 
-        $('#notification-box').hide() ;
+        $('.notification-box').hide() ;
     }
 
     hideAlertBox() ;
+
+    $('.provisioning-btn').click(function(){
+        showAlertBox('warning','provisioning...') ;
+        $.ajax({
+            url : '/admin/configuration/provisioning/request' , 
+            type: 'get',
+            success: function(response){
+                showAlertBox('success','Success  ') ;
+                location.href = location.href ;
+            },
+            error : function(response){
+                showAlertBox('alert','Error') ;
+            }
+        }); 
+    });
 
     $('a.restart-btn').click(function(){ 
         showAlertBox('warning','nagios restarting...') ;
@@ -159,13 +174,13 @@ jQuery(function(){
 
     
     var showAlertBox = function(cls , text){ 
-        $('#notification-box').removeClass('warning') ;
-        $('#notification-box').removeClass('alert') ;
-        $('#notification-box').removeClass('success') ;
+        $('.notification-box').removeClass('warning') ;
+        $('.notification-box').removeClass('alert') ;
+        $('.notification-box').removeClass('success') ;
 
-        $('#notification-box').addClass(cls) ;
-        $('#notification-box').show() ;
-        $('#notification-box').text(text) ;
+        $('.notification-box').addClass(cls) ;
+        $('.notification-box').show() ;
+        $('.notification-box').text(text) ;
     }
 
 
