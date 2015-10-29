@@ -126,6 +126,22 @@ class ConfigurationController extends Controller {
         } 
     }
 
+
+    public function databaseUpdate(Request $req)
+    {
+        try { 
+
+            $data = $req->only('host','dbuser','password','database') ; 
+
+            $databaseInstallation = $this->installManager->getNagiosInstallation() ;
+            $databaseInstallation->setup($data)  ;
+
+            return redirect()->route('admin.configuration.system') ;
+        }catch (InvalidParameterException $e) { 
+            //return back()->withInput() ;
+        } 
+    }
+
     public function influxdbUpdate(Request $req)
     {
         try { 

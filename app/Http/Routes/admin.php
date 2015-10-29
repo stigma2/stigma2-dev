@@ -16,6 +16,7 @@ Route::group(array('prefix'=>'admin', 'middleware' => 'auth'),function(){
     Route::get('configuration/provisioning',array('as' => 'admin.configuration.provisioning','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@provisioning')) ;
     Route::put('configuration/nagios/update',array('as' => 'admin.configuration.nagios.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@nagiosUpdate')) ;
 
+    Route::put('configuration/database/update',array('as' => 'admin.configuration.database.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@databaseUpdate')) ;
     Route::put('configuration/grafana/update',array('as' => 'admin.configuration.grafana.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@grafanaUpdate')) ;
     Route::put('configuration/influxdb/update',array('as' => 'admin.configuration.influxdb.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@influxdbUpdate')) ;
     Route::put('configuration/provisioning/update',array('as' => 'admin.configuration.provisioning.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@provisioningUpdate')) ;

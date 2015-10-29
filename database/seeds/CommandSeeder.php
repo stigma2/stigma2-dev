@@ -181,10 +181,18 @@ class CommandSeeder extends Seeder
         $commandBuilder->make($data);
 
         $data = [
-            'command_name' => 'process-service-perfdata',
-            'command_line' => '/usr/bin/printf "%b" "$LASTSERVICECHECK$\t$HOSTNAME$\t$SERVICEDESC$\t$SERVICESTATE$\t$SERVICEATTEMPT$\t$SERVICESTATETYPE$\t$SERVICEEXECUTIONTIME$\t$SERVICELATENCY$\t$SERVICEOUTPUT$\t$SERVICEPERFDATA$\n" >> /var/log/nagios/service-perfdata.out'
+            'command_name' => 'graphios_perf_host',
+            'command_line' => '/bin/mv /var/spool/nagios/graphios/host-perfdata /var/spool/nagios/graphios/host-perfdata.$TIMET$'
         ];
 
         $commandBuilder->make($data);
+
+        $data = [
+            'command_name' => ' graphios_perf_service',
+            'command_line' => '/bin/mv /var/spool/nagios/graphios/service-perfdata /var/spool/nagios/graphios/service-perfdata.$TIMET$'
+        ];
+
+        $commandBuilder->make($data);
+
     }
 }
