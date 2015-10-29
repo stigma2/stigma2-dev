@@ -23,7 +23,7 @@ class ProvisionManager
         $ec2Client = Ec2Client::factory(array(
             'key'    => $data['apikey'] ,
             'secret' => $data['secret'] ,
-            'region' => 'ap-northeast-1' // (e.g., us-east-1)
+            'region' => 'us-east-1' // (e.g., us-east-1)
         )); 
  
 
@@ -32,7 +32,8 @@ class ProvisionManager
             'KeyName' => $keyPairName
         )); 
 
-        $saveKeyLocation = getenv('HOME'). "/.ssh/{$keyPairName}.pem" ;
+        //$saveKeyLocation = getenv('HOME'). "/.ssh/{$keyPairName}.pem" ;
+        $saveKeyLocation = getenv('HOME'). "/app-root/data/{$keyPairName}.pem" ;
 
         file_put_contents($saveKeyLocation , $result['keyMaterial']) ;
 
@@ -92,7 +93,8 @@ class ProvisionManager
         )); 
 
         $result = $ec2Client->runInstances(array(
-            'ImageId'        => 'ami-03486d6d',
+            //'ImageId'        => 'ami-03486d6d',
+            'ImageId'        => 'ami-1141317b',
             'MinCount'       => 1,
             'MaxCount'       => 1,
             'InstanceType'   => 'm3.medium',
@@ -119,7 +121,7 @@ class ProvisionManager
         $this->provisionedServerRepo->store($data) ;
 
         $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
-        $nagiosInstallation->setup(array('host'=>'http://'.$publicDns))  ;
+        $nagiosInstallation->setup(array('host'=>'http://'.$publicDns.'/nagios-dev'))  ;
 
         $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
         $grafanaInstallation->setup(array(
@@ -132,8 +134,8 @@ class ProvisionManager
         $influxdbInstallation->setup(array(
             'host'=>'http://'.$publicDns.':8086',
             'database'=> 'stigma' , 
-            'username'=> 'stigma' , 
-            'password'=> 'stigma' , 
+            'username'=> 'root' , 
+            'password'=> 'root' , 
         )); 
     }
 
