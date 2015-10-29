@@ -21,7 +21,7 @@ class InfluxdbInstallationCest
 
         $data = [
             'host' => 'localhost' , 
-            'port' => '80',
+            'database' => 'stigma',
             'username' => 'username',
             'password' => 'password' ,
             ];

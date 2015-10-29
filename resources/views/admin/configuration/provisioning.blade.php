@@ -69,7 +69,7 @@
             @foreach($serverList as $server)
             <tr>
                 <td>{{$server->getKey()}}</td>
-                <td>{{$server->public_dns}}</td>
+                <td>http://{{$server->public_dns}}</td>
                 <td>{{$server->security_group}}</td>
             </tr>
             @endforeach

@@ -13,6 +13,7 @@ class DatabaseInstallationCest
     {
     }
 
+    /*
     // tests
     public function testValidate(UnitTester $I)
     {
@@ -69,5 +70,5 @@ class DatabaseInstallationCest
 
         $databaseInstallation->setup($data);
 
-    }
+    }*/
 }

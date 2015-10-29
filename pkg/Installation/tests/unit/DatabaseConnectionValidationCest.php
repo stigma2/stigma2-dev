@@ -13,6 +13,7 @@ class DatabaseConnectionValidationCest
     {
     }
 
+    /*
     // tests
     public function testValidate(UnitTester $I)
     {
@@ -41,4 +42,5 @@ class DatabaseConnectionValidationCest
             $dbConnectionValidation->passes($data);
         }); 
     }
+     */
 }

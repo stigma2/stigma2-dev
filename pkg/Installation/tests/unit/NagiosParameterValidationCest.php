@@ -27,19 +27,11 @@ class NagiosParameterValidationCest
 
         $I->expectedInvalidParameterException(function() use($nagiosParameterValidation) {
             $data = [
-                'host' => 'localhost'
             ];
 
             $nagiosParameterValidation->passes($data) ;
-        });
-
-        $I->expectedInvalidParameterException(function() use($nagiosParameterValidation) {
-            $data = [
-                'port' => 80
-            ];
-
-            $nagiosParameterValidation->passes($data) ;
-        });
+        }); 
+        
 
     }
 }

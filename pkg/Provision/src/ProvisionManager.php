@@ -3,16 +3,19 @@ namespace Stigma\Provision ;
 use Aws\Ec2\Ec2Client;
 use Stigma\Installation\Generators\ProvisioningFileGenerator ;
 use Stigma\Provision\Repositories\ProvisionedServerRepository ;
+use Stigma\Installation\InstallManager;
 
 class ProvisionManager
 {
     protected $fileGenerator ;
+    protected $installManager ;
     protected $provisionedServerRepo ;
 
-    public function __construct(ProvisioningFileGenerator $fileGenerator, ProvisionedServerRepository $provisionedServerRepo)
+    public function __construct(ProvisioningFileGenerator $fileGenerator, ProvisionedServerRepository $provisionedServerRepo , InstallManager $installManager)
     {
         $this->fileGenerator = $fileGenerator ;
         $this->provisionedServerRepo = $provisionedServerRepo ;
+        $this->installManager = $installManager ;
     }
 
     public function provisionNagiosEnv(array $data)
@@ -54,6 +57,31 @@ class ProvisionManager
                 ),
                 array(
                     'IpProtocol' => 'tcp',
+                    'FromPort'   => 3000,
+                    'ToPort'     => 3000,
+                    'IpRanges'   => array(
+                        array('CidrIp' => '0.0.0.0/0')
+                    ),
+                ),
+                array(
+                    'IpProtocol' => 'tcp',
+                    'FromPort'   => 8083,
+                    'ToPort'     => 8083,
+                    'IpRanges'   => array(
+                        array('CidrIp' => '0.0.0.0/0')
+                    ),
+                ),
+                array(
+                    'IpProtocol' => 'tcp',
+                    'FromPort'   => 8086,
+                    'ToPort'     => 8086,
+                    'IpRanges'   => array(
+                        array('CidrIp' => '0.0.0.0/0')
+                    ),
+                ), 
+
+                array(
+                    'IpProtocol' => 'tcp',
                     'FromPort'   => 22,
                     'ToPort'     => 22,
                     'IpRanges'   => array(
@@ -89,6 +117,24 @@ class ProvisionManager
             'security_group' => $securityGroupName
         );
         $this->provisionedServerRepo->store($data) ;
+
+        $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
+        $nagiosInstallation->setup(array('host'=>'http://'.$publicDns))  ;
+
+        $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
+        $grafanaInstallation->setup(array(
+            'host'=>'http://'.$publicDns.':3000',
+            'username'=> 'admin' , 
+            'password'=> 'admin' , 
+        ));
+
+        $influxdbInstallation = $this->installManager->getInfluxdbInstallation() ;
+        $influxdbInstallation->setup(array(
+            'host'=>'http://'.$publicDns.':8086',
+            'database'=> 'stigma' , 
+            'username'=> 'stigma' , 
+            'password'=> 'stigma' , 
+        )); 
     }
 
     public function setup($data)
