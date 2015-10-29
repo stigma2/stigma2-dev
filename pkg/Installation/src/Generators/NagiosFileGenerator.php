@@ -10,7 +10,7 @@ class NagiosFileGenerator extends FileGenerator implements ConfigFileGenerator
     protected $outputPath ; 
 
     public function __construct(
-        $tmplPath = __DIR__.'/../tmpl/nagios.php', 
+        $tmplPath = './../tmpl/nagios.php', 
         $outputPath )
     {
         $this->tmplPath = $tmplPath ;
