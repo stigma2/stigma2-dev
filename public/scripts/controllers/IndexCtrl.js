@@ -10,10 +10,19 @@ define(['./module', 'foundation'],
                     $rootScope.overviewEventDurationDate = "7";
                 };
 
+                $scope.setAdmin = function() {
+                    $window.location.href = '/admin/dashboard';
+                };
+
                 $scope.openIndexConfigArea = function() {
                     $('div#indexConfigArea').foundation('reveal', 'open');
                     $scope.overviewEventDurationDate = $rootScope.overviewEventDurationDate;
                     $scope.refreshInterval = $rootScope.refreshInterval;
+                };
+
+                $scope.logout = function() {
+                    IndexFactory.logout();
+                    $window.location.href = '/auth/login';
                 };
 
                 $scope.save = function() {
@@ -25,11 +34,6 @@ define(['./module', 'foundation'],
 
                 $scope.cancel = function() {
                     $('div#indexConfigArea').foundation('reveal', 'close');
-                };
-
-                $scope.logout = function() {
-                    IndexFactory.logout();
-                    $window.location.href = '/auth/login';
                 };
 
                 initConfigration();
