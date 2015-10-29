@@ -128,7 +128,7 @@
 </div>
 {!! Form::close() !!}
 
-{!! Form::open(array('route'=> array('admin.configuration.influxdb.update'),'method' =>'put','class'=>'form-v1 clearfix')) !!}
+{!! Form::open(array('route'=> array('admin.configuration.database.update'),'method' =>'put','class'=>'form-v1 clearfix')) !!}
 
 <div class="row">
     <div class="small-8 columns">

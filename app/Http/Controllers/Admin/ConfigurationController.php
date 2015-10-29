@@ -133,7 +133,7 @@ class ConfigurationController extends Controller {
 
             $data = $req->only('host','dbuser','password','database') ; 
 
-            $databaseInstallation = $this->installManager->getNagiosInstallation() ;
+            $databaseInstallation = $this->installManager->getDatabaseInstallation() ;
             $databaseInstallation->setup($data)  ;
 
             return redirect()->route('admin.configuration.system') ;

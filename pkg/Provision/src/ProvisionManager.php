@@ -23,7 +23,7 @@ class ProvisionManager
         $ec2Client = Ec2Client::factory(array(
             'key'    => $data['apikey'] ,
             'secret' => $data['secret'] ,
-            'region' => 'us-east-1' // (e.g., us-east-1)
+            'region' => 'ap-southeast-2' // (e.g., us-east-1)
         )); 
  
 
@@ -94,7 +94,9 @@ class ProvisionManager
 
         $result = $ec2Client->runInstances(array(
             //'ImageId'        => 'ami-03486d6d',
-            'ImageId'        => 'ami-1b4f3f71',
+            //'ImageId'        => 'ami-1b4f3f71',
+            //'ImageId'        => 'ami-f0d88793', // ap-southeast-2
+            'ImageId'        => 'ami-f0d88793', // ap-southeast-2
             'MinCount'       => 1,
             'MaxCount'       => 1,
             'InstanceType'   => 'm3.medium',
