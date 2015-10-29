@@ -10,7 +10,7 @@ class InfluxdbFileGenerator extends FileGenerator implements ConfigFileGenerator
     protected $outputPath ; 
 
     public function __construct(
-        $tmplPath = __DIR__.'/../tmpl/influxdb.php', 
+        $tmplPath = './../tmpl/influxdb.php', 
         $outputPath )
     {
         $this->tmplPath = $tmplPath ;

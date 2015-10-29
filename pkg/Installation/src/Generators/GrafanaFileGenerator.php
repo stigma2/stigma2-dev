@@ -10,7 +10,7 @@ class GrafanaFileGenerator extends FileGenerator implements ConfigFileGenerator
     protected $outputPath ; 
 
     public function __construct(
-        $tmplPath = __DIR__.'/../tmpl/grafana.php', 
+        $tmplPath = './../tmpl/grafana.php', 
         $outputPath )
     {
         $this->tmplPath = $tmplPath ;

@@ -10,7 +10,7 @@ class ProvisioningFileGenerator extends FileGenerator implements ConfigFileGener
     protected $outputPath ; 
 
     public function __construct(
-        $tmplPath = __DIR__.'/../tmpl/provisioning.php', 
+        $tmplPath = './../tmpl/provisioning.php', 
         $outputPath )
     {
         $this->tmplPath = $tmplPath ;
