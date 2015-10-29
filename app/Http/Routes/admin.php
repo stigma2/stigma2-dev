@@ -1,6 +1,6 @@
 <?php
 
-Route::group(array('prefix'=>'admin'),function(){
+Route::group(array('prefix'=>'admin', 'middleware' => 'auth'),function(){
     Route::get('commands/generate', '\App\Http\Controllers\Admin\CommandController@generate') ;
     Route::get('hosts/generate', '\App\Http\Controllers\Admin\HostController@generate') ;
     Route::get('services/generate', '\App\Http\Controllers\Admin\ServiceController@generate') ;

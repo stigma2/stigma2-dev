@@ -41,6 +41,7 @@
                         <li><a href="{{route('admin.configuration.system')}}">System</a></li>
                         <li><a href="{{route('admin.commands.index')}}">Account</a></li>
                         <li><a href="{{route('admin.configuration.provisioning')}}">Provisioning</a></li>
+                        <li><a href="{{ url('/auth/logout') }}"><i class="fi-unlock"></i>&nbsp;Logout</a></li>
                     </ul> 
                     </li>
 
