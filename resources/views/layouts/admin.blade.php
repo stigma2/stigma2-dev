@@ -46,6 +46,9 @@
                     </li>
 
                 </ul>
+                <div style="text-align:center;">
+                    <a href="/" style="color:#0078a0">Go to Monitoring</a>
+                </div>
             </div>
         </div>
         <!-- end of sidebar-wrapper -->
@@ -182,8 +185,7 @@ jQuery(function(){
         $('.notification-box').addClass(cls) ;
         $('.notification-box').show() ;
         $('.notification-box').text(text) ;
-    }
-
+    } 
 
 });
 </script>

@@ -20,14 +20,16 @@ class DashboardController extends Controller {
 
     public function index()
     {
+        /*
         $client = new \crodas\InfluxPHP\Client(
-            "ec2-52-192-9-222.ap-northeast-1.compute.amazonaws.com" /*default*/,
-            8086 /* default */,
-            "root" /* by default */,
-            "root" /* by default */
+            "ec2-52-192-9-222.ap-northeast-1.compute.amazonaws.com" /,
+            8086 ,
+            "root" ,
+            "root" 
         );
+         */
 
-        $client->getDatabases();
+        //$client->getDatabases();
 
         return view('admin.dashboard.index') ;
     }
