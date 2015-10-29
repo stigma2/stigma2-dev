@@ -38,6 +38,13 @@ foreach(File::allFiles(__DIR__.'/Routes') as $partial)
     require_once $partial->getPathname();
 } 
 
+
+Route::get('/auth/login','\App\Http\Controllers\Auth\AuthController@getLogin') ;
+Route::get('/auth/register','\App\Http\Controllers\Auth\AuthController@getRegister') ;
+Route::post('/auth/register','\App\Http\Controllers\Auth\AuthController@postRegister') ;
+Route::post('/auth/login','\App\Http\Controllers\Auth\AuthController@postLogin') ;
+Route::get('/auth/logout','\App\Http\Controllers\Auth\AuthController@getLogout') ;
+
 /*
 Route::get('/',['middleware' => 'install.checker', 'uses'=>function(){
     // echo "installed";
