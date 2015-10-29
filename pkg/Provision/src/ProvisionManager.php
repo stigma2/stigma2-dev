@@ -64,7 +64,7 @@ class ProvisionManager
         )); 
 
         $result = $ec2Client->runInstances(array(
-            'ImageId'        => 'ami-9e95f79e',
+            'ImageId'        => 'ami-03486d6d',
             'MinCount'       => 1,
             'MaxCount'       => 1,
             'InstanceType'   => 'm3.medium',

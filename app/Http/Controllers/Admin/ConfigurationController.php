@@ -81,7 +81,7 @@ class ConfigurationController extends Controller {
                 'database'=> 'stigma' , 
                 'username'=> 'stigma' , 
                 'password'=> 'stigma' , 
-            ));
+            )); 
         }
 
 
