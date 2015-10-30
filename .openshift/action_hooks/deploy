@@ -91,4 +91,5 @@ pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 php artisan migrate:reset --force
 php artisan migrate --force
 php artisan db:seed --force
+chmod 775 config
 popd > /dev/null
