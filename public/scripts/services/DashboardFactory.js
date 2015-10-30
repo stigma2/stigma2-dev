@@ -4,10 +4,6 @@ define(['./implement', './module', '../config'],
 
         services.factory('DashboardFactory', function($http) {
             return {
-                getDashboard: function(dashboard) {
-                    var url = config.get().home + '/api/v1/dashboard/graph/' + dashboard;
-                    return implement.httpGetServiceImpl($http, url);
-                },
                 getSystemStatus: function() {
                     var url = config.get().home + '/api/v1/dashboard/systemstatus';
                     return implement.httpGetServiceImpl($http, url);
