@@ -103,6 +103,7 @@ class Builder
 
                         $newDetails['service_description'] = $service->service_name ;
                         $newDetails['host_name'] = $host->host_name ;
+                        $newDetails['_graphiteprefix'] = 'service' ;
 
 
                         if($service->template_ids != ''){ //템플릿 상속을 사용 할 경우 
