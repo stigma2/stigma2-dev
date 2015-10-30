@@ -98,3 +98,63 @@ a.alert {
         font-weight:bold;
     }
 }
+
+.health-check-area { 
+    .health-box {
+        .title {
+            text-align:center;
+            margin-top:10px;
+        }
+
+        .round {
+            width:100px;
+            height:100px; 
+            background:#00E676;
+            text-align:center;
+            margin: 0 auto;
+            border-radius:50%;
+            color:#fff;
+            font-size:3.5rem;
+            padding-top:20px;
+
+            i.fi-check {
+                display:block;
+            }
+            i.fi-x {
+                display:none;
+            } 
+        }
+
+        &.error {
+            .round {
+                background:#FF5722;
+            }
+
+            i.fi-check {
+                display:none;
+            }
+            i.fi-x {
+                display:block;
+            }
+
+        }
+
+        &.success {
+            .round{ 
+            background:#00E676;
+
+            }
+
+            i.fi-check {
+                display:block;
+            }
+            i.fi-x {
+                display:none;
+            }
+
+        } 
+        
+    }
+
+
+}

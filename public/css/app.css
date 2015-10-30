@@ -9069,6 +9069,43 @@ a.alert {
     color: #008CBA;
     font-weight: bold; }
 
+.health-check-area .health-box .title {
+  text-align: center;
+  margin-top: 10px; }
+
+.health-check-area .health-box .round {
+  width: 100px;
+  height: 100px;
+  background: #00E676;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 3.5rem;
+  padding-top: 20px; }
+  .health-check-area .health-box .round i.fi-check {
+    display: block; }
+  .health-check-area .health-box .round i.fi-x {
+    display: none; }
+
+.health-check-area .health-box.error .round {
+  background: #FF5722; }
+
+.health-check-area .health-box.error i.fi-check {
+  display: none; }
+
+.health-check-area .health-box.error i.fi-x {
+  display: block; }
+
+.health-check-area .health-box.success .round {
+  background: #00E676; }
+
+.health-check-area .health-box.success i.fi-check {
+  display: block; }
+
+.health-check-area .health-box.success i.fi-x {
+  display: none; }
+
 .form-v1 {
   padding: 20px;
   margin-top: 20px;
