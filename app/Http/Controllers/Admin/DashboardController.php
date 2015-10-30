@@ -11,15 +11,19 @@ use Illuminate\Http\Response;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException ; 
 use Stigma\Installation\Validators\DatabaseConnectionValidation ;
+use Stigma\Provision\Repositories\ProvisionedServerRepository;
 
 class DashboardController extends Controller { 
 
     protected $nagiosClient ;
     protected $httpClient ;
+    protected $provisionedServerRepo ;
 
-    public function __construct(NagiosClient $nagiosClient)
+    public function __construct(NagiosClient $nagiosClient,  
+        ProvisionedServerRepository $provisionedServerRepo)
     {
         $this->nagiosClient = $nagiosClient ;
+        $this->provisionedServerRepo = $provisionedServerRepo ;
 
         $client = new HttpClient ;
         $this->httpClient = $client ; 
@@ -27,22 +31,28 @@ class DashboardController extends Controller {
 
     public function refresh()
     {
+        $response = new \stdClass ;
+        $response->nagios = true; 
+        $response->grafana = true; 
+        $response->influxdb = true; 
+        $response->database = true; 
+
         try {
-            $this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com/nagios-dev/') ;
+            $this->httpClient->get(config('nagios.host')) ;
         } catch (\Exception $e){
-            echo "nagios" ; 
+            $response->nagios = false; 
         }
 
         try {
             $this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com:8086') ;
         } catch (\Exception $e){
-            echo "influxdb" ; 
+            $response->influxdb = false; 
         }
 
-        try {
-            $this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com:3000') ;
+        try { 
+            $this->httpClient->get(config('grafana.host')) ;
         } catch (\Exception $e){
-            echo "grafana" ; 
+            $response->grafana = false; 
         } 
 
         $dbValidation = new DatabaseConnectionValidation ;
@@ -56,12 +66,15 @@ class DashboardController extends Controller {
         try {
             $ret = $dbValidation->passes($data) ;
         }catch (\Exception $e){
-            echo "database" ; 
+            $response->database = false; 
         }
+
+        echo json_encode($response) ;
     }
 
     public function index()
     {
+        $serverList = $this->provisionedServerRepo->getAll() ;
         /*
         $client = new \crodas\InfluxPHP\Client(
             "ec2-52-192-9-222.ap-northeast-1.compute.amazonaws.com" /,
@@ -73,7 +86,7 @@ class DashboardController extends Controller {
 
         //$client->getDatabases();
 
-        return view('admin.dashboard.index') ;
+        return view('admin.dashboard.index', compact('serverList')) ;
     }
 
     public function nagiosRestart()

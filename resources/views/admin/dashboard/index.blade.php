@@ -6,39 +6,131 @@
   <li><a href="#">Dashboard</a></li>
 </ul>
 
-<div class="inner-content">
-    <div class="row">
-        <div class="small-3 columns"> 
-            <div>
-                <div>
-                    NAGIOS
-                </div>
-            </div>
-        </div>
+<div class="row">
+    <div class="columns small-12">
+        <div class="panel white-panel  radius">
+            <h5>HEALTH CHECK <a class="right" id="refresh-btn"><i class="fi-refresh"></i>&nbsp;refresh</a></h5> 
+            <div class="row health-check-area">
+                <div class="small-3 columns"> 
+                    <div class="health-box" id="nagios-box">
 
-        <div class="small-3 columns">
-            <div>
-                <div>
-                    INFLUXDB
+                        <div class="round">
+                            <i class="fi-check"></i>
+                        </div>
+                        <div class="title">
+                            NAGIOS
+                        </div>
+                    </div>
                 </div>
-            </div> 
-        </div>
 
-        <div class="small-3 columns">
-            <div>
-                <div>
-                    GRAFANA
+                <div class="small-3 columns">
+                    <div class="health-box" id="influxdb-box">
+
+                        <div class="round">
+                            <i class="fi-check"></i>
+                            <i class="fi-x"></i>
+                        </div>
+                        <div class="title">
+                            INFLUXDB
+                        </div>
+                    </div> 
                 </div>
-            </div>
-        </div>
 
-        <div class="small-3 columns">
-            <div>
-                <div>
-                    MYSQL
+                <div class="small-3 columns">
+                    <div class="health-box" id="grafana-box">
+
+                        <div class="round">
+                            <i class="fi-check"></i>
+                        </div>
+
+                        <div class="title">
+                            GRAFANA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="small-3 columns">
+                    <div class="health-box" id="database-box">
+
+                        <div class="round">
+                            <i class="fi-check"></i>
+                        </div>
+
+                        <div class="title">
+                            MYSQL
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="row" style="display:none;"> 
+    <div class="small-6 columns">
+        @include('admin.dashboard.host') 
+    </div>
+
+    <div class="small-6 columns">
+        @include('admin.dashboard.service') 
+    </div>
+</div> 
+
+<br/> 
+
+<div class="row">
+    <div class="small-12 columns">
+        @include('admin.dashboard.provisioning',array('serverList' => $serverList)) 
+    </div> 
+</div>
+
+
+@stop
+
+@section('scripts')
+<script>
+jQuery(function($){
+    var refresh = function(){
+        $.getJSON('/admin/dashboard/refresh',function(response){
+                var nagios = response.nagios ;
+                var influxdb = response.influxdb ;
+                var database = response.database ;
+                var grafana = response.grafana ;
+
+                if(!nagios){
+                    $('#nagios-box').addClass('error') ;
+                }else{
+                    $('#nagios-box').addClass('success') ;
+                }
+
+                if(!influxdb){
+                    $('#influxdb-box').addClass('error') ;
+                }else{
+                    $('#influxdb-box').addClass('success') ;
+                } 
+
+                if(!grafana){
+                    $('#grafana-box').addClass('error') ;
+                }else{
+                    $('#grafana-box').addClass('success') ;
+                } 
+
+                if(!database){
+                    $('#database-box').addClass('error') ;
+                }else{
+                    $('#database-box').addClass('success') ;
+                } 
+
+            });
+        };
+
+    $('#refresh-btn').click(function(){
+        refresh() ;
+    });
+
+    refresh() ;
+
+    setInterval(function(){ refresh(); }, 5000);
+});
+</script>
 @stop
