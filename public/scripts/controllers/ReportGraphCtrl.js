@@ -3,16 +3,16 @@ define(['./module'],
         'use strict';
 
         app.controller('ReportGraphCtrl', [
-            '$scope', '$state', '$sce', 'DashboardFactory',
-            function($scope, $state, $sce, DashboardFactory) {
-                function getDashboard(dashboard) {
-                    DashboardFactory.getDashboard(dashboard)
+            '$scope', '$state', '$sce', 'ReportFactory',
+            function($scope, $state, $sce, ReportFactory) {
+                function getGrafanaDashboard(dashboard) {
+                    ReportFactory.getGrafanaDashboard(dashboard)
                         .then(function(response) {
                             $scope.grafanaUrl = $sce.trustAsResourceUrl(response);
                         });
                 };
 
-                getDashboard('REPORT_GRAPH');
+                getGrafanaDashboard('home');
             }
         ]);
     }

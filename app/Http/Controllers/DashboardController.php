@@ -25,20 +25,6 @@ class DashboardController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $dashboard
-     * @return \Illuminate\Http\Response
-     */
-    public function show($dashboard)
-    {
-        // $result = config("grafana.host")."/dashboard/db/default?from=1441379103419&to=1443971103420&theme=light";
-        $result = config("grafana.host")."/dashboard/db/default?from=now-1h&to=now&theme=light";
-
-        return response()->json($result);
-    }
-
-    /**
      * Display a nagios system status.
      *
      * @return \Illuminate\Http\Response

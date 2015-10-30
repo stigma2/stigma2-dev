@@ -16,7 +16,7 @@ Route::group(array('prefix' => 'api/v1', 'middleware' => 'auth'), function() {
     Route::get('dashboard/hoststatus', 'DashboardController@hoststatus');
     Route::get('dashboard/servicestatus', 'DashboardController@servicestatus');
     Route::get('dashboard/event/type/{type}/starttime/{starttime}/endtime/{endtime}', 'DashboardController@event');
-    Route::get('dashboard/graph/{dashboard}', 'DashboardController@show');
+    Route::get('report/graph/{dashboard}', 'ReportController@show');
     Route::get('server/hosts/status/{status?}', 'ServerHostsController@index');
     Route::get('server/hosts/name/{name}', 'ServerHostsController@show');
     Route::get('server/services/status/{status?}', 'ServerServicesController@index');

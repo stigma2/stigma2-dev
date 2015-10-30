@@ -21,6 +21,7 @@ class APIProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
+		// $this->app->bind('App\Interfaces\GrafanaInterface', 'App\APIs\Grafana');
 		$this->app->bind('App\Interfaces\NagiosInterface', 'App\APIs\Nagios');
 	}
 
