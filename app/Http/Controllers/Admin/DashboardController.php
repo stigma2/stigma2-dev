@@ -47,18 +47,17 @@ class DashboardController extends Controller {
 
         $parsedData = parse_url(config('influxdb.host')) ; 
 
-        try {
-            $client = new \crodas\InfluxPHP\Client(
-                $parsedData['host'] /*default*/,
-                $parsedData['port'] /* default */,
-                config('influxdb.username') /* by default */,
-                config('influxdb.password')  /* by default */
-            );
-
-            //$this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com:8086') ;
-        } catch (\Exception $e){
+        
+        if(config('influxdb.username')  != 'root'){
             $response->influxdb = false; 
-        }
+        }else if(config('influxdb.password') != 'root'){
+            $response->influxdb = false; 
+        }else if($parsedData['port'] != 8086){
+            $response->influxdb = false; 
+        }else if(config('influxdb.database') != 'stigma'){
+            $response->influxdb = false; 
+        } 
+
 
         try { 
             $this->httpClient->get(config('grafana.host'), [
