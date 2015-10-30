@@ -5,6 +5,7 @@ Route::group(array('prefix'=>'admin', 'middleware' => 'auth'),function(){
     Route::get('hosts/generate', '\App\Http\Controllers\Admin\HostController@generate') ;
     Route::get('services/generate', '\App\Http\Controllers\Admin\ServiceController@generate') ;
     Route::get('dashboard/nagios_restart', '\App\Http\Controllers\Admin\DashboardController@nagiosRestart') ;
+    Route::get('dashboard/refresh', '\App\Http\Controllers\Admin\DashboardController@refresh') ;
     //Route::get('dashboard/nagios_restart', '\App\Http\Controllers\Admin\DashboardController@nagiosRestart') ;
 
     Route::resource('hosts','\App\Http\Controllers\Admin\HostController');
