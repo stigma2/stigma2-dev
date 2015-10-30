@@ -91,48 +91,51 @@ class Builder
                     $serviceIds = explode(',',$host->service_ids) ; 
                     foreach($serviceIds  as $serviceId){
                         $service = $this->serviceManager->find($serviceId)  ;
-                        $jsonData = json_decode($service->data) ;
-                        $arrayData = (array)$jsonData ;
-                        $newDetails = array() ;
+                        if($service){
 
-                        foreach($fields as $key => $field) {
-                            if(array_key_exists($key,$arrayData)){ 
-                                $newDetails[$key] = $arrayData[$key] ;
-                            }
-                        } 
+                            $jsonData = json_decode($service->data) ;
+                            $arrayData = (array)$jsonData ;
+                            $newDetails = array() ;
 
-                        $newDetails['service_description'] = $service->service_name ;
-                        $newDetails['host_name'] = $host->host_name ;
-                        $newDetails['_graphiteprefix'] = 'service' ;
-
-
-                        if($service->template_ids != ''){ //템플릿 상속을 사용 할 경우 
-                            $templateIds = explode(',',$service->template_ids) ; 
-                            $templates = [] ; 
-
-                            foreach($templateIds as $templateId){
-                                $templateService = $this->serviceManager->find($templateId) ; 
-                                if($templateService->getKey() > 0){
-                                    $templates[] = $templateService->service_name ;
+                            foreach($fields as $key => $field) {
+                                if(array_key_exists($key,$arrayData)){ 
+                                    $newDetails[$key] = $arrayData[$key] ;
                                 }
+                            } 
+
+                            $newDetails['service_description'] = $service->service_name ;
+                            $newDetails['host_name'] = $host->host_name ;
+                            $newDetails['_graphiteprefix'] = 'service' ;
+
+
+                            if($service->template_ids != ''){ //템플릿 상속을 사용 할 경우 
+                                $templateIds = explode(',',$service->template_ids) ; 
+                                $templates = [] ; 
+
+                                foreach($templateIds as $templateId){
+                                    $templateService = $this->serviceManager->find($templateId) ; 
+                                    if($templateService->getKey() > 0){
+                                        $templates[] = $templateService->service_name ;
+                                    }
+                                }
+
+                                $newDetails['use'] = implode(',', $templates) ;
+
                             }
 
-                            $newDetails['use'] = implode(',', $templates) ;
+                            if($service->command_id > 0){ // 커맨드가 존재할 경우
+                                $command = $this->commandBuilder->find($service->command_id)  ;
+                                $newDetails['check_command'] = $command->command_name.$service->command_argument ;
+                            } 
 
+
+                            $serviceObj = new \stdClass ;
+                            $serviceObj->service_name = $service->service_name ;
+                            $serviceObj->is_template = $service->is_template ;
+                            $serviceObj->details = $newDetails ;
+
+                            $payload[] = $serviceObj ;
                         }
-
-                        if($service->command_id > 0){ // 커맨드가 존재할 경우
-                            $command = $this->commandBuilder->find($service->command_id)  ;
-                            $newDetails['check_command'] = $command->command_name.$service->command_argument ;
-                        } 
-
-
-                        $serviceObj = new \stdClass ;
-                        $serviceObj->service_name = $service->service_name ;
-                        $serviceObj->is_template = $service->is_template ;
-                        $serviceObj->details = $newDetails ;
-
-                        $payload[] = $serviceObj ;
                     }
                 }
             }

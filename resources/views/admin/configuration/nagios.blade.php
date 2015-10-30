@@ -163,7 +163,7 @@
                 <label>Account</label>
             </div>
             <div class="small-8 columns"> 
-                {!! Form::text('dbuser', $mysql['dbuser']) !!}
+                {!! Form::text('dbuser', $mysql['username']) !!}
             </div>
         </div>
         <div class="row">
