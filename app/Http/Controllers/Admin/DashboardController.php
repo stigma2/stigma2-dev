@@ -45,13 +45,16 @@ class DashboardController extends Controller {
             $response->nagios = false; 
         }
 
+        $parsedData = parse_url(config('influxdb.host')) ; 
+
         try {
             $client = new \crodas\InfluxPHP\Client(
-                "ec2-52-91-46-34.compute-1.amazonaws.com" /*default*/,
-                8086 /* default */,
+                $parsedData['host'] /*default*/,
+                $parsedData['port'] /* default */,
                 config('influxdb.username') /* by default */,
                 config('influxdb.password')  /* by default */
             );
+
             //$this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com:8086') ;
         } catch (\Exception $e){
             $response->influxdb = false; 
