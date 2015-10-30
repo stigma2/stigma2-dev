@@ -136,7 +136,7 @@ return [
         "data_type" => "string"
     ],
 
-    "obsess_over_service|obsess" => [
+    "obsess_over_service" => [
         "display_name" => 'OBSESS OVER SERVICE' ,
         "description" => '',
         "required" => false,

@@ -38,19 +38,31 @@ class DashboardController extends Controller {
         $response->database = true; 
 
         try {
-            $this->httpClient->get(config('nagios.host')) ;
+            $this->httpClient->get(config('nagios.host'), [
+                'timeout' => 4
+            ]) ;
         } catch (\Exception $e){
             $response->nagios = false; 
         }
 
-        try {
-            $this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com:8086') ;
-        } catch (\Exception $e){
+        $parsedData = parse_url(config('influxdb.host')) ; 
+
+        
+        if(config('influxdb.username')  != 'root'){
             $response->influxdb = false; 
-        }
+        }else if(config('influxdb.password') != 'root'){
+            $response->influxdb = false; 
+        }else if($parsedData['port'] != 8086){
+            $response->influxdb = false; 
+        }else if(config('influxdb.database') != 'stigma'){
+            $response->influxdb = false; 
+        } 
+
 
         try { 
-            $this->httpClient->get(config('grafana.host')) ;
+            $this->httpClient->get(config('grafana.host'), [
+                'timeout' => 4
+            ]) ;
         } catch (\Exception $e){
             $response->grafana = false; 
         } 
