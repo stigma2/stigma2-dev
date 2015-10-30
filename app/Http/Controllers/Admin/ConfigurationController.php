@@ -11,17 +11,20 @@ use Illuminate\Http\Response;
 use Stigma\Installation\InstallManager;
 use Stigma\Provision\ProvisionManager;
 use Stigma\Provision\Repositories\ProvisionedServerRepository;
+use Illuminate\Contracts\Auth\Guard;
 
 class ConfigurationController extends Controller { 
 
     protected $installManager ;
     protected $provisionedServerRepo ;
+    protected $auth ;
     
-    public function __construct(InstallManager $installManager,ProvisionManager $provisionManager, ProvisionedServerRepository $provisionedServerRepo)
+    public function __construct(InstallManager $installManager,ProvisionManager $provisionManager, ProvisionedServerRepository $provisionedServerRepo, Guard $auth)
     {
         $this->installManager = $installManager ;
         $this->provisionManager = $provisionManager ;
         $this->provisionedServerRepo = $provisionedServerRepo ;
+        $this->auth = $auth ;
     }
 
     public function provisioning(Request $req)
@@ -59,7 +62,23 @@ class ConfigurationController extends Controller {
         } 
     }
 
+    public function changePassword(Request $request)
+    {
+        /*
+        $this->validate($request, [
+			'password' => 'required|confirmed'
+		]);
+         */
 
+        $user = \Auth::user() ;
+        $user->password = bcrypt($request->get('password'));
+
+        $user->save();
+
+
+        return redirect()->route('admin.configuration.account') ;
+
+    } 
 
     public function system()
     {
@@ -172,4 +191,8 @@ class ConfigurationController extends Controller {
         } 
     }
 
+    public function getAccount()
+    {
+        return view('admin.configuration.account') ;
+    } 
 }

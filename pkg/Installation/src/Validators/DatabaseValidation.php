@@ -12,8 +12,7 @@ class DatabaseValidation implements ValidationInterface
         'dbuser' => 'required',
         'database' => 'required',
         'host' => 'required',
-        'password' => 'required',
-        'port' => 'required'
+        'password' => 'required'
     ];
 
     public function __construct(Factory $validatorFactory)

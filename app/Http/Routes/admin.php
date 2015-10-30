@@ -14,7 +14,12 @@ Route::group(array('prefix'=>'admin', 'middleware' => 'auth'),function(){
 
     Route::get('configuration/provisioning/request',array('as' => 'admin.configuration.provisioning.request','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@provisioningRequest')) ;
     Route::get('configuration/system',array('as' => 'admin.configuration.system','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@system')) ;
+
+    Route::get('configuration/account',array('as' => 'admin.configuration.account','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@getAccount')) ;
+    Route::post('configuration/changePassword',array('as' => 'admin.configuration.changePassword','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@changePassword')) ;
+
     Route::get('configuration/provisioning',array('as' => 'admin.configuration.provisioning','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@provisioning')) ;
+
     Route::put('configuration/nagios/update',array('as' => 'admin.configuration.nagios.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@nagiosUpdate')) ;
 
     Route::put('configuration/database/update',array('as' => 'admin.configuration.database.update','uses'=>'\App\Http\Controllers\Admin\ConfigurationController@databaseUpdate')) ;
