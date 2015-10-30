@@ -10,6 +10,7 @@
 
 {!! Form::open(array('route'=> array('admin.configuration.changePassword'),'method' =>'post','class'=>'form-v1 clearfix')) !!}
 
+
 <div class="row">
     <div class="small-8 columns">
         <h6>Password Change</h6>
@@ -20,13 +21,22 @@
 </div>
 
 <div class="row"> 
+    
     <div class="small-8 columns"> 
+        <div>
+    @if (count($errors) > 0)
+    <div class="alert-box alert">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br> 
+    </div>
+    @endif
+
+        </div>
         <div class="row">
             <div class="small-4 columns">
                 <label>Password</label>
             </div>
             <div class="small-8 columns"> 
-                {!! Form::text('password' ) !!}
+                {!! Form::password('password' ) !!}
             </div>
         </div>
         <div class="row">
@@ -34,7 +44,7 @@
                 <label>Password Confirm</label>
             </div>
             <div class="small-8 columns"> 
-                {!! Form::text('password_confirm'  ) !!}
+                {!! Form::password('password_confirmation'  ) !!}
             </div>
         </div> 
     </div>

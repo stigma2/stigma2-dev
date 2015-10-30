@@ -63,12 +63,17 @@ class ConfigurationController extends Controller {
     }
 
     public function changePassword(Request $request)
-    {
-        /*
-        $this->validate($request, [
-			'password' => 'required|confirmed'
-		]);
-         */
+    { 
+        $v = \Validator::make($request->all(), [
+            'password' => 'required|confirmed'
+        ]);
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors(['msg' => 'type valid password']); 
+        }
+
+
 
         $user = \Auth::user() ;
         $user->password = bcrypt($request->get('password'));
