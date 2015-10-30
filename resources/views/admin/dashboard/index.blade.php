@@ -141,7 +141,7 @@ jQuery(function($){
 
     refresh() ;
 
-    setInterval(function(){ refresh(); }, 5000);
+    setInterval(function(){ refresh(); }, 12000);
 });
 </script>
 @stop

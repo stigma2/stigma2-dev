@@ -38,19 +38,29 @@ class DashboardController extends Controller {
         $response->database = true; 
 
         try {
-            $this->httpClient->get(config('nagios.host')) ;
+            $this->httpClient->get(config('nagios.host'), [
+                'timeout' => 4
+            ]) ;
         } catch (\Exception $e){
             $response->nagios = false; 
         }
 
         try {
-            $this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com:8086') ;
+            $client = new \crodas\InfluxPHP\Client(
+                "ec2-52-91-46-34.compute-1.amazonaws.com" /*default*/,
+                8086 /* default */,
+                config('influxdb.username') /* by default */,
+                config('influxdb.password')  /* by default */
+            );
+            //$this->httpClient->get('http://ec2-54-152-85-142.compute-1.amazonaws.com:8086') ;
         } catch (\Exception $e){
             $response->influxdb = false; 
         }
 
         try { 
-            $this->httpClient->get(config('grafana.host')) ;
+            $this->httpClient->get(config('grafana.host'), [
+                'timeout' => 4
+            ]) ;
         } catch (\Exception $e){
             $response->grafana = false; 
         } 
