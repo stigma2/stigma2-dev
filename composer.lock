@@ -2945,7 +2945,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubledl/dissect.git",
-                "reference": "fd779d60d058fc4d5bbe1e5a16a8a90421bf91d2"
+                "reference": "d3a391de31e45a247e95cef6cf58a91c05af67c4"
             },
             "dist": {
                 "type": "zip",
