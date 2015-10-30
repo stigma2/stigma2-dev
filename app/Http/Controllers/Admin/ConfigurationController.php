@@ -130,7 +130,7 @@ class ConfigurationController extends Controller {
         $nagios = array_merge($nagios, (config('nagios'))) ;
         $grafana = array_merge($grafana,  (config('grafana'))) ;
         $influxdb = array_merge($influxdb, (config('influxdb'))) ;
-        $mysql = config('database.mysql') ;
+        $mysql = config('database.connections.mysql') ;
 
         return view('admin.configuration.nagios',compact('nagios','grafana','influxdb','mysql')) ;
     }
