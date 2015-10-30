@@ -16,6 +16,7 @@
 
                         <div class="round">
                             <i class="fi-check"></i>
+                            <i class="fi-x"></i>
                         </div>
                         <div class="title">
                             NAGIOS
@@ -41,6 +42,7 @@
 
                         <div class="round">
                             <i class="fi-check"></i>
+                            <i class="fi-x"></i>
                         </div>
 
                         <div class="title">
@@ -54,6 +56,7 @@
 
                         <div class="round">
                             <i class="fi-check"></i>
+                            <i class="fi-x"></i>
                         </div>
 
                         <div class="title">
@@ -99,26 +102,34 @@ jQuery(function($){
 
                 if(!nagios){
                     $('#nagios-box').addClass('error') ;
+                    $('#nagios-box').removeClass('success') ;
                 }else{
                     $('#nagios-box').addClass('success') ;
+                    $('#nagios-box').removeClass('error') ;
                 }
 
                 if(!influxdb){
                     $('#influxdb-box').addClass('error') ;
+                    $('#influxdb-box').removeClass('success') ;
                 }else{
                     $('#influxdb-box').addClass('success') ;
+                    $('#influxdb-box').removeClass('error') ;
                 } 
 
                 if(!grafana){
                     $('#grafana-box').addClass('error') ;
+                    $('#grafana-box').removeClass('success') ;
                 }else{
                     $('#grafana-box').addClass('success') ;
+                    $('#grafana-box').removeClass('error') ;
                 } 
 
                 if(!database){
                     $('#database-box').addClass('error') ;
+                    $('#database-box').removeClass('success') ;
                 }else{
                     $('#database-box').addClass('success') ;
+                    $('#database-box').removeClass('error') ;
                 } 
 
             });
