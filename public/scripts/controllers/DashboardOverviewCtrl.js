@@ -6,7 +6,7 @@ define(['./module'],
             '$rootScope', '$scope', '$state', '$interval', 'DashboardFactory', 'TimerFactory', 'TimestampFormatFactory',
             function($rootScope, $scope, $state, $interval, DashboardFactory, TimerFactory, TimestampFormatFactory) {
                 $scope.init = function() {
-                    renderSystemStatus();
+                    // renderSystemStatus();
                     renderHostStatus();
                     renderServiceStatus();
                     renderHostEvent();
