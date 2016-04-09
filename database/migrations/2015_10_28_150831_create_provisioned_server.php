@@ -15,10 +15,10 @@ class CreateProvisionedServer extends Migration {
 		Schema::create('provisioned_server', function(Blueprint $table)
 		{
 			$table->increments('id');
-	        $table->string('public_dns') ;
-	        $table->string('security_group') ;
-	        $table->string('region') ;
-            $table->timestamps() ;
+			$table->string('public_dns') ;
+			$table->string('security_group') ;
+			$table->string('region') ;
+			$table->nullableTimestamps() ;
 		});
 	}
 
