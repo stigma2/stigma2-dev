@@ -11,3 +11,5 @@ composer.lock
 .env
 .env.testing
 .DS_Store
+
+tests/_output/*

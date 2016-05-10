@@ -18,7 +18,7 @@ class HostSeeder extends Seeder
         $data = [
             'host_name' => 'generic-host',
             'is_immutable' => 'Y',
-            'description' => '',
+            'description' => 'generic-host',
             'command_id' => '0',
             'command_argument' => '',
             'template_ids' => '',
@@ -36,7 +36,7 @@ class HostSeeder extends Seeder
         $data = [
             'host_name' => 'linux-server',
             'is_immutable' => 'Y',
-            'description' => '',
+            'description' => 'linux-server',
             'command_id' => '3',
             'command_argument' => '',
             'template_ids' => '1',
@@ -54,7 +54,7 @@ class HostSeeder extends Seeder
         $data = [
             'host_name' => 'windows-server',
             'is_immutable' => 'Y',
-            'description' => '',
+            'description' => 'windows-server',
             'command_id' => '3',
             'command_argument' => '',
             'template_ids' => '1',
@@ -72,7 +72,7 @@ class HostSeeder extends Seeder
         $data = [
             'host_name' => 'generic-printer',
             'is_immutable' => 'Y',
-            'description' => '',
+            'description' => 'generic-printer',
             'command_id' => '3',
             'command_argument' => '',
             'template_ids' => '1',
@@ -90,7 +90,7 @@ class HostSeeder extends Seeder
         $data = [
             'host_name' => 'generic-switch',
             'is_immutable' => 'Y',
-            'description' => '',
+            'description' => 'generic-switch',
             'command_id' => '3',
             'command_argument' => '',
             'template_ids' => '1',

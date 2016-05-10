@@ -13,7 +13,7 @@ class CreateHosts extends Migration
     public function up()
     {
         Schema::create('hosts', function (Blueprint $table) {
-			$table->increments('id');
+            $table->increments('id');
             $table->string('host_name')->index()->unique();
             $table->string('is_immutable')->default('N')->nullable() ;
             $table->string('description') ;
@@ -26,7 +26,7 @@ class CreateHosts extends Migration
             $table->string('is_template') ;
             $table->string('address') ;
             $table->text('data');
-            $table->timestamps();
+            $table->nullableTimestamps();
         }); 
     }
 
