@@ -54,7 +54,7 @@ return [
 
         'mysql' => [
                 'driver'    => 'mysql',
-                'host'      => env('DB_HOST', env('OPENSHIFT_MYSQL_DB_HOST', 'localhost')),
+                'host'      => env('DB_HOST', env('OPENSHIFT_MYSQL_DB_HOST', 'mysql')),
                 'port'      => env('DB_PORT', env('OPENSHIFT_MYSQL_DB_PORT', 3306)),
                 'database'  => env('DB_DATABASE', env('OPENSHIFT_APP_NAME', 'stigma')),
                 'username'  => env('DB_USERNAME', env('OPENSHIFT_MYSQL_DB_USERNAME', 'root')),
