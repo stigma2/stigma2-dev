@@ -10,6 +10,7 @@ use Stigma\Nagios\Client as NagiosClient ;
 use Illuminate\Http\Response; 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException ; 
+use Stigma\Installation\InstallManager;
 use Stigma\Installation\Validators\DatabaseConnectionValidation ;
 use Stigma\Provision\Repositories\ProvisionedServerRepository;
 
@@ -18,12 +19,13 @@ class DashboardController extends Controller {
     protected $nagiosClient ;
     protected $httpClient ;
     protected $provisionedServerRepo ;
+    protected $installManager ;
 
-    public function __construct(NagiosClient $nagiosClient,  
-        ProvisionedServerRepository $provisionedServerRepo)
+    public function __construct(NagiosClient $nagiosClient, ProvisionedServerRepository $provisionedServerRepo, InstallManager $installManager)
     {
         $this->nagiosClient = $nagiosClient ;
         $this->provisionedServerRepo = $provisionedServerRepo ;
+        $this->installManager = $installManager ;
 
         $client = new HttpClient ;
         $this->httpClient = $client ; 
@@ -86,6 +88,26 @@ class DashboardController extends Controller {
 
     public function index()
     {
+        if (! $this->installManager->verifyToBeInstalled()) {
+            $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
+            $nagiosInstallation->setup(array('host'=>'localhost'))  ;
+
+            $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
+            $grafanaInstallation->setup(array(
+                'host'=>'localhost',
+                'username'=> 'stigma' , 
+                'password'=> 'stigma' , 
+            ));
+
+            $influxdbInstallation = $this->installManager->getInfluxdbInstallation() ;
+            $influxdbInstallation->setup(array(
+                'host'=>'localhost',
+                'database'=> 'stigma' , 
+                'username'=> 'stigma' , 
+                'password'=> 'stigma' , 
+            )); 
+        }
+
         $serverList = $this->provisionedServerRepo->getAll() ;
         /*
         $client = new \crodas\InfluxPHP\Client(
