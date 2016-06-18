@@ -10,6 +10,7 @@ use Stigma\Nagios\Client as NagiosClient ;
 use Illuminate\Http\Response; 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException ; 
+use Stigma\Installation\InstallManager;
 use Stigma\Installation\Validators\DatabaseConnectionValidation ;
 use Stigma\Provision\Repositories\ProvisionedServerRepository;
 
@@ -18,12 +19,13 @@ class DashboardController extends Controller {
     protected $nagiosClient ;
     protected $httpClient ;
     protected $provisionedServerRepo ;
+    protected $installManager ;
 
-    public function __construct(NagiosClient $nagiosClient,  
-        ProvisionedServerRepository $provisionedServerRepo)
+    public function __construct(NagiosClient $nagiosClient, ProvisionedServerRepository $provisionedServerRepo, InstallManager $installManager)
     {
         $this->nagiosClient = $nagiosClient ;
         $this->provisionedServerRepo = $provisionedServerRepo ;
+        $this->installManager = $installManager ;
 
         $client = new HttpClient ;
         $this->httpClient = $client ; 
@@ -38,29 +40,35 @@ class DashboardController extends Controller {
         $response->database = true; 
 
         try {
-            $this->httpClient->get(config('nagios.host'), [
+            $this->httpClient->get(config('nagios.host').':'.config('nagios.port').'/nagios', [
                 'timeout' => 4
             ]) ;
         } catch (\Exception $e){
             $response->nagios = false; 
         }
 
-        $parsedData = parse_url(config('influxdb.host')) ; 
-
-        
-        if(config('influxdb.username')  != 'root'){
-            $response->influxdb = false; 
-        }else if(config('influxdb.password') != 'root'){
-            $response->influxdb = false; 
-        }else if($parsedData['port'] != 8086){
-            $response->influxdb = false; 
-        }else if(config('influxdb.database') != 'stigma'){
+        try { 
+            $this->httpClient->get(config('influxdb.host').':'.config('influxdb.port'), [
+                'timeout' => 4
+            ]) ;
+        } catch (\Exception $e){
             $response->influxdb = false; 
         } 
 
+        // $parsedData = parse_url(config('influxdb.host')) ; 
+        // if(config('influxdb.username')  != 'root'){
+        //     $response->influxdb = false; 
+        // }else if(config('influxdb.password') != 'root'){
+        //     $response->influxdb = false; 
+        // }else if($parsedData['port'] != 8086){
+        //     $response->influxdb = false; 
+        // }else if(config('influxdb.database') != 'stigma'){
+        //     $response->influxdb = false; 
+        // } 
+
 
         try { 
-            $this->httpClient->get(config('grafana.host'), [
+            $this->httpClient->get(config('grafana.host').':'.config('grafana.port'), [
                 'timeout' => 4
             ]) ;
         } catch (\Exception $e){
@@ -86,6 +94,28 @@ class DashboardController extends Controller {
 
     public function index()
     {
+        if (! $this->installManager->verifyToBeInstalled()) {
+            $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
+            $nagiosInstallation->setup(array('host'=>'nagios', 'port'=>'8080'))  ;
+
+            $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
+            $grafanaInstallation->setup(array(
+                'host'=>'grafana',
+                'port'=>'3000',
+                'username'=> 'stigma' , 
+                'password'=> 'stigma' , 
+            ));
+
+            $influxdbInstallation = $this->installManager->getInfluxdbInstallation() ;
+            $influxdbInstallation->setup(array(
+                'host'=>'influxdb',
+                'port'=>'8083',
+                'database'=> 'stigma' , 
+                'username'=> 'stigma' , 
+                'password'=> 'stigma' , 
+            )); 
+        }
+
         $serverList = $this->provisionedServerRepo->getAll() ;
         /*
         $client = new \crodas\InfluxPHP\Client(
