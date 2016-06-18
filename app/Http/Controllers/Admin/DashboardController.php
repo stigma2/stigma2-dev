@@ -97,18 +97,18 @@ class DashboardController extends Controller {
     {
         if (! $this->installManager->verifyToBeInstalled()) {
             $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
-            $nagiosInstallation->setup(array('host'=>'localhost'))  ;
+            $nagiosInstallation->setup(array('host'=>'nagios'))  ;
 
             $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
             $grafanaInstallation->setup(array(
-                'host'=>'localhost',
+                'host'=>'grafana',
                 'username'=> 'stigma' , 
                 'password'=> 'stigma' , 
             ));
 
             $influxdbInstallation = $this->installManager->getInfluxdbInstallation() ;
             $influxdbInstallation->setup(array(
-                'host'=>'localhost',
+                'host'=>'influxdb',
                 'database'=> 'stigma' , 
                 'username'=> 'stigma' , 
                 'password'=> 'stigma' , 
