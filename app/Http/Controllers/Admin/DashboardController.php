@@ -49,16 +49,23 @@ class DashboardController extends Controller {
 
         $parsedData = parse_url(config('influxdb.host')) ; 
 
-        
-        if(config('influxdb.username')  != 'root'){
-            $response->influxdb = false; 
-        }else if(config('influxdb.password') != 'root'){
-            $response->influxdb = false; 
-        }else if($parsedData['port'] != 8086){
-            $response->influxdb = false; 
-        }else if(config('influxdb.database') != 'stigma'){
+        try { 
+            $this->httpClient->get(config('influxdb.host'), [
+                'timeout' => 4
+            ]) ;
+        } catch (\Exception $e){
             $response->influxdb = false; 
         } 
+
+        // if(config('influxdb.username')  != 'root'){
+        //     $response->influxdb = false; 
+        // }else if(config('influxdb.password') != 'root'){
+        //     $response->influxdb = false; 
+        // }else if($parsedData['port'] != 8086){
+        //     $response->influxdb = false; 
+        // }else if(config('influxdb.database') != 'stigma'){
+        //     $response->influxdb = false; 
+        // } 
 
 
         try { 
