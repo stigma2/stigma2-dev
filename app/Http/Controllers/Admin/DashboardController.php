@@ -40,7 +40,8 @@ class DashboardController extends Controller {
         $response->database = true; 
 
         try {
-            $this->httpClient->get(config('nagios.host').':'.config('nagios.port').'/nagios', [
+            $this->httpClient->get(config('nagios.host').'/nagios', [
+                'auth' => ['nagiosadmin', 'qwe123'],
                 'timeout' => 4
             ]) ;
         } catch (\Exception $e){
