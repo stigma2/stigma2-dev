@@ -49,29 +49,27 @@ class DashboardController extends Controller {
         }
 
         try { 
-            $this->httpClient->get(config('influxdb.host').':'.config('influxdb.port'), [
-                'timeout' => 4
-            ]) ;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, config('influxdb.host'));
+            curl_setopt($ch, CURLOPT_PORT ,  config('influxdb.port'));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch, CURLOPT_COOKIE,  '');
+            #curl_setopt($ch, CURLOPT_USERPWD,"$username:$password");
+            curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+            $data = curl_exec($ch);
         } catch (\Exception $e){
             $response->influxdb = false; 
         } 
 
-        // $parsedData = parse_url(config('influxdb.host')) ; 
-        // if(config('influxdb.username')  != 'root'){
-        //     $response->influxdb = false; 
-        // }else if(config('influxdb.password') != 'root'){
-        //     $response->influxdb = false; 
-        // }else if($parsedData['port'] != 8086){
-        //     $response->influxdb = false; 
-        // }else if(config('influxdb.database') != 'stigma'){
-        //     $response->influxdb = false; 
-        // } 
-
-
         try { 
-            $this->httpClient->get(config('grafana.host').':'.config('grafana.port'), [
-                'timeout' => 4
-            ]) ;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, config('grafana.host'));
+            curl_setopt($ch, CURLOPT_PORT ,  config('grafana.port'));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch, CURLOPT_COOKIE,  '');
+            #curl_setopt($ch, CURLOPT_USERPWD,"$username:$password");
+            curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+            $data = curl_exec($ch);
         } catch (\Exception $e){
             $response->grafana = false; 
         } 
