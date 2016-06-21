@@ -18,8 +18,14 @@ class Nagios implements NagiosInterface
 
     public function __construct(Client $client)
     {
+        $domain = config('nagios.host');
+        $pos = strpos($domain, 'http://');
+        $end = substr($domain, -1);
+        if ($pos === false) { $domain = 'http://'.$domain; }
+        if ($end !== '/') { $domain .= '/'; }
+
         $this->client = $client;
-        $this->domain = config('nagios.host');
+        $this->domain = $domain;
     }
 
     public function listHosts($status)
