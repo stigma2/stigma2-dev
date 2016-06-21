@@ -40,8 +40,9 @@ class DashboardController extends Controller {
         $response->database = true; 
 
         try {
-            $this->httpClient->get(config('nagios.host').'/nagios', [
-                'auth' => ['nagiosadmin', 'qwe123'],
+            $url = config('nagios.host').'/nagios';
+            $this->httpClient->get($url, [
+                'auth' => [config('nagios.username'), config('nagios.password')],
                 'timeout' => 4
             ]) ;
         } catch (\Exception $e){
@@ -49,27 +50,22 @@ class DashboardController extends Controller {
         }
 
         try { 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, config('influxdb.host'));
-            curl_setopt($ch, CURLOPT_PORT ,  config('influxdb.port'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-            curl_setopt($ch, CURLOPT_COOKIE,  '');
-            #curl_setopt($ch, CURLOPT_USERPWD,"$username:$password");
-            curl_setopt($ch, CURLOPT_TIMEOUT, 4);
-            $data = curl_exec($ch);
+            #curl -G 'http://influxdb:8086/db/stigma/series?u=root&p=root' --data-urlencode "q=select * from // limit 1"
+            $url = 'http://'.config('influxdb.host').':'.config('influxdb.port').'/db/'.config('influxdb.database').'/series'
+                    .'?u='.config('influxdb.username').'&p='.config('influxdb.password').'&q=select%20*%20from%20%2F%2F%20limit%201';
+            $this->httpClient->get($url, [
+                'timeout' => 4
+            ]) ;
         } catch (\Exception $e){
             $response->influxdb = false; 
         } 
 
         try { 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, config('grafana.host'));
-            curl_setopt($ch, CURLOPT_PORT ,  config('grafana.port'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-            curl_setopt($ch, CURLOPT_COOKIE,  '');
-            #curl_setopt($ch, CURLOPT_USERPWD,"$username:$password");
-            curl_setopt($ch, CURLOPT_TIMEOUT, 4);
-            $data = curl_exec($ch);
+            #curl http://admin:admin@localhost:3000/api/org
+            $url = 'http://'.config('grafana.username').':'.config('grafana.password').'@'.config('grafana.host').':'.config('grafana.port').'/api/org';
+            $this->httpClient->get($url, [
+                'timeout' => 4
+            ]) ;
         } catch (\Exception $e){
             $response->grafana = false; 
         } 
@@ -95,23 +91,28 @@ class DashboardController extends Controller {
     {
         if (! $this->installManager->verifyToBeInstalled()) {
             $nagiosInstallation = $this->installManager->getNagiosInstallation() ;
-            $nagiosInstallation->setup(array('host'=>'nagios', 'port'=>'8080'))  ;
+            $nagiosInstallation->setup(array(
+                'host'=>'nagios', 
+                'port'=>'8080',
+                'username'=> 'nagiosadmin' , 
+                'password'=> 'qwe123' , 
+            ))  ;
 
             $grafanaInstallation = $this->installManager->getGrafanaInstallation() ;
             $grafanaInstallation->setup(array(
                 'host'=>'grafana',
                 'port'=>'3000',
-                'username'=> 'stigma' , 
-                'password'=> 'stigma' , 
+                'username'=> 'admin' , 
+                'password'=> 'admin' , 
             ));
 
             $influxdbInstallation = $this->installManager->getInfluxdbInstallation() ;
             $influxdbInstallation->setup(array(
                 'host'=>'influxdb',
-                'port'=>'8083',
+                'port'=>'8086',
                 'database'=> 'stigma' , 
-                'username'=> 'stigma' , 
-                'password'=> 'stigma' , 
+                'username'=> 'root' , 
+                'password'=> 'root' , 
             )); 
         }
 
