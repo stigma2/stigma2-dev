@@ -1,5 +1,7 @@
 <?php
 return [
     'host' => '{{host}}', 
-    'port' => '{{port}}'
-    ];
+    'port' => '{{port}}',
+    'username' => '{{username}}' ,
+    'password' => '{{password}}' ,
+];
