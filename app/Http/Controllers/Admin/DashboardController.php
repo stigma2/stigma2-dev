@@ -40,7 +40,7 @@ class DashboardController extends Controller {
         $response->database = true; 
 
         try {
-            $url = config('nagios.host').'/nagios';
+            $url = config('nagios.host').':'.config('nagios.port').'/nagios';
             $this->httpClient->get($url, [
                 'auth' => [config('nagios.username'), config('nagios.password')],
                 'timeout' => 4
@@ -95,6 +95,7 @@ class DashboardController extends Controller {
             $nagiosInstallation->setup(array(
                 'host'=>'nagios', 
                 'port'=>'8080',
+                'apiport'=>'8888',
                 'username'=> 'nagiosadmin' , 
                 'password'=> 'qwe123' , 
             ))  ;
