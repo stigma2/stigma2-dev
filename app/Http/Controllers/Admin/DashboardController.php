@@ -40,7 +40,7 @@ class DashboardController extends Controller {
         $response->database = true; 
 
         try {
-            $url = config('nagios.host').':'.config('nagios.port').'/nagios';
+            $url = 'http://'.config('nagios.host').'/nagios';
             $this->httpClient->get($url, [
                 'auth' => [config('nagios.username'), config('nagios.password')],
                 'timeout' => 4
@@ -50,9 +50,6 @@ class DashboardController extends Controller {
         }
 
         try { 
-            #curl -G 'http://influxdb:8086/db/stigma/series?u=root&p=root' --data-urlencode "q=select * from // limit 1"
-            #$url = 'http://'.config('influxdb.host').':'.config('influxdb.port').'/db/'.config('influxdb.database').'/series'
-            #       .'?u='.config('influxdb.username').'&p='.config('influxdb.password').'&q=select%20*%20from%20%2F%2F%20limit%201';
             $url = 'http://'.config('influxdb.host').':'.config('influxdb.port').'/ping';
             $this->httpClient->get($url, [
                 'timeout' => 4
@@ -62,7 +59,6 @@ class DashboardController extends Controller {
         } 
 
         try { 
-            #curl http://admin:admin@localhost:3000/api/org
             $url = 'http://'.config('grafana.username').':'.config('grafana.password').'@'.config('grafana.host').':'.config('grafana.port').'/api/org';
             $this->httpClient->get($url, [
                 'timeout' => 4
