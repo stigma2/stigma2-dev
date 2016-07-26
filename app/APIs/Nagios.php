@@ -18,7 +18,7 @@ class Nagios implements NagiosInterface
 
     public function __construct(Client $client)
     {
-        $domain = config('nagios.host').config('nagios.apiport')."/";
+        $domain = config('nagios.host').':'.config('nagios.apiport')."/";
         $pos = strpos($domain, 'http://');
         $end = substr($domain, -1);
         if ($pos === false) { $domain = 'http://'.$domain; }
